@@ -1,0 +1,74 @@
+.wid {
+    width: 100%!important
+}
+
+.st {
+    right: 85px!important
+}
+
+.tblfa {
+    font-size: 25px;
+    color: red
+}
+
+.tblfont {
+    font-size: 12px!important
+}
+
+.imgstyle {
+    height: 150px;
+    width: 150px;
+    border: 2px #fff
+}
+
+.ftbg {
+    background-image: url(../images/bg/title-bar-01-bg.jpg)
+}
+
+.iconfo {
+    font-size: 25px
+}
+
+label {
+    color: red!important
+}
+
+@media(min-width:900px) {
+    #btn-desktop {
+        display: none!important;
+        color: #000!important
+    }
+    #footer2 {
+        display: none!important
+    }
+}
+
+@media(max-width:600px) {
+    #btn-mobile {
+        display: none!important
+    }
+}
+
+#feedback2 {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    z-index: 1000;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    margin-left: -75px
+}
+
+#feedback2 a {
+    font-family: CerebriSans;
+    display: block;
+    background: #00a123;
+    padding: 5px 10px 5px 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none
+}

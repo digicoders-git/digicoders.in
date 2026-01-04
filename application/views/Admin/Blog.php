@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="semi-dark">
+	
+	<head>
+		<title>All Blog List - <?= $this->data['app_name'] ?></title>
+		<?php include('include/headerlinks.php'); ?>
+	</head>
+	
+	<body>
+		
+		
+		<!--start wrapper-->
+		<div class="wrapper">
+			<!--start top header-->
+			<?php include('include/header.php'); ?>
+			<!--end top header-->
+			
+			<!--start sidebar -->
+			<?php include('include/sidebar.php'); ?>
+			<!--end sidebar -->
+			
+			<!--start content-->
+			<main class="page-content">
+				
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">All Blog List</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="<?= base_url('Admin/Dashboard') ?>"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="ms-auto">
+						<div class="btn-group">
+							
+						</div>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+				
+				<div class="card">
+					<div class="card-header py-3">
+						<div class="row align-items-center m-0">
+							<div class="col-sm-6">
+								<h6>Manage Blog</h6>
+							</div>
+							<div class="col-sm-6">
+								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+									<button class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#BlogModal"><i class="fa fa-plus"></i>&ensp;Add Blog</button>
+								</div>
+							</div>
+							
+							
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table id="example2" class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Image</th>
+										<th>Title</th>
+										<th>Short Discription</th>
+										<th>Discription</th>                                                                      
+										<th>Date</th>
+										<th>Status</th>
+										<th>Date</th>                                 
+										<th>Time</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+										$sr = 1;
+										foreach ($userdata as $data) {
+										?>
+										<tr>
+											
+											<td><?= $sr++ ?></td>
+											<td> <img src="<?= base_url('public/uploads/Blog/') . $data->image; ?>" alt="ddd" style="height: 120px;" /> </td>
+											<td><?= $data->title; ?></td>
+											<td><?= $data->short_discription; ?></td>
+											<td><?= $data->full_discription; ?></td>
+											<td><?= $data->Blog_date; ?></td>
+											<td><?= $data->status; ?></td>                                       
+											<td><?= $data->date; ?></td>
+											<td><?= $data->time; ?></td>
+											<td>
+												<div class="form-check form-switch">
+													<input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'blog','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked" <?php if($data->status == 'true'){ echo "checked"; } ?>>
+													<label class="form-check-label" for="flexSwitchCheckChecked"></label>
+												</div>
+											</td>
+											<td>
+												<div class="col">
+													<div class="btn-group">
+														<button type="button" onclick="delData(<?= $data->id ?>,'blog','<?= base_url('Admin/Delete') ?>')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+														
+														
+														<button onclick="EditData('blog', <?= $data->id ?>, 'Edit blog')" type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+													</div>
+													
+													
+													
+													
+													
+												</div>
+											</td>
+											
+										</tr>
+										<?php
+										}
+									?>
+								</tbody>
+								<!-- <tfoot>
+									<tr>
+									<th>#</th>
+                                    <th>Type</th>
+                                    <th>Title</th>
+                                    <th>Date</th>
+                                    <th>Url</th>
+                                    <th>Image</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Action</th>
+								</tfoot> -->
+							</table>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				
+				
+			</main>
+			<!--end page main-->
+			
+			<!--start overlay-->
+			<div class="overlay nav-toggle-icon"></div>
+			<!--end overlay-->
+			
+			<!--Start Back To Top Button-->
+			<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+			<!--End Back To Top Button-->
+		</div>
+		<!--end wrapper-->
+		
+		<?php include('include/jslinks.php') ?>
+		
+	</body>
+	
+	
+	
+	<div class="modal fade" id="BlogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+		<div class="modal-dialog ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add Blog</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form action="<?= base_url() ?>Admin/ManageBlog/Add" enctype="multipart/form-data" method="POST" id="Blog-form">
+						<?php
+							$csrf = array(
+							'name' => $this->security->get_csrf_token_name(),
+							'hash' => $this->security->get_csrf_hash()
+							);
+						?>
+						<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+						<div class="form-group mb-3">
+							<!--<select name="type" id="" class="form-control" required>
+								<option selected disabled>Select Type</option>
+								<option value="Website">Website</option>
+								<option value="Mobile App">Mobile App</option>
+								<option value="Software">Software </option>
+							</select>-->
+							<input type="file" id="input-file-now" name="image" class="dropify" required />
+							
+						</div>
+						
+						
+						<div class="form-group mb-3">
+							<input type="date" name="date" class="form-control" required placeholder="Date">
+						</div>
+						<div class="form-group mb-3">
+							
+							<input type="text" name="title" class="form-control" required placeholder="Enter Blog title">
+						</div>
+						<div class="form-group mb-3">
+							<label for="" class="my-2 fw-bold">Short Discription</label>
+							<textarea name="short_discription" class="form-control" required placeholder="Enter short discription"></textarea>
+						</div>
+						
+						
+						
+						<div class="form-group mb-3">
+							<label for="" class="my-2 fw-bold">Discription</label>
+                            <textarea name="discription" id="message" cols="30" rows="5" class="form-control" placeholder="Discription..."></textarea> 
+						</div>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Save changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</html>
+<script>
+    $('.dropify').dropify();
+</script>
+<script>
+	
+
+    CKEDITOR.replace('message');
+</script>
