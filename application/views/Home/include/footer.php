@@ -52,7 +52,7 @@
     </div>
 
     <div class="cities-section">
-        <h2 class="city-title">CITY WE COVER</h2>
+        <h2 class="city-title">CITIES WE COVER</h2>
 
         <?php foreach ($states as $state): ?>
             <div class="state-row">
