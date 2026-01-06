@@ -24,17 +24,22 @@
         object-fit: cover;
         border-radius: 12px;
     }
-
+    #banner_slider {
+        padding: 0 50px;
+    }
     #banner_slider .item img {
         max-width: 100%;
         height: auto;
-        object-fit: cover;
+        object-fit: contain;
         border-radius: 8px;
     }
 
     @media (max-width: 768px) {
+        #banner_slider{
+            padding: 0px;
+        }
         #banner_slider .item img {
-            height: 200px;
+            height: 400px;
         }
     }
 
@@ -51,9 +56,9 @@
 
 
     /* Owl Carousel */
-    .owl-carousel .item {
+    /* .owl-carousel .item {
         padding: 12px;
-    }
+    } */
 
     /* View More */
     .view-more-btn {
@@ -193,7 +198,152 @@
             height: 200px;
         }
     }
-      
+//* ===============================
+   TOP SLIDER – NO IMAGE CROP
+================================ */
+
+.top-slider-section {
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.top-slider-section .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Slider Item */
+.top-banner-carousel .item {
+    position: relative;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;          /* IMPORTANT */
+    overflow: hidden;      /* Safe */
+}
+
+/* Image – FULL VISIBLE */
+.top-banner-carousel .item img {
+    width: 100%;
+    height: auto;          /* MOST IMPORTANT */
+    max-height: 600px;     /* Control only max */
+    object-fit: contain;   /* NO CROP */
+    object-position: center;
+    display: block;
+    margin: auto;
+}
+
+/* ===============================
+   DESKTOP (992px+)
+================================ */
+@media (min-width: 992px) {
+    .top-banner-carousel .item img {
+        max-height: 600px;
+    }
+}
+
+/* ===============================
+   TABLET (768px–991px)
+================================ */
+@media (min-width: 768px) and (max-width: 991px) {
+    .top-banner-carousel .item img {
+        max-height: 500px;
+    }
+}
+
+/* ===============================
+   MOBILE (576px–767px)
+================================ */
+@media (min-width: 576px) and (max-width: 767px) {
+    .top-banner-carousel .item img {
+        max-height: 420px;
+        width: 100%;
+    }
+}
+
+/* ===============================
+   SMALL MOBILE (<576px)
+================================ */
+@media (max-width: 575px) {
+    .top-banner-carousel .item img {
+        max-height: 320px;
+        width: 100%;
+    }
+}
+
+/* ===============================
+   VERY SMALL DEVICES (<400px)
+================================ */
+@media (max-width: 400px) {
+    .top-banner-carousel .item img {
+        max-height: 260px;
+        width: 100%;
+    }
+}
+
+/* ===============================
+   NAVIGATION BUTTONS
+================================ */
+.top-banner-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.top-banner-carousel .owl-nav button {
+    position: absolute;
+    color: #6f6f6fff !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    pointer-events: all;
+    transition: all 0.3s ease;
+    border: none !important;
+    
+}
+
+.top-banner-carousel .owl-nav button.owl-prev {
+    left: 50px !important;
+}
+
+.top-banner-carousel .owl-nav button.owl-next {
+    right: 50px !important;
+}
+
+.top-banner-carousel .owl-nav button:hover {
+    color: #fff !important;
+}
+
+/* ===============================
+   DOTS
+================================ */
+.top-banner-carousel .owl-dots {
+    position: absolute;
+    bottom: 12px;
+    width: 100%;
+    text-align: center;
+}
+
+.top-banner-carousel .owl-dots .owl-dot span {
+    background: rgba(255,255,255,0.6) !important;
+    width: 9px;
+    height: 9px;
+    margin: 4px;
+}
+
+.top-banner-carousel .owl-dots .owl-dot.active span {
+    background: #0d6efd !important;
+}
+
     </style>
 
 </head>
@@ -201,14 +351,35 @@
 <body>
 
     <?php include('include/header.php') ?>
+    <!--============ Top Slider Start ============-->
+<div class="top-slider-section">
+    <div class="container-fluid px-0">
+        <div class="owl-carousel top-banner-carousel" id="top_banner_slider">
+            <div class="item">
+                <img aria-busy=""src="<?= base_url('public') ?>/assets/images/bg/slider-1.jpg"
+                    alt="DigiCoders - Best IT Company">
+            </div>
+            <div class="item">
+                <img src="<?= base_url('public') ?>/assets/images/bg/slider-2.jpg"
+                    alt="Website Development Services">
+            </div>
+            <div class="item">
+                <img src="<?= base_url('public') ?>/assets/images/bg/slider-3.jpg"
+                    alt="Mobile App Development">
+            </div>
+          
+        </div>
+    </div>
+</div>
+<!--============ Top Slider End ============-->
     <!--============ Cybersecurity Hero Start ============-->
-    <div class="cybersecurity-hero processing-hero-bg__color ">
+    <!-- <div class="cybersecurity-hero processing-hero-bg__color ">
         <div class="container-fluid">
-            <div class="row align-items-center">
+            <div class="row align-items-center"> -->
 
                 <!--baseline-->
 
-                <div class="col-lg-6 col-md-7 col-sm-12">
+                <!-- <div class="col-lg-6 col-md-7 col-sm-12">
                     <div class="cybersecurity-hero-text wow move-up">
 
                         <h6 id="hashtagteam">#TeamDigiCoders </h6>
@@ -227,11 +398,11 @@
 
                     </div>
 
-                </div>
+                </div> -->
 
 
 
-                <div class="col-lg-6 col-md-5">
+                <!-- <div class="col-lg-6 col-md-5">
                     <div class="cybersecurity-hero-images-wrap wow move-up">
                         <div class="cybersecurity-hero-images section-space--mt_80">
                             <center> <a href="/Home/ContactUs" class="ht-btn ht-btn-md" id="btn-desktop">Get Quotation
@@ -248,7 +419,7 @@
                                     src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                                     data-src="<?= base_url('public') ?>/assets/images/team/team.png" title="team"
                                     alt="team">
-                            </div>
+                            </div> -->
 
 
                             <!-- <div class="inner-img-one">
@@ -258,13 +429,12 @@
                                 <img class="img-fluid  ml-5 lazy" src="<?= base_url('public') ?>/assets/images/Digicoders-Logo-with-tagline.png" data-src="<?= base_url('public') ?>/assets/images/team/team.png" title="team" alt="team">
                             </div> -->
 
-
-                        </div>
+                        <!-- </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     </br>
 
     <div class="container">
@@ -287,10 +457,7 @@
         </marquee>
     </div>
 
-
-
-
-    <div class="page-content page-container" id="page-content">
+    <div class="page-content page-container pt-60" id="page-content">
         <div class="padding">
             <div class="row container-fluid">
                 <div class="col-lg-12 grid-margin stretch-card">
@@ -1438,7 +1605,7 @@ owl.owlCarousel({
             autoplayTimeout: 2500,
             autoplayHoverPause: true,
             smartSpeed: 800,
-            dots: true,
+            dots:false,
             nav: false,
             responsive: {
                 0: {
@@ -1500,7 +1667,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
-
+<script>
+    $('#top_banner_slider').owlCarousel({
+    loop: true,
+    margin:0,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+    nav: true,
+    dots: true,
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
+    smartSpeed: 1000,
+    items: 1,
+    navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+    responsive: {
+        0: {
+            nav: false
+        },
+        768: {
+            nav: true
+        }
+    }
+});
+</script>
 
 
 </body>

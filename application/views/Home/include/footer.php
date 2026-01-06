@@ -130,7 +130,7 @@
                         <h3>CONNECT WITH US</h3>
 
                         <div class="dg-email-support">
-                            <span class="dg-email-label">Email Support:</span>
+                          
                             <a href="mailto:<?= $this->data['email'] ?>"
                                 class="hover-style-link"><?= $this->data['email'] ?></a>
                             <a href="mailto:digicoderstech@gmail.com"

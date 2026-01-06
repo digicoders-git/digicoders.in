@@ -53,7 +53,7 @@ public function get_active_cities_with_pages()
         return $this->db
             ->select('state_name')
             ->group_by('state_name')
-            ->order_by('state_name', 'ASC')
+            ->order_by('id', 'ASC')
             ->get('seo_pages')
             ->result();
     }
