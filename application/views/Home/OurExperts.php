@@ -114,7 +114,7 @@
                     <!-- foreach loop close -->
                 </div>
 				<br>
-					<hr>
+					<!-- <hr>
 					<h3>Our Interns</h3>
 				
 				 <div class="container">
@@ -143,7 +143,7 @@
 				 
 				     </div>
 					 
-				</div>
+				</div> -->
             </div>
         </div>
         <!-- ============ Team Member Wrapper End =============== -->
