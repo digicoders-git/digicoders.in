@@ -2415,7 +2415,6 @@
     // Add animation to course cards
     document.addEventListener('DOMContentLoaded', function() {
         const courseCards = document.querySelectorAll('.course-card');
-        
         courseCards.forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
