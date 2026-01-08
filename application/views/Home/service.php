@@ -16,7 +16,7 @@
     <style>
         /* Main Container */
         .city-courses-section {
-            
+
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             min-height: 100vh;
         }
@@ -1884,7 +1884,7 @@
             </div>
 
         </div>
-         
+
         <!--===========  feature-images-wrapper  Start =============-->
         <div class="feature-images-wrapper section-space--ptb_10">
             <div class="container">
@@ -1923,15 +1923,15 @@
                                     your needs. The data will be yours.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -1957,15 +1957,15 @@
                                     design to fit and functions well on any device - desktop, tablet & mobile.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -1992,17 +1992,17 @@
                                     Startup to Enterprise.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
-                                      <div class="btn-icon btn-phone">
+                                    <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
                                     </div>
                                 </div>
@@ -2011,7 +2011,7 @@
 
                         <!-- Mobile Application Development Card -->
                         <div class="service-card">
-                        <img src="<?= base_url('public') ?>/assets/images/services/mobile-app.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/mobile-app.jpg"
                                 alt="Mobile Application Development" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/MobileApplicationDevelopment') ?>" class="redirect-icon">
@@ -2025,15 +2025,15 @@
                                     platforms with cutting-edge features and seamless user experience.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -2044,7 +2044,7 @@
 
                         <!-- Digital Marketing Card -->
                         <div class="service-card">
-                           <img src="<?= base_url('public') ?>/assets/images/services/digital-marketing.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/digital-marketing.jpg"
                                 alt="Digital Marketing" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/DigitalMarketing') ?>" class="redirect-icon">
@@ -2059,17 +2059,17 @@
                                     boost your online presence and drive results.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
-                                      <div class="btn-icon btn-phone">
+                                    <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
                                     </div>
                                 </div>
@@ -2078,7 +2078,7 @@
 
                         <!-- Graphics Designing Card -->
                         <div class="service-card">
-                           <img src="<?= base_url('public') ?>/assets/images/services/graphic-design.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/graphic-design.jpg"
                                 alt="Graphics Designing" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/GraphicsDesigning') ?>" class="redirect-icon">
@@ -2093,15 +2093,15 @@
                                     materials that make your brand stand out.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -2112,7 +2112,7 @@
 
                         <!-- Domain and Hosting Card -->
                         <div class="service-card">
-                          <img src="<?= base_url('public') ?>/assets/images/services/domain.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/domain.jpg"
                                 alt="Domain and Hosting" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/DomainAndHosting') ?>" class="redirect-icon">
@@ -2127,15 +2127,15 @@
                                     99.9% uptime guarantee.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -2146,7 +2146,7 @@
 
                         <!-- ERP and CRM Development Card -->
                         <div class="service-card">
-                           <img src="<?= base_url('public') ?>/assets/images/services/erp.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/erp.jpg"
                                 alt="ERP and CRM Development" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/ERPAndCRMDevelopment') ?>" class="redirect-icon">
@@ -2161,15 +2161,15 @@
                                     complete system.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -2180,7 +2180,7 @@
 
                         <!-- Maintenance Services Card -->
                         <div class="service-card">
-                           <img src="<?= base_url('public') ?>/assets/images/services/maintenance.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/maintenance.jpg"
                                 alt="Maintenance Services" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/MaintenanceServices') ?>" class="redirect-icon">
@@ -2197,15 +2197,15 @@
 
 
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -2218,175 +2218,177 @@
             </div>
         </div>
         <!--===========  feature-images-wrapper  End =============-->
-   
-            <div class="site-wrapper-reveal">
-                <center class="mb-4">
-                    <h3 class="fw-bold">Our Recent Projects</h3>
-                    <a href="<?= base_url() ?>Home/OurProjects" class="view-more-btn">
-                        View More →
-                    </a>
-                </center>
-                <!--===========  feature-images-wrapper  Start =============-->
-                <div class="feature-images-wrapper bg-gray ">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="feature-images__four">
-                                    <div class="row">
-                                        <!-- forecach  loop -->
-                                        <?php
-                                        foreach ($projects as $project) {
-                                            ?>
-                                            <div class="single-item col-lg-4 col-md-6 mt-30 wow move-up">
-                                                <!-- ht-box-icon Start -->
-                                                <!-- <a href="<?php echo $project->url; ?>" target="_blank" style="width:100%;"> -->
-                                                <div class="image-box-wrap" style="width:100%;">
-                                                    <div class="box-image" style="width:100%;">
-                                                        <img class="lazy"
-                                                            src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                                            data-src="<?= base_url('public/uploads/projects/') . $project->image; ?>"
-                                                            title="projects" alt="projects"
-                                                            style="height: 200px; width: 100% " />
-                                                    </div>
-                                                    <div class="content ht-box-images style-04 text-center">
-                                                        <h5 class="heading" title="<?= $project->title; ?>"
-                                                            data-title="<?= $project->title; ?>"><?= $project->title; ?>
-                                                        </h5>
 
-                                                        <div class="text">
-                                                            <?php $date = strtotime($project->add_date);
-                                                            echo $date = date('M Y', $date); ?>&nbsp;<i
-                                                                class="fa fa-link"></i></div>
-                                                        <div class="text">
-                                                            <h6><?= $project->type; ?></h6>
-                                                        </div>
+        <div class="site-wrapper-reveal">
+            <center class="mb-4">
+                <h3 class="fw-bold">Our Recent Projects</h3>
+                <a href="<?= base_url() ?>Home/OurProjects" class="view-more-btn">
+                    View More →
+                </a>
+            </center>
+            <!--===========  feature-images-wrapper  Start =============-->
+            <div class="feature-images-wrapper bg-gray ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="feature-images__four">
+                                <div class="row">
+                                    <!-- forecach  loop -->
+                                    <?php
+                                    foreach ($projects as $project) {
+                                        ?>
+                                        <div class="single-item col-lg-4 col-md-6 mt-30 wow move-up">
+                                            <!-- ht-box-icon Start -->
+                                            <!-- <a href="<?php echo $project->url; ?>" target="_blank" style="width:100%;"> -->
+                                            <div class="image-box-wrap" style="width:100%;">
+                                                <div class="box-image" style="width:100%;">
+                                                    <img class="lazy"
+                                                        src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                                        data-src="<?= base_url('public/uploads/projects/') . $project->image; ?>"
+                                                        title="projects" alt="projects"
+                                                        style="height: 200px; width: 100% " />
+                                                </div>
+                                                <div class="content ht-box-images style-04 text-center">
+                                                    <h5 class="heading" title="<?= $project->title; ?>"
+                                                        data-title="<?= $project->title; ?>"><?= $project->title; ?>
+                                                    </h5>
+
+                                                    <div class="text">
+                                                        <?php $date = strtotime($project->add_date);
+                                                        echo $date = date('M Y', $date); ?>&nbsp;<i
+                                                            class="fa fa-link"></i>
+                                                    </div>
+                                                    <div class="text">
+                                                        <h6><?= $project->type; ?></h6>
                                                     </div>
                                                 </div>
-                                                <!-- </a> -->
-                                                <!-- ht-box-icon End -->
                                             </div>
-                                            <?php
-                                        }
-                                        ?>
-                                        <!-- foreach loop end -->
-                                    </div>
+                                            <!-- </a> -->
+                                            <!-- ht-box-icon End -->
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                    <!-- foreach loop end -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!--===========  feature-images-wrapper  End =============-->
-
-
-                <section class="dg-milestone">
-                    <div class="dg-container">
+            <!--===========  feature-images-wrapper  End =============-->
 
 
-                        <h2 class="dg-section-title">Our Office & Work Culture</h2>
-                        <p class="dg-section-subtitle">
-                            A glimpse of our workspace and creative environment
-                        </p>
+            <section class="dg-milestone">
+                <div class="dg-container">
 
-                        <div class="dg-office-grid">
-                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus1.jpg"
-                                alt="Office Image">
-                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus2.jpg"
-                                alt="Office Image">
-                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus3.jpg"
-                                alt="Office Image">
-                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus4.jpg"
-                                alt="Office Image">
-                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus5.jpg"
-                                alt="Office Image">
-                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus6.jpg"
-                                alt="Office Image">
-                        </div>
 
+                    <h2 class="dg-section-title">Our Office & Work Culture</h2>
+                    <p class="dg-section-subtitle">
+                        A glimpse of our workspace and creative environment
+                    </p>
+
+                    <div class="dg-office-grid">
+                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus1.jpeg"
+                            alt="Office Image">
+                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus2.jpeg"
+                            alt="Office Image">
+                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus3.jpeg"
+                            alt="Office Image">
+                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus4.jpeg"
+                            alt="Office Image">
+                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus5.jpeg"
+                            alt="Office Image">
+                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus6.jpg"
+                            alt="Office Image">
                     </div>
-                </section>
+
+                </div>
+            </section>
 
 
-                <section class="dg-service">
-                    <div class="dg-service-card">
+            <section class="dg-service">
+                <div class="dg-service-card">
 
-                        <!-- LEFT -->
-                        <div class="dg-service-left">
-                            <h2>Website Designing And Development</h2>
+                    <!-- LEFT -->
+                    <div class="dg-service-left">
+                        <h2>Website Designing And Development</h2>
 
-                            <ul class="dg-two-column">
-                                <?php if (!empty($allservice)): ?>
-                        <?php foreach ($allservice as $service): ?>
-                                <?php
+                        <ul class="dg-two-column">
+                            <?php if (!empty($allservice)): ?>
+                                <?php foreach ($allservice as $service): ?>
+                                    <?php
 
-                                $clean_slug = explode('-development-', $service->url_slug)[0];
-                                ?>
-                                <li>
-                                    <a href="<?= base_url('services/' . $clean_slug) ?>">
-                                        <?= $service->service_name ?> development 
-                                    </a>
-                                </li>
-                        <?php endforeach; ?>
-                <?php else: ?>
-                        <li>No services found</li>
-                <?php endif; ?>
-            </ul>
+                                    $clean_slug = explode('-development-', $service->url_slug)[0];
+                                    ?>
+                                    <li>
+                                        <a href="<?= base_url('services/' . $clean_slug) ?>">
+                                            <?= $service->service_name ?> development
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <li>No services found</li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div class="dg-service-right">
+                        <span>NEED HELP ?</span>
+                        <button data-toggle="modal" data-target="#exampleModal" class="dg-btn-call">
+                            Request a quote
+                        </button>
+                    </div>
+
+                </div>
+                <br>
+
+                <!-- CTA Section -->
+                <div class="cta-section">
+                    <h2>Build Your Project with Expert Developers !</h2>
+
+                    <p>
+                        Get professional project development services for college, startups,
+                        and businesses. We deliver real-world, scalable and industry-ready solutions
+                        using the latest technologies.
+                    </p>
+
+                    <a href="<?= base_url('Home/ContactUs') ?>" class="cta-button">
+                        <i class="fas fa-code"></i> Start Your Project
+                    </a>
+                </div>
+
+
+            </section>
+
+
         </div>
 
-        <!-- RIGHT -->
-        <div class="dg-service-right">
-            <span>NEED HELP ?</span>
-             <button  data-toggle="modal" data-target="#exampleModal" class="dg-btn-call">
-                Request a quote
-            </button>
-        </div>
 
-    </div>
-    <br>
-  
-             <!-- CTA Section -->
-<div class="cta-section">
-    <h2>Build Your Project with Expert Developers !</h2>
 
-    <p>
-        Get professional project development services for college, startups, 
-        and businesses. We deliver real-world, scalable and industry-ready solutions 
-        using the latest technologies.
-    </p>
+        <?php include('include/footer.php') ?>
+        <?php include('include/jslinks.php') ?>
 
-    <a href="<?= base_url('Home/ContactUs') ?>" class="cta-button">
-        <i class="fas fa-code"></i> Start Your Project
-    </a>
-</div>
+        <script>
+            // Add animation to course cards
+            document.addEventListener('DOMContentLoaded', function () {
+                const courseCards = document.querySelectorAll('.course-card');
 
-   
-</section>
+                courseCards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
 
- 
-             </div>
-        
-    
-    
-    <?php include('include/footer.php') ?>
-    <?php include('include/jslinks.php') ?>
-    
-    <script>
-    // Add animation to course cards
-    document.addEventListener('DOMContentLoaded', function() {
-        const courseCards = document.querySelectorAll('.course-card');
-        
-        courseCards.forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, index * 100);
-        });
-    });
-    </script>
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            });
+        </script>
 
 </body>
+
 </html>

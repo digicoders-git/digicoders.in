@@ -160,7 +160,7 @@
                                             <div class="info-content">
                                                 <h6 class="info-title">Call Us</h6>
                                                 <a href="tel:05224235604">
-                                                    <div class="info-sub-title">05224235604</div>
+                                                    <div class="info-sub-title">0522-4235604</div>
                                                 </a>
                                             </div>
                                         </div>
@@ -213,7 +213,7 @@
     </div>
 
     <div class="header-bottom-wrap border-top d-md-block d-none header-sticky">
-        <div class="container" style="width:1400px">
+        <div class="container" style="max-width:1350px; width: 100%; margin: 0 auto;">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="header-bottom-inner">
@@ -292,17 +292,21 @@
                                                         <!-- <li><a
                                                                 href="<?= base_url() ?>Home/multigame_plateform_in_digicoder_in_lucknow"><span>
                                                                     Multigame plateform</span></a></li> -->
-                                                        <li><a href="<?= base_url() ?>Home/School_management_system_in_digicoder_in_lucknow"><span>School
+                                                        <li><a
+                                                                href="<?= base_url() ?>Home/School_management_system_in_digicoder_in_lucknow"><span>School
                                                                     management Software</span></a></li>
-                                                        <li><a href="<?= base_url() ?>Home/HRMS_in_digicoder_in_lucknow"><span>HRMS
+                                                        <li><a
+                                                                href="<?= base_url() ?>Home/HRMS_in_digicoder_in_lucknow"><span>HRMS
                                                                     Software</span></a></li>
                                                         <li><a href="<?= base_url() ?>Home/CRM_in_digicoder_in_lucknow"><span>CRM
                                                                     Software</span></a></li>
                                                         <li><a href="<?= base_url() ?>Home/ERP_in_digicoder_in_lucknow"><span>ERP
                                                                     Software</span></a></li>
-                                                        <li><a href="<?= base_url() ?>Home/lead_management_digicoder_in_lucknow"><span>Lead
+                                                        <li><a
+                                                                href="<?= base_url() ?>Home/lead_management_digicoder_in_lucknow"><span>Lead
                                                                     Management Software</span></a></li>
-                                                        <li><a href="<?= base_url() ?>Home/fee_management_digicoder_in_lucknow"><span>Fee
+                                                        <li><a
+                                                                href="<?= base_url() ?>Home/fee_management_digicoder_in_lucknow"><span>Fee
                                                                     Management Software</span></a></li>
                                                         <li><a
                                                                 href="<?= base_url() ?>Home/Food_delivery_App_in_digicoder_in_lucknow"><span>Food
@@ -346,7 +350,7 @@
                                                             Clients</span></a></li>
                                             </ul>
                                         </li>
-                                         <li>
+                                        <li>
                                             <a href="<?= base_url() ?>Home/DigiCodersInNews"><span>Media</span></a>
                                         </li>
                                         <li>
@@ -368,7 +372,8 @@
 
                         <div class="header-search-form mt-1 mb-1">
                             <div class="hero-button">
-                                <button data-toggle="modal" data-target="#exampleModal" class="ht-btn ht-btn-md" >Request Call back</button>
+                                <button data-toggle="modal" data-target="#exampleModal" class="ht-btn ht-btn-md">Request
+                                    Call back</button>
                             </div>
 
                         </div>

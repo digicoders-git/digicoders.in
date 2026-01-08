@@ -16,334 +16,497 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
     <style>
-
-
-    .expert-team-carousel .item img {
-        max-width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 12px;
-    }
-    #banner_slider {
-        padding: 0 50px;
-    }
-    #banner_slider .item img {
-        max-width: 100%;
-        height: auto;
-        object-fit: contain;
-        border-radius: 8px;
-    }
-
-    @media (max-width: 768px) {
-        #banner_slider{
-            padding: 0px;
+        .expert-team-carousel .item img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 12px;
         }
+
+        #banner_slider {
+            padding: 0 50px;
+        }
+
         #banner_slider .item img {
-            height: 400px;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
         }
-    }
+
+        @media (max-width: 768px) {
+            #banner_slider {
+                padding: 0px;
+            }
+
+            #banner_slider .item img {
+                height: 400px;
+            }
+        }
 
 
 
-    .expert-team-carousel .item {
-        display: flex;
-        justify-content: center;
-        /* 🔥 CENTER horizontally */
-        align-items: center;
-        /* 🔥 CENTER vertically */
-        padding: 10px;
-    }
+        .expert-team-carousel .item {
+            display: flex;
+            justify-content: center;
+            /* 🔥 CENTER horizontally */
+            align-items: center;
+            /* 🔥 CENTER vertically */
+            padding: 10px;
+        }
 
 
-    /* Owl Carousel */
-    /* .owl-carousel .item {
-        padding: 12px;
-    } */
+        /* Owl Carousel */
+        .owl-carousel #item-card {
+            padding: 12px;
+        }
 
-    /* View More */
-    .view-more-btn {
-        display: inline-block;
-        margin-top: 5px;
-        font-weight: 600;
-        color: #0d6efd;
-        text-decoration: none;
-    }
+        /* View More */
+        .view-more-btn {
+            display: inline-block;
+            margin-top: 5px;
+            font-weight: 600;
+            color: #0d6efd;
+            text-decoration: none;
+        }
 
-    .view-more-btn:hover {
-        text-decoration: underline;
-    }
+        .view-more-btn:hover {
+            text-decoration: underline;
+        }
 
-    /* Project Card */
-    .project-card {
-        background: #fff;
-        border-radius: 14px;
-        overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        transition: all 0.4s ease;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
+        /* Project Card */
+        .project-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
-    }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+        }
 
-    /* Image */
-    .project-image {
-        overflow: hidden;
-    }
+        /* Image */
+        .project-image {
+            overflow: hidden;
+        }
 
-    .project-image img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        transition: transform 0.6s ease;
-    }
+        .project-image img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
 
-    .project-card:hover .project-image img {
-        transform: scale(1.12);
-    }
+        .project-card:hover .project-image img {
+            transform: scale(1.12);
+        }
 
-    .project-content {
-        padding: 16px;
-        text-align: center;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+        .project-content {
+            padding: 16px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    .project-title {
-        font-weight: 700;
-        line-height: 1.3;
-        margin-bottom: 6px;
+        .project-title {
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 6px;
 
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
 
-    }
+        }
 
-    .title-tooltip {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-    }
+        .title-tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
 
-    .tooltip-text {
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        bottom: 120%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 260px;
-
-        background: rgba(0, 0, 0, 0.85);
-        color: #fff;
-        padding: 10px 14px;
-        border-radius: 8px;
-        font-size: 14px;
-        line-height: 1.4;
-
-        transition: all 0.3s ease;
-        z-index: 10;
-    }
-
-    /* Tooltip Arrow */
-    .tooltip-text::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        border-width: 6px;
-        border-style: solid;
-        border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
-    }
-
-    /* Show Tooltip on Hover */
-    .title-tooltip:hover .tooltip-text {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    /* Date */
-    .project-content .date {
-        font-size: 14px;
-        color: #6c757d;
-        margin-bottom: 10px;
-    }
-
-    /* Badge */
-    .project-content .badge {
-        align-self: center;
-        background: linear-gradient(135deg, #0d6efd, #6610f2);
-        color: #fff;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-size: 13px;
-    }
-
-    /* Mobile */
-    @media (max-width: 576px) {
         .tooltip-text {
-            width: 220px;
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        /* Tooltip Arrow */
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+        }
+
+        /* Show Tooltip on Hover */
+        .title-tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Date */
+        .project-content .date {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        /* Badge */
+        .project-content .badge {
+            align-self: center;
+            background: linear-gradient(135deg, #0d6efd, #6610f2);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 20px;
             font-size: 13px;
         }
-        
-        .project-image img {
-            height: 200px;
+
+        /* Tech Icons Redesign - Premium Edition */
+        .rev_redraw-wrapper {
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
         }
-    }
-//* ===============================
-   TOP SLIDER – NO IMAGE CROP
-================================ */
 
-.top-slider-section {
-    margin-top: 0;
-    position: relative;
-    z-index: 1;
-}
+        .rev_redraw-wrapper::before,
+        .rev_redraw-wrapper::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 108, 216, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
 
-.top-slider-section .container-fluid {
-    padding-left: 0;
-    padding-right: 0;
-}
+        .rev_redraw-wrapper::before {
+            top: -100px;
+            left: -100px;
+        }
 
-/* Slider Item */
-.top-banner-carousel .item {
-    position: relative;
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;          /* IMPORTANT */
-    overflow: hidden;      /* Safe */
-}
+        .rev_redraw-wrapper::after {
+            bottom: -100px;
+            right: -100px;
+        }
 
-/* Image – FULL VISIBLE */
-.top-banner-carousel .item img {
-    width: 100%;
-    height: auto;          /* MOST IMPORTANT */
-    max-height: 600px;     /* Control only max */
-    object-fit: contain;   /* NO CROP */
-    object-position: center;
-    display: block;
-    margin: auto;
-}
+        .redraw-content h3 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
 
-/* ===============================
+        .redwaw-dec {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            justify-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glassmorphism Card Style */
+        .tech-item {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Staggered Floating Animation */
+        .tech-item:nth-child(even) {
+            animation-delay: 1s;
+        }
+
+        .tech-item:nth-child(3n) {
+            animation-delay: 2s;
+        }
+
+        .tech-item:nth-child(4n) {
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .tech-item:hover {
+            transform: translateY(-20px) scale(1.05) !important;
+            background: #fff;
+            box-shadow: 0 20px 40px rgba(0, 108, 216, 0.15);
+            border: 1px solid rgba(0, 108, 216, 0.2);
+            animation-play-state: paused;
+        }
+
+        .tech-item img {
+            max-width: 90px;
+            max-height: 90px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+            transition: transform 0.5s ease;
+        }
+
+        .tech-item:hover img {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .tech-item span {
+            font-size: 14px;
+            font-weight: 700;
+            color: #222;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .tech-item:hover span {
+            color: #006cd8;
+        }
+
+        @media (max-width: 768px) {
+            .rev_redraw-wrapper {
+                padding: 60px 0;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .tech-item {
+                width: 110px;
+                height: 110px;
+                padding: 15px;
+                border-radius: 18px;
+            }
+
+            .tech-item img {
+                max-width: 45px;
+                max-height: 45px;
+                margin-bottom: 8px;
+            }
+
+            .tech-item span {
+                font-size: 12px;
+            }
+
+            .redraw-content h3 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        //* ===============================
+        TOP SLIDER – NO IMAGE CROP================================*/ .top-slider-section {
+            margin-top: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-slider-section .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        /* Slider Item */
+        .top-banner-carousel .item {
+            position: relative;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: auto;
+            /* IMPORTANT */
+            overflow: hidden;
+            /* Safe */
+        }
+
+        /* Image – FULL VISIBLE */
+        .top-banner-carousel .item img {
+            width: 100%;
+            height: auto;
+            /* MOST IMPORTANT */
+            max-height: 600px;
+            /* Control only max */
+            object-fit: contain;
+            /* NO CROP */
+            object-position: center;
+            display: block;
+            margin: auto;
+        }
+
+        /* ===============================
    DESKTOP (992px+)
 ================================ */
-@media (min-width: 992px) {
-    .top-banner-carousel .item img {
-        max-height: 600px;
-    }
-}
+        @media (min-width: 992px) {
+            .top-banner-carousel .item img {
+                max-height: 600px;
+            }
+        }
 
-/* ===============================
+        /* ===============================
    TABLET (768px–991px)
 ================================ */
-@media (min-width: 768px) and (max-width: 991px) {
-    .top-banner-carousel .item img {
-        max-height: 500px;
-    }
-}
+        @media (min-width: 768px) and (max-width: 991px) {
+            .top-banner-carousel .item img {
+                max-height: 500px;
+            }
+        }
 
-/* ===============================
+        /* ===============================
    MOBILE (576px–767px)
 ================================ */
-@media (min-width: 576px) and (max-width: 767px) {
-    .top-banner-carousel .item img {
-        max-height: 420px;
-        width: 100%;
-    }
-}
+        @media (min-width: 576px) and (max-width: 767px) {
+            .top-banner-carousel .item img {
+                max-height: 420px;
+                width: 100%;
+            }
+        }
 
-/* ===============================
+        /* ===============================
    SMALL MOBILE (<576px)
 ================================ */
-@media (max-width: 575px) {
-    .top-banner-carousel .item img {
-        max-height: 320px;
-        width: 100%;
-    }
-}
+        @media (max-width: 575px) {
+            .top-banner-carousel .item img {
+                max-height: 320px;
+                width: 100%;
+            }
+        }
 
-/* ===============================
+        /* ===============================
    VERY SMALL DEVICES (<400px)
 ================================ */
-@media (max-width: 400px) {
-    .top-banner-carousel .item img {
-        max-height: 260px;
-        width: 100%;
-    }
-}
+        @media (max-width: 400px) {
+            .top-banner-carousel .item img {
+                max-height: 260px;
+                width: 100%;
+            }
+        }
 
-/* ===============================
+        /* ===============================
    NAVIGATION BUTTONS
 ================================ */
-.top-banner-carousel .owl-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 10;
-}
+        .top-banner-carousel .owl-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 10;
+        }
 
-.top-banner-carousel .owl-nav button {
-    position: absolute;
-    color: #6f6f6fff !important;
-    width: 40px;
-    height: 40px;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    pointer-events: all;
-    transition: all 0.3s ease;
-    border: none !important;
-    
-}
+        .top-banner-carousel .owl-nav button {
+            position: absolute;
+            color: #6f6f6fff !important;
+            width: 40px;
+            height: 40px;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            pointer-events: all;
+            transition: all 0.3s ease;
+            border: none !important;
 
-.top-banner-carousel .owl-nav button.owl-prev {
-    left: 50px !important;
-}
+        }
 
-.top-banner-carousel .owl-nav button.owl-next {
-    right: 50px !important;
-}
+        .top-banner-carousel .owl-nav button.owl-prev {
+            left: 50px !important;
+        }
 
-.top-banner-carousel .owl-nav button:hover {
-    color: #fff !important;
-}
+        .top-banner-carousel .owl-nav button.owl-next {
+            right: 50px !important;
+        }
 
-/* ===============================
+        .top-banner-carousel .owl-nav button:hover {
+            color: #fff !important;
+        }
+
+        /* ===============================
    DOTS
 ================================ */
-.top-banner-carousel .owl-dots {
-    position: absolute;
-    bottom: 12px;
-    width: 100%;
-    text-align: center;
-}
+        .top-banner-carousel .owl-dots {
+            position: absolute;
+            bottom: 12px;
+            width: 100%;
+            text-align: center;
+        }
 
-.top-banner-carousel .owl-dots .owl-dot span {
-    background: rgba(255,255,255,0.6) !important;
-    width: 9px;
-    height: 9px;
-    margin: 4px;
-}
+        .top-banner-carousel .owl-dots .owl-dot span {
+            background: rgba(255, 255, 255, 0.6) !important;
+            width: 9px;
+            height: 9px;
+            margin: 4px;
+        }
 
-.top-banner-carousel .owl-dots .owl-dot.active span {
-    background: #0d6efd !important;
-}
-
+        .top-banner-carousel .owl-dots .owl-dot.active span {
+            background: #0d6efd !important;
+        }
     </style>
 
 </head>
@@ -352,34 +515,33 @@
 
     <?php include('include/header.php') ?>
     <!--============ Top Slider Start ============-->
-<div class="top-slider-section">
-    <div class="container-fluid px-0">
-        <div class="owl-carousel top-banner-carousel" id="top_banner_slider">
-            <div class="item">
-                <img aria-busy=""src="<?= base_url('public') ?>/assets/images/bg/slider-1.jpg"
-                    alt="DigiCoders - Best IT Company">
+    <div class="top-slider-section">
+        <div class="container-fluid px-0">
+            <div class="owl-carousel top-banner-carousel" id="top_banner_slider">
+                <div class="item">
+                    <img aria-busy="" src="<?= base_url('public') ?>/assets/images/bg/slider-1.jpg"
+                        alt="DigiCoders - Best IT Company">
+                </div>
+                <div class="item">
+                    <img src="<?= base_url('public') ?>/assets/images/bg/slider-2.jpg"
+                        alt="Website Development Services">
+                </div>
+                <div class="item">
+                    <img src="<?= base_url('public') ?>/assets/images/bg/slider-3.jpg" alt="Mobile App Development">
+                </div>
+
             </div>
-            <div class="item">
-                <img src="<?= base_url('public') ?>/assets/images/bg/slider-2.jpg"
-                    alt="Website Development Services">
-            </div>
-            <div class="item">
-                <img src="<?= base_url('public') ?>/assets/images/bg/slider-3.jpg"
-                    alt="Mobile App Development">
-            </div>
-          
         </div>
     </div>
-</div>
-<!--============ Top Slider End ============-->
+    <!--============ Top Slider End ============-->
     <!--============ Cybersecurity Hero Start ============-->
     <!-- <div class="cybersecurity-hero processing-hero-bg__color ">
         <div class="container-fluid">
             <div class="row align-items-center"> -->
 
-                <!--baseline-->
+    <!--baseline-->
 
-                <!-- <div class="col-lg-6 col-md-7 col-sm-12">
+    <!-- <div class="col-lg-6 col-md-7 col-sm-12">
                     <div class="cybersecurity-hero-text wow move-up">
 
                         <h6 id="hashtagteam">#TeamDigiCoders </h6>
@@ -402,7 +564,7 @@
 
 
 
-                <!-- <div class="col-lg-6 col-md-5">
+    <!-- <div class="col-lg-6 col-md-5">
                     <div class="cybersecurity-hero-images-wrap wow move-up">
                         <div class="cybersecurity-hero-images section-space--mt_80">
                             <center> <a href="/Home/ContactUs" class="ht-btn ht-btn-md" id="btn-desktop">Get Quotation
@@ -422,14 +584,14 @@
                             </div> -->
 
 
-                            <!-- <div class="inner-img-one">
+    <!-- <div class="inner-img-one">
                                 <img class="img-fluid worldRotate lazy" data-src="<?= base_url('public') ?>/assets/images/Digicoders-Logo-with-tagline.png" src="<?= base_url('public') ?>/assets/images/hero/mitech-slider-cybersecurity-global-image.png" title="rounded image" alt="rounded image">
                             </div>
                             <div class="inner-img-two">
                                 <img class="img-fluid  ml-5 lazy" src="<?= base_url('public') ?>/assets/images/Digicoders-Logo-with-tagline.png" data-src="<?= base_url('public') ?>/assets/images/team/team.png" title="team" alt="team">
                             </div> -->
 
-                        <!-- </div>
+    <!-- </div>
                     </div>
                 </div>
             </div>
@@ -440,10 +602,12 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
-                <a href="https://thedigicoders.com/" target="blank">
-                    <p> 👉 This is our Official Website of Development Category Work - Do you want to our visit Training
-                        segment website, Click here</p>
-                </a>
+                <p> 👉 This is our Official Website of Development Category Work - Do you want to our visit Training
+                    segment website,
+                    <a href="https://thedigicoders.com/" target="blank">
+                        Click here
+                    </a>
+                </p>
             </div>
         </div>
     </div>
@@ -507,7 +671,7 @@
         <a href="<?= base_url() ?>Home/OurExperts" class="text-primary">View More →</a>
     </center>
 
-    <div class="container section-space--pt_60">
+    <div class="container section-space--pt_20">
         <div class="owl-carousel expert-team-carousel owl-theme" id="expert_team">
 
             <div class="item">
@@ -538,95 +702,95 @@
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/6.jpg" alt="Abhishek Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/7.jpg" alt="Aditya Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/8.jpg" alt="Ritu Maam">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/9.jpg" alt="Tanu Shree Maam">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/10.jpg" alt="Divya Maam">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/11.jpg" alt="Masoom Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/12.jpg" alt="Dinesh Rawat">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/13.jpg" alt="Gayatri Maam">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/14.jpg" alt="Gaurav Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/15.jpg" alt="Madhuri Maam">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/16.jpg" alt="Pushkal Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/17.jpg" alt="Devendra Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/18.jpg" alt="Roshani Maam">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/19.jpg" alt="Vivek Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/20.jpg" alt="Saurabh Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/21.jpg" alt="Mayank Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/22.jpg" alt="Abhay Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/23.jpg" alt="Irsad Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/24.jpg" alt="Shiva Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/25.jpg" alt="Priti Maam">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/26.jpg" alt="Ayaz Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/27.jpg" alt="Richa Maam">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/28.jpg" alt="Abhay Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/29.jpg" alt="Anurag Sir">
             </div>
@@ -646,39 +810,39 @@
             <div class="owl-carousel recent-project-carousel" id="recent_project">
 
                 <?php foreach ($userdata as $projects) { ?>
-                <div class="item">
-                    <div class="project-card">
+                    <div class="item" id="item-card">
+                        <div class="project-card">
 
-                        <div class="project-image">
-                            <img class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
-                                data-src="<?= base_url('public/uploads/projects/') . $projects->image ?>"
-                                alt="<?= $projects->title ?>">
-                        </div>
-
-                        <div class="project-content">
-
-                            <!--  Tooltip Title -->
-                            <div class="title-tooltip">
-                                <h5 class="project-title">
-                                    <?= $projects->title ?>
-                                </h5>
-                                <span class="tooltip-text">
-                                    <?= $projects->title ?>
-                                </span>
+                            <div class="project-image">
+                                <img class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
+                                    data-src="<?= base_url('public/uploads/projects/') . $projects->image ?>"
+                                    alt="<?= $projects->title ?>">
                             </div>
 
-                            <p class="date">
-                                <?php
-                                        $date = strtotime($projects->add_date);
-                                        echo date('M Y', $date);
-                                        ?>
-                            </p>
+                            <div class="project-content">
 
-                            <span class="badge"><?= $projects->type ?></span>
+                                <!--  Tooltip Title -->
+                                <div class="title-tooltip">
+                                    <h5 class="project-title">
+                                        <?= $projects->title ?>
+                                    </h5>
+                                    <span class="tooltip-text">
+                                        <?= $projects->title ?>
+                                    </span>
+                                </div>
+
+                                <p class="date">
+                                    <?php
+                                    $date = strtotime($projects->add_date);
+                                    echo date('M Y', $date);
+                                    ?>
+                                </p>
+
+                                <span class="badge"><?= $projects->type ?></span>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
                 <?php } ?>
 
             </div>
@@ -692,7 +856,7 @@
                 <div class="col-lg-12">
                     <!-- section-title-wrap Start -->
                     <div class="section-title-wrap text-center section-space--mb_60">
-                        <h6 class="section-sub-title mb-20">DigiCoders Technologies</h6>
+
                         <h3 class="heading">We provide all kinds of IT services that <br> will boost your <span
                                 class="text-color-primary"> BUSINESS</span></h3>
                     </div>
@@ -719,7 +883,8 @@
                                 <a href="<?= base_url() ?>Home/AboutDigiCoders" class="btn-text">
                                     Discover now
                                     <span class="button-icon ml-1">
-                                        <i class="far fa-long-arrow-right"></i>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+
                                     </span>
                                 </a>
                             </div>
@@ -750,7 +915,8 @@
                                         </div>
                                         <div class="box-images-arrow">
                                             <span class="button-text">Discover now</span>
-                                            <i class="far fa-long-arrow-right"></i>
+                                            <i class="fa-solid fa-arrow-right-long"></i>
+
                                         </div>
                                     </div>
                                 </div>
@@ -777,7 +943,8 @@
                                         </div>
                                         <div class="box-images-arrow">
                                             <span class="button-text">Discover now</span>
-                                            <i class="far fa-long-arrow-right"></i>
+                                            <i class="fa-solid fa-arrow-right-long"></i>
+
                                         </div>
                                     </div>
                                 </div>
@@ -804,7 +971,8 @@
                                         </div>
                                         <div class="box-images-arrow">
                                             <span class="button-text">Discover now</span>
-                                            <i class="far fa-long-arrow-right"></i>
+                                            <i class="fa-solid fa-arrow-right-long"></i>
+
                                         </div>
                                     </div>
                                 </div>
@@ -851,7 +1019,8 @@
                                             <div class="feature-btn">
                                                 <a href="<?= base_url() ?>Home/SoftwareDevelopment">
                                                     <span class="button-text">Discover now</span>
-                                                    <i class="far fa-long-arrow-right"></i>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
                                                 </a>
                                             </div>
                                         </div>
@@ -874,7 +1043,8 @@
                                             <div class="feature-btn">
                                                 <a href="<?= base_url() ?>Home/WebsiteDevelopment">
                                                     <span class="button-text">Discover now</span>
-                                                    <i class="far fa-long-arrow-right"></i>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
                                                 </a>
                                             </div>
                                         </div>
@@ -897,7 +1067,8 @@
                                             <div class="feature-btn">
                                                 <a href="<?= base_url() ?>Home/MobileApplicationDevelopment">
                                                     <span class="button-text">Discover now</span>
-                                                    <i class="far fa-long-arrow-right"></i>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
                                                 </a>
                                             </div>
                                         </div>
@@ -920,7 +1091,8 @@
                                             <div class="feature-btn">
                                                 <a href="<?= base_url() ?>Home/DigitalMarketing">
                                                     <span class="button-text">Discover now</span>
-                                                    <i class="far fa-long-arrow-right"></i>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
                                                 </a>
                                             </div>
                                         </div>
@@ -943,7 +1115,8 @@
                                             <div class="feature-btn">
                                                 <a href="<?= base_url() ?>Home/GraphicsDesigning">
                                                     <span class="button-text">Discover now</span>
-                                                    <i class="far fa-long-arrow-right"></i>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
                                                 </a>
                                             </div>
                                         </div>
@@ -966,7 +1139,8 @@
                                             <div class="feature-btn">
                                                 <a href="<?= base_url() ?>Home/DomainAndHosting">
                                                     <span class="button-text">Discover now</span>
-                                                    <i class="far fa-long-arrow-right"></i>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
                                                 </a>
                                             </div>
                                         </div>
@@ -989,7 +1163,8 @@
                                             <div class="feature-btn">
                                                 <a href="<?= base_url() ?>Home/ERPandCRMDevelopment">
                                                     <span class="button-text">Discover now</span>
-                                                    <i class="far fa-long-arrow-right"></i>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
                                                 </a>
                                             </div>
                                         </div>
@@ -1012,7 +1187,8 @@
                                             <div class="feature-btn">
                                                 <a href="<?= base_url() ?>Home/MaintenanceServices">
                                                     <span class="button-text">Discover now</span>
-                                                    <i class="far fa-long-arrow-right"></i>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
                                                 </a>
                                             </div>
                                         </div>
@@ -1035,7 +1211,8 @@
                                             <div class="feature-btn">
                                                 <a href="<?= base_url() ?>Home/ITServices">
                                                     <span class="button-text">Discover now</span>
-                                                    <i class="far fa-long-arrow-right"></i>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
                                                 </a>
                                             </div>
                                         </div>
@@ -1093,7 +1270,7 @@
 
                             <h3 class="section-title"><span><img class="img-fluid blog-img"
                                         src="<?= base_url('public') ?>/assets/images/offer2.gif" alt="offer"
-                                        style="height:50px; width:50px"></span>1 year free maintenance for <span
+                                        style="height:50px; width:50px"></span>6 Months free maintenance for <span
                                     class="text-color-primary">all IT services.</span> </h3>
                         </div>
                     </div>
@@ -1248,46 +1425,46 @@
                 foreach ($blogdata as $data) {
                     ?>
 
-                <div class="col-lg-4 col-md-6 wow move-up">
-                    <!--======= Single Blog Item Start ========-->
-                    <div class="single-blog-item blog-grid">
-                        <!-- Post Feature Start -->
-                        <div class="post-feature blog-thumbnail">
-                            <a href="<?= base_url() ?>Home/Blogs">
-                                <img class="img-fluid blog-img lazy"
-                                    src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                    data-src="<?= base_url('public/uploads/Blog/') . $data->image; ?>"
-                                    alt="Blog Images">
-                            </a>
-                        </div>
-                        <!-- Post Feature End -->
-                        <!-- Post info Start -->
-                        <div class="post-info lg-blog-post-info">
-                            <div class="post-meta">
-                                <div class="post-date">
-                                    <span class="far fa-calendar meta-icon"></span>
-                                    <?= $data->date; ?>
+                    <div class="col-lg-4 col-md-6 wow move-up">
+                        <!--======= Single Blog Item Start ========-->
+                        <div class="single-blog-item blog-grid">
+                            <!-- Post Feature Start -->
+                            <div class="post-feature blog-thumbnail">
+                                <a href="<?= base_url() ?>Home/Blogs">
+                                    <img class="img-fluid blog-img lazy"
+                                        src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                        data-src="<?= base_url('public/uploads/Blog/') . $data->image; ?>"
+                                        alt="Blog Images">
+                                </a>
+                            </div>
+                            <!-- Post Feature End -->
+                            <!-- Post info Start -->
+                            <div class="post-info lg-blog-post-info">
+                                <div class="post-meta">
+                                    <div class="post-date">
+                                        <span class="far fa-calendar meta-icon"></span>
+                                        <?= $data->date; ?>
+                                    </div>
+                                </div>
+
+                                <h5 class="post-title font-weight--bold">
+                                    <a href="<?= base_url() ?>Home/Blogs"><?= $data->title; ?></a>
+                                </h5>
+
+                                <div class="post-excerpt mt-15">
+                                    <p><?= $data->full_discription; ?></p>
+                                </div>
+                                <div class="btn-text">
+                                    <a href="<?= base_url() ?>Home/Blogs">Read more <i
+                                            class="ml-1 button-icon fa-solid fa-arrow-right-long"></i></a>
                                 </div>
                             </div>
-
-                            <h5 class="post-title font-weight--bold">
-                                <a href="<?= base_url() ?>Home/Blogs"><?= $data->title; ?></a>
-                            </h5>
-
-                            <div class="post-excerpt mt-15">
-                                <p><?= $data->full_discription; ?></p>
-                            </div>
-                            <div class="btn-text">
-                                <a href="<?= base_url() ?>Home/Blogs">Read more <i
-                                        class="ml-1 button-icon far fa-long-arrow-right"></i></a>
-                            </div>
+                            <!-- Post info End -->
                         </div>
-                        <!-- Post info End -->
-                    </div>
-                    <!--===== Single Blog Item End =========-->
+                        <!--===== Single Blog Item End =========-->
 
-                </div>
-                <?php
+                    </div>
+                    <?php
                 }
                 ?>
 
@@ -1303,40 +1480,103 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="redraw-content text-center">
-                            <h3 class="font-weight--reguler">Qualified methods <span class="text-color-primary">at its
+                            <h3 class="font-weight--bold">Qualified Methods <span class="text-color-primary">at its
                                     best</span></h3>
-                            <p class="redwaw-dec"> We know how to use technology to change people's life for the better
-                            </p>
+                            <p class="redwaw-dec">We know how to use technology to change people's lives for the better,
+                                powered by our expertise in modern stacks.</p>
                             <div class="bedraw-button">
                                 <a href="<?= base_url() ?>/Home/ContactUs" class="ht-btn ht-btn-md"> Request Proposal
-                                    for Free<i class="far fa-long-arrow-right ml-2"></i></a>
+                                    for Free <i class="fa-solid fa-arrow-right-long"></i></a>
                             </div>
                         </div>
 
-                        <div class="redraw-images">
-                            <img class="img-fluid redrow-1 animate wow fadeInLeft " data-wow-delay="0.1s"
-                                src="<?= base_url('public') ?>/assets/images/other/dotnet.png" title="dotnet"
-                                alt="dotnet">
-
-                            <img class="img-fluid redrow-2 animate wow fadeInLeft lazy" data-wow-delay="0.2s"
-                                src="<?= base_url('public') ?>/assets/images/other/android.png" title="android"
-                                alt="android">
-
-                            <img class="img-fluid redrow-3 animate wow fadeInLeft lazy" data-wow-delay="0.3s"
-                                src="<?= base_url('public') ?>/assets/images/other/java.png" title="java" alt="java">
-
-                            <img class="img-fluid redrow-4 animate wow fadeInLeft lazy" data-wow-delay="0.4s"
-                                src="<?= base_url('public') ?>/assets/images/other/codeigniter.png" title="codeigniter"
-                                alt="codeigniter">
-
-                            <img class="img-fluid redrow-5  animate wow fadeInLeft lazy" data-wow-delay="0.1s"
-                                src="<?= base_url('public') ?>/assets/images/other/php.png" title="php" alt="php">
-
-                            <img class="img-fluid redrow-6 animate wow fadeInLeft lazy" data-wow-delay="0.3s"
-                                src="<?= base_url('public') ?>/assets/images/other/ios.png" title="ios" alt="ios">
-
-                            <img class="img-fluid redrow-7 animate wow fadeInLeft lazy" data-wow-delay="0.4s"
-                                src="<?= base_url('public') ?>/assets/images/other/mysql.png" title="mysql" alt="mysql">
+                        <div class="tech-grid">
+                            <div class="tech-item wow zoomIn" data-wow-delay="0.1s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/. net.jpg" alt="DotNet">
+                                <span>ASP.NET </span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="0.2s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/android.png" alt="Android">
+                                <span>Android</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="0.3s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/java.png" alt="Java">
+                                <span>Java</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="0.4s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/codeigniter.png"
+                                    alt="CodeIgniter">
+                                <span>CodeIgniter</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="0.5s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/php.png" alt="PHP">
+                                <span>PHP</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="0.6s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/ios.png" alt="iOS">
+                                <span>iOS App</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="0.7s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/mysql.png" alt="MySQL">
+                                <span>MySQL</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="0.8s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/mern stack.png" alt="MERN Stack">
+                                <span>MERN Stack</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="0.9s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/ui ux.png" alt="UI UX">
+                                <span>UI/UX Design</span>
+                            </div>
+                            
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/laravel.png" alt="Laravel">
+                                <span>Laravel</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/flutter.png" alt="Flutter">
+                                <span>Flutter</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/django.jpg" alt="Django">
+                                <span>Django</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/node js.png" alt="NodeJS">
+                                <span>Node JS</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/rect native.png" alt="React Native">
+                                <span>React Native</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/expresh js.jpg" alt="Express JS">
+                                <span>Express JS</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/mongo db.png" alt="MongoDB">
+                                <span>MongoDB</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/wordpress.png" alt="WordPress">
+                                <span>WordPress</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/shopify.png" alt="Shopify">
+                                <span>Shopify</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/c logo.png" alt="C">
+                                <span>C</span>
+                            </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/c+.png" alt="C++">
+                                <span>C++</span>
+                            </div>
+                           <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                            <img src="<?= base_url('public') ?>/assets/images/tech_logo/firebase.png" alt="Firebase">
+                            <span>Firebase</span>
+                        </div>
                         </div>
 
                     </div>
@@ -1420,7 +1660,7 @@
 
     <!-- Partners Section -->
     <h2 style="text-align: center;">Our Clients</h2>
-    <h6 style="text-align: center;"><a href="<?= base_url()?>Home/OurClient">View More &rarr;</a></h6>
+    <h6 style="text-align: center;"><a href="<?= base_url() ?>Home/OurClient">View More &rarr;</a></h6>
     <br>
     <section class="partners">
         <div class="elementor-element elementor-element-d3ef69b e-flex e-con-boxed e-con e-parent" data-id="d3ef69b"
@@ -1436,18 +1676,17 @@
                             <div class="elementor-image-carousel swiper-wrapper" aria-live="off">
 
                                 <?php
-                                foreach($clientdata as $client)
-                                {
+                                foreach ($clientdata as $client) {
                                     ?>
-                                <div class="swiper-slide" role="group" aria-roledescription="slide">
-                                    <figure class="swiper-slide-inner">
-                                    <img class="swiper-slide-image lazy-img"
-                                    src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                    data-src="<?= base_url('public/uploads/client/'.$client->image); ?>"
-                                    alt="Client Logo">
-                                    </figure>
-                                </div>
-                                <?php
+                                    <div class="swiper-slide" role="group" aria-roledescription="slide">
+                                        <figure class="swiper-slide-inner">
+                                            <img class="swiper-slide-image lazy-img"
+                                                src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                                data-src="<?= base_url('public/uploads/client/' . $client->image); ?>"
+                                                alt="Client Logo">
+                                        </figure>
+                                    </div>
+                                    <?php
                                 }
                                 ?>
 
@@ -1486,7 +1725,7 @@
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <p class="sub-text">by 650+ customers over social media.</p>
+                            <p class="sub-text">by 1600+ customers over social media.</p>
                         </div>
 
                         <div class="contact-list-item">
@@ -1552,145 +1791,145 @@ owl.owlCarousel({
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script>
-    $(document).ready(function() {
+        $(document).ready(function () {
 
-        $('#banner_slider').owlCarousel({
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            autoplayHoverPause: true,
-            nav: false,
-            dots: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 2
-                },
-                1000: {
-                    items: 4
+            $('#banner_slider').owlCarousel({
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                nav: false,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
                 }
-            }
+            });
+
+            $("#recent_project").owlCarousel({
+                autoplay: true,
+                autoplayTimeout: 2000,
+                items: 3,
+                loop: true,
+                margin: 15,
+                center: true,
+                dots: false,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+
+            $('#expert_team').owlCarousel({
+                loop: true,
+                margin: 15,
+                items: 4,
+                autoplay: true,
+                autoplayTimeout: 2500,
+                autoplayHoverPause: true,
+                smartSpeed: 800,
+                dots: false,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    },
+                    1200: {
+                        items: 4
+                    }
+                }
+            });
+
         });
 
-        $("#recent_project").owlCarousel({
+        // ==================== SWIPER SLIDER ====================
+        document.addEventListener("DOMContentLoaded", function () {
+            new Swiper(".elementor-image-carousel-wrapper.swiper", {
+                slidesPerView: 4,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false
+                },
+                speed: 500,
+                pauseOnMouseEnter: true,
+                grabCursor: true,
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1
+                    },
+                    576: {
+                        slidesPerView: 2
+                    },
+                    768: {
+                        slidesPerView: 3
+                    },
+                    1024: {
+                        slidesPerView: 4
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const lazyImages = document.querySelectorAll("img.lazy-img");
+
+            lazyImages.forEach(img => {
+                const realSrc = img.getAttribute("data-src");
+                if (realSrc) {
+                    img.src = realSrc;
+                }
+            });
+        });
+    </script>
+    <script>
+        $('#top_banner_slider').owlCarousel({
+            loop: true,
+            margin: 0,
             autoplay: true,
             autoplayTimeout: 2000,
-            items: 3,
-            loop: true,
-            margin: 15,
-            center: true,
-            dots: false,
-            nav: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 2
-                },
-                1000: {
-                    items: 3
-                }
-            }
-        });
-
-        $('#expert_team').owlCarousel({
-            loop: true,
-            margin: 15,
-            items: 4,
-            autoplay: true,
-            autoplayTimeout: 2500,
             autoplayHoverPause: true,
-            smartSpeed: 800,
-            dots:false,
-            nav: false,
+            nav: true,
+            dots: true,
+            animateOut: 'fadeOut',
+            animateIn: 'fadeIn',
+            smartSpeed: 1000,
+            items: 1,
+            navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
             responsive: {
                 0: {
-                    items: 1
-                },
-                576: {
-                    items: 2
-                },
-                992: {
-                    items: 3
-                },
-                1200: {
-                    items: 4
-                }
-            }
-        });
-
-    });
-
-    // ==================== SWIPER SLIDER ====================
-    document.addEventListener("DOMContentLoaded", function() {
-        new Swiper(".elementor-image-carousel-wrapper.swiper", {
-            slidesPerView: 4,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false
-            },
-            speed: 500,
-            pauseOnMouseEnter: true,
-            grabCursor: true,
-            breakpoints: {
-                320: {
-                    slidesPerView: 1
-                },
-                576: {
-                    slidesPerView: 2
+                    nav: false
                 },
                 768: {
-                    slidesPerView: 3
-                },
-                1024: {
-                    slidesPerView: 4
+                    nav: true
                 }
             }
         });
-    });
     </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const lazyImages = document.querySelectorAll("img.lazy-img");
-
-    lazyImages.forEach(img => {
-        const realSrc = img.getAttribute("data-src");
-        if (realSrc) {
-            img.src = realSrc;
-        }
-    });
-});
-</script>
-<script>
-    $('#top_banner_slider').owlCarousel({
-    loop: true,
-    margin:0,
-    autoplay: true,
-    autoplayTimeout: 2000,
-    autoplayHoverPause: true,
-    nav: true,
-    dots: true,
-    animateOut: 'fadeOut',
-    animateIn: 'fadeIn',
-    smartSpeed: 1000,
-    items: 1,
-    navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
-    responsive: {
-        0: {
-            nav: false
-        },
-        768: {
-            nav: true
-        }
-    }
-});
-</script>
 
 
 </body>

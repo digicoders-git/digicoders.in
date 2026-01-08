@@ -1116,21 +1116,21 @@ only screen and (min-width:992px) and (max-width:1199px) {
     }
 }
 
-.section-space--ptb_100 {
-    padding-top: 100px;
-    padding-bottom: 100px
+.section-space--ptb_20 {
+    padding-top: 20px;
+    padding-bottom: 20px
 }
 
 @media only screen and (min-width:768px) and (max-width:991px) {
-    .section-space--ptb_100 {
-        padding-top: 80px;
-        padding-bottom: 80px
+    .section-space--ptb_20 {
+        padding-top: 40px;
+        padding-bottom: 40px
     }
 }
 
 @media only screen and (max-width:767px) {
-    .section-space--ptb_100 {
-        padding-top: 60px;
+    .section-space--ptb_20 {
+        padding-top: 40px;
         padding-bottom: 10px
     }
 }
@@ -1339,19 +1339,19 @@ only screen and (min-width:992px) and (max-width:1199px) {
     }
 }
 
-.section-space--pt_60 {
-    padding-top: 60px
+.section-space--pt_20 {
+    padding-top: 20px
 }
 
 @media only screen and (min-width:768px) and (max-width:991px) {
-    .section-space--pt_60 {
-        padding-top: 60px
+    .section-space--pt_20 {
+        padding-top: 20px
     }
 }
 
 @media only screen and (max-width:767px) {
-    .section-space--pt_60 {
-        padding-top: 60px
+    .section-space--pt_20 {
+        padding-top: 20px
     }
 }
 
@@ -1413,7 +1413,7 @@ only screen and (min-width:992px) and (max-width:1199px) {
 }
 
 .section-space--pb_30 {
-    padding-bottom: 30px
+    padding-bottom: 0px
 }
 
 .section-space--mt_15 {
@@ -5644,7 +5644,7 @@ only screen and (max-width:767px) {
 }
 
 .fun-fact--two {
-    margin-bottom: 30px
+    margin: 20px 0;
 }
 
 .fun-fact--two .fun-fact__count {
@@ -10203,8 +10203,23 @@ only screen and (min-width:768px) and (max-width:991px) {
     }
 }
 
+.ht-timeline.style-01 .timeline-col .inner .photo {
+    overflow: hidden;
+    border-radius: 10px;
+    border: 3px solid #ddd;
+    padding: 5px;
+    background: #fff;
+}
+
 .ht-timeline.style-01 .timeline-col .inner .photo img {
-    border-radius: 5px
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.ht-timeline.style-01 .timeline-col .inner .photo img:hover {
+
+    transform: scale(1.1);
 }
 
 .ht-timeline.style-01 .timeline-info .inner {
@@ -13940,10 +13955,7 @@ only screen and (max-width:767px) {
     overflow: hidden
 }
 
-.rev_redraw-space {
-    padding-top: 230px;
-    padding-bottom: 230px
-}
+
 
 @media only screen and (max-width:767px) {
     .rev_redraw-space {
@@ -14888,9 +14900,11 @@ p {
 .cities-section {
     padding: 40px 60px;
 }
+
 .servic-section {
-        padding: 40px 60px 0px 60px;
+    padding: 40px 60px 0px 60px;
 }
+
 /* Title */
 .city-title {
     font-size: 26px;
@@ -15018,4 +15032,13 @@ p {
     .city-tooltip::before {
         display: none;
     }
+}
+
+.footer-img {
+    width: 100%;
+    height: 60px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }

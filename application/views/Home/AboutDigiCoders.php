@@ -31,15 +31,15 @@
     </div>
     <!-- breadcrumb-area end -->
     <!--===========  feature-large-images-wrapper  Start =============-->
-    <div class="feature-large-images-wrapper section-space--ptb_100">
+    <div class="feature-large-images-wrapper section-space--ptb_20">
         <div class="container">
 
             <div class="row">
                 <div class="col-lg-12">
                     <!-- section-title-wrap Start -->
                     <div class="section-title-wrap text-center section-space--mb_60">
-                        <h6 class="section-sub-title mb-20">DigiCoders Technologies</h6>
-                        <h3 class="heading">We have been worked so hard to share <br /> the joy of achieving <span class="text-color-primary"> glorious moments</span> & climbed <br /> up <span class="text-color-primary">the top.</span></h3>
+                     
+                        <h3 class="heading">We have been worked so hard to share <br /> the joy of achieving <span class="text-color-primary"> glorious moments</span> & climbed <br /> up <span class="text-color-primary">the top</span></h3>
                     </div>
                     <!-- section-title-wrap Start -->
                 </div>
@@ -50,7 +50,7 @@
                     <div class="col-lg-5 offset-lg-1">
                         <div class="modern-number-01 number-two">
                             <h2 class="heading  mr-5"><span class="mark-text">10+</span>Years’ Experienced Team</h2>
-                            <h5 class="heading mt-30">We’ve developed more than 850 projects in last <span class="text-color-primary"> 6 years. </span> Sacrifices are made up with success. </h5>
+                            <h5 class="heading mt-30">We’ve developed more than 1000+ projects in last <span class="text-color-primary"> 7 years. </span> Sacrifices are made up with success. </h5>
                         </div>
                     </div>
 
@@ -105,7 +105,7 @@
                                     </div>
                                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>We have 8+ years of experienced team to help you in the implementing your idea, We analyse, design, develop, test and deploy your requirement. </p>
+                                            <p>We have 10+ years of experienced team to help you in the implementing your idea, We analyse, design, develop, test and deploy your requirement. </p>
                                         </div>
                                     </div>
                                 </div>

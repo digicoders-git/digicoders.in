@@ -259,31 +259,31 @@
             </div>
             <div class="footer-bottom">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                    <div class="row ">
+                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/digicoders-MCA.jpeg"
-                                alt="photos" style="height:60px;" /></div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                                data-src="<?= base_url('public') ?>/assets/images/icons/mca.png"
+                                alt="photos" /></div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/digicoders-gem.jpeg"
-                                alt="photos" style="height:60px;" /></div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                                data-src="<?= base_url('public') ?>/assets/images/icons/gem.png"
+                                alt="photos" /></div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/digicoders-iso.jpeg"
-                                alt="photos" style="height:60px;" /></div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                                data-src="<?= base_url('public') ?>/assets/images/icons/iso.png"
+                                alt="photos"  /></div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/startup-india-digicoders.jpeg"
-                                alt="photos" style="height:60px;" /></div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                                data-src="<?= base_url('public')?>/assets/images/icons/startupindia.png"
+                                alt="photos" /></div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/digicoders-msme.jpeg"
-                                alt="photos" style="height:60px;" /></div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                                data-src="<?= base_url('public') ?>/assets/images/icons/msme.png"
+                                alt="photos" /></div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/Digital-India-digicoders.jpeg"
-                                alt="photos" style="height:60px;" /></div>
+                                data-src="<?= base_url('public') ?>/assets/images/icons/digital.png"
+                                alt="photos"  /></div>
                     </div>
                 </div>
             </div>
@@ -680,7 +680,7 @@
 
 <div id="feedback2">
     <a href="https://www.thedigicoders.com/Home/Registration" target="_blank" aria-label="left-align"><span
-            class="pt-3">Register ForTraining</span></a>
+            class="pt-3">Register For Training</span></a>
 </div>
 
 

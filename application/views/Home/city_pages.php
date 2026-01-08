@@ -286,6 +286,7 @@
                 font-size: 0.9rem;
             }
         }
+
         .banner {
     position: relative;
     width: 100%;
@@ -319,7 +320,7 @@
     font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 20px;
-    color:white;
+            color: white;
 }
 
 /* Buttons */
@@ -380,6 +381,7 @@
         font-size: 26px;
     }
 }
+
  /* Hero Section - Image jaisa */
         .hero-section {
             background: linear-gradient(135deg, rgba(13, 110, 253, 0.03) 0%, rgba(102, 16, 242, 0.03) 100%);
@@ -438,7 +440,7 @@
     background: #fff;
     margin: 30px 0;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .social-media-section {
@@ -460,7 +462,7 @@
 
 .social-media-section .section-title {
     color: white;
-    border-bottom-color: rgba(255,255,255,0.3);
+            border-bottom-color: rgba(255, 255, 255, 0.3);
 }
 
 .services-grid {
@@ -481,7 +483,7 @@
 }
 
 .social-media-section .service-item {
-    background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
     border-left-color: white;
 }
 
@@ -491,7 +493,7 @@
 }
 
 .social-media-section .service-item:hover {
-    background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
 }
 
 .service-icon {
@@ -500,7 +502,7 @@
     padding: 10px;
     background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .social-media-section .service-icon {
@@ -530,7 +532,7 @@
 }
 
 .social-media-section .service-content p {
-    color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
 }
 
 /* Responsive Design */
@@ -550,6 +552,7 @@
         margin: 0 auto;
     }
 }
+
  .services-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -787,6 +790,7 @@
         
         /* Responsive Design */
         @media (max-width: 1200px) {
+
             .ecommerce-grid,
             .sectors-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -951,7 +955,8 @@
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 100px;   /* 🔥 YAHI 100px GAP */
+            column-gap: 100px;
+            /* 🔥 YAHI 100px GAP */
     row-gap: 12px;
 }
 
@@ -1008,7 +1013,8 @@
     }
 
     .dg-two-column {
-        grid-template-columns: 1fr; /* mobile pe single column */
+                grid-template-columns: 1fr;
+                /* mobile pe single column */
         column-gap: 0;
     }
 
@@ -1017,6 +1023,7 @@
         margin-top: 20px;
     }
 }
+
 .empowering-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -1127,6 +1134,7 @@
                 font-size: 0.95rem;
             }
         }
+
         /* ================= CARD BASE ================= */
 .single-item {
     animation: fadeUp 0.9s ease both;
@@ -1137,6 +1145,7 @@
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1277,6 +1286,7 @@
         font-size: 13px;
     }
 }
+
 .dg-milestone {
     padding: 60px 15px;
     background: #f7f9fc;
@@ -1309,7 +1319,7 @@
     background: #fff;
     padding: 35px 20px;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
 }
 
@@ -1327,6 +1337,7 @@
 .dg-milestone-card:hover {
     transform: translateY(-6px);
 }
+
 .dg-office {
     padding: 60px 15px;
     background: #fff;
@@ -1343,13 +1354,14 @@
     height: 220px;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
 }
 
 .dg-office-grid img:hover {
     transform: scale(1.04);
 }
+
 @media (max-width: 992px) {
     .dg-milestone-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1526,9 +1538,9 @@
             font-size: 32px;
         }
     }
-
     </style>
 </head>
+
 <body>
 
     <?php include('include/header.php') ?>
@@ -1541,8 +1553,8 @@
         <div class="banner-buttons">
             <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Request a Quote</button>
 
-            <a   href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                  target="_blank"  data-hover="WhatsApp" class="btn btn-whatsapp">
+                <a href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                    target="_blank" data-hover="WhatsApp" class="btn btn-whatsapp">
                 <i class="fab fa-whatsapp"></i>
             </a>
 
@@ -1558,7 +1570,7 @@
             
             <!-- City Header -->
             <div class="city-header">
-                <h1>DigiCoders Software  Development in <span><?= $city_name ?></span></h1>
+                <h1>DigiCoders Software Development in <span><?= $city_name ?></span></h1>
                 <p>Professional IT training programs designed to boost your career in <?= $city_name ?></p>
                 <div class="city-breadcrumb">
                     <a href="<?= base_url() ?>">Home</a> &gt; 
@@ -1575,10 +1587,14 @@
             </h1>
             
             <p class="hero-description">
-                Welcome to DigiCoders, an ISO 9001:2015 certified firm with a robust legacy of over 10 years in the digital realm. 
-                We are your trusted partner in navigating the complexities of the online world, offering a comprehensive suite of 
-                services designed to elevate your brand, expand your reach, and maximize your return on investment (ROI). 
-                From dynamic website design to cutting-edge mobile apps, strategic digital marketing, and custom software solutions, 
+                        Welcome to DigiCoders, an ISO 9001:2015 certified firm with a robust legacy of over 10 years in
+                        the digital realm.
+                        We are your trusted partner in navigating the complexities of the online world, offering a
+                        comprehensive suite of
+                        services designed to elevate your brand, expand your reach, and maximize your return on
+                        investment (ROI).
+                        From dynamic website design to cutting-edge mobile apps, strategic digital marketing, and custom
+                        software solutions,
                 we empower businesses across India to thrive in the digital age.
             </p>
            
@@ -1600,10 +1616,14 @@
             </div>
             
             <p class="service-description">
-                DigiCoders, we believe a website is more than just an online presence – it's a powerful lead-generating machine. 
-                With <span class="highlight-text">10+ years of vast experience</span>, we specialize in crafting bespoke, responsive, 
-                and SEO-optimized websites that are not only visually stunning but also drive significant leads and deliver great ROIs. 
-                Whether you need a static showcase or a complex dynamic platform, our team ensures your website stands out and performs.
+                        DigiCoders, we believe a website is more than just an online presence – it's a powerful
+                        lead-generating machine.
+                        With <span class="highlight-text">10+ years of vast experience</span>, we specialize in crafting
+                        bespoke, responsive,
+                        and SEO-optimized websites that are not only visually stunning but also drive significant leads
+                        and deliver great ROIs.
+                        Whether you need a static showcase or a complex dynamic platform, our team ensures your website
+                        stands out and performs.
             </p>
         </div>
         
@@ -1617,9 +1637,11 @@
             </div>
             
             <p class="service-description">
-                <span class="highlight-text">Solutions!</span> The online marketplace offers unparalleled growth opportunities. 
+                        <span class="highlight-text">Solutions!</span> The online marketplace offers unparalleled growth
+                        opportunities.
                 We have successfully developed numerous custom Ecommerce Portals and applications, 
-                helping businesses establish robust online sales channels. Our expertise spans diverse industries, including:
+                        helping businesses establish robust online sales channels. Our expertise spans diverse
+                        industries, including:
             </p>
             
             <h3 class="ecommerce-intro">Our expertise includes:</h3>
@@ -1683,7 +1705,8 @@
             </div>
             
             <p class="ecommerce-note">
-                We build secure, scalable, and user-friendly ecommerce platforms that seamlessly connect you with your customers.
+                        We build secure, scalable, and user-friendly ecommerce platforms that seamlessly connect you
+                        with your customers.
             </p>
         </div>
         
@@ -1692,13 +1715,16 @@
             <div class="service-title">
                 <span class="service-number">3.</span>
                 <div class="service-title-text">
-                    Cutting-Edge Mobile Apps Development: Launch Your Shopping & Startup Mobile Apps with DigiCoders!
+                            Cutting-Edge Mobile Apps Development: Launch Your Shopping & Startup Mobile Apps with
+                            DigiCoders!
                 </div>
             </div>
             
             <p class="service-description">
-                In the mobile-first world, an app can be a game-changer. We specialize in developing innovative and feature-rich 
-                mobile applications that cater to a wide range of needs. Our successful app development portfolio includes:
+                        In the mobile-first world, an app can be a game-changer. We specialize in developing innovative
+                        and feature-rich
+                        mobile applications that cater to a wide range of needs. Our successful app development
+                        portfolio includes:
             </p>
             
             <h3 class="mobile-intro">Our App Development Portfolio:</h3>
@@ -1861,7 +1887,8 @@
                     <div class="col-lg-12">
                         <!-- section-title-wrap Start -->
                         <div class="section-title-wrap text-center">
-                            <h3 class="heading">Reliable IT Services <br> provided by <span class="text-color-primary">
+                                <h3 class="heading">Reliable IT Services <br> provided by <span
+                                        class="text-color-primary">
                                     DigiCoders.</span></h3>
                         </div>
                         <!-- section-title-wrap Start -->
@@ -1885,15 +1912,18 @@
                                 <h3 class="service-title">Software Development</h3>
                                 <p class="service-subtitle">To let you manage your Business</p>
                                 <p class="service-description">
-                                    There are many software in the market which can spark your eyes with their beyond
-                                    the thought features but what if that one basic feature is missing which is required
+                                        There are many software in the market which can spark your eyes with their
+                                        beyond
+                                        the thought features but what if that one basic feature is missing which is
+                                        required
                                     to run your business. That is where Custom Software Development comes into the
-                                    picture. It is to build something precisely for you. The coding will be according to
+                                        picture. It is to build something precisely for you. The coding will be
+                                        according to
                                     your needs. The data will be yours.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                        <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                            class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
                                          <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
                                         aria-label="Whatsapp"
@@ -1920,14 +1950,17 @@
                                 <h3 class="service-title">Website Designing</h3>
                                 <p class="service-subtitle">To give your Brand an Identity</p>
                                 <p class="service-description">
-                                    We create stunning Website design and bunch of features to make your website stand
-                                    out of crowd for your startup or existing business. We create wide range of unique
-                                    website which includes SEO compatibility, High Demand (HD)/4K images & Responsive
+                                        We create stunning Website design and bunch of features to make your website
+                                        stand
+                                        out of crowd for your startup or existing business. We create wide range of
+                                        unique
+                                        website which includes SEO compatibility, High Demand (HD)/4K images &
+                                        Responsive
                                     design to fit and functions well on any device - desktop, tablet & mobile.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                        <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                            class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
                                          <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
                                         aria-label="Whatsapp"
@@ -1961,8 +1994,8 @@
                                     Startup to Enterprise.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                        <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                            class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
                                          <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
                                         aria-label="Whatsapp"
@@ -2251,11 +2284,11 @@
         </p>
 
         <div class="dg-office-grid">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus1.jpg" alt="Office Image">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus2.jpg" alt="Office Image">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus3.jpg" alt="Office Image">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus4.jpg" alt="Office Image">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus5.jpg" alt="Office Image">
+            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus1.jpeg" alt="Office Image">
+            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus2.jpeg" alt="Office Image">
+            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus3.jpeg" alt="Office Image">
+            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus4.jpeg" alt="Office Image">
+            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus5.jpeg" alt="Office Image">
             <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus6.jpg" alt="Office Image">
         </div>
 

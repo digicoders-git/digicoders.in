@@ -7,169 +7,167 @@
         content="We provide Reliable IT Services internet marketing, mobile application development and more at an affordable price in India.">
     <?php include('include/headerlinks.php') ?>
     <style>
-    
+        .servicescontainer {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-    .servicescontainer {
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-
-    .section-title {
-        text-align: center;
-        margin-bottom: 60px;
-    }
-
-    .section-title h2 {
-        font-size: 42px;
-        color: #333;
-        margin-bottom: 20px;
-        font-weight: 600;
-    }
-
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-        gap: 30px;
-        margin-bottom: 40px;
-    }
-
-    .service-card {
-        background: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .service-image {
-        width: 430px;
-        height: 250px;
-        object-fit: cover;
-    }
-
-    .service-content {
-        padding: 30px;
-        position: relative;
-    }
-
-    .redirect-icon {
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        width: 40px;
-        height: 40px;
-        background: #f8f9fa;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #333;
-        font-size: 18px;
-        transition: all 0.3s ease;
-        text-decoration: none;
-    }
-
-    .redirect-icon:hover {
-        background: #333;
-        color: white;
-        transform: rotate(45deg);
-    }
-
-    .service-title {
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 10px;
-        font-weight: 600;
-        padding-right: 50px;
-    }
-
-    .service-subtitle {
-        font-size: 14px;
-        color: #666;
-        margin-bottom: 15px;
-        font-weight: 500;
-    }
-
-    .service-description {
-        font-size: 15px;
-        color: #666;
-        line-height: 1.7;
-        margin-bottom: 25px;
-    }
-
-    .service-buttons {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-
-    .btn {
-        padding: 12px 28px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 500;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-    }
-
-    .btn-primary {
-        background: #333;
-        color: white;
-    }
-
-    .btn-primary:hover {
-        background: #555;
-    }
-
-    .btn-icon {
-        width: 45px;
-        height: 45px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 18px;
-    }
-
-    .btn-whatsapp {
-        background: #25D366;
-        color: white;
-    }
-
-    .btn-whatsapp:hover {
-        background: #1da851;
-    }
-
-    .btn-phone {
-        background: #dc3545;
-        color: white;
-    }
-
-    .btn-phone:hover {
-        background: #c82333;
-    }
-
-    @media (max-width: 768px) {
-        .services-grid {
-            grid-template-columns: 1fr;
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
         .section-title h2 {
-            font-size: 32px;
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
-    }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            width: 430px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 30px;
+            position: relative;
+        }
+
+        .redirect-icon {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 40px;
+            height: 40px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .redirect-icon:hover {
+            background: #333;
+            color: white;
+            transform: rotate(45deg);
+        }
+
+        .service-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+            padding-right: 50px;
+        }
+
+        .service-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .service-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .service-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #333;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #555;
+        }
+
+        .btn-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1da851;
+        }
+
+        .btn-phone {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-phone:hover {
+            background: #c82333;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
     </style>
 
 </head>
@@ -236,15 +234,15 @@
                                     your needs. The data will be yours.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -270,15 +268,15 @@
                                     design to fit and functions well on any device - desktop, tablet & mobile.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -305,17 +303,17 @@
                                     Startup to Enterprise.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
-                                      <div class="btn-icon btn-phone">
+                                    <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
                                     </div>
                                 </div>
@@ -324,7 +322,7 @@
 
                         <!-- Mobile Application Development Card -->
                         <div class="service-card">
-                        <img src="<?= base_url('public') ?>/assets/images/services/mobile-app.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/mobile-app.jpg"
                                 alt="Mobile Application Development" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/MobileApplicationDevelopment') ?>" class="redirect-icon">
@@ -338,15 +336,15 @@
                                     platforms with cutting-edge features and seamless user experience.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -357,7 +355,7 @@
 
                         <!-- Digital Marketing Card -->
                         <div class="service-card">
-                           <img src="<?= base_url('public') ?>/assets/images/services/digital-marketing.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/digital-marketing.jpg"
                                 alt="Digital Marketing" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/DigitalMarketing') ?>" class="redirect-icon">
@@ -372,17 +370,17 @@
                                     boost your online presence and drive results.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
-                                      <div class="btn-icon btn-phone">
+                                    <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
                                     </div>
                                 </div>
@@ -391,7 +389,7 @@
 
                         <!-- Graphics Designing Card -->
                         <div class="service-card">
-                           <img src="<?= base_url('public') ?>/assets/images/services/graphic-design.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/graphic-design.jpg"
                                 alt="Graphics Designing" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/GraphicsDesigning') ?>" class="redirect-icon">
@@ -406,15 +404,15 @@
                                     materials that make your brand stand out.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -425,7 +423,7 @@
 
                         <!-- Domain and Hosting Card -->
                         <div class="service-card">
-                          <img src="<?= base_url('public') ?>/assets/images/services/domain.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/domain.jpg"
                                 alt="Domain and Hosting" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/DomainAndHosting') ?>" class="redirect-icon">
@@ -440,15 +438,15 @@
                                     99.9% uptime guarantee.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -459,7 +457,7 @@
 
                         <!-- ERP and CRM Development Card -->
                         <div class="service-card">
-                           <img src="<?= base_url('public') ?>/assets/images/services/erp.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/erp.jpg"
                                 alt="ERP and CRM Development" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/ERPAndCRMDevelopment') ?>" class="redirect-icon">
@@ -474,15 +472,15 @@
                                     complete system.
                                 </p>
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>
@@ -493,7 +491,7 @@
 
                         <!-- Maintenance Services Card -->
                         <div class="service-card">
-                           <img src="<?= base_url('public') ?>/assets/images/services/maintenance.jpg"
+                            <img src="<?= base_url('public') ?>/assets/images/services/maintenance.jpg"
                                 alt="Maintenance Services" class="service-image">
                             <div class="service-content">
                                 <a href="<?= base_url('Home/MaintenanceServices') ?>" class="redirect-icon">
@@ -510,15 +508,15 @@
 
 
                                 <div class="service-buttons">
-                                    <button data-toggle="modal" data-target="#exampleModal"
-                                    aria-label="modal-btn" class="btn btn-primary">Request a Quote</button>
+                                    <button data-toggle="modal" data-target="#exampleModal" aria-label="modal-btn"
+                                        class="btn btn-primary">Request a Quote</button>
                                     <div class="btn-icon btn-whatsapp">
-                                         <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
-                                        aria-label="Whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                        data-hover="WhatsApp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                        <a class=" social-link hint--bounce hint--bottom-left" rel="noopener"
+                                            aria-label="Whatsapp"
+                                            href="https://api.whatsapp.com/send?phone=919198483820&text=Hello DigiCoders Technologies, I want to discuss about my project"
+                                            data-hover="WhatsApp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                     <div class="btn-icon btn-phone">
                                         <a href="tel:+919198483820"><i class="fas fa-phone"></i></a>

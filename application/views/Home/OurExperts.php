@@ -51,11 +51,11 @@
                                     <div class="ht-team-member">
                                         <div class="team-image">
 
-                                            <img data-src="<?= base_url('public') ?>/assets/images/team/Er.-Himanshu-Kashyap-digicoders.jpeg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:auto" class="lazy img-fluid team-img" title="Er.Himanshu Kashyap digicoders" alt="Er.Himanshu Kashyap digicoders" />
+                                            <img data-src="<?= base_url('public') ?>/assets/images/team/himanshu.png" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:auto" class="lazy img-fluid team-img" title="Er.Himanshu Kashyap digicoders" alt="Er.Himanshu Kashyap digicoders" />
                                         </div>
                                         <div class="team-info ">
                                             <h5 class="name">Er. Himanshu Kashyap </h5>
-                                            <div class="position">Sr. Project Manager</div>
+                                            <div class="position">Co - Founder</div>
                                         </div>
                                     </div>
                                 </div>
@@ -64,11 +64,11 @@
                                 <div class="grid-item">
                                     <div class="ht-team-member">
                                         <div class="team-image">
-                                            <img data-src="<?= base_url('public') ?>/assets/images/team/Er.-Gopal-Singh-digicoders.jpeg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:auto" class="lazy img-fluid team-img" title="Er.Gopal Singh digicoders" alt="Er.Gopal Singh digicoders" />
+                                            <img data-src="<?= base_url('public') ?>/assets/images/team/gopal.png" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:auto" class="lazy img-fluid team-img" title="Er.Gopal Singh digicoders" alt="Er.Gopal Singh digicoders" />
                                         </div>
                                         <div class="team-info ">
                                             <h5 class="name">Er. Gopal Singh </h5>
-                                            <div class="position">Training & Development Head</div>
+                                            <div class="position">Co - Founder</div>
                                         </div>
                                     </div>
                                 </div>

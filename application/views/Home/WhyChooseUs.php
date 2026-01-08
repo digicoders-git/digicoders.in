@@ -36,7 +36,7 @@
                     <div class="col-lg-4">
                         <div class="modern-number-01  mt-30">
                             <h2 class="heading  mr-5"><span class="mark-text text-primary">10+</span>Years’ Experience in IT</h2>
-                            <h3 class="heading mt-30">Learn More About Our <span class="text-color-primary"> Success <br>Stories </span> </h3>
+                            <h3 class="heading mt-30">Learn More About Our <span class="text-color-primary"> Success Stories </span> </h3>
                         </div>
                     </div> 
                     <div class="col-lg-7 offset-lg-1">
@@ -263,7 +263,7 @@
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <p class="sub-text">by 650+ customers over social media.</p>
+                            <p class="sub-text">by 1600+ customers over social media.</p>
                         </div>
 
                         <div class="contact-list-item">

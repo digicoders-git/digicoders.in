@@ -43,7 +43,7 @@
                         <div class="section-title-wrapper text-center section-space--mb_60 wow move-up">
                             <h6 class="section-sub-title mb-20">Pricing and Packages</h6>
                             <h3  class="section-title"><span><img class="img-fluid blog-img" src="<?= base_url('public') ?>/assets/images/offer2.gif" alt="offer"
-							style="height:50px; width:50px"></span>1 year free maintenance for <span class="text-color-primary">all IT services.</span> </h3>
+							style="height:50px; width:50px"></span>6 Months free maintenance for <span class="text-color-primary">all IT services.</span> </h3>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row"><b class="pl-3">Note:</b>All Terms and Conditions Apply*</div>
+                <div class="row"><b class="pl-3">Note:</b>&nbsp;All Terms and Conditions Apply*</div>
             </div>
         </div>
     </div>
