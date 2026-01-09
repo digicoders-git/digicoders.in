@@ -1290,104 +1290,126 @@
             }
         }
 
-        .dg-milestone {
-            padding: 60px 15px;
-            background: #f7f9fc;
-            text-align: center;
-        }
+       /* ===== Milestone Section ===== */
+.dg-milestone {
+    padding: 60px 15px;
+    background: #f7f9fc;
+    text-align: center;
+}
 
-        .dg-container {
-            max-width: 1200px;
-            margin: auto;
-        }
+.dg-container {
+    max-width: 1200px;
+    margin: auto;
+}
 
-        .dg-section-title {
-            font-size: 30px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
+.dg-section-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
 
-        .dg-section-subtitle {
-            color: #555;
-            margin-bottom: 40px;
-        }
+.dg-section-subtitle {
+    color: #555;
+    margin-bottom: 40px;
+}
 
-        .dg-milestone-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
+/* ===== Milestone Cards ===== */
+.dg-milestone-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
 
-        .dg-milestone-card {
-            background: #fff;
-            padding: 35px 20px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
-        }
+.dg-milestone-card {
+    background: #fff;
+    padding: 35px 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
 
-        .dg-milestone-card h3 {
-            font-size: 36px;
-            color: #0d6efd;
-            margin-bottom: 10px;
-        }
+.dg-milestone-card h3 {
+    font-size: 36px;
+    color: #0d6efd;
+    margin-bottom: 10px;
+}
 
-        .dg-milestone-card p {
-            font-size: 16px;
-            font-weight: 500;
-        }
+.dg-milestone-card p {
+    font-size: 16px;
+    font-weight: 500;
+}
 
-        .dg-milestone-card:hover {
-            transform: translateY(-6px);
-        }
+.dg-milestone-card:hover {
+    transform: translateY(-6px);
+}
 
-        .dg-office {
-            padding: 60px 15px;
-            background: #fff;
-        }
+/* ===== Office Gallery Section ===== */
+.dg-office {
+    padding: 60px 15px;
+    background: #fff;
+}
 
-        .dg-office-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+/* ===== Thumbnail Grid ===== */
+.dg-office-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
 
-        .dg-office-grid img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
-        }
+/* ===== Thumbnail Box (Clean Bootstrap Style) ===== */
+.dg-office-thumb {
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 14px;
+    border: 1px solid #595959ff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
 
-        .dg-office-grid img:hover {
-            transform: scale(1.04);
-        }
+/* ===== Thumbnail Image ===== */
+.dg-office-thumb img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.35s ease;
+}
 
-        @media (max-width: 992px) {
-            .dg-milestone-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+/* ===== Hover Effects (Soft & Premium) ===== */
+.dg-office-thumb:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+}
 
-            .dg-office-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+.dg-office-thumb:hover img {
+    transform: scale(1.05);
+}
 
-        @media (max-width: 576px) {
-            .dg-milestone-grid {
-                grid-template-columns: 1fr;
-            }
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+    .dg-milestone-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-            .dg-office-grid {
-                grid-template-columns: 1fr;
-            }
+    .dg-office-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-            .dg-section-title {
-                font-size: 24px;
-            }
-        }
+@media (max-width: 576px) {
+    .dg-milestone-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dg-office-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dg-section-title {
+        font-size: 24px;
+    }
+}
 
         .servicescontainer {
             max-width: 1400px;
@@ -2280,32 +2302,44 @@
             <!--===========  feature-images-wrapper  End =============-->
 
 
-            <section class="dg-milestone">
-                <div class="dg-container">
+           <section class="dg-milestone">
+    <div class="dg-container">
 
+        <h2 class="dg-section-title">Our Office & Work Culture</h2>
+        <p class="dg-section-subtitle">
+            A glimpse of our workspace and creative environment
+        </p>
 
-                    <h2 class="dg-section-title">Our Office & Work Culture</h2>
-                    <p class="dg-section-subtitle">
-                        A glimpse of our workspace and creative environment
-                    </p>
+        <div class="dg-office-grid">
 
-                    <div class="dg-office-grid">
-                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus1.jpeg"
-                            alt="Office Image">
-                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus2.jpeg"
-                            alt="Office Image">
-                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus3.jpeg"
-                            alt="Office Image">
-                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus4.jpeg"
-                            alt="Office Image">
-                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus5.jpeg"
-                            alt="Office Image">
-                        <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus6.jpg"
-                            alt="Office Image">
-                    </div>
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus1.jpeg" alt="Office Image">
+            </div>
 
-                </div>
-            </section>
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus2.jpeg" alt="Office Image">
+            </div>
+
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus3.jpeg" alt="Office Image">
+            </div>
+
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus4.jpeg" alt="Office Image">
+            </div>
+
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus5.jpeg" alt="Office Image">
+            </div>
+
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus6.jpg" alt="Office Image">
+            </div>
+
+        </div>
+
+    </div>
+</section>
 
 
             <section class="dg-service">

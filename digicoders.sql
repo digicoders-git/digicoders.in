@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jan 07, 2026 at 07:20 AM
+-- Generation Time: Jan 09, 2026 at 12:58 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,7 +46,7 @@ CREATE TABLE `admin_login` (
 --
 
 INSERT INTO `admin_login` (`id`, `email`, `password`, `status`, `admin_type`, `login_date`, `login_time`, `logout_date`, `logout_time`, `date`, `time`) VALUES
-(1, 'digicoderstech@gmail.com', 'b5f181de6c72c96c11283d63cbe4faa6', 'true', 'SuperAdmin', '2026-01-07', '10:58:05AM', '2025-03-12', '06:07:08PM', '2022-02-07', '2022-02-07');
+(1, 'digicoderstech@gmail.com', 'b5f181de6c72c96c11283d63cbe4faa6', 'true', 'SuperAdmin', '2026-01-08', '03:22:39PM', '2025-03-12', '06:07:08PM', '2022-02-07', '2022-02-07');
 
 -- --------------------------------------------------------
 
@@ -2895,11 +2895,11 @@ INSERT INTO `expert` (`id`, `name`, `sequence`, `role`, `image`, `status`, `date
 (136, 'Swati Singh', 0, 'Hr - Executive', 'd378ae7dc894e6d28fd2922458b15976_expert.jpg', 'false', '2024-10-25', '03:16:37PM'),
 (137, 'Meenu Kanojia', 0, 'Hr - Executive', '283841a6552579f33bd783ccc2c5c23b_expert.jpg', 'false', '2024-10-25', '03:17:03PM'),
 (139, 'Prabhakar Rajput', 0, 'Full Stack Developer', '98f86b0d712fc098ad202aeaafc87964_expert.jpg', 'false', '2025-03-12', '05:42:40PM'),
-(140, 'Gaurav Gupta', 0, 'Team Lead (Full Stack)', 'dba968569566e1c06b613ef6f1fc5f85_expert.jpg', 'true', '2026-01-07', '11:23:27AM'),
+(140, 'Himanshu Kashyap', 0, 'Co - Founder', 'b0793a29ed5afe9b7e4c7f866d1e3f27_expert.jpg', 'false', '2026-01-07', '11:35:23AM'),
 (142, 'Anand Pratap Singh', 0, 'Web Developer', 'f35abac3a10662fde086b6746fae3c2a_expert.jpg', 'false', '2025-03-12', '05:48:54PM'),
 (143, 'Shruti Maurya', 0, 'Hr - Executive', '13cebe95d791140bcb968401b5b0afc5_expert.jpg', 'false', '2025-03-12', '05:51:45PM'),
 (144, 'Karishma Nishad', 0, 'Hr - Executive', '3ca4718c0cfcbcafdf44261b186257c7_expert.jpg', 'false', '2025-03-12', '06:50:42PM'),
-(146, 'Hritik Nishad', 0, 'Team Lead (Web Development)', '82bd5559894f515fbc5568d8c11de98a_expert.jpg', 'true', '2026-01-07', '11:22:35AM'),
+(145, 'Gopal Singh', 0, 'Co - Founder', 'a80226536d7a93a2e37def4f4f142d60_expert.jpg', 'false', '2026-01-07', '11:36:02AM'),
 (147, 'Anurag Bajpai', 0, 'Branch Head (Kanpur)', 'ed4a86e1b278ea274d054d285d89bc14_expert.jpg', 'true', '2026-01-07', '11:45:41AM'),
 (149, 'Ratneshwar Mishra', 0, 'Embedded and IOT Consultant ', '57e50e4443917efc2932713ca53904c0_expert.jpg', 'false', '2025-03-12', '06:56:42PM'),
 (150, 'Madhuri Sahani', 0, 'Hr - Executive', '92791404730d03f72f66451576498232_expert.jpg', 'true', '2026-01-07', '11:21:46AM'),
@@ -2919,8 +2919,22 @@ INSERT INTO `expert` (`id`, `name`, `sequence`, `role`, `image`, `status`, `date
 (164, 'Ayaz Khan', 0, 'Training Head (Kanpur)', 'ae1f05b0f86ff23e9e4c5fdf92f56474_expert.jpg', 'true', '2026-01-07', '11:12:38AM'),
 (165, 'Abhay Shukla', 0, 'Digital Marketing Expert', '829008aad35c0a6a429cd3ee842081de_expert.jpg', 'true', '2026-01-07', '11:12:11AM'),
 (166, 'Dinesh Rawat', 0, 'Office Attendent', 'a2d9c996687cdc863c061e524e3fc2d0_expert.jpg', 'true', '2026-01-07', '11:25:14AM'),
-(216, 'Himanshu Kashyap', 0, 'Co - Founder', 'b0793a29ed5afe9b7e4c7f866d1e3f27_expert.jpg', 'true', '2026-01-07', '11:35:23AM'),
-(217, 'Gopal Singh', 0, 'Co - Founder', 'a80226536d7a93a2e37def4f4f142d60_expert.jpg', 'true', '2026-01-07', '11:36:02AM');
+(167, 'Hritik Nishad', 0, 'Team Lead (Web Development)', '82bd5559894f515fbc5568d8c11de98a_expert.jpg', 'true', '2026-01-07', '11:22:35AM'),
+(168, 'Gaurav Gupta', 0, 'Team Lead (Full Stack)', 'dba968569566e1c06b613ef6f1fc5f85_expert.jpg', 'true', '2026-01-07', '11:23:27AM'),
+(218, 'Pushkal Singh', 0, 'Coorporate Relation Manager', 'fa5f6bdc56d9d003563cd9b09457c7d0_expert.jpg', 'true', '2026-01-07', '02:01:37PM'),
+(219, 'Roshani Yadav', 0, 'Social Media Manager', 'bc232ae9967b5fdd4dba0d6d823e56d7_expert.jpg', 'true', '2026-01-07', '02:02:19PM'),
+(220, 'Devendra Kushwaha ', 0, 'Quality Analyst', '26315313eee0a049f6e9ba5d0ce812bd_expert.jpg', 'true', '2026-01-07', '02:02:50PM'),
+(221, 'Vivek Chaurasia', 0, 'Full Stack Developer', 'b114e1fe3549be9cf3975a9189ef7dab_expert.jpg', 'true', '2026-01-07', '02:03:24PM'),
+(222, 'Saurabh Kumar', 0, 'Full Stack Developer', '32d09038a5d1722b9d87bb2cc3544a59_expert.jpg', 'true', '2026-01-07', '02:03:52PM'),
+(223, 'Mayank Pandey', 0, 'Full Stack Developer', '24b3fd245454ea4fc767caad9e1b9e56_expert.jpg', 'true', '2026-01-07', '02:04:26PM'),
+(224, 'Abhay Vishwakarma', 0, 'Full Stack Developer', '761879004bef2649cdee8d25c2afb588_expert.jpg', 'true', '2026-01-07', '02:05:17PM'),
+(225, 'Irshad Ali', 0, 'MERN Stack Developer', '3134e8bdba3056aeeaec27646ddf67f0_expert.jpg', 'true', '2026-01-07', '02:05:49PM'),
+(226, 'Shiva Vishwakarma', 0, 'MERN Stack Developer', 'b1f0aabb9333cb26c75aa7766e78bc2e_expert.jpg', 'true', '2026-01-07', '02:06:21PM'),
+(227, 'Priti Maurya', 0, 'Data Analyst', 'ab684756d6b80f4c72bcda9d86c1ecbe_expert.jpg', 'true', '2026-01-07', '02:06:53PM'),
+(228, 'Rajkumar', 0, 'Android Developer', '28019fc03612ee27033559130df83abb_expert.jpg', 'true', '2026-01-08', '03:40:26PM'),
+(229, 'Deepa Singh', 0, 'Business Analyst', '275ae91640a245adb888758d6d0423b4_expert.jpg', 'true', '2026-01-08', '03:43:38PM'),
+(230, 'Yogesh Pal', 0, 'Full Stack Developer', '73c029dee63ab703baae730c8e58843f_expert.jpg', 'true', '2026-01-08', '03:44:12PM'),
+(231, 'Kirti Malviya', 0, 'Business Analyst', '39dff7c4bf75920ec602725a3cdd09ff_expert.jpg', 'true', '2026-01-08', '03:45:08PM');
 
 -- --------------------------------------------------------
 
@@ -9616,7 +9630,10 @@ INSERT INTO `tbl_adminlogindetails` (`id`, `LoginID`, `IP`, `MAC`, `UserName`, `
 (366, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2025-12-30', '10:28:49AM'),
 (367, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2025-12-31', '10:33:59AM'),
 (368, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2025-12-31', '02:06:01PM'),
-(369, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-07', '10:58:05AM');
+(369, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-07', '10:58:05AM'),
+(370, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-07', '01:55:22PM'),
+(371, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-07', '04:01:53PM'),
+(372, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-08', '03:22:39PM');
 
 -- --------------------------------------------------------
 
@@ -9847,7 +9864,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `expert`
 --
 ALTER TABLE `expert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=232;
 
 --
 -- AUTO_INCREMENT for table `faq`
@@ -9925,7 +9942,7 @@ ALTER TABLE `seo_pages`
 -- AUTO_INCREMENT for table `tbl_adminlogindetails`
 --
 ALTER TABLE `tbl_adminlogindetails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=370;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=373;
 
 --
 -- AUTO_INCREMENT for table `tbl_blogs`

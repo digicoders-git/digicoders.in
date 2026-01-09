@@ -1286,7 +1286,7 @@
         font-size: 13px;
     }
 }
-
+/* ===== Milestone Section ===== */
 .dg-milestone {
     padding: 60px 15px;
     background: #f7f9fc;
@@ -1309,6 +1309,7 @@
     margin-bottom: 40px;
 }
 
+/* ===== Milestone Cards ===== */
 .dg-milestone-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1319,7 +1320,7 @@
     background: #fff;
     padding: 35px 20px;
     border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
 }
 
@@ -1338,30 +1339,50 @@
     transform: translateY(-6px);
 }
 
+/* ===== Office Gallery Section ===== */
 .dg-office {
     padding: 60px 15px;
     background: #fff;
 }
 
+/* ===== Thumbnail Grid ===== */
 .dg-office-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 24px;
 }
 
-.dg-office-grid img {
+/* ===== Thumbnail Box (Clean Bootstrap Style) ===== */
+.dg-office-thumb {
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 14px;
+    border: 1px solid #595959ff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
+
+/* ===== Thumbnail Image ===== */
+.dg-office-thumb img {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
+    border-radius: 10px;
+    transition: transform 0.35s ease;
 }
 
-.dg-office-grid img:hover {
-    transform: scale(1.04);
+/* ===== Hover Effects (Soft & Premium) ===== */
+.dg-office-thumb:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
 }
 
+.dg-office-thumb:hover img {
+    transform: scale(1.05);
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 992px) {
     .dg-milestone-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2274,9 +2295,8 @@
         <!--===========  feature-images-wrapper  End =============-->
    </div>
 
-        <section class="dg-milestone">
+       <section class="dg-milestone">
     <div class="dg-container">
-
 
         <h2 class="dg-section-title">Our Office & Work Culture</h2>
         <p class="dg-section-subtitle">
@@ -2284,12 +2304,31 @@
         </p>
 
         <div class="dg-office-grid">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus1.jpeg" alt="Office Image">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus2.jpeg" alt="Office Image">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus3.jpeg" alt="Office Image">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus4.jpeg" alt="Office Image">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus5.jpeg" alt="Office Image">
-            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus6.jpg" alt="Office Image">
+
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus1.jpeg" alt="Office Image">
+            </div>
+
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus2.jpeg" alt="Office Image">
+            </div>
+
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus3.jpeg" alt="Office Image">
+            </div>
+
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus4.jpeg" alt="Office Image">
+            </div>
+
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus5.jpeg" alt="Office Image">
+            </div>
+
+            <div class="dg-office-thumb">
+                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus6.jpg" alt="Office Image">
+            </div>
+
         </div>
 
     </div>

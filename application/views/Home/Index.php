@@ -360,18 +360,20 @@
             }
         }
 
-        //* ===============================
-        TOP SLIDER – NO IMAGE CROP================================*/ .top-slider-section {
+        /* ===============================
+        TOP SLIDER – NO IMAGE CROP================================*/ 
+        .top-slider-section {
             margin-top: 0;
             position: relative;
             z-index: 1;
         }
-
-        .top-slider-section .container-fluid {
+         .top-slider-section .container-fluid {
             padding-left: 0;
             padding-right: 0;
         }
 
+
+      
         /* Slider Item */
         .top-banner-carousel .item {
             position: relative;
