@@ -170,4 +170,15 @@ if (!empty($this->session->flashdata('status'))) {
     <?php
   }
 }
+if ($this->session->flashdata('status') == 'error') {
+  ?>
+  <script>
+    iziToast.error({
+      title: 'Error',
+      message: '<?= $this->session->flashdata('msg') ?>',
+      position: 'topRight'
+    });
+  </script>
+  <?php
+}
 ?>

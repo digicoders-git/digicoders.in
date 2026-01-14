@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-sm-6">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#expertModal"><i class="fa fa-plus"></i>&ensp;Add Client</button>
+                            <button class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#expertModal"><i class="fa fa-plus"></i>&ensp;Add Expert</button>
                         </div>
                         </div>
                         
@@ -152,7 +152,7 @@
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Client</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Expert</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
