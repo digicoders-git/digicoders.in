@@ -279,6 +279,7 @@ class Home extends CI_Controller
 		$data['clientdata'] = $this->db->order_by('id', 'desc')->limit(25)->get('client')->result();
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get('projects')->result();
 		$data['blogdata'] = $this->db->order_by('id', 'desc')->limit(2)->get('blog')->result();
+		$data['sliderdata'] = $this->db->order_by('id','desc')->get_where('slider',array('status'=>'true'))->result();
 
 		$this->load->view('Home/Index', $data);
 	}

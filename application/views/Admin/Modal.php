@@ -216,8 +216,11 @@ if (!empty($table)) {
 						placeholder="Enter Expert Name" />
 				</div>
 				<div class="form-group mb-3">
-					<input type="text" name="role" value="<?= $userdata->role ?>" class="form-control" placeholder="Enter Role"
-						name="role" />
+					<input type="text" name="role" value="<?= $userdata->role ?>" class="form-control" placeholder="Enter Role" />
+				</div>
+				<div class="form-group mb-3">
+					<input type="number" name="sequence" value="<?= $userdata->sequence ?>" class="form-control"
+						placeholder="Enter Sequence" />
 				</div>
 				<div class="img-fluid p-2 border">
 					<input type="file" id="input-file-now"
@@ -312,50 +315,51 @@ if (!empty($table)) {
 						<input type="text" class="form-control" id="service_name" name="service_name"
 							value="<?= $userdata->service_name ?>" placeholder="Enter Service Name" required>
 					</div>
-                    <div class="col-md-6 mb-3">
-                                <label for="state" class="form-label">State</label>
-                                 <select id="state" class="form-select" name="state_name" required>
-                                    <option value="">--Select State --</option>
-                                    <?php foreach ($states as $row): ?>
-                                        <option value="<?= $row->state_name ?>">
-                                            <?= $row->state_name ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            
-                        </div>
+					<div class="col-md-6 mb-3">
+						<label for="state" class="form-label">State</label>
+						<select id="state" class="form-select" name="state_name" required>
+							<option value="">--Select State --</option>
+							<?php foreach ($states as $row): ?>
+								<option value="<?= $row->state_name ?>">
+									<?= $row->state_name ?>
+								</option>
+							<?php endforeach; ?>
+						</select>
+					</div>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="city" class="form-label">City </label>
-                                <select class="form-select" id="city" name="city_name" required>
-                                   <option value="">--Select City --</option>
-                                </select>
-                            </div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="city" class="form-label">City </label>
+						<select class="form-select" id="city" name="city_name" required>
+							<option value="">--Select City --</option>
+						</select>
+					</div>
 					<div class="col-md-6 mb-3">
 						<label for="title" class="form-label">Title</label>
-						<select type="text" class="form-control" id="title" name="title"
-                                   required>
-								   <option value="">--Select Title --</option>
-                                   <option value="Web Development"<?= $userdata->title == 'Web Development' ? 'selected' : '' ?>>Web Development</option>
-                                   <option value="Mobile App Development"<?= $userdata->title == 'Mobile App Development' ? 'selected' : '' ?>>Mobile App Development</option>
-                                   <option value="Ecommerce webiste Development"<?= $userdata->title == 'Ecommerce webiste Development' ? 'selected' : '' ?>>Ecommerce Website Development</option>
-                                   <option value="software Development"<?= $userdata->title == 'software Development' ? 'selected' : '' ?>>Software Development</option>
-                                 </select>
+						<select type="text" class="form-control" id="title" name="title" required>
+							<option value="">--Select Title --</option>
+							<option value="Web Development" <?= $userdata->title == 'Web Development' ? 'selected' : '' ?>>Web
+								Development</option>
+							<option value="Mobile App Development" <?= $userdata->title == 'Mobile App Development' ? 'selected' : '' ?>>Mobile App Development</option>
+							<option value="Ecommerce webiste Development" <?= $userdata->title == 'Ecommerce webiste Development' ? 'selected' : '' ?>>Ecommerce Website Development</option>
+							<option value="software Development" <?= $userdata->title == 'software Development' ? 'selected' : '' ?>>
+								Software Development</option>
+						</select>
 					</div>
 
-					
+
 				</div>
-                  <div class="col-md-6 mb-3">
-						<label for="heading" class="form-label">Heading</label>
-						<input type="text" class="form-control" id="heading" name="heading" value="<?= $userdata->heading ?>"
-							placeholder="Enter Heading" required>
-					</div>
+				<div class="col-md-6 mb-3">
+					<label for="heading" class="form-label">Heading</label>
+					<input type="text" class="form-control" id="heading" name="heading" value="<?= $userdata->heading ?>"
+						placeholder="Enter Heading" required>
+				</div>
 				<div class="mb-3">
 					<label for="content" class="form-label">Content</label>
-					<textarea class="form-control" id="content" name="content" rows="4"
-						placeholder="Enter Content" required><?= $userdata->content ?></textarea>
+					<textarea class="form-control" id="content" name="content" rows="4" placeholder="Enter Content"
+						required><?= $userdata->content ?></textarea>
 				</div>
 
 				<div class="mb-3">
@@ -366,17 +370,48 @@ if (!empty($table)) {
 
 				<div class="row">
 					<div class="col-md-6 mb-3">
-					<label for="keywords" class="form-label">Keywords</label>
-					<input type="text" class="form-control" id="keywords" name="keywords" value="<?= $userdata->keywords ?>"
-						placeholder="Enter Keywords (comma separated)" required>
+						<label for="keywords" class="form-label">Keywords</label>
+						<input type="text" class="form-control" id="keywords" name="keywords" value="<?= $userdata->keywords ?>"
+							placeholder="Enter Keywords (comma separated)" required>
+					</div>
+
 				</div>
-				
-</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					<button type="submit" class="btn btn-primary">Save changes</button>
 				</div>
 			</form>
+			<?php
+			break;
+
+		case "slider";
+			?>
+			<form action="<?= base_url() ?>Admin/ManageSlider/Edit" enctype="multipart/form-data" method="POST" id="expert-form">
+				<?php
+				$csrf = array(
+					'name' => $this->security->get_csrf_token_name(),
+					'hash' => $this->security->get_csrf_hash()
+				);
+				?>
+				<input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>"   />
+				<input type="hidden" name="id" value="<?= $userdata->id ?>">
+
+				<div class="form-group mb-3">
+					<input type="text" class="form-control" name="title" value="<?= $userdata->title ?>"
+						placeholder="Enter title Name" required />
+				</div>
+
+				<div class="form-group mb-3">
+					<input type="file" id="input-file-now" name="image" class="dropify"
+						data-default-file="<?= base_url('public/uploads/sliders/') . $userdata->image; ?>" />
+				</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Save changes</button>
+				</div>
+			</form>
+
 			<?php
 			break;
 
@@ -394,43 +429,43 @@ if (!empty($table)) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-$(document).ready(function () {
+	$(document).ready(function () {
 
-    // Dropify
-    if ($('.dropify').length) {
-        $('.dropify').dropify();
-    }
+		// Dropify
+		if ($('.dropify').length) {
+			$('.dropify').dropify();
+		}
 
-    // State → City dropdown
-    $('#state').on('change', function () {
-        var state_name = $(this).val();
+		// State → City dropdown
+		$('#state').on('change', function () {
+			var state_name = $(this).val();
 
-        if (state_name !== '') {
-            $.ajax({
-                url: "<?= base_url('Admin/getCitiesByState') ?>",
-                type: "POST",
-                data: {
-                    state_name: state_name,
-                    <?= $this->security->get_csrf_token_name(); ?>:
-                    "<?= $this->security->get_csrf_hash(); ?>"
-                },
-                dataType: "json",
-                success: function (response) {
-                    $('#city').html('<option value="">Select City</option>');
-                    $.each(response, function (i, item) {
-                        $('#city').append(
-                            '<option value="'+item.city_name+'">'+item.city_name+'</option>'
-                        );
-                    });
-                },
-                error: function () {
-                    alert('City load error');
-                }
-            });
-        } else {
-            $('#city').html('<option value="">Select City</option>');
-        }
-    });
+			if (state_name !== '') {
+				$.ajax({
+					url: "<?= base_url('Admin/getCitiesByState') ?>",
+					type: "POST",
+					data: {
+						state_name: state_name,
+						<?= $this->security->get_csrf_token_name(); ?>:
+							"<?= $this->security->get_csrf_hash(); ?>"
+					},
+					dataType: "json",
+					success: function (response) {
+						$('#city').html('<option value="">Select City</option>');
+						$.each(response, function (i, item) {
+							$('#city').append(
+								'<option value="' + item.city_name + '">' + item.city_name + '</option>'
+							);
+						});
+					},
+					error: function () {
+						alert('City load error');
+					}
+				});
+			} else {
+				$('#city').html('<option value="">Select City</option>');
+			}
+		});
 
-});
+	});
 </script>

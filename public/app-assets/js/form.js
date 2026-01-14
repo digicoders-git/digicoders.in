@@ -651,7 +651,7 @@ function deleteItem(id, tablename, filename, url) {
                         )
                         setTimeout(function() {
                             window.location.reload();
-                        })
+                        }, 800)
                     }
                 },
                 error: function(response) {

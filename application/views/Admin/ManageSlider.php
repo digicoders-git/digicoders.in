@@ -2,7 +2,7 @@
 <html lang="en" class="semi-dark">
 
 <head>
-    <title>Our Experts - <?= $this->data['app_name'] ?></title>
+    <title>Manage Slider - <?= $this->data['app_name'] ?></title>
     <?php include('include/headerlinks.php'); ?>
 </head>
 
@@ -24,7 +24,7 @@
 
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">All Expert List</div>
+                <div class="breadcrumb-title pe-3">All Slider List</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
@@ -46,11 +46,11 @@
                 <div class="card-header py-3">
                     <div class="row align-items-center m-0">
                         <div class="col-sm-6">
-                            <h6>Manage Experts</h6>
+                            <h6>Manage Sliders</h6>
                         </div>
                         <div class="col-sm-6">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#expertModal"><i class="fa fa-plus"></i>&ensp;Add Client</button>
+                            <button class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#expertModal"><i class="fa fa-plus"></i>&ensp;Add Slider</button>
                         </div>
                         </div>
                         
@@ -62,9 +62,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Sequence</th>
+                                    <th>Title</th>
                                     <th>Image</th>
                                     <th>Date</th>
                                     <th>Time</th>
@@ -79,24 +77,22 @@
                                 ?>
                                     <tr>
                                         <td><?= $sr++ ?></td>
-                                        <td><?= $data->name; ?></td>
-                                        <td><?= $data->role; ?></td>
-                                        <td><?= $data->sequence; ?></td>
-                                        <td> <img src="<?= base_url('public/uploads/expert/').$data->image; ?>" alt="ddd" style="height: 120px;"/> </td>
+                                        <td><?= $data->title; ?></td>
+                                        <td> <img src="<?= base_url('public/uploads/sliders/').$data->image; ?>" alt="ddd" style="height: 120px;"/> </td>
                                       
                                         <td><?= $data->date; ?></td>
                                         <td><?= $data->time; ?></td>
                                          <td>
                                          <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'expert','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked" <?php if($data->status == 'true'){ echo "checked"; } ?>>
+                                                <input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'slider','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked" <?php if($data->status == 'true'){ echo "checked"; } ?>>
                                                 <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                                             </div>
                                          </td>
                                         <td>
                                             <div class="col">
                                                 <div class="btn-group">
-                                                    <button type="button" onclick="deleteItem(<?= $data->id ?>,'expert','<?= $data->image ?>','<?= base_url('Admin/deleteWithFilename') ?>')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                                    <button onclick="EditData('expert', <?= $data->id ?>, 'Edit Expert')" type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                                    <button type="button" onclick="deleteItem(<?= $data->id ?>,'slider','<?= $data->image ?>','<?= base_url('Admin/deleteWithFilename') ?>')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                    <button onclick="EditData('slider', <?= $data->id ?>, 'Edit slider')" type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
                                                 </div>
                                             </div>
                                         </td>
@@ -106,20 +102,7 @@
                                 }
                                 ?>
                             </tbody>
-                            <!-- <tfoot>
-                                <tr>
-                                <th>#</th>
-                                    <th>Title</th>
-                                    <th>Profile</th>
-                                    <th>Location</th>
-                                    <th>Salary</th>
-                                    <th>Eligibility</th>
-                                    <th>Skills</th>
-                                    <th>Experience</th>
-                                    <th>Description</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot> -->
+                           
                         </table>
                     </div>
                 </div>
@@ -152,11 +135,11 @@
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Client</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Slider</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url() ?>Admin/ManageExpertList/Add" enctype="multipart/form-data" method="POST" id="expert-form">
+                <form action="<?= base_url() ?>Admin/ManageSlider/Add" enctype="multipart/form-data" method="POST" id="expert-form">
 				  <?php
 $csrf = array(
         'name' => $this->security->get_csrf_token_name(),
@@ -166,14 +149,9 @@ $csrf = array(
 <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
                     <div class="form-group mb-3">
-                        <input type="text" class="form-control" name="name" placeholder="Enter Expert Name" required />
+                        <input type="text" class="form-control" name="title" placeholder="Enter title Name" required />
                     </div>
-                    <div class="form-group mb-3">
-                        <input type="text" name="role" class="form-control" placeholder="Enter Role" required />
-                    </div>
-                    <div class="form-group mb-3">
-                        <input type="number" name="sequence" class="form-control" placeholder="Enter Sequence" required />
-                    </div>
+                
                     <div class="form-group mb-3">
                         <input type="file" id="input-file-now" name="image" class="dropify" required />
                     </div>

@@ -298,11 +298,12 @@
         }
 
         .tech-item img {
-            max-width: 90px;
-            max-height: 90px;
+            max-width: 70px;
+            max-height: 70px;
             margin-bottom: 15px;
             filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
             transition: transform 0.5s ease;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15)
         }
 
         .tech-item:hover img {
@@ -520,18 +521,18 @@
     <div class="top-slider-section">
         <div class="container-fluid px-0">
             <div class="owl-carousel top-banner-carousel" id="top_banner_slider">
+                <?php
+                 foreach($sliderdata as $slider)
+                 {
+                ?>
                 <div class="item">
-                    <img aria-busy="" src="<?= base_url('public') ?>/assets/images/bg/slider-1.jpg"
-                        alt="DigiCoders - Best IT Company">
+                    <img aria-busy="" src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
+                        alt="<?= $slider->title ?>">
                 </div>
-                <div class="item">
-                    <img src="<?= base_url('public') ?>/assets/images/bg/slider-2.jpg"
-                        alt="Website Development Services">
-                </div>
-                <div class="item">
-                    <img src="<?= base_url('public') ?>/assets/images/bg/slider-3.jpg" alt="Mobile App Development">
-                </div>
-
+                <?php
+                 }
+                 ?>
+              
             </div>
         </div>
     </div>
@@ -795,6 +796,26 @@
             <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/29.jpg" alt="Anurag Sir">
+            </div>
+            <div class="item">
+                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                    data-src="<?= base_url('public') ?>/assets/images/banners/30.jpg" alt="Deepa Mam">
+            </div>
+             <div class="item">
+                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                    data-src="<?= base_url('public') ?>/assets/images/banners/31.jpg" alt="Kriti Mam">
+            </div>
+            <div class="item">
+                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                    data-src="<?= base_url('public') ?>/assets/images/banners/32.jpg" alt="Yogesh Sir">
+            </div>
+             <div class="item">
+                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                    data-src="<?= base_url('public') ?>/assets/images/banners/33.jpg" alt="Priyanshu Sir">
+            </div>
+            <div class="item">
+                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                    data-src="<?= base_url('public') ?>/assets/images/banners/33.jpg" alt="Rajkumar Sir">
             </div>
         </div>
     </div>
@@ -1494,89 +1515,89 @@
 
                         <div class="tech-grid">
                             <div class="tech-item wow zoomIn" data-wow-delay="0.1s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/. net.jpg" alt="DotNet">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/2.jpg" alt="DotNet">
                                 <span>ASP.NET </span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="0.2s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/android.png" alt="Android">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/7.jpg" alt="Android">
                                 <span>Android</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="0.3s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/java.png" alt="Java">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/28.jpg" alt="Java">
                                 <span>Java</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="0.4s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/codeigniter.png"
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/15.jpg"
                                     alt="CodeIgniter">
                                 <span>CodeIgniter</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="0.5s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/php.png" alt="PHP">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/40.jpg" alt="PHP">
                                 <span>PHP</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="0.6s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/ios.png" alt="iOS">
-                                <span>iOS App</span>
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/27.jpg" alt="Java script">
+                                <span>Java Script</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="0.7s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/mysql.png" alt="MySQL">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/35.jpg" alt="MySQL">
                                 <span>MySQL</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="0.8s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/mern stack.png" alt="MERN Stack">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/31.jpg" alt="MERN Stack">
                                 <span>MERN Stack</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="0.9s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/ui ux.png" alt="UI UX">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/50.jpg" alt="UI UX">
                                 <span>UI/UX Design</span>
                             </div>
                             
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/laravel.png" alt="Laravel">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/30.jpg" alt="Laravel">
                                 <span>Laravel</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/flutter.png" alt="Flutter">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/25.jpg" alt="Flutter">
                                 <span>Flutter</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/django.jpg" alt="Django">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/20.jpg" alt="Django">
                                 <span>Django</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/node js.png" alt="NodeJS">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/51.jpg" alt="NodeJS">
                                 <span>Node JS</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/rect native.png" alt="React Native">
-                                <span>React Native</span>
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/41.jpg" alt="Postre SQL">
+                                <span>PostgreSQL</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/expresh js.jpg" alt="Express JS">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/22.jpg" alt="Express JS">
                                 <span>Express JS</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/mongo db.png" alt="MongoDB">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/33.jpg" alt="MongoDB">
                                 <span>MongoDB</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/wordpress.png" alt="WordPress">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/1.jpg" alt="WordPress">
                                 <span>WordPress</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/shopify.png" alt="Shopify">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/46.jpg" alt="Shopify">
                                 <span>Shopify</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/c logo.png" alt="C">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/10.jpg" alt="C">
                                 <span>C</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/c+.png" alt="C++">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/12.jpg" alt="C++">
                                 <span>C++</span>
                             </div>
                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                            <img src="<?= base_url('public') ?>/assets/images/tech_logo/firebase.png" alt="Firebase">
+                            <img src="<?= base_url('public') ?>/assets/images/tech_logo/24.jpg" alt="Firebase">
                             <span>Firebase</span>
                         </div>
                         </div>

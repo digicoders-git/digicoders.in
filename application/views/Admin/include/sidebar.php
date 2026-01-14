@@ -55,7 +55,15 @@
                 <div class="parent-icon"> <i class="bi bi-newspaper"></i>
                 </div>
                 <div class="menu-title">Manage Service Page</div>
-				&nbsp&nbsp<span class="badge badge-secondary" style="background-color:red; border-radius:5px; padding-right:15px"><center class="menu-title"><?=$data = $this->db->get('contact')->num_rows(); ?></center></span>
+				&nbsp&nbsp<span class="badge badge-secondary" style="background-color:red; border-radius:5px; padding-right:15px"><center class="menu-title"><?=$data = $this->db->get('seo_pages')->num_rows(); ?></center></span>
+            </a>
+        </li>
+          <li>
+            <a class="" href="<?= base_url() ?>Admin/ManageSlider">
+                <div class="parent-icon"> <i class="bi bi-newspaper"></i>
+                </div>
+                <div class="menu-title">Manage Sliders</div>
+				&nbsp&nbsp<span class="badge badge-secondary" style="background-color:red; border-radius:5px; padding-right:15px"><center class="menu-title"><?=$data = $this->db->get('slider')->num_rows(); ?></center></span>
             </a>
         </li>
         <li>
