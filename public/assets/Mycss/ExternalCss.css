@@ -51,7 +51,7 @@ label {
 
 #feedback2 {
     position: fixed;
-    left: 0;
+    left: -3px;
     top: 50%;
     z-index: 1000;
     transform: rotate(-90deg);
