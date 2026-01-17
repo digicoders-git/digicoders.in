@@ -982,7 +982,7 @@
                                         <div class="default-image">
                                             <img class="aboutdigicoders-img lazy"
                                                 src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/HowWeDoIT.png"
+                                                data-src="<?= base_url('public') ?>/assets/images/HowWeDoIT.jpg"
                                                 title="how we do" alt="how we do">
                                         </div>
                                     </div>

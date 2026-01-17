@@ -10,6 +10,8 @@ if (!empty($table)) {
 			?>
 			<form action="<?= base_url() ?>Admin/ManageProject/Update" enctype="multipart/form-data" method="POST"
 				id="project-form">
+				<?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
+				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
 				<input value="<?= $userdata->id ?>" type="hidden" name="id" class="form-control" required placeholder="Project Id">
 
@@ -66,6 +68,8 @@ if (!empty($table)) {
 			//var_dump($userdata);
 			?>
 			<form action="<?= base_url() ?>Admin/ManageBlog/Edit" enctype="multipart/form-data" method="POST" id="project-form">
+				<?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
+				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
 				<input value="<?= $userdata->id ?>" type="hidden" name="id" class="form-control" required placeholder="Blog Id">
 				<div class="form-group mb-3">
@@ -106,6 +110,9 @@ if (!empty($table)) {
 			// var_dump($userdata);
 			?>
 			<form action="<?= base_url() ?>Admin/ManageJob/EditJob" method="POST" id="">
+				<?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
+				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+				<input value="<?= $userdata->id ?>" type="hidden" name="id" class="form-control" required>
 				<div class="form-group">
 					<div class="row">
 						<div class="col-sm-6">
@@ -164,6 +171,8 @@ if (!empty($table)) {
 		case "client":
 			?>
 			<form action="<?= base_url() ?>Admin/ManageClient/Edit" enctype="multipart/form-data" method="POST" id="client-form">
+				<?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
+				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 				<input value="<?= $userdata->id ?>" type="hidden" name="id" class="form-control" required placeholder="Project Id">
 
 				<div class='img-fluid borderd p-2'>
@@ -182,6 +191,8 @@ if (!empty($table)) {
 		case "intern":
 			?>
 			<form action="<?= base_url() ?>Admin/Manageintern/Edit" method="POST" enctype="multipart/form-data">
+				<?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
+				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 				<input type="hidden" class="form-control" value="<?= $userdata->id; ?>" name="id" />
 				<div class="form-group mb-3">
 					<input type="text" class="form-control" value="<?= $userdata->name ?>" name="name"
@@ -210,6 +221,8 @@ if (!empty($table)) {
 			?>
 			<form action="<?= base_url() ?>Admin/ManageExpertList/Edit" enctype="multipart/form-data" method="POST"
 				id="expert-form">
+				<?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
+				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 				<input type="hidden" class="form-control" value="<?= $userdata->id; ?>" name="id" placeholder="Enter Expert Name" />
 				<div class="form-group mb-3">
 					<input type="text" class="form-control" value="<?= $userdata->name ?>" name="name"
@@ -238,19 +251,20 @@ if (!empty($table)) {
 
 		case "productcost":
 			?>
-			<form action="<?= base_url() ?>Admin/OurProduct/Edit" method="POST" enctype="multipart/form-data">
+			<form action="<?= base_url() ?>Admin/OurProduct/Edit" method="POST" enctype="multipart/form-data"
+				id="product-edit-form">
 				<input type="hidden" class="form-control" value="<?= $userdata->id; ?>" name="id" />
 				<div class="form-group mb-3">
 					<input type="text" class="form-control" value="<?= $userdata->title ?>" name="name"
-						placeholder="Enter Intern Name" />
+						placeholder="Enter Product Title" />
 				</div>
 				<div class="form-group mb-3">
-					<input type="text" name="price" value="<?= $userdata->price ?>" class="form-control" placeholder="Enter Role"
-						name="role" />
+					<input type="text" name="price" value="<?= $userdata->price ?>" class="form-control"
+						placeholder="Enter Price" />
 				</div>
 				<div class="img-fluid p-2 border">
 					<input type="file" id="input-file-now"
-						data-default-file="<?= base_url('public/uploads/product/') . $userdata->img; ?>" name="img"
+						data-default-file="<?= base_url('public/uploads/product/') . $userdata->img; ?>" name="image"
 						class="dropify" />
 				</div>
 
@@ -265,6 +279,8 @@ if (!empty($table)) {
 		case "gallery":
 			?>
 			<form action="<?= base_url() ?>Admin/ManageGallery/Edit" enctype="multipart/form-data" method="POST" id="gallery-form">
+				<?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
+				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 				<input type="hidden" class="form-control" value="<?= $userdata->id; ?>" name="id" placeholder="Enter Expert Name" />
 				<div class="imgfluid p-2">
 					<input type="file" id="input-file-now"
@@ -282,6 +298,8 @@ if (!empty($table)) {
 		case "news":
 			?>
 			<form action="<?= base_url() ?>Admin/ManageNews/Edit" enctype="multipart/form-data" method="POST" id="news-list">
+				<?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
+				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
 				<input type="hidden" name="id" id="" class="form-control" value="<?= $userdata->id ?>">
 				<div class="img-fluid border p-2">

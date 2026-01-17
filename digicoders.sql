@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jan 14, 2026 at 12:25 PM
+-- Generation Time: Jan 17, 2026 at 07:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,7 +46,7 @@ CREATE TABLE `admin_login` (
 --
 
 INSERT INTO `admin_login` (`id`, `email`, `password`, `status`, `admin_type`, `login_date`, `login_time`, `logout_date`, `logout_time`, `date`, `time`) VALUES
-(1, 'digicoderstech@gmail.com', 'b5f181de6c72c96c11283d63cbe4faa6', 'true', 'SuperAdmin', '2026-01-14', '04:08:55PM', '2025-03-12', '06:07:08PM', '2022-02-07', '2022-02-07');
+(1, 'digicoderstech@gmail.com', 'b5f181de6c72c96c11283d63cbe4faa6', 'true', 'SuperAdmin', '2026-01-17', '11:25:05AM', '2025-03-12', '06:07:08PM', '2022-02-07', '2022-02-07');
 
 -- --------------------------------------------------------
 
@@ -2873,7 +2873,7 @@ INSERT INTO `expert` (`id`, `name`, `sequence`, `role`, `image`, `status`, `date
 (229, 'Deepa Singh', 34, 'Business Analyst', '275ae91640a245adb888758d6d0423b4_expert.jpg', 'true', '2026-01-08', '03:43:38PM'),
 (230, 'Yogesh Pal', 35, 'Full Stack Developer', '73c029dee63ab703baae730c8e58843f_expert.jpg', 'true', '2026-01-08', '03:44:12PM'),
 (231, 'Kriti Malviya', 36, 'Business Analyst', '39dff7c4bf75920ec602725a3cdd09ff_expert.jpg', 'true', '2026-01-14', '10:40:05AM'),
-(232, 'Priyanshu Singh', 37, 'Web Developer', 'a9186b24376b51111e4e4aa6fb13dbbb_expert.jpg', 'true', '2026-01-14', '04:26:17PM');
+(232, 'Priyanshu Singh', 37, 'Web Developer', 'a9186b24376b51111e4e4aa6fb13dbbb_expert.jpg', 'true', '2026-01-14', '05:05:58PM');
 
 -- --------------------------------------------------------
 
@@ -3129,28 +3129,28 @@ CREATE TABLE `productcost` (
 --
 
 INSERT INTO `productcost` (`id`, `title`, `img`, `price`, `status`) VALUES
-(2, 'School Management Software', 'd662d7e2f46ad2e5b600af7d53348037_product.jpg', '9999', 'true'),
-(3, 'Hospital Management Software', '870e08a30457724b32db23b6880d77ee_product.png', '12999', 'true'),
-(4, 'Pathology Software', '1ceb906289be4e8c2ca50a848590aa24_product.jpg', '8999', 'true'),
-(5, 'Billing Software Development', '20f2ef18b5e7001ad2c80baad3a6aabd_product.png', '5999', 'true'),
-(6, 'Hostel Management Software', 'c69ce601d58b6d7e16e84fb1a08e83a2_product.png', '44999', 'true'),
-(7, 'Tiffin Services Management Software', '6d1aff2061730a0e6dd3e29ccbedab8c_product.jpg', '4999', 'true'),
-(8, 'Real Estate Management Software', 'decbc83de481ac424639ed2a68ee4493_product.png', '16999', 'true'),
-(9, 'Bricks Management Software', '1c3ec7d05a5be19e66e43c06c6d158b4_product.jpg', '12999', 'true'),
-(10, 'Logo And Banners Design', '45b75b9e490269d90a8196d565607a2c_product.jpeg', '2000', 'true'),
-(11, 'Content Writing', '8d7f74a64624f1d4eb603992321497ad_product.jpeg', '2/Word', 'true'),
-(12, 'Domain And Hosting Provider', '59d9beb5ea2ed8c2a9a41073d4e253bb_product.jpeg', '3000/Year', 'true'),
-(13, 'CRM And ERM Provider', '49847d811d6be18215783925802ad0d6_product.jpg', '14999', 'true'),
-(14, 'MLM Website And App Development ', '3bc7cfa95970717d191dc19fc7d6979e_product.jpg', '9999', 'true'),
-(15, 'E-Commerce', '4772ee7e68c38d73671cb1869daef581_product.jpg', '15999', 'true'),
-(16, 'Taxi Booking App Development ', '44edef1cc579bee4d5ed989e5bd1e7fa_product.jpg', '49000', 'true'),
-(17, 'Food Delivery App', '7e0a927898211774553cab57d7c85e8c_product.png', '49999', 'true'),
-(18, 'Service Provider App Development ', 'd7fddbc02fc478e8b3e0e51f9a0a8972_product.png', '29999', 'true'),
-(19, 'Tournament And Contest AppDevelopment', 'f1477302a942c4e0bb6ab3516b601b63_product.jpg', '49999', 'true'),
-(20, 'Small Business Software Development ', '57eccc2a39db9b9063c8b37989093377_product.jpg', '5999', 'true'),
-(21, 'Examnation Software Development ', 'a51cf383fad5a71a8e45ad2712b05931_product.jpeg', '24999', 'true'),
-(22, 'Education Portals Development ', '5870a80be80354d18bb77f1634967360_product.jpg', '79999', 'true'),
-(23, 'Online Quiz Competition Software', '63b9a84bcc6e402a792eddfc485b470b_product.jpg', '7999', 'true');
+(2, 'School Management Software', '84b91ef0afb638319e09ee3472144ebc_product.jpg', '9999', 'true'),
+(3, 'Hospital Management Software', '5246c89be688e5a0740eb5cc380b322f_product.jpg', '12999', 'true'),
+(4, 'Pathology Software', 'c844237ac12e7b3c08614ca1cd7131c0_product.jpg', '8999', 'true'),
+(5, 'Billing Software Development', 'ffb7e230c4b32441c1e49345d3a04b1f_product.jpg', '5999', 'true'),
+(6, 'Hostel Management Software', 'fe17dd3daf867fa985c2239bdb5ccf0d_product.jpg', '44999', 'true'),
+(7, 'Tiffin Services Management Software', '1ed25de327b7dd014fdc9898925f26b3_product.jpg', '4999', 'true'),
+(8, 'Real Estate Management Software', 'dd598940a15fac8a1821bd567b120436_product.jpg', '16999', 'true'),
+(9, 'Bricks Management Software', 'da8f4e68b46a614bb75b009770d559ac_product.jpg', '12999', 'true'),
+(10, 'Logo And Banners Design', '8c09690b47d1ed2c702221a48546b677_product.jpg', '2000', 'true'),
+(11, 'Content Writing', '976fe880460a7229b6c223b0414a2d2d_product.jpg', '2/Word', 'true'),
+(12, 'Domain And Hosting Provider', 'c1b0a80263502c7afe5ef6a4bcb7ae6e_product.jpg', '3000/Year', 'true'),
+(13, 'CRM And ERM Provider', '04adaa0107572471d85f5a18af5a879a_product.jpg', '14999', 'true'),
+(14, 'MLM Website And App Development ', 'bf6503919b8adff86513f1d82538cc45_product.jpg', '9999', 'true'),
+(15, 'E-Commerce', '4cdfd3f076c3b932281c08abf255d0db_product.jpg', '15999', 'true'),
+(16, 'Taxi Booking App Development ', '90fc7e36a9e466b627d630f9c20a9075_product.jpg', '49000', 'true'),
+(17, 'Food Delivery App', 'ec08bf204946270c05948ebe39d0d13e_product.jpg', '49999', 'true'),
+(18, 'Service Provider App Development ', '6d4a0e6b7b917dc35b884fd3443f49f0_product.jpg', '29999', 'true'),
+(19, 'Tournament And Contest AppDevelopment', 'cbff03c62411847c506b6eb78feb88af_product.jpg', '49999', 'true'),
+(20, 'Small Business Software Development ', 'b1dcd226893b4ce4fca08d7cafe58f6c_product.jpg', '5999', 'true'),
+(21, 'Examnation Software Development ', 'b0c860c3df75a1f2a9242aa0b70ca4e9_product.jpg', '24999', 'true'),
+(22, 'Education Portals Development ', '900bf1610cd886bf4e4221831476baaf_product.jpg', '79999', 'true'),
+(23, 'Online Quiz Competition Software', '4f73eed236d1072c09b78c07ca56953b_product.jpg', '7999', 'true');
 
 -- --------------------------------------------------------
 
@@ -9570,7 +9570,10 @@ INSERT INTO `tbl_adminlogindetails` (`id`, `LoginID`, `IP`, `MAC`, `UserName`, `
 (381, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '01:41:47PM'),
 (382, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '02:09:22PM'),
 (383, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '03:15:27PM'),
-(384, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '04:08:55PM');
+(384, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '04:08:55PM'),
+(385, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-16', '07:32:32PM'),
+(386, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-16', '07:38:51PM'),
+(387, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-17', '11:25:05AM');
 
 -- --------------------------------------------------------
 
@@ -9849,7 +9852,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `productcost`
 --
 ALTER TABLE `productcost`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -9891,7 +9894,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `tbl_adminlogindetails`
 --
 ALTER TABLE `tbl_adminlogindetails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=385;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=388;
 
 --
 -- AUTO_INCREMENT for table `tbl_blogs`

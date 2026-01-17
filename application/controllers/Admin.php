@@ -790,8 +790,8 @@ class Admin extends MY_Controller
 
 				if ($upload_status = 'true') {
 					$table_name = "slider";
-					$unlink_filename = $old_img; 
-					$unlink_folder = "sliders"; 
+					$unlink_filename = $old_img;
+					$unlink_folder = "sliders";
 					if ($this->db->where('id', $userdata->id)->update('slider', $data_arr)) {
 
 						$this->session->set_flashdata("status", "success");
@@ -1132,16 +1132,18 @@ class Admin extends MY_Controller
 					$unlink_folder = "product";
 					if ($this->db->where('id', $userdata->id)->update('productcost', $data_arr)) {
 
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Product Successfully Updated");
+						// $this->session->set_flashdata("status", "success");
+						// $this->session->set_flashdata("msg", "Product Successfully Updated");
 						if ($filename != $old_img) {
 							unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
 						}
-						redirect(base_url('Admin/OurProduct'));
+						// redirect(base_url('Admin/OurProduct'));
+						echo json_encode(array("status" => "success", "msg" => "Product Successfully Updated", "title" => "Successfully Updated!", "reload" => "true", "redirect" => 'false'));
 					} else {
-						$this->session->set_flashdata("status", "error");
-						$this->session->set_flashdata("msg", "Something Went Wrong");
-						redirect(base_url('Admin/OurProduct'));
+						// $this->session->set_flashdata("status", "error");
+						// $this->session->set_flashdata("msg", "Something Went Wrong");
+						// redirect(base_url('Admin/OurProduct'));
+						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 
 					}
 
@@ -1413,6 +1415,16 @@ class Admin extends MY_Controller
 			$table_name = $data['tablename'];
 			$unlink_filename = $data['filename'];
 			$unlink_folder = $data['tablename'];
+
+			if ($table_name == 'productcost') {
+				$unlink_folder = 'product';
+			}
+			if ($table_name == 'intern') {
+				$unlink_folder = 'expert';
+			}
+			if ($table_name == 'slider') {
+				$unlink_folder = 'sliders';
+			}
 
 
 			$result = $this->db->where('id', $data['id'])->get($data['tablename']);

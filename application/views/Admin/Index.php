@@ -59,7 +59,7 @@ $csrf = array(
                         <div class="ms-auto position-relative">
                           <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-lock-fill"></i></div>
                           <input type="password" name="password" required class="form-control radius-30 ps-5" id="inputChoosePassword" placeholder="Enter Password">
-                          <input type="hidden" name="url" required class="form-control radius-30 ps-5" value="<?= base_url('Admi/nDashboard') ?>">
+                          <input type="hidden" name="url" required class="form-control radius-30 ps-5" value="<?= base_url('Admin/Dashboard') ?>">
                         </div>
                       </div>
                       <div class="col-6">

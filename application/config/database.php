@@ -73,28 +73,82 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-$db['default'] = array(
-	'dsn'	=> '',
+// $db['default'] = array(
+// 	'dsn'	=> '',
 	// 'hostname' => 'localhost:3306',
 	// 'username' => 'programmerkashya_digicodersuser',
 	// 'password' => 'nQKp71YDOCB(',
 	// 'database' => 'programmerkashya_digicoders',
-	'hostname' => 'localhost:3307',
-	'username' => 'root',
-	'password' => '',	
-	'database' => 'digicoders',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
+// 	'hostname' => 'localhost:3307',
+// 	'username' => 'root',
+// 	'password' => '',	
+// 	'database' => 'digicoders',
+// 	'dbdriver' => 'mysqli',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
+
+$host = $_SERVER['HTTP_HOST'];
+
+if ($host == 'localhost' || $host == '127.0.0.1') {
+
+    // ===== LOCAL DATABASE =====
+    $db['default'] = array(
+        'dsn'   => '',
+        'hostname' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'database' => 'digicoders',
+        'dbdriver' => 'mysqli',
+        'dbprefix' => '',
+        'pconnect' => FALSE,
+        'db_debug' => (ENVIRONMENT !== 'production'),
+        'cache_on' => FALSE,
+        'cachedir' => '',
+        'char_set' => 'utf8',
+        'dbcollat' => 'utf8_general_ci',
+        'swap_pre' => '',
+        'encrypt' => FALSE,
+        'compress' => FALSE,
+        'stricton' => FALSE,
+        'failover' => array(),
+        'save_queries' => TRUE
+    );
+
+} else {
+
+    // ===== LIVE DATABASE =====
+    $db['default'] = array(
+        'dsn'   => '',
+        'hostname' => 'localhost:3306',
+        'username' => 'programmerkashya_digicodersuser',
+        'password' => 'nQKp71YDOCB(',
+        'database' => 'programmerkashya_digicoders',
+        'dbdriver' => 'mysqli',
+        'dbprefix' => '',
+        'pconnect' => FALSE,
+        'db_debug' => FALSE,   
+        'cache_on' => FALSE,
+        'cachedir' => '',
+        'char_set' => 'utf8',
+        'dbcollat' => 'utf8_general_ci',
+        'swap_pre' => '',
+        'encrypt' => FALSE,
+        'compress' => FALSE,
+        'stricton' => FALSE,
+        'failover' => array(),
+        'save_queries' => TRUE
+    );
+
+}

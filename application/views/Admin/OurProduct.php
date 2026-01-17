@@ -28,7 +28,8 @@
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="<?= base_url('Admin/Dashboard') ?>"><i class="bx bx-home-alt"></i></a>
+                            <li class="breadcrumb-item"><a href="<?= base_url('Admin/Dashboard') ?>"><i
+                                        class="bx bx-home-alt"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                         </ol>
@@ -49,11 +50,12 @@
                             <h6>Manage Products</h6>
                         </div>
                         <div class="col-sm-6">
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#expertModal"><i class="fa fa-plus"></i>&ensp;Add Products</button>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#expertModal"><i class="fa fa-plus"></i>&ensp;Add Products</button>
+                            </div>
                         </div>
-                        </div>
-                        
+
                     </div>
                 </div>
                 <div class="card-body">
@@ -73,35 +75,45 @@
                                 <?php
                                 $sr = 1;
                                 foreach ($userdata as $data) {
-                                ?>
+                                    ?>
                                     <tr>
                                         <td><?= $sr++ ?></td>
                                         <td><?= $data->title; ?></td>
                                         <td>₹<?= $data->price; ?>/-</td>
-                                        <td> <img src="<?= base_url('public/uploads/product/').$data->img; ?>" alt="ddd" style="height: 120px;"/> </td>
-                                      
-                                        
-                                         <td>
-                                         <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'productcost','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked" <?php if($data->status == 'true'){ echo "checked"; } ?>>
+                                        <td> <img src="<?= base_url('public/uploads/product/') . $data->img; ?>" alt="ddd"
+                                                style="height: 120px;" /> </td>
+
+
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox"
+                                                    onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'productcost','<?= base_url('Admin/ChangeStatus') ?>')"
+                                                    id="flexSwitchCheckChecked" <?php if ($data->status == 'true') {
+                                                        echo "checked";
+                                                    } ?>>
                                                 <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                                             </div>
-                                         </td>
+                                        </td>
                                         <td>
                                             <div class="col">
                                                 <div class="btn-group">
-                                                    <button type="button" onclick="deleteItem(<?= $data->id ?>,'productcost','<?= $data->img ?>','<?= base_url('Admin/deleteWithFilename') ?>')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                                    <button onclick="EditData('productcost', '<?= $data->id ?>' , 'Edit Product')" type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                                    <button type="button"
+                                                        onclick="deleteItem(<?= $data->id ?>,'productcost','<?= $data->img ?>','<?= base_url('Admin/deleteWithFilename') ?>')"
+                                                        class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                    <button
+                                                        onclick="EditData('productcost', '<?= $data->id ?>' , 'Edit Product')"
+                                                        type="button" class="btn btn-primary"><i
+                                                            class="bi bi-pencil-square"></i></button>
                                                 </div>
                                             </div>
                                         </td>
 
                                     </tr>
-                                <?php
+                                    <?php
                                 }
                                 ?>
                             </tbody>
-                          
+
                         </table>
                     </div>
                 </div>
@@ -138,14 +150,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url() ?>Admin/OurProduct/Add" enctype="multipart/form-data" method="POST" id="expert-form">
-				  <?php
-$csrf = array(
-        'name' => $this->security->get_csrf_token_name(),
-        'hash' => $this->security->get_csrf_hash()
-);
-?>
-<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+                <form action="<?= base_url() ?>Admin/OurProduct/Add" enctype="multipart/form-data" method="POST"
+                    id="expert-form">
+                    <?php
+                    $csrf = array(
+                        'name' => $this->security->get_csrf_token_name(),
+                        'hash' => $this->security->get_csrf_hash()
+                    );
+                    ?>
+                    <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>" />
 
                     <div class="form-group mb-3">
                         <input type="text" class="form-control" name="name" placeholder="Enter Title" required />
