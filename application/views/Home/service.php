@@ -192,7 +192,8 @@
             text-align: center;
             margin-top: 60px;
             padding: 40px;
-            margin: 0 140px;
+            margin: 30px auto;
+            max-width: 1200px;
             background: linear-gradient(135deg, #a4a6a9ff, #6610f2);
             border-radius: 15px;
             color: white;
@@ -208,6 +209,7 @@
             font-size: 1.1rem;
             margin-bottom: 25px;
             opacity: 0.9;
+            text-align: center;
         }
 
         .cta-button {
@@ -268,6 +270,11 @@
             .cta-section h2 {
                 font-size: 1.6rem;
             }
+
+            .cta-section {
+                padding: 30px 15px;
+                margin: 20px 10px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -280,7 +287,11 @@
             }
 
             .course-content h3 {
-                font-size: 1.2rem;
+                font-size: 1.15rem;
+            }
+
+            .city-header h1 {
+                font-size: 1.4rem;
             }
 
             .cta-button {
@@ -422,6 +433,7 @@
             max-width: 900px;
             margin: 0 auto 40px;
             line-height: 1.6;
+            text-align: justify;
         }
 
         .vision-statement {
@@ -433,6 +445,7 @@
             max-width: 600px;
             font-size: 20px;
             font-weight: 600;
+            text-align: center;
         }
 
 
@@ -467,10 +480,12 @@
             border-bottom-color: rgba(255, 255, 255, 0.3);
         }
 
+        /* Shared Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
         .service-item {
@@ -594,6 +609,13 @@
             border-left: 5px solid var(--primary);
         }
 
+        @media (max-width: 768px) {
+            .service-section {
+                padding: 20px 15px;
+                margin-bottom: 30px;
+            }
+        }
+
         .service-number {
             font-size: 2.2rem;
             font-weight: 800;
@@ -630,6 +652,7 @@
             color: #444;
             line-height: 1.8;
             margin-bottom: 25px;
+            text-align: justify;
         }
 
         .highlight-text {
@@ -1024,6 +1047,7 @@
             .dg-service-right {
                 width: 100%;
                 margin-top: 20px;
+                padding: 15px;
             }
         }
 
@@ -1031,6 +1055,12 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 10px 50px;
+        }
+
+        @media (max-width: 768px) {
+            .empowering-container {
+                padding: 10px 15px;
+            }
         }
 
         /* Section Styling */
@@ -1060,6 +1090,7 @@
             font-size: 1.15rem;
             color: #4b5563;
             line-height: 1.8;
+            text-align: justify;
         }
 
         .empowering-content-block strong,
@@ -1188,6 +1219,19 @@
             transform: scale(1.12);
         }
 
+        .project-img-responsive {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .project-img-responsive {
+                height: auto;
+                min-height: 180px;
+            }
+        }
+
         /* ================= CONTENT (30%) ================= */
         .single-item .content {
             flex: 3;
@@ -1290,126 +1334,126 @@
             }
         }
 
-       /* ===== Milestone Section ===== */
-.dg-milestone {
-    padding: 60px 15px;
-    background: #f7f9fc;
-    text-align: center;
-}
+        /* ===== Milestone Section ===== */
+        .dg-milestone {
+            padding: 60px 15px;
+            background: #f7f9fc;
+            text-align: center;
+        }
 
-.dg-container {
-    max-width: 1200px;
-    margin: auto;
-}
+        .dg-container {
+            max-width: 1200px;
+            margin: auto;
+        }
 
-.dg-section-title {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
+        .dg-section-title {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
 
-.dg-section-subtitle {
-    color: #555;
-    margin-bottom: 40px;
-}
+        .dg-section-subtitle {
+            color: #555;
+            margin-bottom: 40px;
+        }
 
-/* ===== Milestone Cards ===== */
-.dg-milestone-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-}
+        /* ===== Milestone Cards ===== */
+        .dg-milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
 
-.dg-milestone-card {
-    background: #fff;
-    padding: 35px 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
-}
+        .dg-milestone-card {
+            background: #fff;
+            padding: 35px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
 
-.dg-milestone-card h3 {
-    font-size: 36px;
-    color: #0d6efd;
-    margin-bottom: 10px;
-}
+        .dg-milestone-card h3 {
+            font-size: 36px;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
 
-.dg-milestone-card p {
-    font-size: 16px;
-    font-weight: 500;
-}
+        .dg-milestone-card p {
+            font-size: 16px;
+            font-weight: 500;
+        }
 
-.dg-milestone-card:hover {
-    transform: translateY(-6px);
-}
+        .dg-milestone-card:hover {
+            transform: translateY(-6px);
+        }
 
-/* ===== Office Gallery Section ===== */
-.dg-office {
-    padding: 60px 15px;
-    background: #fff;
-}
+        /* ===== Office Gallery Section ===== */
+        .dg-office {
+            padding: 60px 15px;
+            background: #fff;
+        }
 
-/* ===== Thumbnail Grid ===== */
-.dg-office-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
+        /* ===== Thumbnail Grid ===== */
+        .dg-office-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
 
-/* ===== Thumbnail Box (Clean Bootstrap Style) ===== */
-.dg-office-thumb {
-    background: #ffffff;
-    padding: 8px;
-    border-radius: 14px;
-    border: 1px solid #595959ff;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
-    overflow: hidden;
-    transition: all 0.35s ease;
-}
+        /* ===== Thumbnail Box (Clean Bootstrap Style) ===== */
+        .dg-office-thumb {
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 14px;
+            border: 1px solid #595959ff;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
 
-/* ===== Thumbnail Image ===== */
-.dg-office-thumb img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.35s ease;
-}
+        /* ===== Thumbnail Image ===== */
+        .dg-office-thumb img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.35s ease;
+        }
 
-/* ===== Hover Effects (Soft & Premium) ===== */
-.dg-office-thumb:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
-}
+        /* ===== Hover Effects (Soft & Premium) ===== */
+        .dg-office-thumb:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+        }
 
-.dg-office-thumb:hover img {
-    transform: scale(1.05);
-}
+        .dg-office-thumb:hover img {
+            transform: scale(1.05);
+        }
 
-/* ===== Responsive ===== */
-@media (max-width: 992px) {
-    .dg-milestone-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+        /* ===== Responsive ===== */
+        @media (max-width: 992px) {
+            .dg-milestone-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-    .dg-office-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+            .dg-office-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-@media (max-width: 576px) {
-    .dg-milestone-grid {
-        grid-template-columns: 1fr;
-    }
+        @media (max-width: 576px) {
+            .dg-milestone-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .dg-office-grid {
-        grid-template-columns: 1fr;
-    }
+            .dg-office-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .dg-section-title {
-        font-size: 24px;
-    }
-}
+            .dg-section-title {
+                font-size: 24px;
+            }
+        }
 
         .servicescontainer {
             max-width: 1400px;
@@ -1428,12 +1472,6 @@
             font-weight: 600;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
 
         .service-card {
             background: white;
@@ -1449,9 +1487,9 @@
         }
 
         .service-image {
-            width: 430px;
+            width: 100%;
             height: 250px;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         .service-content {
@@ -1502,6 +1540,7 @@
             color: #666;
             line-height: 1.7;
             margin-bottom: 25px;
+            text-align: justify;
         }
 
         .service-buttons {
@@ -1562,10 +1601,48 @@
         @media (max-width: 768px) {
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .section-title h2 {
-                font-size: 32px;
+                font-size: 28px;
+            }
+
+            .service-card {
+                margin-bottom: 20px;
+            }
+
+            .service-content {
+                padding: 20px;
+            }
+
+            .service-title {
+                font-size: 20px;
+                padding-right: 40px;
+            }
+
+            .service-image {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 24px;
+            }
+
+            .service-buttons {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .service-buttons .btn-primary {
+                flex: 1 1 100%;
+            }
+
+            .service-buttons .btn-icon {
+                flex: 1;
+                height: 45px;
             }
         }
     </style>
@@ -2264,11 +2341,10 @@
                                             <!-- <a href="<?php echo $project->url; ?>" target="_blank" style="width:100%;"> -->
                                             <div class="image-box-wrap" style="width:100%;">
                                                 <div class="box-image" style="width:100%;">
-                                                    <img class="lazy"
+                                                    <img class="lazy project-img-responsive"
                                                         src="<?= base_url('public') ?>/assets/images/loader2.jpg"
                                                         data-src="<?= base_url('public/uploads/projects/') . $project->image; ?>"
-                                                        title="projects" alt="projects"
-                                                        style="height: 200px; width: 100% " />
+                                                        title="projects" alt="projects" />
                                                 </div>
                                                 <div class="content ht-box-images style-04 text-center">
                                                     <h5 class="heading" title="<?= $project->title; ?>"
@@ -2302,44 +2378,50 @@
             <!--===========  feature-images-wrapper  End =============-->
 
 
-           <section class="dg-milestone">
-    <div class="dg-container">
+            <section class="dg-milestone">
+                <div class="dg-container">
 
-        <h2 class="dg-section-title">Our Office & Work Culture</h2>
-        <p class="dg-section-subtitle">
-            A glimpse of our workspace and creative environment
-        </p>
+                    <h2 class="dg-section-title">Our Office & Work Culture</h2>
+                    <p class="dg-section-subtitle">
+                        A glimpse of our workspace and creative environment
+                    </p>
 
-        <div class="dg-office-grid">
+                    <div class="dg-office-grid">
 
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus1.jpeg" alt="Office Image">
-            </div>
+                        <div class="dg-office-thumb">
+                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus1.jpeg"
+                                alt="Office Image">
+                        </div>
 
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus2.jpeg" alt="Office Image">
-            </div>
+                        <div class="dg-office-thumb">
+                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus2.jpeg"
+                                alt="Office Image">
+                        </div>
 
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus3.jpeg" alt="Office Image">
-            </div>
+                        <div class="dg-office-thumb">
+                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus3.jpeg"
+                                alt="Office Image">
+                        </div>
 
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus4.jpeg" alt="Office Image">
-            </div>
+                        <div class="dg-office-thumb">
+                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus4.jpeg"
+                                alt="Office Image">
+                        </div>
 
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus5.jpeg" alt="Office Image">
-            </div>
+                        <div class="dg-office-thumb">
+                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus5.jpeg"
+                                alt="Office Image">
+                        </div>
 
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus6.jpg" alt="Office Image">
-            </div>
+                        <div class="dg-office-thumb">
+                            <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-campus6.jpg"
+                                alt="Office Image">
+                        </div>
 
-        </div>
+                    </div>
 
-    </div>
-</section>
+                </div>
+            </section>
 
 
             <section class="dg-service">
