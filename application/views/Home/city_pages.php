@@ -852,9 +852,7 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
+           
 
             .services-container {
                 padding: 10px;
@@ -1701,6 +1699,7 @@
                         From dynamic website design to cutting-edge mobile apps, strategic digital marketing, and custom
                         software solutions,
                 we empower businesses across India to thrive in the digital age.
+               
             </p>
            
         </div>

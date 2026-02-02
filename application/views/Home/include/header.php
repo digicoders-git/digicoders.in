@@ -18,6 +18,7 @@
             </div>
         </div>
     </div> -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <!--====================  header area ====================-->
 <div class="header-area bg-white header-sticky only-mobile-sticky topborder">
     <div class="container">
@@ -28,8 +29,8 @@
                     <!-- brand logo -->
                     <div class="header__logo">
                         <a href="<?= base_url() ?>">
-                            <img src="<?= base_url('public') ?>/assets/images/Digicoders-new-logo.png" class="img-fluid"
-                                title="digicoders-logo" alt="digicoders-logo" />
+                            <img src="<?= base_url('public') ?>/assets/images/DigiCoders Technologies Logo.jpg"
+                                class="img-fluid" title="digicoders-logo" alt="digicoders-logo" />
                         </a>
                     </div>
 

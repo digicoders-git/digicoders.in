@@ -248,19 +248,29 @@ class Home extends CI_Controller
 			##quick Enquiey From submit
 			if ($this->uri->segment(3) == 'quickEnq' && $this->input->is_ajax_request()) {
 				$this->form_validation->set_rules('Name', 'Name', 'required');
-				$this->form_validation->set_rules('Mobile', 'Mobile', 'required');
+				$this->form_validation->set_rules('g-recaptcha-response', 'Captcha', 'required');
 
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Please check the Captcha!", "title" => "Validation Error", "reload" => "false", "redirect" => 'false'));
 				} else {
+					// Verify Google Captcha
+					$recaptchaResponse = $this->input->post('g-recaptcha-response');
+					$secretKey = 'YOUR_SECRET_KEY_HERE'; // Replace with your actual secret key
+
+					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
+					$responseData = json_decode($verifyResponse);
+
+					if (!$responseData->success) {
+						echo json_encode(array("status" => "error", "msg" => "Robot verification failed!", "title" => "Error", "reload" => "false", "redirect" => 'false'));
+						return;
+					}
 					$data_arr = array(
 						"name" => $this->input->post('Name'),
-						"mobile" => $this->input->post('Mobile'),
+						"mobile" => $this->input->post('Mobile'), // Assuming Mobile is still needed, but not in validation rules
 						"status" => 'true',
 						"date" => $this->data['date'],
 						"time" => $this->data['time']
 					);
-
 					if ($this->db->insert('quick_enquiry', $data_arr)) {
 						echo json_encode(array("status" => "success", "msg" => "Enquiry Successfully Saved", "title" => "Successfully Saved!", "reload" => "true", "redirect" => 'false'));
 					} else {
@@ -279,7 +289,7 @@ class Home extends CI_Controller
 		$data['clientdata'] = $this->db->order_by('id', 'desc')->limit(25)->get('client')->result();
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get('projects')->result();
 		$data['blogdata'] = $this->db->order_by('id', 'desc')->limit(2)->get('blog')->result();
-		$data['sliderdata'] = $this->db->order_by('id','desc')->get_where('slider',array('status'=>'true'))->result();
+		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('slider', array('status' => 'true'))->result();
 
 		$this->load->view('Home/Index', $data);
 	}
@@ -517,14 +527,14 @@ class Home extends CI_Controller
 
 		$data['ecommerce'] = $this->db
 			->where('city_name', $city_name)
-			->like('title', 'Ecommerce webiste Development')
+			->like('title', 'Ecommerce Website Development')
 			->order_by('service_name', 'ASC')
 			->get('seo_pages')
 			->result();
 
 		$data['software'] = $this->db
 			->where('city_name', $city_name)
-			->like('title', 'Software development')
+			->like('title', 'Software Development')
 			->order_by('service_name', 'ASC')
 			->get('seo_pages')
 			->result();
@@ -539,7 +549,6 @@ class Home extends CI_Controller
 			show_404();
 		}
 
-		// 🔹 Get page by slug
 		$page = $this->Service_model->get_page_by_slug($slug);
 
 		if (empty($page)) {
@@ -585,14 +594,14 @@ class Home extends CI_Controller
 
 		$data['ecommerce'] = $this->db
 			->where('city_name', $city_name)
-			->like('title', 'Ecommerce webiste Development')
+			->like('title', 'Ecommerce Website Development')
 			->order_by('service_name', 'ASC')
 			->get('seo_pages')
 			->result();
 
 		$data['software'] = $this->db
 			->where('city_name', $city_name)
-			->like('title', 'Software development')
+			->like('title', 'Software Development')
 			->order_by('service_name', 'ASC')
 			->get('seo_pages')
 			->result();
@@ -615,7 +624,7 @@ class Home extends CI_Controller
 			->get('seo_pages')
 			->row();
 
-		if (!$page) {	
+		if (!$page) {
 			show_404();
 		}
 

@@ -249,8 +249,8 @@
                                     <option value="">--Select Title --</option>
                                     <option value="Web Development">Web Development</option>
                                     <option value="Mobile App Development">Mobile App Development</option>
-                                    <option value="Ecommerce webiste Development">Ecommerce Website Development</option>
-                                    <option value="software Development">Software Development</option>
+                                    <option value="Ecommerce Website Development">Ecommerce Website Development</option>
+                                    <option value="Software Development">Software Development</option>
                                 </select>
                             </div>
 

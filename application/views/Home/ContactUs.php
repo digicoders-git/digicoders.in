@@ -7,207 +7,203 @@
         content="Our experienced team can give you a best estimation for technology and budget for your requirement. Contact us for internet marketing and more!">
     <?php include('include/headerlinks.php') ?>
     <style>
+        .teams-contact-section {
+            padding: 90px 0;
+            background: #f6f8fc;
+        }
 
+        /* =================== SECTION TITLE =================== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
 
-.teams-contact-section {
-    padding: 90px 0;
-    background: #f6f8fc;
-}
+        .section-title h2 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #1f2937;
+            position: relative;
+        }
 
-/* =================== SECTION TITLE =================== */
-.section-title {
-    text-align: center;
-    margin-bottom: 70px;
-}
+        .section-title h2::after {
+            content: "";
+            width: 60px;
+            height: 3px;
+            background: #2563eb;
+            display: block;
+            margin: 15px auto 0;
+            border-radius: 3px;
+        }
 
-.section-title h2 {
-    font-size: 2.1rem;
-    font-weight: 700;
-    color: #1f2937;
-    position: relative;
-}
+        .section-title p {
+            margin-top: 25px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
 
-.section-title h2::after {
-    content: "";
-    width: 60px;
-    height: 3px;
-    background: #2563eb;
-    display: block;
-    margin: 15px auto 0;
-    border-radius: 3px;
-}
+        /* =================== GRID =================== */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
 
-.section-title p {
-    margin-top: 25px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #6b7280;
-    font-size: 1rem;
-    line-height: 1.7;
-}
+        /* =================== CARD =================== */
+        .team-card {
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.25s ease;
+        }
 
-/* =================== GRID =================== */
-.teams-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-}
+        .team-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
 
-/* =================== CARD =================== */
-.team-card {
-    background: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    transition: all 0.25s ease;
-}
+        /* =================== HEADER =================== */
+        .team-header {
+            padding: 12px;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #374151;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+        }
 
-.team-card:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transform: translateY(-4px);
-}
+        /* =================== BANNER =================== */
+        .team-banner {
+            position: relative;
+            padding: 24px;
+            min-height: 100px;
+        }
 
-/* =================== HEADER =================== */
-.team-header {
-    padding: 12px;
-    font-size: 13px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #374151;
-    background: #f9fafb;
-    border-bottom: 1px solid #e5e7eb;
-}
+        .banner-bg {
+            display: none;
+        }
 
-/* =================== BANNER =================== */
-.team-banner {
-    position: relative;
-    padding: 24px;
-    min-height: 100px;
-}
+        /* =================== TEXT =================== */
+        .team-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111827;
+        }
 
-.banner-bg {
-    display: none;
-}
+        .team-subtitle {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2563eb;
+        }
 
-/* =================== TEXT =================== */
-.team-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #111827;
-}
+        /* =================== ICON =================== */
+        .banner-image {
+            position: absolute;
+            right: 20px;
+            top: 25px;
+            width: 44px;
+            height: 44px;
+            background: #eff6ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.team-subtitle {
-    font-size: 15px;
-    font-weight: 600;
-    color: #2563eb;
-}
+        .banner-image i {
+            font-size: 20px;
+            color: #2563eb;
+        }
 
-/* =================== ICON =================== */
-.banner-image {
-    position: absolute;
-    right: 20px;
-    top: 25px;
-    width: 44px;
-    height: 44px;
-    background: #eff6ff;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        /* =================== CONTACT =================== */
+        .team-contact {
+            padding: 20px;
+            border-top: 1px solid #e5e7eb;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
 
-.banner-image i {
-    font-size: 20px;
-    color: #2563eb;
-}
+        .contact-column {
+            text-align: center;
+        }
 
-/* =================== CONTACT =================== */
-.team-contact {
-    padding: 20px;
-    border-top: 1px solid #e5e7eb;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
+        .phone-number {
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 10px;
+        }
 
-.contact-column {
-    text-align: center;
-}
+        /* =================== BUTTONS =================== */
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
 
-.phone-number {
-    font-size: 15px;
-    font-weight: 600;
-    color: #111827;
-    margin-bottom: 10px;
-}
+        .btn-contact {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            transition: 0.2s ease;
+        }
 
-/* =================== BUTTONS =================== */
-.contact-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
+        .btn-whatsapp {
+            background: #0bc850ff;
+        }
 
-.btn-contact {
-    width: 30px;
-    height: 30px;
-    border-radius: 6px;
-    font-size: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    transition: 0.2s ease;
-}
+        .btn-call {
+            background: #d81313ff;
+        }
 
-.btn-whatsapp {
-    background: #0bc850ff;
-}
+        .btn-contact:hover {
+            opacity: 0.9;
+        }
 
-.btn-call {
-    background: #d81313ff;
-}
+        /* =================== CONTACT INFO CARDS =================== */
+        .conact-info-wrap {
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            background: #ffffff;
+            transition: 0.25s ease;
+        }
 
-.btn-contact:hover {
-    opacity: 0.9;
-}
+        .conact-info-wrap:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
 
-/* =================== CONTACT INFO CARDS =================== */
-.conact-info-wrap {
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    background: #ffffff;
-    transition: 0.25s ease;
-}
+        .conact-info-wrap h4 i {
+            font-size: 28px;
+            color: #2563eb;
+            margin-bottom: 8px;
+        }
 
-.conact-info-wrap:hover {
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
+        /* =================== RESPONSIVE =================== */
+        @media (max-width: 1200px) {
+            .teams-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-.conact-info-wrap h4 i {
-    font-size: 28px;
-    color: #2563eb;
-    margin-bottom: 8px;
-}
+        @media (max-width: 768px) {
+            .teams-grid {
+                grid-template-columns: 1fr;
+            }
 
-/* =================== RESPONSIVE =================== */
-@media (max-width: 1200px) {
-    .teams-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .teams-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title h2 {
-        font-size: 1.7rem;
-    }
-}
-
-
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+        }
     </style>
 </head>
 
@@ -255,12 +251,12 @@
                         <div class="contact-form-wrap">
                             <form id="contact" action="<?= base_url() ?>Home/SubmitForm/contactForm" method="post">
                                 <?php
-$csrf = array(
-        'name' => $this->security->get_csrf_token_name(),
-        'hash' => $this->security->get_csrf_hash()
-);
-?>
-                                <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+                                $csrf = array(
+                                    'name' => $this->security->get_csrf_token_name(),
+                                    'hash' => $this->security->get_csrf_hash()
+                                );
+                                ?>
+                                <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>" />
                                 <div class="contact-form">
                                     <div class="contact-input">
                                         <div class="contact-inner">
@@ -293,9 +289,16 @@ $csrf = array(
                                         </div>
                                     </div>
                                     <div class="contact-inner contact-message" autocomplete="off">
-                                        <textarea name="Message" placeholder="Your Message"></textarea>
+                                        <textarea name="Message" placeholder=" Please describe what you need."
+                                            maxlength="250"></textarea>
                                     </div>
-                                    <div class="submit-btn mt-20">
+                                    <div class="col-lg-12">
+                                        <label>Security Verification <span class="text-danger">*</span></label>
+                                        <div class="g-recaptcha"
+                                            data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh">
+                                        </div>
+                                    </div>
+                                    <div class=" submit-btn mt-20">
                                         <button class="ht-btn ht-btn-md" id="submitBtn" type="submit"><i
                                                 class="fas fa-spinner fa-spin d-none" id="submitSpin"></i>&ensp;Send
                                             Your Message</button>
@@ -377,189 +380,189 @@ $csrf = array(
                 </div>
 
                 <div class="row">
-                  <div class="container">
-        <div class="teams-grid">
-            <!-- Sales Team Card -->
-            <div class="team-card">
-                <div class="team-header">Sales Team</div>
-                <div class="team-banner">
-                    <div class="banner-bg sales"></div>
-                    <div class="banner-content">
-                        <div class="team-title">DigiCoders</div>
-                        <div class="team-subtitle sales">Sales Team</div>
-                    </div>
-                    <div class="banner-image">
-                      <i class="fas fa-chart-line"></i>
-                    </div>
-                </div>
-                <div class="team-contact">
-                    <div class="contact-column">
-                        <div class="phone-number">9628092950</div>
-                        <div class="contact-buttons">
-                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="tel:9628092950" class="btn-contact btn-call">
-                                <i class="fas fa-phone"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="contact-column">
-                        <div class="phone-number">9628092951</div>
-                        <div class="contact-buttons">
-                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="tel:9628092951" class="btn-contact btn-call">
-                                <i class="fas fa-phone"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <div class="container">
+                        <div class="teams-grid">
+                            <!-- Sales Team Card -->
+                            <div class="team-card">
+                                <div class="team-header">Sales Team</div>
+                                <div class="team-banner">
+                                    <div class="banner-bg sales"></div>
+                                    <div class="banner-content">
+                                        <div class="team-title">DigiCoders</div>
+                                        <div class="team-subtitle sales">Sales Team</div>
+                                    </div>
+                                    <div class="banner-image">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                </div>
+                                <div class="team-contact">
+                                    <div class="contact-column">
+                                        <div class="phone-number">9628092950</div>
+                                        <div class="contact-buttons">
+                                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            <a href="tel:9628092950" class="btn-contact btn-call">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-column">
+                                        <div class="phone-number">9628092951</div>
+                                        <div class="contact-buttons">
+                                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            <a href="tel:9628092951" class="btn-contact btn-call">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-            <!-- HR Team Card -->
-            <div class="team-card">
-                <div class="team-header">HR Team</div>
-                <div class="team-banner">
-                    <div class="banner-bg hr"></div>
-                    <div class="banner-content">
-                        <div class="team-title">DigiCoders</div>
-                        <div class="team-subtitle hr">HR Team</div>
-                     
-                    </div>
-                    <div class="banner-image">
-                      <i class="fas fa-users"></i>
-                    </div>
-                </div>
-                <div class="team-contact">
-                    <div class="contact-column">
-                        <div class="phone-number">9628092950</div>
-                        <div class="contact-buttons">
-                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="tel:9628092950" class="btn-contact btn-call">
-                                <i class="fas fa-phone"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="contact-column">
-                        <div class="phone-number">9628092951</div>
-                        <div class="contact-buttons">
-                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="tel:9628092951" class="btn-contact btn-call">
-                                <i class="fas fa-phone"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <!-- HR Team Card -->
+                            <div class="team-card">
+                                <div class="team-header">HR Team</div>
+                                <div class="team-banner">
+                                    <div class="banner-bg hr"></div>
+                                    <div class="banner-content">
+                                        <div class="team-title">DigiCoders</div>
+                                        <div class="team-subtitle hr">HR Team</div>
 
-            <!-- Support Team Card -->
-            <div class="team-card">
-                <div class="team-header">Support Team</div>
-                <div class="team-banner">
-                    <div class="banner-bg support"></div>
-                    <div class="banner-content">
-                        <div class="team-title">DigiCoders</div>
-                        <div class="team-subtitle support">Support Team</div>
-                       
-                    </div>
-                    <div class="banner-image">
-                          <i class="fas fa-headset"></i>
-                    </div>
-                </div>
-                <div class="team-contact">
-                    <div class="contact-column">
-                        <div class="phone-number">9628092950</div>
-                        <div class="contact-buttons">
-                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="tel:9628092950" class="btn-contact btn-call">
-                                <i class="fas fa-phone"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="contact-column">
-                        <div class="phone-number">9628092951</div>
-                        <div class="contact-buttons">
-                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="tel:9628092951" class="btn-contact btn-call">
-                                <i class="fas fa-phone"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                    </div>
+                                    <div class="banner-image">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                </div>
+                                <div class="team-contact">
+                                    <div class="contact-column">
+                                        <div class="phone-number">9628092950</div>
+                                        <div class="contact-buttons">
+                                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            <a href="tel:9628092950" class="btn-contact btn-call">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-column">
+                                        <div class="phone-number">9628092951</div>
+                                        <div class="contact-buttons">
+                                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            <a href="tel:9628092951" class="btn-contact btn-call">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-            <!-- Admin Team Card -->
-            <div class="team-card">
-                <div class="team-header">Admin Team</div>
-                <div class="team-banner">
-                    <div class="banner-bg admin"></div>
-                    <div class="banner-content">
-                        <div class="team-title">DigiCoders</div>
-                        <div class="team-subtitle admin">Admin Team</div>
-                    </div>
-                    <div class="banner-image">
-                        <i class="fas fa-user-cog"></i>
-                    </div>
-                </div>
-               <div class="team-contact">
-                    <div class="contact-column">
-                        <div class="phone-number">9628092950</div>
-                        <div class="contact-buttons">
-                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="tel:9628092950" class="btn-contact btn-call">
-                                <i class="fas fa-phone"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="contact-column">
-                        <div class="phone-number">9628092951</div>
-                        <div class="contact-buttons">
-                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="tel:9628092951" class="btn-contact btn-call">
-                                <i class="fas fa-phone"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-              
-            <br><br>
-            <!--====================  Teams Contact Section End ====================-->
+                            <!-- Support Team Card -->
+                            <div class="team-card">
+                                <div class="team-header">Support Team</div>
+                                <div class="team-banner">
+                                    <div class="banner-bg support"></div>
+                                    <div class="banner-content">
+                                        <div class="team-title">DigiCoders</div>
+                                        <div class="team-subtitle support">Support Team</div>
 
-            <!-- Google Maps Embed -->
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.901356265081!2d80.93581361436486!3d26.87487496818921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd90f852511b%3A0xea3004cdf494ecbb!2sDigiCoders%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1596004752774!5m2!1sen!2sin"
-                            width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""
-                            aria-hidden="false" tabindex="0"></iframe>
+                                    </div>
+                                    <div class="banner-image">
+                                        <i class="fas fa-headset"></i>
+                                    </div>
+                                </div>
+                                <div class="team-contact">
+                                    <div class="contact-column">
+                                        <div class="phone-number">9628092950</div>
+                                        <div class="contact-buttons">
+                                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            <a href="tel:9628092950" class="btn-contact btn-call">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-column">
+                                        <div class="phone-number">9628092951</div>
+                                        <div class="contact-buttons">
+                                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            <a href="tel:9628092951" class="btn-contact btn-call">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Admin Team Card -->
+                            <div class="team-card">
+                                <div class="team-header">Admin Team</div>
+                                <div class="team-banner">
+                                    <div class="banner-bg admin"></div>
+                                    <div class="banner-content">
+                                        <div class="team-title">DigiCoders</div>
+                                        <div class="team-subtitle admin">Admin Team</div>
+                                    </div>
+                                    <div class="banner-image">
+                                        <i class="fas fa-user-cog"></i>
+                                    </div>
+                                </div>
+                                <div class="team-contact">
+                                    <div class="contact-column">
+                                        <div class="phone-number">9628092950</div>
+                                        <div class="contact-buttons">
+                                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            <a href="tel:9628092950" class="btn-contact btn-call">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-column">
+                                        <div class="phone-number">9628092951</div>
+                                        <div class="contact-buttons">
+                                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            <a href="tel:9628092951" class="btn-contact btn-call">
+                                                <i class="fas fa-phone"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <?php include('include/footer.php') ?>
-        <?php include('include/jslinks.php') ?>
+        <br><br>
+        <!--====================  Teams Contact Section End ====================-->
+
+        <!-- Google Maps Embed -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.901356265081!2d80.93581361436486!3d26.87487496818921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd90f852511b%3A0xea3004cdf494ecbb!2sDigiCoders%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1596004752774!5m2!1sen!2sin"
+                        width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php include('include/footer.php') ?>
+    <?php include('include/jslinks.php') ?>
 </body>
 
 </html>

@@ -854,9 +854,7 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
+          
 
             .services-container {
                 padding: 10px;

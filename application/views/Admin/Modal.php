@@ -361,8 +361,8 @@ if (!empty($table)) {
 							<option value="Web Development" <?= $userdata->title == 'Web Development' ? 'selected' : '' ?>>Web
 								Development</option>
 							<option value="Mobile App Development" <?= $userdata->title == 'Mobile App Development' ? 'selected' : '' ?>>Mobile App Development</option>
-							<option value="Ecommerce webiste Development" <?= $userdata->title == 'Ecommerce webiste Development' ? 'selected' : '' ?>>Ecommerce Website Development</option>
-							<option value="software Development" <?= $userdata->title == 'software Development' ? 'selected' : '' ?>>
+							<option value="Ecommerce Website Development" <?= $userdata->title == 'Ecommerce Website Development' ? 'selected' : '' ?>>Ecommerce Website Development</option>
+							<option value="Software Development" <?= $userdata->title == 'Software Development' ? 'selected' : '' ?>>
 								Software Development</option>
 						</select>
 					</div>

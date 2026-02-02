@@ -5,50 +5,57 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <div class="footer-area-wrapper bg-gray ftbg" style="overflow-x: hidden;">
-    
- <div class="servic-section">
+
+    <div class="servic-section">
         <h2 class="city-title">OUR SERVICES</h2>
-            <div class="state-row">
-                
+        <div class="state-row">
 
-                <?php foreach ($allservice as $service): ?>
 
-                    <?php
-                        // slug clean: remove -in-city
-                        $clean_slug = explode('-development-', $service->url_slug)[0];
-                    ?>
+            <?php
+            $total_services = count($allservice);
+            $s_count = 0;
+            foreach ($allservice as $service):
+                $s_count++;
+                ?>
 
-                    <span class="city-item">
-                        <a href="<?= base_url('services/' . $clean_slug) ?>">
-                            <?= $service->service_name ?>
-                        </a>
+                <?php
+                // slug clean: remove -in-city
+                $clean_slug = explode('-development-', $service->url_slug)[0];
+                ?>
 
-                        <div class="city-tooltip">
-                            <div class="tooltip-text-wrapper">
-                                <?php
-                                $total = count($allservice);
-                                foreach ($allservice as $index => $service) {
-                                    echo $service->service_name . ' development ';
-                                    if ($index < $total - 1) {
-                                        echo ', ';
-                                    }
+                <span class="city-item">
+                    <a href="<?= base_url('services/' . $clean_slug) ?>">
+                        <?= $service->service_name ?>
+                    </a>
+
+                    <div class="city-tooltip">
+                        <div class="tooltip-text-wrapper">
+                            <?php
+                            $total = count($allservice);
+                            foreach ($allservice as $index => $service) {
+                                echo $service->service_name . ' development ';
+                                if ($index < $total - 1) {
+                                    echo ', ';
                                 }
-                                ?>
-                            </div>
-
-                            <?php if (count($allservice) > 10): ?>
-                                <div class="tooltip-more" onclick="this.previousElementSibling.classList.toggle('expand');
-             this.innerText = this.innerText === 'More...' ? 'Less...' : 'More...';">
-                                    More...
-                                </div>
-                            <?php endif; ?>
+                            }
+                            ?>
                         </div>
 
-                    </span>
+                        <?php if (count($allservice) > 10): ?>
+                            <div class="tooltip-more" onclick="this.previousElementSibling.classList.toggle('expand');
+             this.innerText = this.innerText === 'More...' ? 'Less...' : 'More...';">
+                                More...
+                            </div>
+                        <?php endif; ?>
+                    </div>
 
+                </span>
+
+                <?php if ($s_count < $total_services): ?>
                     <span class="separator">|</span>
-                <?php endforeach; ?>
-            </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
 
     <div class="cities-section">
@@ -58,7 +65,11 @@
             <div class="state-row">
                 <strong class="state-name"><?= $state->state_name ?></strong>
 
-                <?php foreach ($state->cities as $city):
+                <?php
+                $total_cities = count($state->cities);
+                $c_count = 0;
+                foreach ($state->cities as $city):
+                    $c_count++;
                     $citySlug = url_title($city->city_name, '-', true);
                     ?>
                     <span class="city-item">
@@ -89,12 +100,13 @@
 
                     </span>
 
-                    <span class="separator">|</span>
+                    <?php if ($c_count < $total_cities): ?>
+                        <span class="separator">|</span>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         <?php endforeach; ?>
     </div>
-
 
     <!-- reveal-footer -->
     <div class="footer-area section-space--pb_60">
@@ -130,7 +142,7 @@
                         <h3>CONNECT WITH US</h3>
 
                         <div class="dg-email-support">
-                          
+
                             <a href="mailto:<?= $this->data['email'] ?>"
                                 class="hover-style-link"><?= $this->data['email'] ?></a>
                             <a href="mailto:digicoderstech@gmail.com"
@@ -262,28 +274,24 @@
                     <div class="row ">
                         <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/mca.png"
-                                alt="photos" /></div>
+                                data-src="<?= base_url('public') ?>/assets/images/icons/mca.png" alt="photos" /></div>
                         <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/gem.png"
-                                alt="photos" /></div>
+                                data-src="<?= base_url('public') ?>/assets/images/icons/gem.png" alt="photos" /></div>
                         <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/iso.png"
-                                alt="photos"  /></div>
+                                data-src="<?= base_url('public') ?>/assets/images/icons/iso.png" alt="photos" /></div>
                         <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public')?>/assets/images/icons/startupindia.png"
-                                alt="photos" /></div>
+                                data-src="<?= base_url('public') ?>/assets/images/icons/startupindia.png" alt="photos" />
+                        </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/msme.png"
-                                alt="photos" /></div>
+                                data-src="<?= base_url('public') ?>/assets/images/icons/msme.png" alt="photos" /></div>
                         <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/icons/digital.png"
-                                alt="photos"  /></div>
+                                data-src="<?= base_url('public') ?>/assets/images/icons/digital.png" alt="photos" />
+                        </div>
                     </div>
                 </div>
             </div>

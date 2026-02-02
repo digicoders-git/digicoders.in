@@ -28,7 +28,7 @@ $host = $_SERVER['HTTP_HOST'];
 
 if ($host == 'localhost' || $host == '127.0.0.1') {
     // LOCALHOST
-    $config['base_url'] = 'http://localhost/digicoders-in/';
+    $config['base_url'] = 'https://localhost/digicoders-in/';
 } else {
     // LIVE SERVER
     $config['base_url'] = 'https://www.digicoders.in/';

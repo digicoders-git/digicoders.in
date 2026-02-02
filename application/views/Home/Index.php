@@ -362,19 +362,20 @@
         }
 
         /* ===============================
-        TOP SLIDER – NO IMAGE CROP================================*/ 
+        TOP SLIDER – NO IMAGE CROP================================*/
         .top-slider-section {
             margin-top: 0;
             position: relative;
             z-index: 1;
         }
-         .top-slider-section .container-fluid {
+
+        .top-slider-section .container-fluid {
             padding-left: 0;
             padding-right: 0;
         }
 
 
-      
+
         /* Slider Item */
         .top-banner-carousel .item {
             position: relative;
@@ -522,17 +523,16 @@
         <div class="container-fluid px-0">
             <div class="owl-carousel top-banner-carousel" id="top_banner_slider">
                 <?php
-                 foreach($sliderdata as $slider)
-                 {
+                foreach ($sliderdata as $slider) {
+                    ?>
+                    <div class="item">
+                        <img aria-busy="" src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
+                            alt="<?= $slider->title ?>">
+                    </div>
+                    <?php
+                }
                 ?>
-                <div class="item">
-                    <img aria-busy="" src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
-                        alt="<?= $slider->title ?>">
-                </div>
-                <?php
-                 }
-                 ?>
-              
+
             </div>
         </div>
     </div>
@@ -801,7 +801,7 @@
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/30.jpg" alt="Deepa Mam">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/31.jpg" alt="Kriti Mam">
             </div>
@@ -809,7 +809,7 @@
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/32.jpg" alt="Yogesh Sir">
             </div>
-             <div class="item">
+            <div class="item">
                 <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                     data-src="<?= base_url('public') ?>/assets/images/banners/33.jpg" alt="Priyanshu Sir">
             </div>
@@ -873,7 +873,7 @@
     </div>
 
     <!--===========  feature-large-images-wrapper  Start =============-->
-    <div class="feature-large-images-wrapper section-space--ptb_100" style="padding: 0px !important;">
+    <div class="feature-large-images-wrapper section-space--ptb_100" style="padding: 10px !important;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -1327,8 +1327,8 @@
                                     <li>1 Year Domain</li>
                                     <li>1 Year Hosting</li>
                                     <li>Dynamic Website</li>
-                                    <li>Official Emails</li>
-                                    <li>SEO</li>
+                                    <li>Official 5 Emails</li>
+                                    <li>Basic SEO</li>
                                     <li>Many More...</li>
                                 </ul>
                             </div>
@@ -1527,8 +1527,7 @@
                                 <span>Java</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="0.4s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/15.jpg"
-                                    alt="CodeIgniter">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/15.jpg" alt="CodeIgniter">
                                 <span>CodeIgniter</span>
                             </div>
                             <div class="tech-item wow zoomIn" data-wow-delay="0.5s">
@@ -1551,7 +1550,7 @@
                                 <img src="<?= base_url('public') ?>/assets/images/tech_logo/50.jpg" alt="UI UX">
                                 <span>UI/UX Design</span>
                             </div>
-                            
+
                             <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
                                 <img src="<?= base_url('public') ?>/assets/images/tech_logo/30.jpg" alt="Laravel">
                                 <span>Laravel</span>
@@ -1596,10 +1595,10 @@
                                 <img src="<?= base_url('public') ?>/assets/images/tech_logo/12.jpg" alt="C++">
                                 <span>C++</span>
                             </div>
-                           <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                            <img src="<?= base_url('public') ?>/assets/images/tech_logo/24.jpg" alt="Firebase">
-                            <span>Firebase</span>
-                        </div>
+                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/24.jpg" alt="Firebase">
+                                <span>Firebase</span>
+                            </div>
                         </div>
 
                     </div>
@@ -1668,6 +1667,10 @@
                                 <div class="contact-inner contact-message">
                                     <textarea name="Message" placeholder="Please describe what you need."
                                         maxlength="250"></textarea>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>Security Verification <span class="text-danger">*</span></label>
+                                    <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh"></div>
                                 </div>
                                 <div class="submit-btn mt-20">
                                     <button class="ht-btn ht-btn-md" type="submit">Get a free consultation</button>
@@ -1787,7 +1790,19 @@
             </div>
         </div>
     </div>
-
+    <!--===========  Social Review Section Start =============-->
+    <div class="social-review-area section-space--ptb_60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="taggbox" style="width:100%;height:100%;overflow:auto;" data-widget-id="314856"
+                        data-website="1" data-show-header="false" data-header="false"></div>
+                    <script src="https://widget.taggbox.com/embed.min.js" type="text/javascript"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--===========  Social Review Section End =============-->
 
 
     <!--============ Contact Us Area End =================-->
