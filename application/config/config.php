@@ -29,8 +29,11 @@ $host = $_SERVER['HTTP_HOST'];
 if ($host == 'localhost' || $host == '127.0.0.1') {
     // LOCALHOST
     $config['base_url'] = 'https://localhost/digicoders-in/';
+} elseif ($host == 'digicoders.in') {
+    // LIVE SERVER (NON-WWW)
+    $config['base_url'] = 'https://digicoders.in/';
 } else {
-    // LIVE SERVER
+    // LIVE SERVER (WWW)
     $config['base_url'] = 'https://www.digicoders.in/';
 }
 
@@ -62,7 +65,7 @@ $config['index_page'] = 'index.php';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol'] = 'REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +89,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language'] = 'english';
 
 /*
 |--------------------------------------------------------------------------
@@ -392,7 +395,7 @@ $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_samesite'] = 'Lax';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = BASEPATH.'ci_session/';
+$config['sess_save_path'] = BASEPATH . 'ci_session/';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
@@ -412,11 +415,11 @@ $config['sess_regenerate_destroy'] = FALSE;
 |       'cookie_httponly') will also affect sessions.
 |
 */
-$config['cookie_prefix']	= '';
-$config['cookie_domain']	= '';
-$config['cookie_path']		= '/';
-$config['cookie_secure']	= FALSE;
-$config['cookie_httponly'] 	= FALSE;
+$config['cookie_prefix'] = '';
+$config['cookie_domain'] = '';
+$config['cookie_path'] = '/';
+$config['cookie_secure'] = FALSE;
+$config['cookie_httponly'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -467,7 +470,7 @@ $config['csrf_expire'] = 7200;
 // $config['csrf_regenerate'] = TRUE;
 $config['csrf_regenerate'] = FALSE;
 
-$config['csrf_exclude_uris'] = array("Admin/Delete","Admin/ChangeStatus","Admin/EditData","Admin/ManageProject/Update","Admin/ManageBlog/Edit","Admin/ManageGallery/Edit","Admin/ManageNews/Edit","Admin/ManageExpertList/Edit","Admin/ManageClient/Edit","Admin/deleteWithFilename","Admin/ChangeStatus","Admin/EditData","Authentication/logout/logout","Admin/Manageintern/Edit","Admin/OurProduct/Edit","Home/SubmitForm/callBackReq");
+$config['csrf_exclude_uris'] = array("Admin/Delete", "Admin/ChangeStatus", "Admin/EditData", "Admin/ManageProject/Update", "Admin/ManageBlog/Edit", "Admin/ManageGallery/Edit", "Admin/ManageNews/Edit", "Admin/ManageExpertList/Edit", "Admin/ManageClient/Edit", "Admin/deleteWithFilename", "Admin/ChangeStatus", "Admin/EditData", "Authentication/logout/logout", "Admin/Manageintern/Edit", "Admin/OurProduct/Edit", "Home/SubmitForm/callBackReq");
 
 /*
 |--------------------------------------------------------------------------
