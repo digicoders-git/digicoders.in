@@ -860,7 +860,7 @@
                                     echo date('M Y', $date);
                                     ?>
                                 </p>
-
+                                
                                 <span class="badge"><?= $projects->type ?></span>
                             </div>
 

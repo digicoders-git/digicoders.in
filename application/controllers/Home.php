@@ -255,7 +255,7 @@ class Home extends CI_Controller
 				} else {
 					// Verify Google Captcha
 					$recaptchaResponse = $this->input->post('g-recaptcha-response');
-					$secretKey = 'YOUR_SECRET_KEY_HERE'; // Replace with your actual secret key
+					$secretKey = '6LcCCnIsAAAAAKgDLqHNRUM6Q27KmUPuT2aibKtu'; 
 
 					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
 					$responseData = json_decode($verifyResponse);

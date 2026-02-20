@@ -390,7 +390,127 @@ $(document).ready(function () {
         });
     });
 
-})
+    // Project Add Form
+    $(document).on('submit', '#project-form', function (e) {
+        e.preventDefault();
+        var data = new FormData(this);
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                var jsonres = JSON.parse(response);
+                if (jsonres.status == "success") {
+                    iziToast.success({
+                        title: jsonres.title,
+                        message: jsonres.msg,
+                        position: 'topRight'
+                    });
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000)
+                } else {
+                    iziToast.error({
+                        title: jsonres.title,
+                        message: jsonres.msg,
+                        position: 'topRight'
+                    });
+                }
+            },
+            error: function (response) {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Something Went Wrong',
+                    position: 'topRight',
+                });
+            }
+        });
+    });
+
+    // Blog Add Form
+    $(document).on('submit', '#Blog-form', function (e) {
+        e.preventDefault();
+        var data = new FormData(this);
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                var jsonres = JSON.parse(response);
+                if (jsonres.status == "success") {
+                    iziToast.success({
+                        title: jsonres.title,
+                        message: jsonres.msg,
+                        position: 'topRight'
+                    });
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000)
+                } else {
+                    iziToast.error({
+                        title: jsonres.title,
+                        message: jsonres.msg,
+                        position: 'topRight'
+                    });
+                }
+            },
+            error: function (response) {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Something Went Wrong',
+                    position: 'topRight',
+                });
+            }
+        });
+    });
+
+    // Job Add Form
+    $(document).on('submit', '#job-form', function (e) {
+        e.preventDefault();
+        var data = new FormData(this);
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                var jsonres = JSON.parse(response);
+                if (jsonres.status == "success") {
+                    iziToast.success({
+                        title: jsonres.title,
+                        message: jsonres.msg,
+                        position: 'topRight'
+                    });
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000)
+                } else {
+                    iziToast.error({
+                        title: jsonres.title,
+                        message: jsonres.msg,
+                        position: 'topRight'
+                    });
+                }
+            },
+            error: function (response) {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Something Went Wrong',
+                    position: 'topRight',
+                });
+            }
+        });
+    });
+
+});
 
 // Delete Item Function
 function deleteItem(id, tablename, filename, url) {

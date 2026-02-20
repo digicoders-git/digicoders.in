@@ -198,7 +198,7 @@
                                 ?>
                                     <div class="single-item col-lg-4 col-md-6 mt-30 wow move-up">
                                         <!-- ht-box-icon Start -->
-                                        <!-- <a href="<?php echo $projects->url; ?>" target="_blank" style="width:100%;"> -->
+                                         <a href="<?php echo $projects->url; ?>" target="_blank" style="width:100%;"> 
                                             <div class="image-box-wrap" style="width:100%;">
                                                 <div class="box-image" style="width:100%;">
                                                     <img class="lazy" src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public/uploads/projects/').$projects->image; ?>" title="projects" alt="projects" style="height: 200px; width: 100% " />
@@ -212,7 +212,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        <!-- </a> -->
+                                        </a>
                                         <!-- ht-box-icon End -->
                                     </div>
                                 <?php

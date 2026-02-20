@@ -15,6 +15,16 @@ class Admin extends MY_Controller
 		if (!$this->session->userdata('AdminEmail')) {
 			redirect(base_url('Home/Login'));
 		}
+
+		date_default_timezone_set("Asia/Kolkata");
+		$this->data = array(
+			"app_name" => "Software Development | Website Development | Mobile Application Development | Digital Marketing | Summer Training | Internship | Apprenticeship",
+			"date" => date('Y-m-d'),
+			"time" => date('h:i:s A'),
+			"mobile_no" => "9198483820",
+			"telephone_no" => "0522-4235604",
+			"email" => "info@digicoders.in"
+		);
 	}
 
 	public function addpage()
