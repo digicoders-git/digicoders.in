@@ -5,8 +5,6 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-
-
 <url>
   <loc>https://digicoders.in/</loc>
   <lastmod>2022-12-12T12:47:25+00:00</lastmod>
@@ -58,7 +56,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://digicoders.in/Home/career</loc>
+  <loc>https://digicoders.in/Home/Career</loc>
   <lastmod>2022-12-12T12:47:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
@@ -113,6 +111,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://digicoders.in/Home/OurPortfolio</loc>
+  <lastmod>2022-12-12T12:47:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://digicoders.in/Home/OurProjects</loc>
   <lastmod>2022-12-12T12:47:25+00:00</lastmod>
   <priority>0.80</priority>
@@ -128,6 +131,41 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://digicoders.in/Home/Cricket_fantasy_in_digicoder_in_lucknow</loc>
+  <lastmod>2022-12-12T12:47:25+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://digicoders.in/Home/School_management_system_in_digicoder_in_lucknow</loc>
+  <lastmod>2022-12-12T12:47:25+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://digicoders.in/Home/HRMS_in_digicoder_in_lucknow</loc>
+  <lastmod>2022-12-12T12:47:25+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://digicoders.in/Home/CRM_in_digicoder_in_lucknow</loc>
+  <lastmod>2022-12-12T12:47:25+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://digicoders.in/Home/ERP_in_digicoder_in_lucknow</loc>
+  <lastmod>2022-12-12T12:47:25+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://digicoders.in/Home/lead_management_digicoder_in_lucknow</loc>
+  <lastmod>2022-12-12T12:47:25+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://digicoders.in/Home/fee_management_digicoder_in_lucknow</loc>
+  <lastmod>2022-12-12T12:47:25+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
   <loc>https://digicoders.in/Home/Packages</loc>
   <lastmod>2022-12-12T12:47:25+00:00</lastmod>
   <priority>0.80</priority>
@@ -138,7 +176,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://digicoders.in/Home/</loc>
+  <loc>https://digicoders.in/Home/DigiCodersInNews</loc>
   <lastmod>2022-12-12T12:47:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
@@ -163,25 +201,29 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://digicoders.in/Home/RefundAndCancellation</loc>
+  <loc>https://digicoders.in/Home/PrivacyPolicies</loc>
   <lastmod>2022-12-12T12:47:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://digicoders.in/Home/DigiCodersInNews</loc>
+  <loc>https://digicoders.in/Home/TermOfPayment</loc>
   <lastmod>2022-12-12T12:47:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://digicoders.in/Home/Career</loc>
+  <loc>https://digicoders.in/Home/OurGallery</loc>
   <lastmod>2022-12-12T12:47:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://digicoders.in/Home/Index</loc>
+  <loc>https://digicoders.in/Home/OurVideo</loc>
   <lastmod>2022-12-12T12:47:25+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.80</priority>
 </url>
-
+<url>
+  <loc>https://digicoders.in/Home/Jobs</loc>
+  <lastmod>2022-12-12T12:47:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 
 </urlset>

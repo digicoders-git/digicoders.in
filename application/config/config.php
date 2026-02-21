@@ -29,12 +29,9 @@ $host = $_SERVER['HTTP_HOST'];
 if ($host == 'localhost' || $host == '127.0.0.1') {
     // LOCALHOST
     $config['base_url'] = 'https://localhost/digicoders-in/';
-} elseif ($host == 'digicoders.in') {
-    // LIVE SERVER (NON-WWW)
-    $config['base_url'] = 'https://digicoders.in/';
 } else {
-    // LIVE SERVER (WWW)
-    $config['base_url'] = 'https://www.digicoders.in/';
+    // LIVE SERVER
+    $config['base_url'] = 'https://digicoders.in/';
 }
 
 
