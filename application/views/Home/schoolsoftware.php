@@ -392,8 +392,8 @@
         </div>
     </div>
 
-    <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
     
     <script>
         // Lazy loading initialization

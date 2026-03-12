@@ -2563,8 +2563,8 @@
     </div>
 
 
-    <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
 
     <script>
         // Add animation to course cards

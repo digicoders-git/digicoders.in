@@ -11,6 +11,10 @@
 
     <?php include('include/headerlinks.php') ?>
 
+    <?php if (!empty($sliderdata)): ?>
+        <link rel="preload" as="image" href="<?= base_url('public') ?>/uploads/sliders/<?= $sliderdata[0]->image ?>" fetchpriority="high">
+    <?php endif; ?>
+
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet"
@@ -523,13 +527,21 @@
         <div class="container-fluid px-0">
             <div class="owl-carousel top-banner-carousel" id="top_banner_slider">
                 <?php
+                $first = true;
                 foreach ($sliderdata as $slider) {
                     ?>
                     <div class="item">
-                        <img aria-busy="" src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
-                            alt="<?= $slider->title ?>">
+                        <img src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
+                            alt="<?= $slider->title ?>"
+                            <?php if ($first): ?>
+                                fetchpriority="high"
+                                loading="eager"
+                            <?php else: ?>
+                                loading="lazy"
+                            <?php endif; ?>>
                     </div>
                     <?php
+                    $first = false;
                 }
                 ?>
 
@@ -860,7 +872,7 @@
                                     echo date('M Y', $date);
                                     ?>
                                 </p>
-                                
+
                                 <span class="badge"><?= $projects->type ?></span>
                             </div>
 
@@ -1622,6 +1634,11 @@
 
                     </div>
                 </div>
+                 <script>
+    function submitregform() {
+        document.getElementById('submitbtn').disabled = false
+    }
+    </script>
                 <!--Contact Form-->
                 <div class="col-lg-6 col-lg-6">
                     <div class="contact-form-wrap">
@@ -1670,10 +1687,11 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <label>Security Verification <span class="text-danger">*</span></label>
-                                    <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh"></div>
+                                    <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh" data-callback="submitregform">
+                                    </div>
                                 </div>
                                 <div class="submit-btn mt-20">
-                                    <button class="ht-btn ht-btn-md" type="submit">Get a free consultation</button>
+                                    <button class="ht-btn ht-btn-md" type="submit" id="submitbtn">Get a free consultation</button>
                                     <p class="form-messege"></p>
                                 </div>
                             </div>
@@ -1807,8 +1825,8 @@
 
     <!--============ Contact Us Area End =================-->
 
-    <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
 
 
 

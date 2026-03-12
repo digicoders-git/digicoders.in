@@ -235,8 +235,8 @@
 
         } -->
 
-    <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
     <script>
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".single-item .heading").forEach(function (el) {

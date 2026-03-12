@@ -381,8 +381,8 @@
 
 
 
-        <?php include('include/footer.php') ?>
         <?php include('include/jslinks.php') ?>
+        <?php include('include/footer.php') ?>
 </body>
 
 </html>

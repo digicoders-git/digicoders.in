@@ -6,6 +6,11 @@
     <meta name="description"
         content="Our experienced team can give you a best estimation for technology and budget for your requirement. Contact us for internet marketing and more!">
     <?php include('include/headerlinks.php') ?>
+     <script>
+    function submitregform() {
+        document.getElementById('submitBtn').disabled = false
+    }
+    </script>
     <style>
         .teams-contact-section {
             padding: 90px 0;
@@ -295,7 +300,7 @@
                                     <div class="col-lg-12">
                                         <label>Security Verification <span class="text-danger">*</span></label>
                                         <div class="g-recaptcha"
-                                            data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh">
+                                            data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh" data-callback="submitregform">
                                         </div>
                                     </div>
                                     <div class=" submit-btn mt-20">
@@ -561,8 +566,8 @@
         </div>
     </div>
 
-    <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
 </body>
 
 </html>

@@ -305,9 +305,10 @@ Mobile app design encompasses both the user interface (UI) and user experience (
 
 
 
-    <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
 </body>
 
 </html>
+
 
