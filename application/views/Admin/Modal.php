@@ -109,7 +109,7 @@ if (!empty($table)) {
 		case "jobs":
 			// var_dump($userdata);
 			?>
-			<form action="<?= base_url() ?>Admin/ManageJob/EditJob" method="POST" id="">
+			<form action="<?= base_url() ?>Admin/ManageJob/EditJob" method="POST" id="job-form">
 				<?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
 				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 				<input value="<?= $userdata->id ?>" type="hidden" name="id" class="form-control" required>

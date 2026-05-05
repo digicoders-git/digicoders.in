@@ -119,7 +119,7 @@
                     <div class="dg-office-block">
                         <img src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                             data-src="<?= base_url('public') ?>/assets/images/Digicoders-new-logo.png"
-                            class="img-fluid footer-logo lazy" title="digicoders-logo" alt="digicoders-logo"
+                            class="img-fluid footer-logo lazy" title="digicoderslogo" alt="digicoderslogo"
                             style="left:30%;" />
                     </div>
 
@@ -176,7 +176,7 @@
                     <!-- <div class="footer-widget__logo mb-30">
                         <img src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                             data-src="<?= base_url('public') ?>/assets/images/Digicoders-new-logo.png"
-                            class="img-fluid footer-logo lazy" title="digicoders-logo" alt="digicoders-logo" />
+                            class="img-fluid footer-logo lazy" title="Digicoders Technology" alt="Digicoders Technology" />
                     </div> -->
                     <ul class="footer-widget__list">
                         <!-- <li>2nd Floor, B-36, Sector O, Near Ram Ram Bank Chauraha, Aliganj, Lucknow, Uttar Pradesh,
@@ -399,7 +399,7 @@
                             <a href="<?= base_url() ?>">
                                 <img src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                                     data-src="<?= base_url('public') ?>/assets/images/Digicoders-new-logo.png"
-                                    class="img-fluid lazy" title="digicoders-logo" alt="digicoders-logo" />
+                                    class="img-fluid lazy" title="" alt="Digicoders Technology" />
                             </a>
                         </div>
                     </div>

@@ -1,4 +1,3 @@
-
 <?php
 class Service_model extends CI_Model {
     public function get_active_cities()
@@ -82,4 +81,3 @@ public function get_active_cities_with_pages()
     }
 
 }
-?>

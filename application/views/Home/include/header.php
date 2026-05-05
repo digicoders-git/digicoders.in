@@ -30,7 +30,7 @@
                     <div class="header__logo">
                         <a href="<?= base_url() ?>">
                             <img src="<?= base_url('public') ?>/assets/images/DigiCoders Technologies Logo.jpg"
-                                class="img-fluid" title="digicoders-logo" alt="digicoders-logo" />
+                                class="img-fluid" title="Digicoders Technology" alt="Digicoders Technology" />
                         </a>
                     </div>
 

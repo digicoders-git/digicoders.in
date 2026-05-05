@@ -305,7 +305,7 @@
                                     </div>
                                     <div class=" submit-btn mt-20">
                                         <button class="ht-btn ht-btn-md" id="submitBtn" type="submit"><i
-                                                class="fas fa-spinner fa-spin d-none" id="submitSpin"></i>&ensp;Send
+                                                class="fas fa-spinner fa-spin d-none" ></i>&ensp;Send
                                             Your Message</button>
                                         <p class="form-messege"></p>
                                     </div>

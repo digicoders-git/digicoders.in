@@ -421,19 +421,19 @@ class Admin extends MY_Controller
 				if (!empty($_FILES['image']['name'])) {
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 					$filename = md5(time()) . "_project" . "." . $ext;
-				}
 
-				$config['upload_path'] = './public/uploads/projects/';
-				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
-				$filesize = $config['max_size'];
-				$config['file_name'] = $filename;
-				$this->load->library('upload', $config);
+					$config['upload_path'] = './public/uploads/projects/';
+					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['max_size'] = 8024; // In KB
+					$filesize = $config['max_size'];
+					$config['file_name'] = $filename;
+					$this->load->library('upload', $config);
 
-				if (!$this->upload->do_upload('image')) {
-					$upload_status = "false";
-				} else {
-					$upload_status = 'true';
+					if (!$this->upload->do_upload('image')) {
+						$upload_status = "false";
+					} else {
+						$upload_status = 'true';
+					}
 				}
 
 
@@ -448,23 +448,21 @@ class Admin extends MY_Controller
 					"time" => $this->data['time']
 				);
 
-				if ($upload_status = 'true') {
+				if ($upload_status == 'true') {
 					$table_name = "projects";
 					$unlink_filename = $old_img;
 					$unlink_folder = "projects";
 
 					if ($this->db->where('id', $userdata->id)->update('projects', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Project Successfully Updated");
-						redirect(base_url('Admin/ManageProject'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+						if ($filename != $old_img) {
+							unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+						}
+						echo json_encode(array("status" => "success", "msg" => "Project Successfully Updated", "title" => "Successfully Updated!", "reload" => "true", "redirect" => 'false'));
 					} else {
-						$this->session->set_flashdata("status", "error");
-						$this->session->set_flashdata("msg", "Somethimg Wemt Wrong");
-						redirect(base_url('Admin/ManageProject'));
+						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 					}
-
-
+				} else {
+					echo json_encode(array("status" => "error", "msg" => "Image Upload Failed", "title" => "Upload Error!", "reload" => "false", "redirect" => 'false'));
 				}
 			}
 		} else {
@@ -558,20 +556,20 @@ class Admin extends MY_Controller
 				if (!empty($_FILES['image']['name'])) {
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 					$filename = md5(time()) . "_project" . "." . $ext;
-				}
 
 
-				$config['upload_path'] = './public/uploads/Blog/';
-				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
-				$filesize = $config['max_size'];
-				$config['file_name'] = $filename;
-				$this->load->library('upload', $config);
+					$config['upload_path'] = './public/uploads/Blog/';
+					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['max_size'] = 8024; // In KB
+					$filesize = $config['max_size'];
+					$config['file_name'] = $filename;
+					$this->load->library('upload', $config);
 
-				if (!$this->upload->do_upload('image')) {
-					$upload_status = "false";
-				} else {
-					$upload_status = 'true';
+					if (!$this->upload->do_upload('image')) {
+						$upload_status = "false";
+					} else {
+						$upload_status = 'true';
+					}
 				}
 
 
@@ -586,23 +584,22 @@ class Admin extends MY_Controller
 					"time" => $this->data['time']
 				);
 
-
-				if ($upload_status = 'true') {
+				if ($upload_status == 'true') {
 					$table_name = "blog";
 					$unlink_filename = $old_img;
 					$unlink_folder = "Blog";
 
 					if ($this->db->where('id', $userdata->id)->update('blog', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Blog Successfully Updated");
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-						redirect(base_url('Admin/ManageBlog'));
+						if ($filename != $old_img) {
+							unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+						}
+						echo json_encode(array("status" => "success", "msg" => "Blog Successfully Updated", "title" => "Successfully Updated!", "reload" => "true", "redirect" => 'false'));
 					} else {
-						$this->session->set_flashdata("status", "error");
-						$this->session->set_flashdata("msg", "Somethimg Wemt Wrong");
-						redirect(base_url('Admin/ManageBlog'));
+						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 					}
 
+				} else {
+					echo json_encode(array("status" => "error", "msg" => "Image Upload Failed", "title" => "Upload Error!", "reload" => "false", "redirect" => 'false'));
 				}
 			}
 		} else {

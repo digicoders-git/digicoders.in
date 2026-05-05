@@ -78,7 +78,6 @@
             text-decoration: underline;
         }
 
-        /* Project Card */
         .project-card {
             background: #fff;
             border-radius: 14px;
@@ -95,7 +94,6 @@
             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
         }
 
-        /* Image */
         .project-image {
             overflow: hidden;
         }
@@ -169,20 +167,17 @@
             border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
         }
 
-        /* Show Tooltip on Hover */
         .title-tooltip:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
         }
 
-        /* Date */
         .project-content .date {
             font-size: 14px;
             color: #6c757d;
             margin-bottom: 10px;
         }
 
-        /* Badge */
         .project-content .badge {
             align-self: center;
             background: linear-gradient(135deg, #0d6efd, #6610f2);
@@ -600,10 +595,10 @@
 
 
     <!-- <div class="inner-img-one">
-                                <img class="img-fluid worldRotate lazy" data-src="<?= base_url('public') ?>/assets/images/Digicoders-Logo-with-tagline.png" src="<?= base_url('public') ?>/assets/images/hero/mitech-slider-cybersecurity-global-image.png" title="rounded image" alt="rounded image">
+                                <img class="img-fluid worldRotate lazy" data-src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png" src="<?= base_url('public') ?>/assets/images/hero/mitech-slider-cybersecurity-global-image.png" title="rounded image" alt="rounded image">
                             </div>
                             <div class="inner-img-two">
-                                <img class="img-fluid  ml-5 lazy" src="<?= base_url('public') ?>/assets/images/Digicoders-Logo-with-tagline.png" data-src="<?= base_url('public') ?>/assets/images/team/team.png" title="team" alt="team">
+                                <img class="img-fluid  ml-5 lazy" src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png" data-src="<?= base_url('public') ?>/assets/images/team/team.png" title="team" alt="team">
                             </div> -->
 
     <!-- </div>
@@ -1321,7 +1316,7 @@
                                 <h6 class="sub-title">Website Starter</h6>
                                 <div class="pricing-table__image lazy">
                                     <img src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                        data-src="<?= base_url('public') ?>/assets/images/Digicoders-Logo-with-tagline.png"
+                                        data-src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
                                         class="img-fluid lazy" title="Website Starter" alt="Website Starter">
                                 </div>
                                 <div class="pricing-table__price-wrap">
@@ -1355,7 +1350,7 @@
                                 <h6 class="sub-title">Mobile App Starter</h6>
                                 <div class="pricing-table__image lazy">
                                     <img src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                        data-src="<?= base_url('public') ?>/assets/images/Digicoders-Logo-with-tagline.png"
+                                        data-src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
                                         class="img-fluid lazy" title="Mobile App Starter" alt="Mobile App Starter">
                                 </div>
                                 <div class="pricing-table__price-wrap">
@@ -1387,7 +1382,7 @@
                                 <h6 class="sub-title">Software Starter</h6>
                                 <div class="pricing-table__image lazy">
                                     <img src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                        data-src="<?= base_url('public') ?>/assets/images/Digicoders-Logo-with-tagline.png"
+                                        data-src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
                                         class="img-fluid lazy" title="Software Starter" alt="Software Starter">
                                 </div>
                                 <div class="pricing-table__price-wrap">
