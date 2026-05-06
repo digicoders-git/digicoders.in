@@ -659,7 +659,7 @@ class Home extends CI_Controller
 		);
 		$this->load->library('email', $config);
 		$this->email->set_newline("\r\n");
-		$this->email->from('noreply@digicoders.in', 'DigiCoders Website');
+		$this->email->from('noreply@digicoders.in', 'digicoders.in Website');
 		// $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->to('digicoderstech@gmail.com');
 		$this->email->subject($subject);

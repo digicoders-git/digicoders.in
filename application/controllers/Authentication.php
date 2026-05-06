@@ -50,7 +50,7 @@ class Authentication extends CI_Controller
 					'wordwrap' => TRUE
 				);
 				$this->load->library('email', $config);
-				$this->email->from('noreply@digicoders.in', 'Digicoders Admin');
+				$this->email->from('noreply@digicoders.in', 'digicoders.in Admin');
 				// $this->email->to('saurabhkumarssp@gmail.com');
 				$this->email->to('digicoderstech@gmail.com');
 				$this->email->subject('Login OTP - Digicoders');
