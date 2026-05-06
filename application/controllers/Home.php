@@ -138,10 +138,23 @@ class Home extends CI_Controller
 				$this->form_validation->set_rules('Mobile', 'Mobile', 'required');
 				$this->form_validation->set_rules('Enquiry', 'Enquiry', 'required');
 				$this->form_validation->set_rules('Message', 'Message', 'required');
+				$this->form_validation->set_rules('g-recaptcha-response', 'Captcha', 'required');
 
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Please check the Captcha!", "title" => "Validation Error", "reload" => "false", "redirect" => 'false'));
 				} else {
+					// Verify Google Captcha
+					$recaptchaResponse = $this->input->post('g-recaptcha-response');
+					$secretKey = RECAPTCHA_SECRET_KEY;
+
+					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
+					$responseData = json_decode($verifyResponse);
+
+					if (!$responseData->success) {
+						echo json_encode(array("status" => "error", "msg" => "Robot verification failed!", "title" => "Error", "reload" => "false", "redirect" => 'false'));
+						return;
+					}
+
 					$data_arr = array(
 						"name" => $this->input->post('Name'),
 						"email" => $this->input->post('Email'),

@@ -3,7 +3,8 @@
 
 <head>
     <title>Website Maintenance Service | Best IT Company in Lucknow - DigiCoders</title>
-	<meta name="description" content="We provide dedicated software maintenance and support services that let you concentrate on your core business functions.">
+    <meta name="description"
+        content="We provide dedicated software maintenance and support services that let you concentrate on your core business functions.">
     <?php include('include/headerlinks.php') ?>
 </head>
 
@@ -49,7 +50,8 @@
                                         <a href="../Home/WebsiteDevelopment">Website Development</a>
                                     </li>
                                     <li class="list-item">
-                                        <a href="../Home/MobileApplicationDevelopment">Mobile Application Development</a>
+                                        <a href="../Home/MobileApplicationDevelopment">Mobile Application
+                                            Development</a>
                                     </li>
                                     <li class="list-item">
                                         <a href="../Home/DigitalMarketing">Digital Marketing</a>
@@ -75,30 +77,37 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="contact-form-wrap">
-                                        <form id="quick-enquiry" action="<?= base_url() ?>Home/SubmitForm/quickEnq" method="post">
-										 <?php
-$csrf = array(
-        'name' => $this->security->get_csrf_token_name(),
-        'hash' => $this->security->get_csrf_hash()
-);
-?>
-<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+                                            <form id="quick-enquiry" action="<?= base_url() ?>Home/SubmitForm/quickEnq"
+                                                method="post">
+                                                <?php
+                                                $csrf = array(
+                                                    'name' => $this->security->get_csrf_token_name(),
+                                                    'hash' => $this->security->get_csrf_hash()
+                                                );
+                                                ?>
+                                                <input type="hidden" name="<?= $csrf['name']; ?>"
+                                                    value="<?= $csrf['hash']; ?>"   />
                                                 <div class="contact-form">
                                                     <div class="row contact-input justify-content-center">
                                                         <div class="contact-inner wid">
-                                                            <input name="Name" type="text" placeholder="Name *" required="required">
+                                                            <input name="Name" type="text" placeholder="Name *"
+                                                                required="required">
                                                         </div>
                                                     </div>
                                                     <div class="row contact-input">
                                                         <div class="contact-inner wid">
-                                                            <input name="Mobile" type="number" maxlength="10" min="10" placeholder="Phone Number *" required="required">
+                                                            <input name="Mobile" type="number" maxlength="10" min="10"
+                                                                placeholder="Phone Number *" required="required">
                                                         </div>
                                                     </div>
                                                     <div class="row contact-input justify-content-center">
-                                                        <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"></div>
+                                                        <div class="g-recaptcha"
+                                                            data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"></div>
                                                     </div>
                                                     <div class="submit-btn mt-15 row justify-content-center">
-                                                        <button class="ht-btn ht-btn-md" type="submit"><i class="fas fa-spinner fa-spin d-none"></i>&ensp;Submit Query</button>
+                                                        <button class="ht-btn ht-btn-md" type="submit"><i
+                                                                class="fas fa-spinner fa-spin d-none"></i>&ensp;Submit
+                                                            Query</button>
                                                         <p class="form-messege"></p>
                                                     </div>
                                                 </div>
@@ -116,17 +125,27 @@ $csrf = array(
                             <div class="single-blog-item">
                                 <!-- Post Feature Start -->
                                 <div class="post-feature blog-thumbnail  wow move-up">
-                                    <img class="lazy" src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public') ?>/assets/images/services/maintenance.jpg" class="img-fluid" style="height:350px;width:100%" />
+                                    <img class="lazy" src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                        data-src="<?= base_url('public') ?>/assets/images/services/maintenance.jpg"
+                                        class="img-fluid" style="height:350px;width:100%" />
                                 </div>
                                 <!-- Post Feature End -->
                                 <!-- Post info Start -->
                                 <div class="post-info lg-blog-post-info  wow move-up">
                                     <h3 class="post-title">What Can We Do</h3>
                                     <div class="post-excerpt mt-15 text-justify">
-                                        <p>Leverage our powerful software maintenance and support services around the globe, as we are able to deliver our solutions everywhere. We provide dedicated software maintenance and support services that let you concentrate on your core business functions. With our agile and seamless software maintenance and support services, your business will have what it needs to reach its full potential. Our experts provide you with effective long-term continual maintenance and real-time support services for all your software requirements.</p>
+                                        <p>Leverage our powerful software maintenance and support services around the
+                                            globe, as we are able to deliver our solutions everywhere. We provide
+                                            dedicated software maintenance and support services that let you concentrate
+                                            on your core business functions. With our agile and seamless software
+                                            maintenance and support services, your business will have what it needs to
+                                            reach its full potential. Our experts provide you with effective long-term
+                                            continual maintenance and real-time support services for all your software
+                                            requirements.</p>
                                         <div class="entry-post-share-wra">
                                             <div class="row align-items-center">
-                                                <h5 class="post-title p-2">Why Choose Us For Software Maintenance Services</h5>
+                                                <h5 class="post-title p-2">Why Choose Us For Software Maintenance
+                                                    Services</h5>
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="list-group-wrap section-space--mb_60">
                                                         <div class="separator-list-wrap">
@@ -169,13 +188,17 @@ $csrf = array(
                 <div class="row align-items-center">
                     <div class="col-xl-8 col-lg-7">
                         <div class="cta-content md-text-center">
-                            <h3 class="heading text-white">We Help Organisations to <span class="text-color-secondary">Manage Changes With DigiCoders <span class="text-white">Maintenance Services</span></span></h3>
+                            <h3 class="heading text-white">We Help Organisations to <span
+                                    class="text-color-secondary">Manage Changes With DigiCoders <span
+                                        class="text-white">Maintenance Services</span></span></h3>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="cta-button-group--one text-center">
-                            <a href="tel:9198483820" class="btn btn--white btn-one"><span class="btn-icon mr-2"><i class="far fa-comment-alt-dots"></i></span> Let's talk</a>
-                            <a href="../Home/ContactUs" class="btn btn--secondary  btn-two"><span class="btn-icon mr-2"><i class="far fa-info-circle"></i></span> Get info</a>
+                            <a href="tel:9198483820" class="btn btn--white btn-one"><span class="btn-icon mr-2"><i
+                                        class="far fa-comment-alt-dots"></i></span> Let's talk</a>
+                            <a href="../Home/ContactUs" class="btn btn--secondary  btn-two"><span
+                                    class="btn-icon mr-2"><i class="far fa-info-circle"></i></span> Get info</a>
                         </div>
                     </div>
                 </div>
