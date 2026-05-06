@@ -99,7 +99,7 @@ $csrf = array(
                                         <textarea name="Message"></textarea>
                                     </div>
                                     <div class="submit-btn mt-20">
-                                        <button class="ht-btn ht-btn-md" type="submit">Apply</button>
+                                        <button class="ht-btn ht-btn-md" type="submit"><i class="fas fa-spinner fa-spin d-none"></i>&ensp;Apply</button>
                                         <p class="form-messege"></p>
                                     </div>
                                 </div>

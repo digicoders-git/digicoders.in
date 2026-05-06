@@ -71,7 +71,7 @@
                                         <textarea name="Message" placeholder="Your Message" required maxlength="250"></textarea>
                                     </div>
                                     <div class="submit-btn mt-20">
-                                        <button class="ht-btn ht-btn-md" type="submit">Send Your Message</button>
+                                        <button class="ht-btn ht-btn-md" type="submit"><i class="fas fa-spinner fa-spin d-none"></i>&ensp;Send Your Message</button>
                                         <!-- @*<p class="form-messege"></p>*@ -->
                                     </div>
                                 </div>

@@ -16,6 +16,13 @@ class Admin extends MY_Controller
 			redirect(base_url('Home/Login'));
 		}
 
+		// Check if password verified (for 2nd step)
+		if (!$this->session->userdata('Password_Verified')) {
+			$this->show_password_modal = true;
+		} else {
+			$this->show_password_modal = false;
+		}
+
 		date_default_timezone_set("Asia/Kolkata");
 		$this->data = array(
 			"app_name" => "Software Development | Website Development | Mobile Application Development | Digital Marketing | Summer Training | Internship | Apprenticeship",
@@ -23,7 +30,8 @@ class Admin extends MY_Controller
 			"time" => date('h:i:s A'),
 			"mobile_no" => "9198483820",
 			"telephone_no" => "0522-4235604",
-			"email" => "info@digicoders.in"
+			"email" => "info@digicoders.in",
+			"show_password_modal" => $this->show_password_modal
 		);
 	}
 

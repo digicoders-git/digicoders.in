@@ -1682,11 +1682,11 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <label>Security Verification <span class="text-danger">*</span></label>
-                                    <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh" data-callback="submitregform">
+                                    <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>" data-callback="submitregform">
                                     </div>
                                 </div>
                                 <div class="submit-btn mt-20">
-                                    <button class="ht-btn ht-btn-md" type="submit" id="submitbtn">Get a free consultation</button>
+                                    <button class="ht-btn ht-btn-md" type="submit" id="submitbtn"><i class="fas fa-spinner fa-spin d-none"></i>&ensp;Get a free consultation</button>
                                     <p class="form-messege"></p>
                                 </div>
                             </div>

@@ -103,9 +103,11 @@
                                                                 placeholder="Phone Number *" required="required">
                                                         </div>
                                                     </div>
+                                                    <div class="row contact-input justify-content-center">
+                                                        <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"></div>
+                                                    </div>
                                                     <div class="submit-btn mt-15 row justify-content-center">
-                                                        <button class="ht-btn ht-btn-md" type="submit">Submit
-                                                            Query</button>
+                                                        <button class="ht-btn ht-btn-md" type="submit"><i class="fas fa-spinner fa-spin d-none"></i>&ensp;Submit Query</button>
                                                         <p class="form-messege"></p>
                                                     </div>
                                                 </div>

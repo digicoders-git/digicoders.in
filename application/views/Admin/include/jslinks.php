@@ -67,6 +67,97 @@
     })
   }
 </script>
+<!-- Password Verification Modal -->
+<?php if($this->session->userdata('AdminEmail') && !$this->session->userdata('Password_Verified')): ?>
+<div class="modal fade" id="password-verify-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Final Security Check</h5>
+      </div>
+      <div class="modal-body p-4">
+        <p class="text-muted">Welcome back! Please enter your account password to unlock the dashboard.</p>
+        <form id="password-verify-form">
+          <div class="mb-3">
+            <label class="form-label">Account Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+              <input type="password" id="admin_password_input" class="form-control" placeholder="Enter Password" required>
+            </div>
+          </div>
+          <div class="d-grid">
+            <button type="submit" id="unlockBtn" class="btn btn-primary radius-30">Unlock Dashboard</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#password-verify-modal').modal('show');
+
+    $('#password-verify-form').submit(function(e) {
+      e.preventDefault();
+      var pass = $('#admin_password_input').val();
+      var btn = $('#unlockBtn');
+
+      btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Verifying...');
+
+      $.ajax({
+        url: "<?= base_url('Authentication/VerifyPassword') ?>",
+        type: "POST",
+        data: {
+          password: pass,
+          "<?= $this->security->get_csrf_token_name(); ?>": "<?= $this->security->get_csrf_hash(); ?>"
+        },
+        dataType: "json",
+        success: function(res) {
+          if(res.status == 'success') {
+            iziToast.success({title: 'Success', message: res.msg, position: 'topRight'});
+            $('#password-verify-modal').modal('hide');
+            location.reload();
+          } else {
+            btn.prop('disabled', false).html('Unlock Dashboard');
+            iziToast.error({title: 'Error', message: res.msg, position: 'topRight'});
+          }
+        }
+      });
+    });
+  });
+</script>
+<?php endif; ?>
+
+<script>
+  function logout(url) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You want to logout!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Logout!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: url,
+          type: "POST",
+          data: {
+            "<?= $this->security->get_csrf_token_name(); ?>": "<?= $this->security->get_csrf_hash(); ?>"
+          },
+          dataType: "json",
+          success: function (res) {
+            if (res.status == 'success') {
+              window.location.href = res.redirectLink;
+            }
+          }
+        });
+      }
+    })
+  }
+</script>
 <?php
 if (!empty($this->session->flashdata('status'))) {
   if ($this->session->flashdata('msg') == 'Client Update Successfull') {

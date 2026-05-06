@@ -670,7 +670,7 @@
 
                     </div>
                     <div class="submit-btn mt-20">
-                        <button class="ht-btn ht-btn-md" type="submit" id="btnsa">Submit</button>
+                        <button class="ht-btn ht-btn-md" type="submit" id="btnsa"><i class="fas fa-spinner fa-spin d-none"></i>&ensp;Submit</button>
                         <!-- @*<p class="form-messege"></p>*@ -->
                     </div>
                 </form>

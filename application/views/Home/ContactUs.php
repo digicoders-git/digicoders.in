@@ -297,12 +297,12 @@
                                         <textarea name="Message" placeholder=" Please describe what you need."
                                             maxlength="250"></textarea>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <!-- <div class="col-lg-12">
                                         <label>Security Verification <span class="text-danger">*</span></label>
                                         <div class="g-recaptcha"
-                                            data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh" data-callback="submitregform">
+                                            data-sitekey="<?= RECAPTCHA_SITE_KEY ?>" data-callback="submitregform">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class=" submit-btn mt-20">
                                         <button class="ht-btn ht-btn-md" id="submitBtn" type="submit"><i
                                                 class="fas fa-spinner fa-spin d-none" ></i>&ensp;Send

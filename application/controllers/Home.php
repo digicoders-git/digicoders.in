@@ -116,13 +116,14 @@ class Home extends CI_Controller
 						"name" => $this->input->post('Name'),
 						"mobile" => $this->input->post('Mobile'),
 						"req_date" => $this->input->post('Date1'),
-						"timing" => $this->input->post('Date1'),
+						"timing" => $this->input->post('Timing'),
 						"status" => 'true',
 						"date" => $this->data['date'],
 						"time" => $this->data['time']
 					);
 
 					if ($this->db->insert('call_request', $data_arr)) {
+						$this->send_form_email('New Call Back Request', $data_arr);
 						echo json_encode(array("status" => "success", "msg" => "Your Request Saved successfully.", "title" => "Saved", "reload" => "true", "redirect" => 'false'));
 					} else {
 						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
@@ -152,6 +153,7 @@ class Home extends CI_Controller
 						"time" => $this->data['time']
 					);
 					if ($this->db->insert('contact', $data_arr)) {
+						$this->send_form_email('New Contact Us Enquiry', $data_arr);
 						echo json_encode(array("status" => "success", "msg" => "Your Contact Request Saved Successfully!.", "title" => "Saved", "reload" => "true", "redirect" => 'false'));
 					} else {
 						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
@@ -201,6 +203,7 @@ class Home extends CI_Controller
 					);
 					if ($upload_status = "true") {
 						if ($this->db->insert('career', $data_arr)) {
+							$this->send_form_email('New Career Application', $data_arr);
 							echo json_encode(array("status" => "success", "msg" => "Career Successfully Saved", "title" => "Successfully Saved!", "reload" => "true", "redirect" => 'false'));
 						} else {
 							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
@@ -237,6 +240,7 @@ class Home extends CI_Controller
 					);
 
 					if ($this->db->insert('proposal_req', $data_arr)) {
+						$this->send_form_email('New Proposal Request', $data_arr);
 						echo json_encode(array("status" => "success", "msg" => "Proposal Successfully Saved", "title" => "Successfully Saved!", "reload" => "true", "redirect" => 'false'));
 					} else {
 						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
@@ -272,6 +276,7 @@ class Home extends CI_Controller
 						"time" => $this->data['time']
 					);
 					if ($this->db->insert('quick_enquiry', $data_arr)) {
+						$this->send_form_email('New Quick Enquiry', $data_arr);
 						echo json_encode(array("status" => "success", "msg" => "Enquiry Successfully Saved", "title" => "Successfully Saved!", "reload" => "true", "redirect" => 'false'));
 					} else {
 						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
@@ -637,5 +642,69 @@ class Home extends CI_Controller
 
 
 
+	private function send_form_email($subject, $data)
+	{
+		$config = array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'mail.digicoders.in',
+			'smtp_port' => 465,
+			'smtp_user' => 'noreply@digicoders.in',
+			'smtp_pass' => 'Me]dI7jY=w)48kc.',
+			'smtp_crypto' => 'ssl',
+			'mailtype' => 'html',
+			'charset' => 'utf-8',
+			'newline' => "\r\n",
+			'crlf' => "\r\n",
+			'wordwrap' => TRUE
+		);
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");
+		$this->email->from('noreply@digicoders.in', 'DigiCoders Website');
+		// $this->email->to('saurabhkumarssp@gmail.com');
+		$this->email->to('digicoderstech@gmail.com');
+		$this->email->subject($subject);
+
+		$message = "<html>
+		<body style='background-color: #f4f7f6; padding: 20px; font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;'>
+			<div style='max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee;'>
+				<!-- Header -->
+				<div style='background: linear-gradient(135deg, #006DAB 0%, #00964C 100%); padding: 25px; text-align: center;'>
+					<h2 style='color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 1px;'>" . $subject . "</h2>
+					<p style='color: rgba(255,255,255,0.8); margin: 5px 0 0; font-size: 13px;'>New Submission from DigiCoders Website</p>
+				</div>
+				
+				<!-- Content -->
+				<div style='padding: 30px;'>
+					<p style='color: #333; font-size: 16px; margin-bottom: 20px;'>Hello Admin, you have received a new enquiry. Here are the details:</p>
+					
+					<table style='width: 100%; border-collapse: collapse; margin-bottom: 20px;'>";
+		foreach ($data as $key => $value) {
+			$message .= "
+						<tr>
+							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #666; font-weight: 600; width: 35%; background: #f9f9f9;'>" . ucfirst(str_replace('_', ' ', $key)) . "</td>
+							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #333;'>" . $value . "</td>
+						</tr>";
+		}
+		$message .= "
+					</table>
+					
+					<div style='background: #fff8f1; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px;'>
+						<p style='margin: 0; font-size: 13px; color: #666;'>
+							<strong>Note:</strong> This is an automated notification. Please log in to the admin panel for more details.
+						</p>
+					</div>
+				</div>
+				
+				<!-- Footer -->
+				<div style='background: #fafafa; padding: 15px; text-align: center; border-top: 1px solid #eee;'>
+					<p style='color: #999; font-size: 11px; margin: 0;'>&copy; " . date('Y') . " DigiCoders Technologies. All rights reserved.</p>
+				</div>
+			</div>
+		</body>
+		</html>";
+
+		$this->email->message($message);
+		@$this->email->send();
+	}
 }
 

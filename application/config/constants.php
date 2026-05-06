@@ -85,5 +85,5 @@ defined('EXIT__AUTO_MIN') OR define('EXIT__AUTO_MIN', 9); // lowest automaticall
 defined('EXIT__AUTO_MAX') OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 /* reCAPTCHA Keys */
-defined('RECAPTCHA_SITE_KEY') OR define('RECAPTCHA_SITE_KEY', '6LcCCnIsAAAAAKRiVh4fXFdRQZ_nhSRCk5Cnb_JW');
-defined('RECAPTCHA_SECRET_KEY') OR define('RECAPTCHA_SECRET_KEY', '6LcCCnIsAAAAAKgDLqHNRUM6Q27KmUPuT2aibKtu');
+defined('RECAPTCHA_SITE_KEY') OR define('RECAPTCHA_SITE_KEY', '6Lfpx9ssAAAAABcSbbLNCpjFdxLYTZhqpOWnLDQO');
+defined('RECAPTCHA_SECRET_KEY') OR define('RECAPTCHA_SECRET_KEY', '6Lfpx9ssAAAAAIMNJjMkpwQ8jzux2nhbkYwsQGrq');

@@ -4,23 +4,26 @@ $(document).ready(function() {
     $('#callBackRreq-form').parsley();
     $("#callBackRreq-form").on('submit', function(e) {
         e.preventDefault();
+        var $form = $(this);
+        var $btn = $form.find('button[type="submit"]');
+        var $icon = $btn.find('.fa-spinner');
+        
         var data = new FormData(this);
         $.ajax({
-            type: $(this).attr('method'),
-            url: $(this).attr('action'),
+            type: $form.attr('method'),
+            url: $form.attr('action'),
             data: data,
             cache: false,
             contentType: false,
             processData: false,
-            // beforeSend: function() {
-            //     $("#submitBtn").attr("disabled", true);
-            //     $('#submitSpin').show();
-            // },
+            beforeSend: function() {
+                $btn.attr("disabled", true);
+                $icon.removeClass('d-none');
+            },
             success: function(response) {
-                // alert(response);
                 var jsonres = JSON.parse(response);
                 if (jsonres.status == "success") {
-                    $("#callBackRreq-form").modal('hide');
+                    $form.modal('hide');
                     iziToast.success({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -30,6 +33,8 @@ $(document).ready(function() {
                         window.location.reload();
                     }, 1000)
                 } else {
+                    $btn.attr("disabled", false);
+                    $icon.addClass('d-none');
                     iziToast.error({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -38,9 +43,8 @@ $(document).ready(function() {
                 }
             },
             error: function(response) {
-                // alert(response)
-                $("#submitBtn").removeAttr("disabled");
-                $('#submitSpin').hide();
+                $btn.attr("disabled", false);
+                $icon.addClass('d-none');
                 iziToast.error({
                     title: 'Error',
                     message: 'Something Went Wrong',
@@ -56,23 +60,25 @@ $(document).ready(function() {
     $('#contact').parsley();
     $("#contact").on('submit', function(e) {
         e.preventDefault();
+        var $form = $(this);
+        var $btn = $form.find('button[type="submit"]');
+        var $icon = $btn.find('.fa-spinner');
+
         var data = new FormData(this);
         $.ajax({
-            type: $(this).attr('method'),
-            url: $(this).attr('action'),
+            type: $form.attr('method'),
+            url: $form.attr('action'),
             data: data,
             cache: false,
             contentType: false,
             processData: false,
             beforeSend: function() {
-                $("#submitBtn").attr("disabled", true);
-                $('#submitSpin').show();
+                $btn.attr("disabled", true);
+                $icon.removeClass('d-none');
             },
             success: function(response) {
-                // alert(response);
                 var jsonres = JSON.parse(response);
                 if (jsonres.status == "success") {
-                    // $("#callBackRreq-form").modal('hide');
                     iziToast.success({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -82,6 +88,8 @@ $(document).ready(function() {
                         window.location.reload();
                     }, 1000)
                 } else {
+                    $btn.attr("disabled", false);
+                    $icon.addClass('d-none');
                     iziToast.error({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -90,9 +98,8 @@ $(document).ready(function() {
                 }
             },
             error: function(response) {
-                // alert(response)
-                $("#submitBtn").removeAttr("disabled");
-                $('#submitSpin').hide();
+                $btn.attr("disabled", false);
+                $icon.addClass('d-none');
                 iziToast.error({
                     title: 'Error',
                     message: 'Something Went Wrong',
@@ -106,23 +113,25 @@ $(document).ready(function() {
     $('#career').parsley();
     $("#career").on('submit', function(e) {
         e.preventDefault();
+        var $form = $(this);
+        var $btn = $form.find('button[type="submit"]');
+        var $icon = $btn.find('.fa-spinner');
+
         var data = new FormData(this);
         $.ajax({
-            type: $(this).attr('method'),
-            url: $(this).attr('action'),
+            type: $form.attr('method'),
+            url: $form.attr('action'),
             data: data,
             cache: false,
             contentType: false,
             processData: false,
             beforeSend: function() {
-                $("#submitBtn").attr("disabled", true);
-                $('#submitSpin').show();
+                $btn.attr("disabled", true);
+                $icon.removeClass('d-none');
             },
             success: function(response) {
-                // alert(response);
                 var jsonres = JSON.parse(response);
                 if (jsonres.status == "success") {
-                    // $("#callBackRreq-form").modal('hide');
                     iziToast.success({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -132,6 +141,8 @@ $(document).ready(function() {
                         window.location.reload();
                     }, 1000)
                 } else {
+                    $btn.attr("disabled", false);
+                    $icon.addClass('d-none');
                     iziToast.error({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -140,9 +151,8 @@ $(document).ready(function() {
                 }
             },
             error: function(response) {
-                // alert(response)
-                $("#submitBtn").removeAttr("disabled");
-                $('#submitSpin').hide();
+                $btn.attr("disabled", false);
+                $icon.addClass('d-none');
                 iziToast.error({
                     title: 'Error',
                     message: 'Something Went Wrong',
@@ -156,23 +166,25 @@ $(document).ready(function() {
     $('#quick-enquiry').parsley();
     $("#quick-enquiry").on('submit', function(e) {
         e.preventDefault();
+        var $form = $(this);
+        var $btn = $form.find('button[type="submit"]');
+        var $icon = $btn.find('.fa-spinner');
+
         var data = new FormData(this);
         $.ajax({
-            type: $(this).attr('method'),
-            url: $(this).attr('action'),
+            type: $form.attr('method'),
+            url: $form.attr('action'),
             data: data,
             cache: false,
             contentType: false,
             processData: false,
             beforeSend: function() {
-                $("#submitBtn").attr("disabled", true);
-                $('#submitSpin').show();
+                $btn.attr("disabled", true);
+                $icon.removeClass('d-none');
             },
             success: function(response) {
-                // alert(response);
                 var jsonres = JSON.parse(response);
                 if (jsonres.status == "success") {
-                    // $("#callBackRreq-form").modal('hide');
                     iziToast.success({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -182,6 +194,8 @@ $(document).ready(function() {
                         window.location.reload();
                     }, 1000)
                 } else {
+                    $btn.attr("disabled", false);
+                    $icon.addClass('d-none');
                     iziToast.error({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -190,9 +204,8 @@ $(document).ready(function() {
                 }
             },
             error: function(response) {
-                // alert(response)
-                $("#submitBtn").removeAttr("disabled");
-                $('#submitSpin').hide();
+                $btn.attr("disabled", false);
+                $icon.addClass('d-none');
                 iziToast.error({
                     title: 'Error',
                     message: 'Something Went Wrong',
@@ -207,23 +220,25 @@ $(document).ready(function() {
     $('#proposal-form').parsley();
     $("#proposal-form").on('submit', function(e) {
         e.preventDefault();
+        var $form = $(this);
+        var $btn = $form.find('button[type="submit"]');
+        var $icon = $btn.find('.fa-spinner');
+
         var data = new FormData(this);
         $.ajax({
-            type: $(this).attr('method'),
-            url: $(this).attr('action'),
+            type: $form.attr('method'),
+            url: $form.attr('action'),
             data: data,
             cache: false,
             contentType: false,
             processData: false,
-            // beforeSend: function() {
-            //     $("#submitBtn").attr("disabled", true);
-            //     $('#submitSpin').show();
-            // },
+            beforeSend: function() {
+                $btn.attr("disabled", true);
+                $icon.removeClass('d-none');
+            },
             success: function(response) {
-                // alert(response);
                 var jsonres = JSON.parse(response);
                 if (jsonres.status == "success") {
-                    // $("#callBackRreq-form").modal('hide');
                     iziToast.success({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -233,6 +248,8 @@ $(document).ready(function() {
                         window.location.reload();
                     }, 1000)
                 } else {
+                    $btn.attr("disabled", false);
+                    $icon.addClass('d-none');
                     iziToast.error({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -241,9 +258,8 @@ $(document).ready(function() {
                 }
             },
             error: function(response) {
-                // alert(response)
-                $("#submitBtn").removeAttr("disabled");
-                $('#submitSpin').hide();
+                $btn.attr("disabled", false);
+                $icon.addClass('d-none');
                 iziToast.error({
                     title: 'Error',
                     message: 'Something Went Wrong',
@@ -258,4 +274,4 @@ $(document).ready(function() {
 
 
 
-})
+})
