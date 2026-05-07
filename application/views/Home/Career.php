@@ -84,7 +84,7 @@ $csrf = array(
                                     <div class="contact-input">
                                         <div class="contact-inner">
                                             <span>Your Phone No.</span>
-                                            <input required="required" type="number" name="Mobile" autocomplete="off" placeholder="Phone Number *">
+                                                                                        <input required="required" type="number" name="Mobile" autocomplete="off" placeholder="Phone Number *" oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10);">
                                         </div>
                                         <div class="contact-inner">
                                             <!-- @TempData["Notice"] -->

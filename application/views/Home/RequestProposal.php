@@ -47,6 +47,13 @@
                     <div class="col-lg-6 col-lg-6">
                         <div class="contact-form-wrap">
                             <form   action="<?= base_url()?>Home/SubmitForm/proposalReq" method="post" id="proposal-form">
+                                 <?php
+                                    $csrf = array(
+                                            'name' => $this->security->get_csrf_token_name(),
+                                            'hash' => $this->security->get_csrf_hash()
+                                    );
+                                    ?>
+                                <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
                                 <div class="contact-form">
                                     <div class="contact-input">
                                         <div class="contact-inner">
@@ -58,7 +65,7 @@
                                     </div>
                                     <div class="contact-input">
                                         <div class="contact-inner">
-                                            <input name="Mobile" type="number" placeholder="Phone Number *" maxlength="10" min="10" required>
+                                                                                        <input name="Mobile" type="number" placeholder="Phone Number *" required oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10);">
                                         </div>
                                         <div class="contact-inner">
                                             <input name="Company" type="text" placeholder="Company Name *" required >

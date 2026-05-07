@@ -179,7 +179,7 @@ class Home extends CI_Controller
 				$this->form_validation->set_rules('ApplyFor', 'ApplyFor', 'required');
 				$this->form_validation->set_rules('Name', 'Name', 'required');
 				$this->form_validation->set_rules('Email', 'Email', 'required');
-				$this->form_validation->set_rules('Mobile', 'Mobile', 'required');
+				$this->form_validation->set_rules('Mobile', 'Mobile', 'required|exact_length[10]');
 				$this->form_validation->set_rules('Message', 'Message', 'required');
 				if (empty($_FILES['UploadFile']['name'])) {
 					$this->form_validation->set_rules('UploadFile', 'Resume', 'required');
@@ -189,8 +189,7 @@ class Home extends CI_Controller
 				} else {
 					$upload_status = 'true';
 					$ext = pathinfo($_FILES["UploadFile"]["name"], PATHINFO_EXTENSION);
-					$filename = md5(time()) . "_resume" . "." . $ext;
-
+					$filename = $this->input->post('Name')."_".$this->input->post('Mobile')."_resume" . "." . $ext;
 					$config['upload_path'] = './public/uploads/career/';
 					$config['allowed_types'] = 'jpg|png|jpeg|pdf';
 					$config['max_size'] = 8024; // In KB
@@ -232,7 +231,7 @@ class Home extends CI_Controller
 			if ($this->uri->segment(3) == 'proposalReq' && $this->input->is_ajax_request()) {
 				$this->form_validation->set_rules('Name', 'Name', 'required');
 				$this->form_validation->set_rules('Email', 'Email', 'required');
-				$this->form_validation->set_rules('Mobile', 'Mobile', 'required');
+				$this->form_validation->set_rules('Mobile', 'Mobile', 'required|exact_length[10]');
 				$this->form_validation->set_rules('Company', 'Company', 'required');
 				$this->form_validation->set_rules('Job', 'Job', 'required');
 				$this->form_validation->set_rules('Message', 'Message', 'required');
@@ -265,25 +264,14 @@ class Home extends CI_Controller
 			##quick Enquiey From submit
 			if ($this->uri->segment(3) == 'quickEnq' && $this->input->is_ajax_request()) {
 				$this->form_validation->set_rules('Name', 'Name', 'required');
-				$this->form_validation->set_rules('g-recaptcha-response', 'Captcha', 'required');
+				$this->form_validation->set_rules('Mobile', 'Mobile', 'required|exact_length[10]');
 
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Please check the Captcha!", "title" => "Validation Error", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
-					// Verify Google Captcha
-					$recaptchaResponse = $this->input->post('g-recaptcha-response');
-					$secretKey = RECAPTCHA_SECRET_KEY;
-
-					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
-					$responseData = json_decode($verifyResponse);
-
-					if (!$responseData->success) {
-						echo json_encode(array("status" => "error", "msg" => "Robot verification failed!", "title" => "Error", "reload" => "false", "redirect" => 'false'));
-						return;
-					}
 					$data_arr = array(
 						"name" => $this->input->post('Name'),
-						"mobile" => $this->input->post('Mobile'), // Assuming Mobile is still needed, but not in validation rules
+						"mobile" => $this->input->post('Mobile'),
 						"status" => 'true',
 						"date" => $this->data['date'],
 						"time" => $this->data['time']
@@ -682,7 +670,7 @@ class Home extends CI_Controller
 			<div style='max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee;'>
 				<!-- Header -->
 				<div style='background: linear-gradient(135deg, #006DAB 0%, #00964C 100%); padding: 25px; text-align: center;'>
-					<h2 style='color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 1px;'>" . $subject . "</h2>
+					<h2 style='color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 1px;'>Digicoders " . $subject . "</h2>
 					<p style='color: rgba(255,255,255,0.8); margin: 5px 0 0; font-size: 13px;'>New Submission from DigiCoders Website</p>
 				</div>
 				
@@ -691,11 +679,38 @@ class Home extends CI_Controller
 					<p style='color: #333; font-size: 16px; margin-bottom: 20px;'>Hello Admin, you have received a new enquiry. Here are the details:</p>
 					
 					<table style='width: 100%; border-collapse: collapse; margin-bottom: 20px;'>";
+		$date = "";
+		$time = "";
 		foreach ($data as $key => $value) {
+			if ($key == 'status') {
+				continue;
+			}
+			if ($key == 'date') {
+				$date = $value;
+				continue;
+			}
+			if ($key == 'time') {
+				$time = $value;
+				continue;
+			}
+
+			$display_value = $value;
+			if ($key == 'resume') {
+				$display_value = "<a href='" . base_url('public/uploads/career/' . $value) . "' target='_blank' style='color: #006DAB; text-decoration: none; font-weight: 600;'>" . $value . "</a>";
+			}
+
 			$message .= "
 						<tr>
 							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #666; font-weight: 600; width: 35%; background: #f9f9f9;'>" . ucfirst(str_replace('_', ' ', $key)) . "</td>
-							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #333;'>" . $value . "</td>
+							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #333;'>" . $display_value . "</td>
+						</tr>";
+		}
+
+		if (!empty($date) || !empty($time)) {
+			$message .= "
+						<tr>
+							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #666; font-weight: 600; width: 35%; background: #f9f9f9;'>Date & Time</td>
+							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #333;'>" . trim($date . " " . $time) . "</td>
 						</tr>";
 		}
 		$message .= "

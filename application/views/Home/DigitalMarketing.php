@@ -94,7 +94,7 @@ $csrf = array(
                                                     </div>
                                                     <div class="row contact-input">
                                                         <div class="contact-inner wid">
-                                                            <input name="Mobile" type="number" maxlength="10" min="10" placeholder="Phone Number *" required="required">
+                                                                                                                        <input name="Mobile" type="number" placeholder="Phone Number *" required="required" oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10);">
                                                         </div>
                                                     </div>
                                                     <div class="submit-btn mt-15 row justify-content-center">
