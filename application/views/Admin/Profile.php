@@ -28,7 +28,8 @@
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="<?= base_url('Admin/Dashboard') ?>"><i class="bx bx-home-alt"></i></a>
+                            <li class="breadcrumb-item"><a href="<?= base_url('Admin/Dashboard') ?>"><i
+                                        class="bx bx-home-alt"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                         </ol>
@@ -55,13 +56,13 @@
                                 </div>
                                 <div class="card-body">
                                     <form class="row g-3">
-									  <?php
-$csrf = array(
-        'name' => $this->security->get_csrf_token_name(),
-        'hash' => $this->security->get_csrf_hash()
-);
-?>
-<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+                                        <?php
+                                        $csrf = array(
+                                            'name' => $this->security->get_csrf_token_name(),
+                                            'hash' => $this->security->get_csrf_hash()
+                                        );
+                                        ?>
+                                        <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>"   />
                                         <div class="col-6">
                                             <?php
                                             foreach ($userdata as $value) {
@@ -71,37 +72,46 @@ $csrf = array(
                                             ?>
 
                                             <label class="form-label">Admin Type</label>
-                                            <input type="text" class="form-control" value="<?= $value->admin_type; ?>" readonly>
+                                            <input type="text" class="form-control" value="<?= $value->admin_type; ?>"
+                                                readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Email address</label>
-                                            <input type="text" class="form-control" value="<?= $value->email; ?>" readonly>
+                                            <input type="text" class="form-control" value="<?= $value->email; ?>"
+                                                readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Password</label>
-                                            <input type="text" class="form-control" value="<?= $value->password; ?>" readonly>
+                                            <input type="text" class="form-control" value="<?= $value->password; ?>"
+                                                readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Status</label>
-                                            <input type="text" class="form-control text-capitalize" value="<?= $value->status; ?>" readonly>
+                                            <input type="text" class="form-control text-capitalize"
+                                                value="<?= $value->status; ?>" readonly>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <div class="my-4">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
                                         Last Login Date Time
-                                        <span class="badge bg-primary rounded-pill"><?= $value->login_date; ?> , <?= $value->login_time; ?></span>
+                                        <span class="badge bg-primary rounded-pill"><?= $value->login_date; ?> ,
+                                            <?= $value->login_time; ?></span>
                                     </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
                                         Last Logout Date Time
-                                        <span class="badge bg-primary rounded-pill"><?= $value->logout_date; ?> , <?= $value->logout_time; ?></span>
+                                        <span class="badge bg-primary rounded-pill"><?= $value->logout_date; ?> ,
+                                            <?= $value->logout_time; ?></span>
                                     </li>
                                 </ul>
                             </div>
                             <div class="text-start">
-                                <a href="<?= base_url('Admin/ManagePassword') ?>" type="button" class="btn btn-danger px-4"><i class="fa fa-key"></i>&ensp;Changes Password</a>
+                                <a href="<?= base_url('Admin/ManagePassword') ?>" type="button"
+                                    class="btn btn-danger px-4"><i class="fa fa-key"></i>&ensp;Changes Password</a>
                             </div>
                         </div>
                     </div>
@@ -130,26 +140,28 @@ $csrf = array(
                                     </thead>
                                     <tbody>
                                         <?php
-                                         $sr = 1;
-                                         foreach($logindata as $each){
-                                        ?>
-                                        <tr>
-                                            <td><?= $sr++; ?></td>
-                                            <td><?= $each->LoginID; ?></td>
-                                            <td><?= $each->IP; ?></td>
-                                            <td><?= $each->MAC; ?></td>
-                                            <td><?= $each->UserName; ?></td>
-                                            <td><?= $each->BrowserName; ?></td>
-                                            <td><?= $each->OSName; ?></td>
-                                            <td><?= $each->Date; ?></td>
-                                            <td><?= $each->Time; ?></td>
-                                            <td>
-                                                <?php if(!empty($each->Latitude) && $each->Latitude != 'N/A'){ ?>
-                                                    <a href="https://www.google.com/maps?q=<?= $each->Latitude ?>,<?= $each->Longitude ?>" target="_blank" class="btn btn-sm btn-outline-primary mb-1"><i class="bi bi-geo-alt"></i> View on Map</a><br>
-                                                <?php } ?>
-                                                <small><?= $each->Address; ?></small>
-                                            </td>
-                                        </tr> 
+                                        $sr = 1;
+                                        foreach ($logindata as $each) {
+                                            ?>
+                                            <tr>
+                                                <td><?= $sr++; ?></td>
+                                                <td><?= $each->LoginID; ?></td>
+                                                <td><?= $each->IP; ?></td>
+                                                <td><?= $each->MAC; ?></td>
+                                                <td><?= $each->UserName; ?></td>
+                                                <td><?= $each->BrowserName; ?></td>
+                                                <td><?= $each->OSName; ?></td>
+                                                <td><?= $each->Date; ?></td>
+                                                <td><?= $each->Time; ?></td>
+                                                <td>
+                                                    <?php if (!empty($each->Latitude) && $each->Latitude != 'N/A') { ?>
+                                                        <a href="https://www.google.com/maps?q=<?= $each->Latitude ?>,<?= $each->Longitude ?>"
+                                                            target="_blank" class="btn btn-sm btn-outline-primary mb-1"><i
+                                                                class="bi bi-geo-alt"></i> View on Map</a><br>
+                                                    <?php } ?>
+                                                    <small><?= $each->Address; ?></small>
+                                                </td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                     <tfoot>
