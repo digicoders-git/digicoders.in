@@ -399,7 +399,7 @@
                             <a href="<?= base_url() ?>">
                                 <img src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                                     data-src="<?= base_url('public') ?>/assets/images/Digicoders-new-logo.png"
-                                    class="img-fluid lazy" title="" alt="Digicoders Technology" />
+                                    class="img-fluid lazy" title="" alt="Digicoders Technologies" />
                             </a>
                         </div>
                     </div>

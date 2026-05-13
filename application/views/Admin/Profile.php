@@ -125,6 +125,7 @@ $csrf = array(
                                             <th>OSName</th>
                                             <th>Date</th>
                                             <th>Time</th>
+                                            <th>Location</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -142,6 +143,12 @@ $csrf = array(
                                             <td><?= $each->OSName; ?></td>
                                             <td><?= $each->Date; ?></td>
                                             <td><?= $each->Time; ?></td>
+                                            <td>
+                                                <?php if(!empty($each->Latitude) && $each->Latitude != 'N/A'){ ?>
+                                                    <a href="https://www.google.com/maps?q=<?= $each->Latitude ?>,<?= $each->Longitude ?>" target="_blank" class="btn btn-sm btn-outline-primary mb-1"><i class="bi bi-geo-alt"></i> View on Map</a><br>
+                                                <?php } ?>
+                                                <small><?= $each->Address; ?></small>
+                                            </td>
                                         </tr> 
                                         <?php } ?>
                                     </tbody>
@@ -156,6 +163,7 @@ $csrf = array(
                                             <th>OSName</th>
                                             <th>Date</th>
                                             <th>Time</th>
+                                            <th>Location</th>
                                         </tr>
                                     </tfoot>
                                 </table>

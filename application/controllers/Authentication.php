@@ -31,9 +31,16 @@ class Authentication extends CI_Controller
 			$query = $this->db->get_where('admin_login', array("email" => $email));
 			if ($query->num_rows() > 0) {
 				$otp = rand(100000, 999999);
+				$latitude = $this->input->post('latitude');
+				$longitude = $this->input->post('longitude');
+				$address = $this->input->post('address');
+
 				$this->session->set_userdata('login_otp', $otp);
 				$this->session->set_userdata('otp_email', $email);
 				$this->session->set_userdata('otp_expiry', time() + 120); // 2 minutes
+				$this->session->set_userdata('login_latitude', $latitude);
+				$this->session->set_userdata('login_longitude', $longitude);
+				$this->session->set_userdata('login_address', $address);
 
 				// Email config
 				$config = array(
@@ -72,6 +79,16 @@ class Authentication extends CI_Controller
 				$message .= "<span style='display: block; font-size: 12px; color: #888; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px;'>Your Security Code</span>";
 				$message .= "<span style='font-size: 42px; font-weight: bold; color: #006DAB; letter-spacing: 8px; font-family: monospace;'>$otp</span>";
 				$message .= "</div>";
+
+				if (!empty($address)) {
+					$message .= "<!-- Location Info -->";
+					$message .= "<div style='background: #eef9ff; border-radius: 10px; padding: 15px; margin-bottom: 30px; text-align: left; border-left: 5px solid #006DAB;'>";
+					$message .= "<h4 style='margin: 0 0 10px 0; color: #006DAB; font-size: 14px;'>📍 Login Attempt Location:</h4>";
+					$message .= "<p style='margin: 0; color: #444; font-size: 13px; line-height: 1.4;'>$address</p>";
+					$message .= "<p style='margin: 5px 0 0 0; color: #888; font-size: 11px;'>Coords: $latitude, $longitude</p>";
+					$message .= "</div>";
+				}
+
 				$message .= "<div style='background: #fff5f5; border-radius: 8px; padding: 12px; border: 1px solid #ffe3e3;'>";
 				$message .= "<p style='color: #e53e3e; margin: 0; font-size: 13px;'><strong>⚠️ Expiration:</strong> This code is valid for <b>2 minutes</b>.</p>";
 				$message .= "</div>";
@@ -85,6 +102,23 @@ class Authentication extends CI_Controller
 				$this->email->message($message);
 
 				if ($this->email->send()) {
+					// Insert Login Attempt History immediately
+					$this->load->library('LoginDetails');
+					$logindetails_data = array(
+						"LoginID" => $query->row()->id,
+						"IP" => $this->logindetails->get_ip(),
+						"MAC" => $this->logindetails->get_mac(),
+						"UserName" => $this->logindetails->get_username(),
+						"BrowserName" => $this->logindetails->get_useragent(),
+						"OSName" => $this->logindetails->get_os(),
+						"Date" => $this->data['date'],
+						"Time" => $this->data['time'],
+						"Latitude" => $latitude ?? 'N/A',
+						"Longitude" => $longitude ?? 'N/A',
+						"Address" => $address ?? 'N/A'
+					);
+					$this->db->insert("tbl_adminlogindetails", $logindetails_data);
+
 					echo json_encode(array("status" => "success", "msg" => "OTP sent to your email."));
 				} else {
 					echo json_encode(array("status" => "error", "msg" => "Failed to send OTP."));
@@ -151,20 +185,6 @@ class Authentication extends CI_Controller
 					"status" => 'true'
 				);
 				$this->db->where('email', $email)->update('admin_login', $data_arr);
-
-				// Login History
-				$this->load->library('LoginDetails');
-				$logindetails_data = array(
-					"LoginID" => $result->id,
-					"IP" => $this->logindetails->get_ip(),
-					"MAC" => $this->logindetails->get_mac(),
-					"UserName" => $this->logindetails->get_username(),
-					"BrowserName" => $this->logindetails->get_useragent(),
-					"OSName" => $this->logindetails->get_os(),
-					"Date" => $this->data['date'],
-					"Time" => $this->data['time']
-				);
-				$this->db->insert("tbl_adminlogindetails", $logindetails_data);
 
 				$this->session->set_userdata("Password_Verified", TRUE);
 				echo json_encode(array("status" => "success", "msg" => "Login Successful."));
