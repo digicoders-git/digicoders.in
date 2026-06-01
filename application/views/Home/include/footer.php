@@ -220,6 +220,8 @@
                                 Designing</></a></li>
                         <li><a class="hover-style-link" href="<?= base_url() ?>Home/DomainAndHosting">Domain &amp;
                                 Hosting</></a></li>
+                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/PrivacyPolicies">Privacy Policy</a></li>
+                                
 
                     </ul>
                 </div>
