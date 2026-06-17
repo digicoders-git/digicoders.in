@@ -43,20 +43,10 @@ class Authentication extends CI_Controller
 				$this->session->set_userdata('login_address', $address);
 
 				// Email config
-				$config = array(
-					'protocol' => 'smtp',
-					'smtp_host' => 'mail.digicoders.in',
-					'smtp_port' => 465,
-					'smtp_user' => 'noreply@digicoders.in',
-					'smtp_pass' => 'Me]dI7jY=w)48kc.',
-					'smtp_crypto' => 'ssl',
-					'mailtype' => 'html',
-					'charset' => 'utf-8',
-					'newline' => "\r\n",
-					'crlf' => "\r\n",
-					'wordwrap' => TRUE
-				);
-				$this->load->library('email', $config);
+				$this->load->library('email');
+				$this->config->load('smtp_config');
+				$config = $this->config->item('smtp_noreply');
+				$this->email->initialize($config);
 				$this->email->from('noreply@digicoders.in', 'digicoders.in Admin');
 				// $this->email->to('saurabhkumarssp@gmail.com');
 				$this->email->to('digicoderstech@gmail.com');
