@@ -489,7 +489,7 @@ $config['csrf_exclude_uris'] = array("Admin/Delete", "Admin/ChangeStatus", "Admi
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
-$config['compress_output'] = FALSE;
+$config['compress_output'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
