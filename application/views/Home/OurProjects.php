@@ -198,7 +198,7 @@
                                 ?>
                                     <div class="single-item col-lg-4 col-md-6 mt-30 wow move-up">
                                         <!-- ht-box-icon Start -->
-                                         <a href="<?php echo $projects->url; ?>" target="_blank" style="width:100%;"> 
+                                         <div style="width:100%;"> 
                                             <div class="image-box-wrap" style="width:100%;">
                                                 <div class="box-image" style="width:100%;">
                                                     <img class="lazy" src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public/uploads/projects/').$projects->image; ?>" title="projects" alt="projects" style="height: 200px; width: 100% " />
@@ -207,12 +207,14 @@
                                                   <h5 class="heading" title="<?= $projects->title; ?>" data-title="<?= $projects->title; ?>"><?= $projects->title; ?></h5>
 
                                                     <div class="text"><?php  $date = strtotime($projects->add_date); echo $date = date('M Y', $date);  ?>&nbsp;<i class="fa fa-link"></i></div>
-                                                    <div class="text">
-                                                        <h6><?= $projects->type; ?></h6>
+                                                    <div class="d-flex justify-content-center align-items-center mt-2" style="gap: 15px;">
+                                                        <span style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: default; display: inline-block; text-align: center; margin: 0;"><?= $projects->type; ?></span>
+                                                        <a href="<?= $projects->url; ?>" target="_blank" style="background: linear-gradient(135deg, #28a745, #218838); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-block; text-align: center; margin: 0; box-shadow: none;"><i class="fa fa-external-link"></i> Visit</a>
+                                                        <button onclick="openProjectEnquiryModal('<?= $projects->id ?>', '<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>')" style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; border: none; box-shadow: none; transition: all 0.3s; display: inline-block; text-align: center; margin: 0;">Enquiry</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </div>
                                         <!-- ht-box-icon End -->
                                     </div>
                                 <?php
@@ -261,6 +263,110 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+</script>
+
+    <!-- Global Project Enquiry Modal -->
+    <div class="modal fade" id="projectEnquiryModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px;">
+            <div class="modal-content" style="border-radius:20px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden;">
+                <div class="modal-header" style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:30px 25px 20px; border:none; position: relative;">
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="position:absolute; top:15px; right:20px; opacity: 0.8; text-shadow:none;">
+                        <span aria-hidden="true" style="font-size: 28px;">&times;</span>
+                    </button>
+                    <div class="w-100 text-center mt-2">
+                        <div style="width:60px; height:60px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
+                            <i class="fa fa-paper-plane text-white" style="font-size:24px;"></i>
+                        </div>
+                        <h4 class="modal-title text-white" style="font-weight:700; font-size:22px; margin-bottom:5px;">Project Enquiry</h4>
+                        <p class="text-white" id="modal_project_name_display" style="opacity: 0.9; font-size: 14px; font-weight:600; margin:0;"></p>
+                    </div>
+                </div>
+                <div class="modal-body" style="padding: 30px 25px; background: #f8f9fa;">
+                    <div id="projectEnquiryAlert" class="mb-3 text-center" style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;"></div>
+                    <form id="projectEnquiryForm">
+                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
+                        <input type="hidden" name="project_id" id="modal_project_id">
+                        <input type="hidden" name="project_name" id="modal_project_name">
+
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input type="text" name="name" class="form-control" placeholder="Your Name" required style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-envelope"></i></span>
+                                </div>
+                                <input type="email" name="email" class="form-control" placeholder="Email Address" required style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-phone-alt"></i></span>
+                                </div>
+                                <input type="tel" name="mobile" class="form-control" placeholder="Mobile Number" required pattern="[0-9]{10}" maxlength="10" style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <textarea name="message" class="form-control" placeholder="Tell us about your requirements..." rows="3" required style="border-radius:10px; background:#fff; box-shadow:none; font-size:14px; color:#444; resize:none; padding:15px;"></textarea>
+                        </div>
+
+                        <button type="submit" id="btnProjectEnquirySubmit" class="btn btn-primary w-100" style="height:50px; border-radius:25px; font-weight:700; font-size:16px; background:linear-gradient(135deg, #086AD8, #00C6FF); border:none; box-shadow:0 8px 20px rgba(8,106,216,0.3); transition:all 0.3s;">Submit Enquiry <i class="fa fa-arrow-right ml-2"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openProjectEnquiryModal(id, title) {
+            $('#modal_project_id').val(id);
+            $('#modal_project_name').val(title);
+            $('#modal_project_name_display').text(title);
+            $('#projectEnquiryAlert').hide();
+            $('#projectEnquiryForm')[0].reset();
+            $('#projectEnquiryModal').modal('show');
+        }
+
+        $('#projectEnquiryForm').on('submit', function(e) {
+            e.preventDefault();
+            var btn = $('#btnProjectEnquirySubmit');
+            var originalText = btn.html();
+            btn.html('<i class="fa fa-spinner fa-spin"></i> Submitting...').prop('disabled', true);
+            
+            $.ajax({
+                url: '<?= base_url('Home/submitProjectEnquiry') ?>',
+                type: 'POST',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function(res) {
+                    btn.html(originalText).prop('disabled', false);
+                    var alertBox = $('#projectEnquiryAlert');
+                    if(res.status == 'success') {
+                        alertBox.removeClass('alert-danger').addClass('alert-success').text(res.msg).show();
+                        $('#projectEnquiryForm')[0].reset();
+                        setTimeout(function(){
+                            $('#projectEnquiryModal').modal('hide');
+                        }, 2000);
+                    } else {
+                        alertBox.removeClass('alert-success').addClass('alert-danger').text(res.msg).show();
+                    }
+                },
+                error: function() {
+                    btn.html(originalText).prop('disabled', false);
+                    $('#projectEnquiryAlert').removeClass('alert-success').addClass('alert-danger').text('Something went wrong. Please try again.').show();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

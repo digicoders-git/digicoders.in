@@ -157,6 +157,39 @@
       }
     })
   }
+
+  function delData(id, table, url) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: url,
+          type: "POST",
+          data: {
+            id: id,
+            table: table,
+            "<?= $this->security->get_csrf_token_name(); ?>": "<?= $this->security->get_csrf_hash(); ?>"
+          },
+          dataType: "json",
+          success: function (res) {
+            if (res.status == 'success') {
+              iziToast.success({title: 'Success', message: res.msg, position: 'topRight'});
+              setTimeout(function(){ location.reload(); }, 1000);
+            } else {
+              iziToast.error({title: 'Error', message: res.msg, position: 'topRight'});
+            }
+          }
+        });
+      }
+    })
+  }
 </script>
 <?php
 if (!empty($this->session->flashdata('status'))) {
@@ -260,6 +293,17 @@ if (!empty($this->session->flashdata('status'))) {
     </script>
     <?php
   }
+}
+if ($this->session->flashdata('status') == 'success') {
+  ?>
+  <script>
+    iziToast.success({
+      title: 'Success',
+      message: '<?= $this->session->flashdata('msg') ?>',
+      position: 'topRight'
+    });
+  </script>
+  <?php
 }
 if ($this->session->flashdata('status') == 'error') {
   ?>

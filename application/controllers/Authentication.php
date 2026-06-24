@@ -42,7 +42,8 @@ class Authentication extends CI_Controller
 				$this->session->set_userdata('login_longitude', $longitude);
 				$this->session->set_userdata('login_address', $address);
 
-				// Email config
+				// Save OTP to database
+				$this->db->update('admin_login', array('otp' => $otp, 'otp_expiry' => time() + 120), array('email' => $email));
 				$this->load->library('email');
 				$this->config->load('smtp_config');
 				$config = $this->config->item('smtp_noreply');
@@ -51,7 +52,6 @@ class Authentication extends CI_Controller
 				// $this->email->to('saurabhkumarssp@gmail.com');
 				$this->email->to('digicoderstech@gmail.com');
 				$this->email->subject('Login OTP - Digicoders');
-
 				$message = "<html><body style='background-color: #f4f7f6; padding: 20px; font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;'>";
 				$message .= "<div style='max-width: 500px; margin: 0 auto; background: #ffffff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #e0e0e0;'>";
 				$message .= "<!-- Header -->";

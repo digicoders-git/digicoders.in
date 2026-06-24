@@ -630,6 +630,241 @@
                 ENTREPRENEUR'S AND INNOVATIVE TEAM</b>
         </marquee>
     </div>
+        <!--===========  Software Products Section Start =============-->
+    <?php if(!empty($softwares)): ?>
+    <div class="software-products-area section-space--ptb_100 bg-light" id="software-products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-wrap text-center section-space--mb_40">
+                        <h6 class="section-sub-title mb-20">DigiCoders Products</h6>
+                        <h3 class="heading">Our <span class="text-color-primary">Software Solutions</span></h3>
+                        <p class="mt-15">Transform your business with powerful software solutions developed by DigiCoders.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-container software-swiper" style="padding: 10px 5px 40px 5px; overflow: hidden; width: 100%;">
+                <div class="swiper-wrapper">
+                <?php foreach($softwares as $sw): ?>
+                <div class="swiper-slide">
+                    <div class="project-card d-flex flex-column h-100 software-card" style="background:#fff; border-radius:12px; border: 1px solid #f0f0f0; box-shadow:0 4px 15px rgba(0,0,0,0.04); overflow:hidden; transition: all 0.3s ease;">
+                        <?php 
+                        $add_imgs = [];
+                        if(!empty($sw->additional_images)) {
+                            $add_imgs = json_decode($sw->additional_images, true);
+                        }
+                        if(empty($add_imgs) && !empty($sw->image)) {
+                            $add_imgs[] = $sw->image; // Fallback for old data
+                        }
+                        $main_display_img = !empty($add_imgs) ? $add_imgs[0] : 'placeholder.jpg';
+                        ?>
+                        
+                        <div class="project-image" style="height:190px; overflow:hidden; position:relative; border-bottom:1px solid #f0f0f0;">
+                            <img id="main-img-<?= $sw->id ?>" src="<?= base_url('public/uploads/software/'.$main_display_img) ?>" alt="<?= $sw->title ?>" class="hover-zoom" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s ease;">
+                            
+                            <div style="position:absolute; bottom:12px; right:12px; background:rgba(255,255,255,0.95); backdrop-filter:blur(5px); padding:5px 12px; border-radius:20px; font-weight:800; color:#086AD8; font-size:14px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                                ₹<?= number_format($sw->selling_price, 0) ?>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content px-3 pb-3 pt-3 d-flex flex-column flex-grow-1">
+                            <h5 class="mb-1" style="font-weight:800; color:#1a1a1a; font-size:17px; line-height:1.3;"><?= $sw->title ?></h5>
+                            <p class="text-muted mb-3" style="font-size:12px; line-height:1.5; flex-grow:1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"><?= $sw->short_description ?></p>
+                            <div class="mt-auto w-100 d-flex" style="gap:8px;">
+                                <a href="<?= base_url('Home/softwareDetails/'.$sw->slug) ?>" class="btn btn-outline-primary w-50" style="font-size:13px; font-weight:600; padding:8px 0; border-radius:6px;">View Details</a>
+                                <?php if(!empty($sw->book_demo_link)): ?>
+                                    <a href="<?= $sw->book_demo_link ?>" target="_blank" class="btn btn-primary w-50" style="font-size:13px; font-weight:600; padding:8px 0; border-radius:6px; box-shadow:0 4px 10px rgba(8,106,216,0.2);">Buy Now</a>
+                                <?php else: ?>
+                                    <button class="btn btn-primary w-50" onclick="openBookDemoModal('<?= $sw->id ?>', '<?= htmlspecialchars($sw->title, ENT_QUOTES) ?>')" style="font-size:13px; font-weight:600; padding:8px 0; border-radius:6px; box-shadow:0 4px 10px rgba(8,106,216,0.2);">Book Demo</button>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                <?php endforeach; ?>
+                </div>
+                <div class="swiper-pagination position-relative mt-2"></div>
+            </div>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    if(typeof Swiper !== 'undefined') {
+                        new Swiper(".software-swiper", {
+                            slidesPerView: 3,
+                            spaceBetween: 25,
+                            loop: true,
+                            speed: 4000,
+                            autoplay: {
+                                delay: 0,
+                                disableOnInteraction: false,
+                            },
+                            pagination: {
+                                el: ".software-swiper .swiper-pagination",
+                                clickable: true,
+                            },
+                            breakpoints: {
+                                320: { slidesPerView: 1, spaceBetween: 15 },
+                                576: { slidesPerView: 2, spaceBetween: 15 },
+                                768: { slidesPerView: 2, spaceBetween: 20 },
+                                1024: { slidesPerView: 3, spaceBetween: 25 }
+                            }
+                        });
+                    }
+                });
+            </script>
+             <style>
+        .software-swiper .swiper-wrapper { transition-timing-function: linear !important; }
+        .software-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.08); border-color: #086AD8 !important; }
+        .software-card:hover .hover-zoom { transform: scale(1.08); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+    </style>
+    <!-- Global Book Demo Modal -->
+    <div class="modal fade" id="bookDemoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px;">
+            <div class="modal-content" style="border-radius:20px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden;">
+                <div class="modal-header" style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:30px 25px 20px; border:none; position: relative;">
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="position:absolute; top:15px; right:20px; opacity: 0.8; text-shadow:none;">
+                        <span aria-hidden="true" style="font-size: 28px;">&times;</span>
+                    </button>
+                    <div class="w-100 text-center mt-2">
+                        <div style="width:60px; height:60px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
+                            <i class="fa fa-calendar-check text-white" style="font-size:24px;"></i>
+                        </div>
+                        <h4 class="modal-title text-white" style="font-weight:700; font-size:22px; margin-bottom:5px;">Book a Free Demo</h4>
+                        <p class="text-white" style="opacity: 0.9; font-size: 13px; margin:0;">Experience our software in action!</p>
+                    </div>
+                </div>
+                <div class="modal-body" style="padding: 30px 25px; background: #f8f9fa;">
+                    <div id="bookDemoAlert" class="mb-3 text-center" style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;"></div>
+                    <form id="bookDemoForm">
+                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
+                        <input type="hidden" name="software_name" id="book_software_name">
+                        
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-laptop-code"></i></span>
+                                </div>
+                                <select name="software_id" id="book_software_id" class="form-control" required style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                                    <option value="">Select Software</option>
+                                    <?php foreach($softwares as $sw): ?>
+                                        <option value="<?= $sw->id ?>"><?= $sw->title ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input type="text" name="name" class="form-control" required placeholder="Your Full Name" style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-phone-alt"></i></span>
+                                </div>
+                                <input type="text" name="mobile" class="form-control" required placeholder="Mobile Number" maxlength="10" minlength="10" style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-envelope"></i></span>
+                                </div>
+                                <input type="email" name="email" class="form-control" placeholder="Email Address (Optional)" style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <textarea name="message" class="form-control" rows="2" placeholder="Any specific requirements?" style="border-radius:10px; padding:15px; background:#fff; box-shadow:none; resize:none; font-size:14px; border:1px solid #ced4da;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn w-100" id="btnBookDemo" style="background: linear-gradient(135deg, #086AD8, #00C6FF); color:#fff; font-weight:700; font-size:15px; padding:14px; border-radius:10px; border:none; box-shadow:0 8px 20px rgba(8,106,216,0.3); text-transform:uppercase; letter-spacing:1px; transition:all 0.3s ease;">
+                            <span class="spinner-border spinner-border-sm d-none" id="bookDemoSpinner" role="status" aria-hidden="true" style="margin-right:8px;"></span>
+                            Confirm Booking
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openBookDemoModal(softwareId, softwareName) {
+            $('#book_software_id').val(softwareId);
+            $('#book_software_name').val(softwareName);
+            $('#bookDemoModal').modal('show');
+        }
+        
+        // Update hidden software name on change
+        document.getElementById('book_software_id').addEventListener('change', function() {
+            var name = this.options[this.selectedIndex].text;
+            document.getElementById('book_software_name').value = name;
+        });
+
+        // Handle form submission with Vanilla JS
+        document.getElementById('bookDemoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            var form = this;
+            var btn = document.getElementById('btnBookDemo');
+            var spinner = document.getElementById('bookDemoSpinner');
+            var alertBox = document.getElementById('bookDemoAlert');
+            
+            btn.disabled = true;
+            spinner.classList.remove('d-none');
+            alertBox.style.display = 'none';
+            alertBox.className = 'mt-3 text-center';
+            var formData = new FormData(form);
+            fetch("<?= base_url('Home/submitDemoRequest') ?>", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                btn.disabled = false;
+                spinner.classList.add('d-none');
+                
+                if(data.status === 'success') {
+                    alertBox.classList.add('text-success');
+                    alertBox.textContent = data.message;
+                    alertBox.style.display = 'block';
+                    form.reset();
+                    
+                    setTimeout(function(){
+                        $('#bookDemoModal').modal('hide');
+                        alertBox.style.display = 'none';
+                    }, 3000);
+                } else {
+                    alertBox.classList.add('text-danger');
+                    alertBox.textContent = data.message;
+                    alertBox.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                btn.disabled = false;
+                spinner.classList.add('d-none');
+                alertBox.classList.add('text-danger');
+                alertBox.textContent = "Something went wrong. Please try again.";
+                alertBox.style.display = 'block';
+            });
+        });
+    </script>
+    
+    <?php endif; ?>
+    <!--===========  Software Products Section End =============-->
 
     <div class="page-content page-container pt-60" id="page-content">
         <div class="padding">
@@ -868,7 +1103,11 @@
                                     ?>
                                 </p>
 
-                                <span class="badge"><?= $projects->type ?></span>
+                                <div class="d-flex justify-content-center align-items-center mt-2 w-100 px-2 pb-2" style="gap: 15px;">
+                                    <span style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: default; display: inline-block; text-align: center;"><?= $projects->type ?></span>
+                                    <a href="<?= $projects->url ?>" target="_blank" style="background: linear-gradient(135deg, #28a745, #218838); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-block; text-align: center; box-shadow: none;"><i class="fa fa-external-link"></i> Visit</a>
+                                    <button onclick="openProjectEnquiryModal('<?= $projects->id ?>', '<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>')" style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; border: none; box-shadow: none; transition: all 0.3s; display: inline-block; text-align: center;">Enquiry</button>
+                                </div>
                             </div>
 
                         </div>
@@ -1822,24 +2061,6 @@
 
     <?php include('include/jslinks.php') ?>
     <?php include('include/footer.php') ?>
-
-
-
-    <!--<script>
-    var owl = $('.owl-carousel');
-owl.owlCarousel({
-    items:4, 
- 
-  
-    loop:true,
-    margin:10,
-    autoplay:true,
-    autoplayTimeout:2000,
-    autoplayHoverPause:true
-});
-
-    </script>-->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -1864,7 +2085,6 @@ owl.owlCarousel({
                     }
                 }
             });
-
             $("#recent_project").owlCarousel({
                 autoplay: true,
                 autoplayTimeout: 2000,
@@ -1886,7 +2106,6 @@ owl.owlCarousel({
                     }
                 }
             });
-
             $('#expert_team').owlCarousel({
                 loop: true,
                 margin: 15,
@@ -1912,9 +2131,7 @@ owl.owlCarousel({
                     }
                 }
             });
-
         });
-
         // ==================== SWIPER SLIDER ====================
         document.addEventListener("DOMContentLoaded", function () {
             new Swiper(".elementor-image-carousel-wrapper.swiper", {
@@ -1945,6 +2162,7 @@ owl.owlCarousel({
             });
         });
     </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const lazyImages = document.querySelectorAll("img.lazy-img");
@@ -1957,6 +2175,7 @@ owl.owlCarousel({
             });
         });
     </script>
+
     <script>
         $('#top_banner_slider').owlCarousel({
             loop: true,
@@ -1982,7 +2201,108 @@ owl.owlCarousel({
         });
     </script>
 
+    <!-- Global Project Enquiry Modal -->
+    <div class="modal fade" id="projectEnquiryModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px;">
+            <div class="modal-content" style="border-radius:20px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden;">
+                <div class="modal-header" style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:30px 25px 20px; border:none; position: relative;">
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="position:absolute; top:15px; right:20px; opacity: 0.8; text-shadow:none;">
+                        <span aria-hidden="true" style="font-size: 28px;">&times;</span>
+                    </button>
+                    <div class="w-100 text-center mt-2">
+                        <div style="width:60px; height:60px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
+                            <i class="fa fa-paper-plane text-white" style="font-size:24px;"></i>
+                        </div>
+                        <h4 class="modal-title text-white" style="font-weight:700; font-size:22px; margin-bottom:5px;">Project Enquiry</h4>
+                        <p class="text-white" id="modal_project_name_display" style="opacity: 0.9; font-size: 14px; font-weight:600; margin:0;"></p>
+                    </div>
+                </div>
+                <div class="modal-body" style="padding: 30px 25px; background: #f8f9fa;">
+                    <div id="projectEnquiryAlert" class="mb-3 text-center" style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;"></div>
+                    <form id="projectEnquiryForm">
+                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
+                        <input type="hidden" name="project_id" id="modal_project_id">
+                        <input type="hidden" name="project_name" id="modal_project_name">
 
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input type="text" name="name" class="form-control" placeholder="Your Name" required style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-envelope"></i></span>
+                                </div>
+                                <input type="email" name="email" class="form-control" placeholder="Email Address" required style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-phone-alt"></i></span>
+                                </div>
+                                <input type="tel" name="mobile" class="form-control" placeholder="Mobile Number" required pattern="[0-9]{10}" maxlength="10" style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <textarea name="message" class="form-control" placeholder="Tell us about your requirements..." rows="3" required style="border-radius:10px; background:#fff; box-shadow:none; font-size:14px; color:#444; resize:none; padding:15px;"></textarea>
+                        </div>
+
+                        <button type="submit" id="btnProjectEnquirySubmit" class="btn btn-primary w-100" style="height:50px; border-radius:25px; font-weight:700; font-size:16px; background:linear-gradient(135deg, #086AD8, #00C6FF); border:none; box-shadow:0 8px 20px rgba(8,106,216,0.3); transition:all 0.3s;">Submit Enquiry <i class="fa fa-arrow-right ml-2"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openProjectEnquiryModal(id, title) {
+            $('#modal_project_id').val(id);
+            $('#modal_project_name').val(title);
+            $('#modal_project_name_display').text(title);
+            $('#projectEnquiryAlert').hide();
+            $('#projectEnquiryForm')[0].reset();
+            $('#projectEnquiryModal').modal('show');
+        }
+
+        $('#projectEnquiryForm').on('submit', function(e) {
+            e.preventDefault();
+            var btn = $('#btnProjectEnquirySubmit');
+            var originalText = btn.html();
+            btn.html('<i class="fa fa-spinner fa-spin"></i> Submitting...').prop('disabled', true);
+            
+            $.ajax({
+                url: '<?= base_url('Home/submitProjectEnquiry') ?>',
+                type: 'POST',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function(res) {
+                    btn.html(originalText).prop('disabled', false);
+                    var alertBox = $('#projectEnquiryAlert');
+                    if(res.status == 'success') {
+                        alertBox.removeClass('alert-danger').addClass('alert-success').text(res.msg).show();
+                        $('#projectEnquiryForm')[0].reset();
+                        setTimeout(function(){
+                            $('#projectEnquiryModal').modal('hide');
+                        }, 2000);
+                    } else {
+                        alertBox.removeClass('alert-success').addClass('alert-danger').text(res.msg).show();
+                    }
+                },
+                error: function() {
+                    btn.html(originalText).prop('disabled', false);
+                    $('#projectEnquiryAlert').removeClass('alert-success').addClass('alert-danger').text('Something went wrong. Please try again.').show();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

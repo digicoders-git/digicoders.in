@@ -189,7 +189,7 @@ class Home extends CI_Controller
 				} else {
 					$upload_status = 'true';
 					$ext = pathinfo($_FILES["UploadFile"]["name"], PATHINFO_EXTENSION);
-					$filename = $this->input->post('Name')."_".$this->input->post('Mobile')."_resume" . "." . $ext;
+					$filename = $this->input->post('Name') . "_" . $this->input->post('Mobile') . "_resume" . "." . $ext;
 					$config['upload_path'] = './public/uploads/career/';
 					$config['allowed_types'] = 'jpg|png|jpeg|pdf';
 					$config['max_size'] = 8024; // In KB
@@ -297,7 +297,38 @@ class Home extends CI_Controller
 		$data['blogdata'] = $this->db->order_by('id', 'desc')->limit(2)->get('blog')->result();
 		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('slider', array('status' => 'true'))->result();
 
+		// Fetch Software Products
+		$softwares = $this->db->order_by('id', 'asc')->get_where('software_products', array('status' => 'Active'))->result();
+		foreach ($softwares as &$sw) {
+			$sw->panels = $this->db->get_where('software_panels', array('software_id' => $sw->id))->result();
+		}
+		$data['softwares'] = $softwares;
+
 		$this->load->view('Home/Index', $data);
+	}
+
+	public function submitDemoRequest()
+	{
+		if ($this->input->is_ajax_request()) {
+			$data = array(
+				'software_id' => $this->input->post('software_id'),
+				'software_name' => $this->input->post('software_name'),
+				'name' => $this->input->post('name'),
+				'mobile' => $this->input->post('mobile'),
+				'email' => $this->input->post('email'),
+				'message' => $this->input->post('message'),
+				'created_at' => date('Y-m-d H:i:s')
+			);
+
+			if ($this->db->insert('software_demo_requests', $data)) {
+				$this->send_form_email('New Demo Request', $data);
+				echo json_encode(array('status' => 'success', 'message' => 'Your demo request has been submitted successfully. Our team will contact you soon!'));
+			} else {
+				echo json_encode(array('status' => 'error', 'message' => 'Failed to submit request. Please try again.'));
+			}
+		} else {
+			show_404();
+		}
 	}
 	public function AboutDigiCoders()
 	{
@@ -651,8 +682,8 @@ class Home extends CI_Controller
 		$this->email->initialize($config);
 		$this->email->set_newline("\r\n");
 		$this->email->from('noreply@digicoders.in', 'digicoders.in Website');
-		// $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->to('digicoderstech@gmail.com');
+		// $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject($subject);
 
 		$message = "<html>
@@ -722,7 +753,57 @@ class Home extends CI_Controller
 		</html>";
 
 		$this->email->message($message);
-		@$this->email->send();
+		if (!$this->email->send()) {
+			log_message('error', 'Email sending failed: ' . $this->email->print_debugger());
+		}
+	}
+
+	public function softwareDetails($slug = NULL)
+	{
+		if ($slug === NULL) {
+			show_404();
+		}
+
+		$data['software'] = $this->db->get_where('software_products', array('slug' => $slug, 'status' => 'Active'))->row();
+
+		if (!$data['software']) {
+			show_404();
+		}
+
+		$data['panels'] = $this->db->get_where('software_panels', array('software_id' => $data['software']->id))->result();
+		$data['softwares'] = $this->db->get_where('software_products', array('status' => 'Active'))->result();
+
+		$this->load->view('Home/software_details', $data);
+	}
+	public function submitProjectEnquiry()
+	{
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('mobile', 'Mobile', 'required|numeric|exact_length[10]');
+		$this->form_validation->set_rules('message', 'Message', 'required');
+
+		if ($this->form_validation->run() == FALSE) {
+			echo json_encode(['status' => 'error', 'msg' => strip_tags(validation_errors(' ', ' '))]);
+			return;
+		}
+
+		$data = array(
+			'project_id' => $this->input->post('project_id'),
+			'project_name' => $this->input->post('project_name'),
+			'name' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'mobile' => $this->input->post('mobile'),
+			'message' => $this->input->post('message'),
+			'add_date' => date('Y-m-d H:i:s'),
+			'status' => 'Pending'
+		);
+
+		if ($this->db->insert('project_enquiries', $data)) {
+			$this->send_form_email('New Project Enquiry', $data);
+			echo json_encode(['status' => 'success', 'msg' => 'Your enquiry has been submitted successfully! We will contact you soon.']);
+		} else {
+			echo json_encode(['status' => 'error', 'msg' => 'Failed to submit enquiry. Please try again.']);
+		}
 	}
 }
 
