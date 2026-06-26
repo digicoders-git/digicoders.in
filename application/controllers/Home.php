@@ -297,6 +297,8 @@ class Home extends CI_Controller
 		$data['blogdata'] = $this->db->order_by('id', 'desc')->limit(2)->get('blog')->result();
 		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('slider', array('status' => 'true'))->result();
 
+		$data['expertdata'] = $this->db->order_by('id', 'asc')->get_where('expert_banners', ['status' => 'true'])->result();
+
 		// Fetch Software Products
 		$softwares = $this->db->order_by('id', 'asc')->get_where('software_products', array('status' => 'Active'))->result();
 		foreach ($softwares as &$sw) {

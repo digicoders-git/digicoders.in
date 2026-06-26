@@ -12,7 +12,8 @@
     <?php include('include/headerlinks.php') ?>
 
     <?php if (!empty($sliderdata)): ?>
-        <link rel="preload" as="image" href="<?= base_url('public') ?>/uploads/sliders/<?= $sliderdata[0]->image ?>" fetchpriority="high">
+        <link rel="preload" as="image" href="<?= base_url('public') ?>/uploads/sliders/<?= $sliderdata[0]->image ?>"
+            fetchpriority="high">
     <?php endif; ?>
 
     <link rel="stylesheet"
@@ -527,13 +528,7 @@
                     ?>
                     <div class="item">
                         <img src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
-                            alt="<?= $slider->title ?>"
-                            <?php if ($first): ?>
-                                fetchpriority="high"
-                                loading="eager"
-                            <?php else: ?>
-                                loading="lazy"
-                            <?php endif; ?>>
+                            alt="<?= $slider->title ?>" <?php if ($first): ?> fetchpriority="high" loading="eager" <?php else: ?> loading="lazy" <?php endif; ?>>
                     </div>
                     <?php
                     $first = false;
@@ -630,1679 +625,1706 @@
                 ENTREPRENEUR'S AND INNOVATIVE TEAM</b>
         </marquee>
     </div>
-        <!--===========  Software Products Section Start =============-->
-    <?php if(!empty($softwares)): ?>
-    <div class="software-products-area section-space--ptb_100 bg-light" id="software-products">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title-wrap text-center section-space--mb_40">
-                        <h6 class="section-sub-title mb-20">DigiCoders Products</h6>
-                        <h3 class="heading">Our <span class="text-color-primary">Software Solutions</span></h3>
-                        <p class="mt-15">Transform your business with powerful software solutions developed by DigiCoders.</p>
+    <!--===========  Software Products Section Start =============-->
+    <?php if (!empty($softwares)): ?>
+        <div class="software-products-area section-space--ptb_100 bg-light" id="software-products">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title-wrap text-center section-space--mb_40">
+                            <h6 class="section-sub-title mb-20">DigiCoders Products</h6>
+                            <h3 class="heading">Our <span class="text-color-primary">Software Solutions</span></h3>
+                            <p class="mt-15">Transform your business with powerful software solutions developed by
+                                DigiCoders.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-container software-swiper"
+                    style="padding: 10px 5px 40px 5px; overflow: hidden; width: 100%;">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($softwares as $sw): ?>
+                            <div class="swiper-slide">
+                                <div class="project-card d-flex flex-column h-100 software-card"
+                                    style="background:#fff; border-radius:12px; border: 1px solid #f0f0f0; box-shadow:0 4px 15px rgba(0,0,0,0.04); overflow:hidden; transition: all 0.3s ease;">
+                                    <?php
+                                    $add_imgs = [];
+                                    if (!empty($sw->additional_images)) {
+                                        $add_imgs = json_decode($sw->additional_images, true);
+                                    }
+                                    if (empty($add_imgs) && !empty($sw->image)) {
+                                        $add_imgs[] = $sw->image; // Fallback for old data
+                                    }
+                                    $main_display_img = !empty($add_imgs) ? $add_imgs[0] : 'placeholder.jpg';
+                                    ?>
+
+                                    <div class="project-image"
+                                        style="height:190px; overflow:hidden; position:relative; border-bottom:1px solid #f0f0f0;">
+                                        <img id="main-img-<?= $sw->id ?>"
+                                            src="<?= base_url('public/uploads/software/' . $main_display_img) ?>"
+                                            alt="<?= $sw->title ?>" class="hover-zoom"
+                                            style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s ease;">
+
+                                        <div
+                                            style="position:absolute; bottom:12px; right:12px; background:rgba(255,255,255,0.95); backdrop-filter:blur(5px); padding:5px 12px; border-radius:20px; font-weight:800; color:#086AD8; font-size:14px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                                            ₹<?= number_format($sw->selling_price, 0) ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="project-content px-3 pb-3 pt-3 d-flex flex-column flex-grow-1">
+                                        <h5 class="mb-1"
+                                            style="font-weight:800; color:#1a1a1a; font-size:17px; line-height:1.3;">
+                                            <?= $sw->title ?></h5>
+                                        <p class="text-muted mb-3"
+                                            style="font-size:12px; line-height:1.5; flex-grow:1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                            <?= $sw->short_description ?></p>
+                                        <div class="d-flex justify-content-center align-items-center mt-2 w-100 px-2 pb-2"
+                                            style="gap: 15px;">
+                                            <a href="<?= base_url('Home/softwareDetails/' . $sw->slug) ?>"
+                                                style="background: linear-gradient(135deg, #28a745, #218838); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-block; text-align: center; box-shadow: none;"><i
+                                                    class="fa fa-external-link"></i> View Details</a>
+                                            <?php if (!empty($sw->book_demo_link)): ?>
+                                                <a href="<?= $sw->book_demo_link ?>" target="_blank"
+                                                    style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-block; text-align: center; box-shadow: none;">Buy
+                                                    Now</a>
+                                            <?php else: ?>
+                                                <button
+                                                    onclick="openBookDemoModal('<?= $sw->id ?>', '<?= htmlspecialchars($sw->title, ENT_QUOTES) ?>')"
+                                                    style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; border: none; box-shadow: none; transition: all 0.3s; display: inline-block; text-align: center;">Book
+                                                    Demo</button>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="swiper-pagination position-relative mt-2"></div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        if (typeof Swiper !== 'undefined') {
+                            new Swiper(".software-swiper", {
+                                slidesPerView: 3,
+                                spaceBetween: 25,
+                                loop: true,
+                                speed: 4000,
+                                autoplay: {
+                                    delay: 0,
+                                    disableOnInteraction: false,
+                                },
+                                pagination: {
+                                    el: ".software-swiper .swiper-pagination",
+                                    clickable: true,
+                                },
+                                breakpoints: {
+                                    320: { slidesPerView: 1, spaceBetween: 15 },
+                                    576: { slidesPerView: 2, spaceBetween: 15 },
+                                    768: { slidesPerView: 2, spaceBetween: 20 },
+                                    1024: { slidesPerView: 3, spaceBetween: 25 }
+                                }
+                            });
+                        }
+                    });
+                </script>
+                <style>
+                    .software-swiper .swiper-wrapper {
+                        transition-timing-function: linear !important;
+                    }
+
+                    .software-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+                        border-color: #086AD8 !important;
+                    }
+
+                    .software-card:hover .hover-zoom {
+                        transform: scale(1.08);
+                    }
+
+                    .custom-scrollbar::-webkit-scrollbar {
+                        width: 4px;
+                    }
+
+                    .custom-scrollbar::-webkit-scrollbar-track {
+                        background: #f1f1f1;
+                        border-radius: 4px;
+                    }
+
+                    .custom-scrollbar::-webkit-scrollbar-thumb {
+                        background: #c1c1c1;
+                        border-radius: 4px;
+                    }
+
+                    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                        background: #a8a8a8;
+                    }
+                </style>
+                <!-- Global Book Demo Modal -->
+                <div class="modal fade" id="bookDemoModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px;">
+                        <div class="modal-content"
+                            style="border-radius:20px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden;">
+                            <div class="modal-header"
+                                style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:30px 25px 20px; border:none; position: relative;">
+                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"
+                                    style="position:absolute; top:15px; right:20px; opacity: 0.8; text-shadow:none;">
+                                    <span aria-hidden="true" style="font-size: 28px;">&times;</span>
+                                </button>
+                                <div class="w-100 text-center mt-2">
+                                    <div
+                                        style="width:60px; height:60px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
+                                        <i class="fa fa-calendar-check text-white" style="font-size:24px;"></i>
+                                    </div>
+                                    <h4 class="modal-title text-white"
+                                        style="font-weight:700; font-size:22px; margin-bottom:5px;">Book a Free Demo</h4>
+                                    <p class="text-white" style="opacity: 0.9; font-size: 13px; margin:0;">Experience our
+                                        software in action!</p>
+                                </div>
+                            </div>
+                            <div class="modal-body" style="padding: 30px 25px; background: #f8f9fa;">
+                                <div id="bookDemoAlert" class="mb-3 text-center"
+                                    style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;">
+                                </div>
+                                <form id="bookDemoForm">
+                                    <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>"
+                                        value="<?= $this->security->get_csrf_hash() ?>">
+                                    <input type="hidden" name="software_name" id="book_software_name">
+
+                                    <div class="form-group mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                    style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
+                                                        class="fa fa-laptop-code"></i></span>
+                                            </div>
+                                            <select name="software_id" id="book_software_id" class="form-control" required
+                                                style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                                                <option value="">Select Software</option>
+                                                <?php foreach ($softwares as $sw): ?>
+                                                    <option value="<?= $sw->id ?>"><?= $sw->title ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                    style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
+                                                        class="fa fa-user"></i></span>
+                                            </div>
+                                            <input type="text" name="name" class="form-control" required
+                                                placeholder="Your Full Name"
+                                                style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                    style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
+                                                        class="fa fa-phone-alt"></i></span>
+                                            </div>
+                                            <input type="text" name="mobile" class="form-control" required
+                                                placeholder="Mobile Number" maxlength="10" minlength="10"
+                                                style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                    style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
+                                                        class="fa fa-envelope"></i></span>
+                                            </div>
+                                            <input type="email" name="email" class="form-control"
+                                                placeholder="Email Address (Optional)"
+                                                style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <textarea name="message" class="form-control" rows="2"
+                                            placeholder="Any specific requirements?"
+                                            style="border-radius:10px; padding:15px; background:#fff; box-shadow:none; resize:none; font-size:14px; border:1px solid #ced4da;"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn w-100" id="btnBookDemo"
+                                        style="background: linear-gradient(135deg, #086AD8, #00C6FF); color:#fff; font-weight:700; font-size:15px; padding:14px; border-radius:10px; border:none; box-shadow:0 8px 20px rgba(8,106,216,0.3); text-transform:uppercase; letter-spacing:1px; transition:all 0.3s ease;">
+                                        <span class="spinner-border spinner-border-sm d-none" id="bookDemoSpinner"
+                                            role="status" aria-hidden="true" style="margin-right:8px;"></span>
+                                        Confirm Booking
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function openBookDemoModal(softwareId, softwareName) {
+                        $('#book_software_id').val(softwareId);
+                        $('#book_software_name').val(softwareName);
+                        $('#bookDemoModal').modal('show');
+                    }
+
+                    // Update hidden software name on change
+                    document.getElementById('book_software_id').addEventListener('change', function () {
+                        var name = this.options[this.selectedIndex].text;
+                        document.getElementById('book_software_name').value = name;
+                    });
+
+                    // Handle form submission with Vanilla JS
+                    document.getElementById('bookDemoForm').addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        var form = this;
+                        var btn = document.getElementById('btnBookDemo');
+                        var spinner = document.getElementById('bookDemoSpinner');
+                        var alertBox = document.getElementById('bookDemoAlert');
+
+                        btn.disabled = true;
+                        spinner.classList.remove('d-none');
+                        alertBox.style.display = 'none';
+                        alertBox.className = 'mt-3 text-center';
+                        var formData = new FormData(form);
+                        fetch("<?= base_url('Home/submitDemoRequest') ?>", {
+                            method: "POST",
+                            body: formData,
+                            headers: {
+                                "X-Requested-With": "XMLHttpRequest"
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                btn.disabled = false;
+                                spinner.classList.add('d-none');
+
+                                if (data.status === 'success') {
+                                    alertBox.classList.add('text-success');
+                                    alertBox.textContent = data.message;
+                                    alertBox.style.display = 'block';
+                                    form.reset();
+
+                                    setTimeout(function () {
+                                        $('#bookDemoModal').modal('hide');
+                                        alertBox.style.display = 'none';
+                                    }, 3000);
+                                } else {
+                                    alertBox.classList.add('text-danger');
+                                    alertBox.textContent = data.message;
+                                    alertBox.style.display = 'block';
+                                }
+                            })
+                            .catch(error => {
+                                btn.disabled = false;
+                                spinner.classList.add('d-none');
+                                alertBox.classList.add('text-danger');
+                                alertBox.textContent = "Something went wrong. Please try again.";
+                                alertBox.style.display = 'block';
+                            });
+                    });
+                </script>
+
+            <?php endif; ?>
+            <!--===========  Software Products Section End =============-->
+
+            <div class="page-content page-container pt-60" id="page-content">
+                <div class="padding">
+                    <div class="row container-fluid">
+                        <div class="col-lg-12 grid-margin stretch-card">
+
+
+                            <div class="owl-carousel" id="banner_slider">
+                                <div class="item">
+                                    <img class="img-fluid lazy"
+                                        src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                        data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead_Ad_1.png"
+                                        alt="how we are">
+                                </div>
+                                <div class="item">
+                                    <img class="img-fluid lazy"
+                                        src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                        data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead_Ad_2.png"
+                                        alt="how we are">
+                                </div>
+                                <div class="item">
+                                    <img class="img-fluid lazy"
+                                        src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                        data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead_Ad_1_P_c_3.png"
+                                        alt="how we are">
+                                </div>
+                                <div class="item">
+                                    <img class="img-fluid lazy"
+                                        src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                        data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead_Ad_1_Pic_4.png"
+                                        alt="how we are">
+                                </div>
+                                <div class="item">
+                                    <img class="img-fluid lazy"
+                                        src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                        data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead_Ad_1Pic 5.png"
+                                        alt="how we are">
+                                </div>
+                                <div class="item">
+                                    <img class="img-fluid lazy"
+                                        src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                        data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead Ad_1_Pic_6.png"
+                                        alt="how we are">
+                                </div>
+
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="swiper-container software-swiper" style="padding: 10px 5px 40px 5px; overflow: hidden; width: 100%;">
-                <div class="swiper-wrapper">
-                <?php foreach($softwares as $sw): ?>
-                <div class="swiper-slide">
-                    <div class="project-card d-flex flex-column h-100 software-card" style="background:#fff; border-radius:12px; border: 1px solid #f0f0f0; box-shadow:0 4px 15px rgba(0,0,0,0.04); overflow:hidden; transition: all 0.3s ease;">
-                        <?php 
-                        $add_imgs = [];
-                        if(!empty($sw->additional_images)) {
-                            $add_imgs = json_decode($sw->additional_images, true);
+
+            <center>
+                <h4>Expert Team of DigiCoders</h4>
+                <a href="<?= base_url() ?>Home/OurExperts" class="text-primary">View More →</a>
+            </center>
+
+            <div class="container section-space--pt_20">
+                <div class="owl-carousel expert-team-carousel owl-theme" id="expert_team">
+
+
+                    <?php if(!empty($expertdata)): foreach($expertdata as $expert): ?>
+                    <div class="item">
+                        <img class="img-fluid lazy" src="<?= base_url('public/assets/images/loader1.jpg') ?>"
+                             data-src="<?= base_url('public/uploads/expert_banners/'.$expert->image) ?>" alt="<?= $expert->name ?>">
+                    </div>
+                    <?php endforeach; else: ?>
+                    <div class="item">
+                        <p>No expert banners found.</p>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+
+            <center class="mb-4">
+                <h3 class="fw-bold">Our Recent Projects</h3>
+                <a href="<?= base_url() ?>Home/OurProjects" class="view-more-btn">
+                    View More →
+                </a>
+            </center>
+
+            <div class="page-content page-container">
+                <div class="container">
+                    <div class="owl-carousel recent-project-carousel" id="recent_project">
+
+                        <?php foreach ($userdata as $projects) { ?>
+                            <div class="item" id="item-card">
+                                <div class="project-card">
+
+                                    <div class="project-image">
+                                        <img class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
+                                            data-src="<?= base_url('public/uploads/projects/') . $projects->image ?>"
+                                            alt="<?= $projects->title ?>">
+                                    </div>
+
+                                    <div class="project-content">
+
+                                        <!--  Tooltip Title -->
+                                        <div class="title-tooltip">
+                                            <h5 class="project-title">
+                                                <?= $projects->title ?>
+                                            </h5>
+                                            <span class="tooltip-text">
+                                                <?= $projects->title ?>
+                                            </span>
+                                        </div>
+
+                                        <p class="date">
+                                            <?php
+                                            $date = strtotime($projects->add_date);
+                                            echo date('M Y', $date);
+                                            ?>
+                                        </p>
+
+                                        <div class="d-flex justify-content-center align-items-center mt-2 w-100 px-2 pb-2"
+                                            style="gap: 15px;">
+                                            <span
+                                                style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: default; display: inline-block; text-align: center;"><?= $projects->type ?></span>
+                                            <a href="<?= $projects->url ?>" target="_blank"
+                                                style="background: linear-gradient(135deg, #28a745, #218838); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-block; text-align: center; box-shadow: none;"><i
+                                                    class="fa fa-external-link"></i> Visit</a>
+                                            <button
+                                                onclick="openProjectEnquiryModal('<?= $projects->id ?>', '<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>')"
+                                                style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; border: none; box-shadow: none; transition: all 0.3s; display: inline-block; text-align: center;">Enquiry</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        <?php } ?>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--===========  feature-large-images-wrapper  Start =============-->
+            <div class="feature-large-images-wrapper section-space--ptb_100" style="padding: 10px !important;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- section-title-wrap Start -->
+                            <div class="section-title-wrap text-center section-space--mb_60">
+
+                                <h3 class="heading">We provide all kinds of IT services that <br> will boost your <span
+                                        class="text-color-primary"> BUSINESS</span></h3>
+                            </div>
+                            <!-- section-title-wrap Start -->
+                        </div>
+                    </div>
+
+                    <div class="cybersecurity-about-box section-space--pb_100">
+                        <div class="row">
+                            <div class="col-lg-4 offset-lg-1">
+                                <div class="modern-number-01">
+                                    <h2 class="heading  mr-5"><span class="mark-text">10+</span>Years’ of Experienced
+                                        Team</h2>
+                                    <h6 class="heading mt-30" id="meetourteam">Let's meet our team to know more.</h6>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 offset-lg-1">
+                                <div class="cybersecurity-about-text">
+                                    <div class="text text-justify">DigiCoders, An organization where we totally focus on
+                                        business development of our clients. Our motto is to providing consulting and IT
+                                        Solutions for your business growth. We will pleased to serve you more and more
+                                        from
+                                        DigiCoders. Want to know more about us </div>
+                                    <div class="button-text">
+                                        <a href="<?= base_url() ?>Home/AboutDigiCoders" class="btn-text">
+                                            Discover now
+                                            <span class="button-icon ml-1">
+                                                <i class="fa-solid fa-arrow-right-long"></i>
+
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 wow move-up">
+                                    <!-- ht-box-icon Start -->
+                                    <a href="<?= base_url() ?>Home/AboutDigiCoders"
+                                        class="ht-large-box-images style-03">
+                                        <div class="large-image-box">
+                                            <div class="box-image">
+                                                <div class="default-image">
+                                                    <img class="img-fluid lazy"
+                                                        src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                                        data-src="<?= base_url('public') ?>/assets/images/WhoWeAre.jpg"
+                                                        alt="how we are" style="max-height: 250px; width: 100%;">
+                                                </div>
+                                            </div>
+                                            <div class="content pb-80">
+                                                <h5 class="heading">Who we are?</h5>
+                                                <div class="text">
+                                                    DigiCoders Technologies is a leading development services providers
+                                                    in
+                                                    Lucknow, Uttar Pradesh and North India.
+                                                </div>
+                                                <div class="box-images-arrow">
+                                                    <span class="button-text">Discover now</span>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- ht-box-icon End -->
+                                </div>
+                                <div class="col-lg-4 col-md-6 wow move-up">
+                                    <!-- ht-box-icon Start -->
+                                    <a href="" class="ht-large-box-images style-03">
+                                        <div class="large-image-box">
+                                            <div class="box-image">
+                                                <div class="default-image">
+                                                    <img class="img-fluid  aboutdigicoders-img lazy"
+                                                        src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                                        data-src="<?= base_url('public') ?>/assets/images/WhatWeDo.jpg"
+                                                        title="what we do" alt="what we do">
+                                                </div>
+                                            </div>
+                                            <div class="content pb-80">
+                                                <h5 class="heading">What We Do</h5>
+                                                <div class="text">
+                                                    We provide all IT Solutions like Software, Website and Mobile
+                                                    Application
+                                                    Development and Training Programs.
+                                                </div>
+                                                <div class="box-images-arrow">
+                                                    <span class="button-text">Discover now</span>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- ht-box-icon End -->
+                                </div>
+                                <div class="col-lg-4 col-md-6 wow move-up">
+                                    <!-- ht-box-icon Start -->
+                                    <a href="<?= base_url() ?>Home/" class="ht-large-box-images style-03">
+                                        <div class="large-image-box">
+                                            <div class="box-image">
+                                                <div class="default-image">
+                                                    <img class="aboutdigicoders-img lazy"
+                                                        src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                                        data-src="<?= base_url('public') ?>/assets/images/HowWeDoIT.jpg"
+                                                        title="how we do" alt="how we do">
+                                                </div>
+                                            </div>
+                                            <div class="content pb-80">
+                                                <h5 class="heading">How We Do It</h5>
+                                                <div class="text">
+                                                    At DigiCoders We are working with Young Engineer, Entrepreneur our
+                                                    Most
+                                                    innovative team.
+                                                </div>
+                                                <div class="box-images-arrow">
+                                                    <span class="button-text">Discover now</span>
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- ht-box-icon End -->
+                                </div>
+                            </div>
+                            <div class="section-under-heading text-center section-space--mt_20">Challenges are just
+                                opportunities in disguise <a href="<?= base_url() ?>Home/ContactUs">Take the
+                                    challenge!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--===========  feature-large-images-wrapper  End =============-->
+            <!--===========  feature-icon-wrapper  Start =============-->
+            <div class="feature-icon-wrapper bg-gray section-space--ptb_100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-title-wrap text-center section-space--mb_40">
+                                <h6 class="section-sub-title mb-20">An Umbrella Solution for All IT Needs</h6>
+                                <h3 class="heading">Reach out to the world’s most <br><span class="text-color-primary">
+                                        reliable
+                                        IT services.</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="feature-list__two">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6 wow move-up">
+                                        <div class="ht-box-icon style-02 single-svg-icon-box">
+                                            <div class="icon-box-wrap">
+                                                <div class="icon">
+                                                    <i class="fa fa-globe fa-4x"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="heading">Software Development </h5>
+                                                    <div class="text">
+                                                        We provide custome software development for your business,
+                                                        Billing,
+                                                        Inventory and Every custom software
+                                                    </div>
+                                                    <div class="feature-btn">
+                                                        <a href="<?= base_url() ?>Home/SoftwareDevelopment">
+                                                            <span class="button-text">Discover now</span>
+                                                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 wow move-up">
+                                        <div class="ht-box-icon style-02 single-svg-icon-box">
+                                            <div class="icon-box-wrap">
+                                                <div class="icon">
+                                                    <i class="fa fa-globe fa-4x"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="heading">Website Development </h5>
+                                                    <div class="text">
+                                                        We provide website design &amp; development to make your
+                                                        business online
+                                                        to drive more customers and sales
+                                                    </div>
+                                                    <div class="feature-btn">
+                                                        <a href="<?= base_url() ?>Home/WebsiteDevelopment">
+                                                            <span class="button-text">Discover now</span>
+                                                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 wow move-up">
+                                        <div class="ht-box-icon style-02 single-svg-icon-box">
+                                            <div class="icon-box-wrap">
+                                                <div class="icon">
+                                                    <i class="fa fa-globe fa-4x"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="heading">Mobile App Development </h5>
+                                                    <div class="text">
+                                                        We provide Android &amp; iOS Application development, we can
+                                                        turn your
+                                                        idea into reality, Start your Startup with us
+                                                    </div>
+                                                    <div class="feature-btn">
+                                                        <a href="<?= base_url() ?>Home/MobileApplicationDevelopment">
+                                                            <span class="button-text">Discover now</span>
+                                                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 wow move-up">
+                                        <div class="ht-box-icon style-02 single-svg-icon-box">
+                                            <div class="icon-box-wrap">
+                                                <div class="icon">
+                                                    <i class="fa fa-globe fa-4x"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="heading">Digital Marketing </h5>
+                                                    <div class="text">
+                                                        We provide best digital marketing services to drive more trafic
+                                                        on your
+                                                        mobile app or website to boost your sales
+                                                    </div>
+                                                    <div class="feature-btn">
+                                                        <a href="<?= base_url() ?>Home/DigitalMarketing">
+                                                            <span class="button-text">Discover now</span>
+                                                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 wow move-up">
+                                        <div class="ht-box-icon style-02 single-svg-icon-box">
+                                            <div class="icon-box-wrap">
+                                                <div class="icon">
+                                                    <i class="fa fa-globe fa-4x"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="heading">Graphics Design </h5>
+                                                    <div class="text">
+                                                        We provide graphics design to stay touch with your customers
+                                                        using
+                                                        promotional banners, offers &amp; many more
+                                                    </div>
+                                                    <div class="feature-btn">
+                                                        <a href="<?= base_url() ?>Home/GraphicsDesigning">
+                                                            <span class="button-text">Discover now</span>
+                                                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 wow move-up">
+                                        <div class="ht-box-icon style-02 single-svg-icon-box">
+                                            <div class="icon-box-wrap">
+                                                <div class="icon">
+                                                    <i class="fa fa-globe fa-4x"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="heading"> Domain &amp; Hosting </h5>
+                                                    <div class="text">
+                                                        We provide domain, hosting and a reliable server to never let
+                                                        your
+                                                        business down, start your startup with us
+                                                    </div>
+                                                    <div class="feature-btn">
+                                                        <a href="<?= base_url() ?>Home/DomainAndHosting">
+                                                            <span class="button-text">Discover now</span>
+                                                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 wow move-up">
+                                        <div class="ht-box-icon style-02 single-svg-icon-box">
+                                            <div class="icon-box-wrap">
+                                                <div class="icon">
+                                                    <i class="fa fa-globe fa-4x"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="heading"> ERP &amp; CRM Development </h5>
+                                                    <div class="text">
+                                                        We provide ERP &amp; CRM to automate your business with fast
+                                                        execution
+                                                        and pricess strategies.
+                                                    </div>
+                                                    <div class="feature-btn">
+                                                        <a href="<?= base_url() ?>Home/ERPandCRMDevelopment">
+                                                            <span class="button-text">Discover now</span>
+                                                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 wow move-up">
+                                        <div class="ht-box-icon style-02 single-svg-icon-box">
+                                            <div class="icon-box-wrap">
+                                                <div class="icon">
+                                                    <i class="fa fa-globe fa-4x"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="heading"> Maintenance Services </h5>
+                                                    <div class="text">
+                                                        We provide reliable annual maintenance services for your
+                                                        website,
+                                                        software, erp, crm or mobile application
+                                                    </div>
+                                                    <div class="feature-btn">
+                                                        <a href="<?= base_url() ?>Home/MaintenanceServices">
+                                                            <span class="button-text">Discover now</span>
+                                                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 wow move-up">
+                                        <div class="ht-box-icon style-02 single-svg-icon-box">
+                                            <div class="icon-box-wrap">
+                                                <div class="icon">
+                                                    <i class="fa fa-globe fa-4x"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="heading"> Explore More Services </h5>
+                                                    <div class="text">
+                                                        We provide many more IT servies like training programs,
+                                                        internships, mlm
+                                                        software and many more, discover to know more.
+                                                    </div>
+                                                    <div class="feature-btn">
+                                                        <a href="<?= base_url() ?>Home/ITServices">
+                                                            <span class="button-text">Discover now</span>
+                                                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--===========  feature-icon-wrapper  End =============-->
+            <!--=========== fun fact Wrapper Start ==========-->
+            <div class="fun-fact-wrapper bg-theme-default section-space--pb_30 section-space--pt_60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 wow move-up">
+                            <div class="fun-fact--two text-center">
+                                <div class="fun-fact__count"><span class="counter">850</span>+</div>
+                                <h6 class="fun-fact__text">Happy clients</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 wow move-up">
+                            <div class="fun-fact--two text-center">
+                                <div class="fun-fact__count"><span class="counter">1000</span>+</div>
+                                <h6 class="fun-fact__text">Finished projects</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 wow move-up">
+                            <div class="fun-fact--two text-center">
+                                <div class="fun-fact__count"><span class="counter">50</span>+</div>
+                                <h6 class="fun-fact__text">Skilled Experts</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 wow move-up">
+                            <div class="fun-fact--two text-center">
+                                <div class="fun-fact__count"><span class="counter">100</span>+</div>
+                                <h6 class="fun-fact__text">Products</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--=========== fun fact Wrapper End ==========-->
+            <!--========= Pricing Table Area Start ==========-->
+            <div class="pricing-table-area section-space--pb_100 bg-gradient mt-40">
+                <div class="pricing-table-title-area position-relative">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-title-wrapper text-center section-space--mb_60 wow move-up">
+                                    <h6 class="section-sub-title mb-20">Pricing and Packages</h6>
+
+
+                                    <h3 class="section-title"><span><img class="img-fluid blog-img"
+                                                src="<?= base_url('public') ?>/assets/images/offer2.gif" alt="offer"
+                                                style="height:50px; width:50px"></span>6 Months free maintenance for
+                                        <span class="text-color-primary">all IT services.</span> </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pricing-table-content-area">
+                    <div class="container">
+                        <div class="row pricing-table-one">
+                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 pricing-table wow move-up">
+                                <div class="pricing-table__inner">
+                                    <div class="pricing-table__header">
+                                        <h6 class="sub-title">Website Starter</h6>
+                                        <div class="pricing-table__image lazy">
+                                            <img src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                                data-src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
+                                                class="img-fluid lazy" title="Website Starter" alt="Website Starter">
+                                        </div>
+                                        <div class="pricing-table__price-wrap">
+                                            <h6 class="currency">₹</h6>
+                                            <h6 class="price">9999</h6>
+                                            <h6 class="period">/onward</h6>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-table__body">
+                                        <div class="pricing-table__footer">
+                                            <a href="<?= base_url() ?>Home/RequestProposal"
+                                                class="ht-btn ht-btn-md ht-btn--outline">Get this Offer!</a>
+                                        </div>
+                                        <ul class="pricing-table__list text-left">
+                                            <li>1 Year Domain</li>
+                                            <li>1 Year Hosting</li>
+                                            <li>Dynamic Website</li>
+                                            <li>Official 5 Emails</li>
+                                            <li>Basic SEO</li>
+                                            <li>Many More...</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-12 col-md-6 col-lg-4 col-xl-4 pricing-table pricing-table--popular wow move-up">
+                                <div class="pricing-table__inner">
+                                    <div class="pricing-table__feature-mark">
+                                        <span>Most Popular</span>
+                                    </div>
+                                    <div class="pricing-table__header">
+                                        <h6 class="sub-title">Mobile App Starter</h6>
+                                        <div class="pricing-table__image lazy">
+                                            <img src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                                data-src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
+                                                class="img-fluid lazy" title="Mobile App Starter"
+                                                alt="Mobile App Starter">
+                                        </div>
+                                        <div class="pricing-table__price-wrap">
+                                            <h6 class="currency">₹</h6>
+                                            <h6 class="price">24999</h6>
+                                            <h6 class="period">/onward</h6>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-table__body">
+                                        <div class="pricing-table__footer">
+                                            <a href="<?= base_url() ?>Home/RequestProposal"
+                                                class="ht-btn  ht-btn-md ">Get this
+                                                Offer!</a>
+                                        </div>
+                                        <ul class="pricing-table__list text-left">
+                                            <li>E Commerce App</li>
+                                            <li>Taxi Booking App</li>
+                                            <li>Food Delivery App</li>
+                                            <li>Gaming Tournaments App</li>
+                                            <li>Service App</li>
+                                            <li>MLM Application</li>
+                                            <li>Many more...</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 pricing-table wow move-up">
+                                <div class="pricing-table__inner">
+                                    <div class="pricing-table__header">
+                                        <h6 class="sub-title">Software Starter</h6>
+                                        <div class="pricing-table__image lazy">
+                                            <img src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                                data-src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
+                                                class="img-fluid lazy" title="Software Starter" alt="Software Starter">
+                                        </div>
+                                        <div class="pricing-table__price-wrap">
+                                            <h6 class="currency">₹</h6>
+                                            <h6 class="price">15999</h6>
+                                            <h6 class="period">/onward</h6>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-table__body">
+                                        <div class="pricing-table__footer">
+                                            <a href="<?= base_url() ?>Home/RequestProposal"
+                                                class="ht-btn ht-btn-md ht-btn--outline">Get this Offer!</a>
+                                        </div>
+                                        <ul class="pricing-table__list text-left">
+                                            <li>Billing Software</li>
+                                            <li>Inventory Software</li>
+                                            <li>CRM &amp; ERP </li>
+                                            <li>School Management ERP </li>
+                                            <li>MLM Software</li>
+                                            <li>Many More... </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <a href="<?= base_url() ?>Home/Packages" class="ht-btn  ht-btn-md">Explore All Packages
+                                    <i class="fa fa-long-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--========= Pricing Table Area End ==========-->
+            <!--====================  Blog Section Start ====================-->
+            <div class="blog-section-wrapper section-space--pt_100  section-space--pb_70">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 wow move-up">
+
+                            <div
+                                class="section-title section-title tablet-mb__60 section-space--mb_30 tablet-mt__0 small-mt__0 small-mb__60 mt-30">
+                                <h6 class="section-sub-title mb-20">Blogs & news</h6>
+                                <h3 class="heading">Interesting facts &amp; <span class="text-color-primary"> IT updates
+                                    </span>
+                                </h3>
+                                <ul class="infotechno-blog-list mt-30">
+                                    <li>
+                                        <a href="<?= base_url() ?>Home/Blogs">How to choose best software company?</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url() ?>Home/Blogs">How to choose technology for your
+                                            project?</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url() ?>Home/Blogs">Data &amp; Source Code security tpis!</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url() ?>Home/Blogs">Steps to start promoting your startup.</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url() ?>Home/Blogs">Latest tools for Digital Marketing.</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <?php
+                        foreach ($blogdata as $data) {
+                            ?>
+
+                            <div class="col-lg-4 col-md-6 wow move-up">
+                                <!--======= Single Blog Item Start ========-->
+                                <div class="single-blog-item blog-grid">
+                                    <!-- Post Feature Start -->
+                                    <div class="post-feature blog-thumbnail">
+                                        <a href="<?= base_url() ?>Home/Blogs">
+                                            <img class="img-fluid blog-img lazy"
+                                                src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                                data-src="<?= base_url('public/uploads/Blog/') . $data->image; ?>"
+                                                alt="Blog Images">
+                                        </a>
+                                    </div>
+                                    <!-- Post Feature End -->
+                                    <!-- Post info Start -->
+                                    <div class="post-info lg-blog-post-info">
+                                        <div class="post-meta">
+                                            <div class="post-date">
+                                                <span class="far fa-calendar meta-icon"></span>
+                                                <?= $data->date; ?>
+                                            </div>
+                                        </div>
+
+                                        <h5 class="post-title font-weight--bold">
+                                            <a href="<?= base_url() ?>Home/Blogs"><?= $data->title; ?></a>
+                                        </h5>
+
+                                        <div class="post-excerpt mt-15">
+                                            <p><?= $data->full_discription; ?></p>
+                                        </div>
+                                        <div class="btn-text">
+                                            <a href="<?= base_url() ?>Home/Blogs">Read more <i
+                                                    class="ml-1 button-icon fa-solid fa-arrow-right-long"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Post info End -->
+                                </div>
+                                <!--===== Single Blog Item End =========-->
+
+                            </div>
+                            <?php
                         }
-                        if(empty($add_imgs) && !empty($sw->image)) {
-                            $add_imgs[] = $sw->image; // Fallback for old data
-                        }
-                        $main_display_img = !empty($add_imgs) ? $add_imgs[0] : 'placeholder.jpg';
                         ?>
-                        
-                        <div class="project-image" style="height:190px; overflow:hidden; position:relative; border-bottom:1px solid #f0f0f0;">
-                            <img id="main-img-<?= $sw->id ?>" src="<?= base_url('public/uploads/software/'.$main_display_img) ?>" alt="<?= $sw->title ?>" class="hover-zoom" style="width:100%; height:100%; object-fit:cover; transition: transform 0.4s ease;">
-                            
-                            <div style="position:absolute; bottom:12px; right:12px; background:rgba(255,255,255,0.95); backdrop-filter:blur(5px); padding:5px 12px; border-radius:20px; font-weight:800; color:#086AD8; font-size:14px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-                                ₹<?= number_format($sw->selling_price, 0) ?>
-                            </div>
-                        </div>
-                        
-                        <div class="project-content px-3 pb-3 pt-3 d-flex flex-column flex-grow-1">
-                            <h5 class="mb-1" style="font-weight:800; color:#1a1a1a; font-size:17px; line-height:1.3;"><?= $sw->title ?></h5>
-                            <p class="text-muted mb-3" style="font-size:12px; line-height:1.5; flex-grow:1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"><?= $sw->short_description ?></p>
-                            <div class="mt-auto w-100 d-flex" style="gap:8px;">
-                                <a href="<?= base_url('Home/softwareDetails/'.$sw->slug) ?>" class="btn btn-outline-primary w-50" style="font-size:13px; font-weight:600; padding:8px 0; border-radius:6px;">View Details</a>
-                                <?php if(!empty($sw->book_demo_link)): ?>
-                                    <a href="<?= $sw->book_demo_link ?>" target="_blank" class="btn btn-primary w-50" style="font-size:13px; font-weight:600; padding:8px 0; border-radius:6px; box-shadow:0 4px 10px rgba(8,106,216,0.2);">Buy Now</a>
-                                <?php else: ?>
-                                    <button class="btn btn-primary w-50" onclick="openBookDemoModal('<?= $sw->id ?>', '<?= htmlspecialchars($sw->title, ENT_QUOTES) ?>')" style="font-size:13px; font-weight:600; padding:8px 0; border-radius:6px; box-shadow:0 4px 10px rgba(8,106,216,0.2);">Book Demo</button>
-                                <?php endif; ?>
+
+
+                    </div>
+                </div>
+            </div>
+            <!--====================  Blog Section End  ====================-->
+            <!--===========  rev_redraw-wrapper  Start =============-->
+            <div class="rev_redraw-wrapper ">
+                <div
+                    class="rev_redraw-inner-box  bg-gray-2  section-space--mt_40 section-space--mb_40  rev_redraw-space">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="redraw-content text-center">
+                                    <h3 class="font-weight--bold">Qualified Methods <span class="text-color-primary">at
+                                            its
+                                            best</span></h3>
+                                    <p class="redwaw-dec">We know how to use technology to change people's lives for the
+                                        better,
+                                        powered by our expertise in modern stacks.</p>
+                                    <div class="bedraw-button">
+                                        <a href="<?= base_url() ?>/Home/ContactUs" class="ht-btn ht-btn-md"> Request
+                                            Proposal
+                                            for Free <i class="fa-solid fa-arrow-right-long"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="tech-grid">
+                                    <div class="tech-item wow zoomIn" data-wow-delay="0.1s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/2.jpg" alt="DotNet">
+                                        <span>ASP.NET </span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="0.2s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/7.jpg"
+                                            alt="Android">
+                                        <span>Android</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="0.3s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/28.jpg" alt="Java">
+                                        <span>Java</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="0.4s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/15.jpg"
+                                            alt="CodeIgniter">
+                                        <span>CodeIgniter</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="0.5s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/40.jpg" alt="PHP">
+                                        <span>PHP</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="0.6s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/27.jpg"
+                                            alt="Java script">
+                                        <span>Java Script</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="0.7s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/35.jpg" alt="MySQL">
+                                        <span>MySQL</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="0.8s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/31.jpg"
+                                            alt="MERN Stack">
+                                        <span>MERN Stack</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="0.9s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/50.jpg" alt="UI UX">
+                                        <span>UI/UX Design</span>
+                                    </div>
+
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/30.jpg"
+                                            alt="Laravel">
+                                        <span>Laravel</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/25.jpg"
+                                            alt="Flutter">
+                                        <span>Flutter</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/20.jpg"
+                                            alt="Django">
+                                        <span>Django</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/51.jpg"
+                                            alt="NodeJS">
+                                        <span>Node JS</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/41.jpg"
+                                            alt="Postre SQL">
+                                        <span>PostgreSQL</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/22.jpg"
+                                            alt="Express JS">
+                                        <span>Express JS</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/33.jpg"
+                                            alt="MongoDB">
+                                        <span>MongoDB</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/1.jpg"
+                                            alt="WordPress">
+                                        <span>WordPress</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/46.jpg"
+                                            alt="Shopify">
+                                        <span>Shopify</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/10.jpg" alt="C">
+                                        <span>C</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/12.jpg" alt="C++">
+                                        <span>C++</span>
+                                    </div>
+                                    <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
+                                        <img src="<?= base_url('public') ?>/assets/images/tech_logo/24.jpg"
+                                            alt="Firebase">
+                                        <span>Firebase</span>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                </div>   
-                <?php endforeach; ?>
                 </div>
-                <div class="swiper-pagination position-relative mt-2"></div>
             </div>
-            
+            <!--===========  rev_redraw-wrapper  End =============-->
+            <!--====================  Conact us Section Start ====================-->
+            <div class="contact-us-section-wrappaer section-space--ptb_100">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-lg-6">
+                            <div class="conact-us-wrap-one">
+                                <h3 class="heading">Obtaining further information by <span
+                                        class="text-color-primary">droping a
+                                        message </span> to our experienced IT professionals. </h3>
+
+                                <div class="sub-heading">We’re available for 16 hours a day!<br>Contact will require a
+                                    detailed
+                                    analysis and assessment of your plan. Our experienced team can give you a best
+                                    esitimation
+                                    for technology and budget for your requirement.</div>
+
+                            </div>
+                        </div>
+                        <script>
+                            function submitregform() {
+                                document.getElementById('submitbtn').disabled = false
+                            }
+                        </script>
+                        <!--Contact Form-->
+                        <div class="col-lg-6 col-lg-6">
+                            <div class="contact-form-wrap">
+                                <form id="contact" action="<?= base_url() ?>Home/SubmitForm/contactForm" method="post">
+                                    <?php
+                                    $csrf = array(
+                                        'name' => $this->security->get_csrf_token_name(),
+                                        'hash' => $this->security->get_csrf_hash()
+                                    );
+                                    ?>
+                                    <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>"   />
+                                    <div class="contact-form">
+                                        <div class="contact-input">
+                                            <div class="contact-inner">
+                                                <input name="Name" type="text" placeholder="Name *" required="required">
+                                            </div>
+                                            <div class="contact-inner">
+                                                <input name="Email" type="email" placeholder="Email *"
+                                                    required="required">
+                                            </div>
+                                        </div>
+                                        <div class="contact-inner contact-message">
+                                            <input name="Mobile" type="text" placeholder="Mobile Number *"
+                                                required="required" maxlength="10" min="10">
+                                        </div>
+                                        <div class="contact-select">
+                                            <div class="form-item contact-inner">
+                                                <span class="inquiry">
+                                                    <select name="Enquiry" class="select-item">
+                                                        <option value="">Your Enquiry for</option>
+                                                        <option>For Website Development</option>
+                                                        <option>For Software Development</option>
+                                                        <option>For Mobile Application Development</option>
+                                                        <option>For Graphics Designing</option>
+                                                        <option>For Digital Marketing</option>
+                                                        <option>For Domain &amp; Hosting</option>
+                                                        <option>For ERP &amp; CRM</option>
+                                                        <option>For Training Programs</option>
+                                                        <option>Any Other</option>
+                                                    </select>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="contact-inner contact-message">
+                                            <textarea name="Message" placeholder="Please describe what you need."
+                                                maxlength="250"></textarea>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label>Security Verification <span class="text-danger">*</span></label>
+                                            <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"
+                                                data-callback="submitregform">
+                                            </div>
+                                        </div>
+                                        <div class="submit-btn mt-20">
+                                            <button class="ht-btn ht-btn-md" type="submit" id="submitbtn"><i
+                                                    class="fas fa-spinner fa-spin d-none"></i>&ensp;Get a free
+                                                consultation</button>
+                                            <p class="form-messege"></p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partners Section -->
+            <h2 style="text-align: center;">Our Clients</h2>
+            <h6 style="text-align: center;"><a href="<?= base_url() ?>Home/OurClient">View More &rarr;</a></h6>
+            <br>
+            <section class="partners">
+                <div class="elementor-element elementor-element-d3ef69b e-flex e-con-boxed e-con e-parent"
+                    data-id="d3ef69b" data-element_type="container">
+                    <div class="e-con-inner">
+                        <div class="elementor-element elementor-element-ac15ae1 elementor-widget elementor-widget-image-carousel"
+                            data-id="ac15ae1" data-element_type="widget"
+                            data-settings="{&quot;slides_to_show&quot;:&quot;4&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;autoplay_speed&quot;:3000,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}"
+                            data-widget_type="image-carousel.default">
+                            <div class="elementor-widget-container">
+                                <div class="elementor-image-carousel-wrapper swiper" role="region"
+                                    aria-roledescription="carousel" aria-label="Image Carousel" dir="ltr">
+                                    <div class="elementor-image-carousel swiper-wrapper" aria-live="off">
+
+                                        <?php
+                                        foreach ($clientdata as $client) {
+                                            ?>
+                                            <div class="swiper-slide" role="group" aria-roledescription="slide">
+                                                <figure class="swiper-slide-inner">
+                                                    <img class="swiper-slide-image lazy-img"
+                                                        src="<?= base_url('public') ?>/assets/images/loader2.jpg"
+                                                        data-src="<?= base_url('public/uploads/client/' . $client->image); ?>"
+                                                        alt="Client Logo">
+                                                </figure>
+                                            </div>
+                                            <?php
+                                        }
+                                        ?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <br><br>
+
+            <!--====================  Conact us Section End  ====================-->
+            <!--============ Contact Us Area Start =================-->
+            <div class="contact-us-area infotechno-contact-us-bg section-space--pat_100">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7">
+                            <div class="image">
+                                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                    data-src="<?= base_url('public') ?>/assets/images/teamwork.png" title="contact us"
+                                    alt="contact us">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 ml-auto">
+                            <div class="contact-info style-two text-left">
+
+                                <div class="contact-info-title-wrap text-center">
+                                    <h3 class="heading  mb-10">4.9/5.0</h3>
+                                    <div class="ht-star-rating lg-style">
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                    <p class="sub-text">by 1600+ customers over social media.</p>
+                                </div>
+
+                                <div class="contact-list-item">
+                                    <a href="tel:0522-4235604" class="single-contact-list">
+                                        <div class="content-wrap">
+                                            <div class="content">
+                                                <div class="icon">
+                                                    <span class="fal fa-phone"></span>
+                                                </div>
+                                                <div class="main-content">
+                                                    <h6 class="heading">Call for advice now!</h6>
+                                                    <div class="text">9198483820</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="mailto:info@digicoders.in" class="single-contact-list">
+                                        <div class="content-wrap">
+                                            <div class="content">
+                                                <div class="icon">
+                                                    <span class="fal fa-envelope"></span>
+                                                </div>
+                                                <div class="main-content">
+                                                    <h6 class="heading">Say hello</h6>
+                                                    <div class="text">info@digicoders.in</div>
+                                                    <br /><br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--===========  Social Review Section Start =============-->
+            <div class="social-review-area section-space--ptb_60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="taggbox" style="width:100%;height:100%;overflow:auto;" data-widget-id="314856"
+                                data-website="1" data-show-header="false" data-header="false"></div>
+                            <script src="https://widget.taggbox.com/embed.min.js" type="text/javascript"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--===========  Social Review Section End =============-->
+
+
+            <!--============ Contact Us Area End =================-->
+
+            <?php include('include/jslinks.php') ?>
+            <?php include('include/footer.php') ?>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+            <script>
+                $(document).ready(function () {
+
+                    $('#banner_slider').owlCarousel({
+                        loop: true,
+                        margin: 10,
+                        autoplay: true,
+                        autoplayTimeout: 3000,
+                        autoplayHoverPause: true,
+                        nav: false,
+                        dots: true,
+                        responsive: {
+                            0: {
+                                items: 1
+                            },
+                            600: {
+                                items: 2
+                            },
+                            1000: {
+                                items: 4
+                            }
+                        }
+                    });
+                    $("#recent_project").owlCarousel({
+                        autoplay: true,
+                        autoplayTimeout: 2000,
+                        items: 3,
+                        loop: true,
+                        margin: 15,
+                        center: true,
+                        dots: false,
+                        nav: false,
+                        responsive: {
+                            0: {
+                                items: 1
+                            },
+                            600: {
+                                items: 2
+                            },
+                            1000: {
+                                items: 3
+                            }
+                        }
+                    });
+                    $('#expert_team').owlCarousel({
+                        loop: true,
+                        margin: 15,
+                        items: 4,
+                        autoplay: true,
+                        autoplayTimeout: 2500,
+                        autoplayHoverPause: true,
+                        smartSpeed: 800,
+                        dots: false,
+                        nav: false,
+                        responsive: {
+                            0: {
+                                items: 1
+                            },
+                            576: {
+                                items: 2
+                            },
+                            992: {
+                                items: 3
+                            },
+                            1200: {
+                                items: 4
+                            }
+                        }
+                    });
+                });
+                // ==================== SWIPER SLIDER ====================
+                document.addEventListener("DOMContentLoaded", function () {
+                    new Swiper(".elementor-image-carousel-wrapper.swiper", {
+                        slidesPerView: 4,
+                        spaceBetween: 20,
+                        loop: true,
+                        autoplay: {
+                            delay: 3000,
+                            disableOnInteraction: false
+                        },
+                        speed: 500,
+                        pauseOnMouseEnter: true,
+                        grabCursor: true,
+                        breakpoints: {
+                            320: {
+                                slidesPerView: 1
+                            },
+                            576: {
+                                slidesPerView: 2
+                            },
+                            768: {
+                                slidesPerView: 3
+                            },
+                            1024: {
+                                slidesPerView: 4
+                            }
+                        }
+                    });
+                });
+            </script>
+
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
-                    if(typeof Swiper !== 'undefined') {
-                        new Swiper(".software-swiper", {
-                            slidesPerView: 3,
-                            spaceBetween: 25,
-                            loop: true,
-                            speed: 4000,
-                            autoplay: {
-                                delay: 0,
-                                disableOnInteraction: false,
-                            },
-                            pagination: {
-                                el: ".software-swiper .swiper-pagination",
-                                clickable: true,
-                            },
-                            breakpoints: {
-                                320: { slidesPerView: 1, spaceBetween: 15 },
-                                576: { slidesPerView: 2, spaceBetween: 15 },
-                                768: { slidesPerView: 2, spaceBetween: 20 },
-                                1024: { slidesPerView: 3, spaceBetween: 25 }
-                            }
-                        });
+                    const lazyImages = document.querySelectorAll("img.lazy-img");
+
+                    lazyImages.forEach(img => {
+                        const realSrc = img.getAttribute("data-src");
+                        if (realSrc) {
+                            img.src = realSrc;
+                        }
+                    });
+                });
+            </script>
+
+            <script>
+                $('#top_banner_slider').owlCarousel({
+                    loop: true,
+                    margin: 0,
+                    autoplay: true,
+                    autoplayTimeout: 2000,
+                    autoplayHoverPause: true,
+                    nav: true,
+                    dots: true,
+                    animateOut: 'fadeOut',
+                    animateIn: 'fadeIn',
+                    smartSpeed: 1000,
+                    items: 1,
+                    navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                    responsive: {
+                        0: {
+                            nav: false
+                        },
+                        768: {
+                            nav: true
+                        }
                     }
                 });
             </script>
-             <style>
-        .software-swiper .swiper-wrapper { transition-timing-function: linear !important; }
-        .software-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.08); border-color: #086AD8 !important; }
-        .software-card:hover .hover-zoom { transform: scale(1.08); }
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
-    </style>
-    <!-- Global Book Demo Modal -->
-    <div class="modal fade" id="bookDemoModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px;">
-            <div class="modal-content" style="border-radius:20px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden;">
-                <div class="modal-header" style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:30px 25px 20px; border:none; position: relative;">
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="position:absolute; top:15px; right:20px; opacity: 0.8; text-shadow:none;">
-                        <span aria-hidden="true" style="font-size: 28px;">&times;</span>
-                    </button>
-                    <div class="w-100 text-center mt-2">
-                        <div style="width:60px; height:60px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
-                            <i class="fa fa-calendar-check text-white" style="font-size:24px;"></i>
+
+            <!-- Global Project Enquiry Modal -->
+            <div class="modal fade" id="projectEnquiryModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px;">
+                    <div class="modal-content"
+                        style="border-radius:20px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden;">
+                        <div class="modal-header"
+                            style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:30px 25px 20px; border:none; position: relative;">
+                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"
+                                style="position:absolute; top:15px; right:20px; opacity: 0.8; text-shadow:none;">
+                                <span aria-hidden="true" style="font-size: 28px;">&times;</span>
+                            </button>
+                            <div class="w-100 text-center mt-2">
+                                <div
+                                    style="width:60px; height:60px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
+                                    <i class="fa fa-paper-plane text-white" style="font-size:24px;"></i>
+                                </div>
+                                <h4 class="modal-title text-white"
+                                    style="font-weight:700; font-size:22px; margin-bottom:5px;">Project Enquiry</h4>
+                                <p class="text-white" id="modal_project_name_display"
+                                    style="opacity: 0.9; font-size: 14px; font-weight:600; margin:0;"></p>
+                            </div>
                         </div>
-                        <h4 class="modal-title text-white" style="font-weight:700; font-size:22px; margin-bottom:5px;">Book a Free Demo</h4>
-                        <p class="text-white" style="opacity: 0.9; font-size: 13px; margin:0;">Experience our software in action!</p>
+                        <div class="modal-body" style="padding: 30px 25px; background: #f8f9fa;">
+                            <div id="projectEnquiryAlert" class="mb-3 text-center"
+                                style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;">
+                            </div>
+                            <form id="projectEnquiryForm">
+                                <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>"
+                                    value="<?= $this->security->get_csrf_hash() ?>">
+                                <input type="hidden" name="project_id" id="modal_project_id">
+                                <input type="hidden" name="project_name" id="modal_project_name">
+
+                                <div class="form-group mb-3">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"
+                                                style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
+                                                    class="fa fa-user"></i></span>
+                                        </div>
+                                        <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                            required
+                                            style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"
+                                                style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
+                                                    class="fa fa-envelope"></i></span>
+                                        </div>
+                                        <input type="email" name="email" class="form-control"
+                                            placeholder="Email Address" required
+                                            style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"
+                                                style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
+                                                    class="fa fa-phone-alt"></i></span>
+                                        </div>
+                                        <input type="tel" name="mobile" class="form-control" placeholder="Mobile Number"
+                                            required pattern="[0-9]{10}" maxlength="10"
+                                            style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <textarea name="message" class="form-control"
+                                        placeholder="Tell us about your requirements..." rows="3" required
+                                        style="border-radius:10px; background:#fff; box-shadow:none; font-size:14px; color:#444; resize:none; padding:15px;"></textarea>
+                                </div>
+
+                                <button type="submit" id="btnProjectEnquirySubmit" class="btn btn-primary w-100"
+                                    style="height:50px; border-radius:25px; font-weight:700; font-size:16px; background:linear-gradient(135deg, #086AD8, #00C6FF); border:none; box-shadow:0 8px 20px rgba(8,106,216,0.3); transition:all 0.3s;">Submit
+                                    Enquiry <i class="fa fa-arrow-right ml-2"></i></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <div class="modal-body" style="padding: 30px 25px; background: #f8f9fa;">
-                    <div id="bookDemoAlert" class="mb-3 text-center" style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;"></div>
-                    <form id="bookDemoForm">
-                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
-                        <input type="hidden" name="software_name" id="book_software_name">
-                        
-                        <div class="form-group mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-laptop-code"></i></span>
-                                </div>
-                                <select name="software_id" id="book_software_id" class="form-control" required style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
-                                    <option value="">Select Software</option>
-                                    <?php foreach($softwares as $sw): ?>
-                                        <option value="<?= $sw->id ?>"><?= $sw->title ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-user"></i></span>
-                                </div>
-                                <input type="text" name="name" class="form-control" required placeholder="Your Full Name" style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-phone-alt"></i></span>
-                                </div>
-                                <input type="text" name="mobile" class="form-control" required placeholder="Mobile Number" maxlength="10" minlength="10" style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-envelope"></i></span>
-                                </div>
-                                <input type="email" name="email" class="form-control" placeholder="Email Address (Optional)" style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <textarea name="message" class="form-control" rows="2" placeholder="Any specific requirements?" style="border-radius:10px; padding:15px; background:#fff; box-shadow:none; resize:none; font-size:14px; border:1px solid #ced4da;"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn w-100" id="btnBookDemo" style="background: linear-gradient(135deg, #086AD8, #00C6FF); color:#fff; font-weight:700; font-size:15px; padding:14px; border-radius:10px; border:none; box-shadow:0 8px 20px rgba(8,106,216,0.3); text-transform:uppercase; letter-spacing:1px; transition:all 0.3s ease;">
-                            <span class="spinner-border spinner-border-sm d-none" id="bookDemoSpinner" role="status" aria-hidden="true" style="margin-right:8px;"></span>
-                            Confirm Booking
-                        </button>
-                    </form>
-                </div>
             </div>
-        </div>
-    </div>
-    
-    <script>
-        function openBookDemoModal(softwareId, softwareName) {
-            $('#book_software_id').val(softwareId);
-            $('#book_software_name').val(softwareName);
-            $('#bookDemoModal').modal('show');
-        }
-        
-        // Update hidden software name on change
-        document.getElementById('book_software_id').addEventListener('change', function() {
-            var name = this.options[this.selectedIndex].text;
-            document.getElementById('book_software_name').value = name;
-        });
 
-        // Handle form submission with Vanilla JS
-        document.getElementById('bookDemoForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            var form = this;
-            var btn = document.getElementById('btnBookDemo');
-            var spinner = document.getElementById('bookDemoSpinner');
-            var alertBox = document.getElementById('bookDemoAlert');
-            
-            btn.disabled = true;
-            spinner.classList.remove('d-none');
-            alertBox.style.display = 'none';
-            alertBox.className = 'mt-3 text-center';
-            var formData = new FormData(form);
-            fetch("<?= base_url('Home/submitDemoRequest') ?>", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "X-Requested-With": "XMLHttpRequest"
+            <script>
+                function openProjectEnquiryModal(id, title) {
+                    $('#modal_project_id').val(id);
+                    $('#modal_project_name').val(title);
+                    $('#modal_project_name_display').text(title);
+                    $('#projectEnquiryAlert').hide();
+                    $('#projectEnquiryForm')[0].reset();
+                    $('#projectEnquiryModal').modal('show');
                 }
-            })
-            .then(response => response.json())
-            .then(data => {
-                btn.disabled = false;
-                spinner.classList.add('d-none');
-                
-                if(data.status === 'success') {
-                    alertBox.classList.add('text-success');
-                    alertBox.textContent = data.message;
-                    alertBox.style.display = 'block';
-                    form.reset();
-                    
-                    setTimeout(function(){
-                        $('#bookDemoModal').modal('hide');
-                        alertBox.style.display = 'none';
-                    }, 3000);
-                } else {
-                    alertBox.classList.add('text-danger');
-                    alertBox.textContent = data.message;
-                    alertBox.style.display = 'block';
-                }
-            })
-            .catch(error => {
-                btn.disabled = false;
-                spinner.classList.add('d-none');
-                alertBox.classList.add('text-danger');
-                alertBox.textContent = "Something went wrong. Please try again.";
-                alertBox.style.display = 'block';
-            });
-        });
-    </script>
-    
-    <?php endif; ?>
-    <!--===========  Software Products Section End =============-->
 
-    <div class="page-content page-container pt-60" id="page-content">
-        <div class="padding">
-            <div class="row container-fluid">
-                <div class="col-lg-12 grid-margin stretch-card">
-
-
-                    <div class="owl-carousel" id="banner_slider">
-                        <div class="item">
-                            <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead_Ad_1.png"
-                                alt="how we are">
-                        </div>
-                        <div class="item">
-                            <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead_Ad_2.png"
-                                alt="how we are">
-                        </div>
-                        <div class="item">
-                            <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead_Ad_1_P_c_3.png"
-                                alt="how we are">
-                        </div>
-                        <div class="item">
-                            <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead_Ad_1_Pic_4.png"
-                                alt="how we are">
-                        </div>
-                        <div class="item">
-                            <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead_Ad_1Pic 5.png"
-                                alt="how we are">
-                        </div>
-                        <div class="item">
-                            <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/banners/DigiCoders_Facebook_Lead Ad_1_Pic_6.png"
-                                alt="how we are">
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <center>
-        <h4>Expert Team of DigiCoders</h4>
-        <a href="<?= base_url() ?>Home/OurExperts" class="text-primary">View More →</a>
-    </center>
-
-    <div class="container section-space--pt_20">
-        <div class="owl-carousel expert-team-carousel owl-theme" id="expert_team">
-
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/1.jpg" alt="Himanshu Sir">
-            </div>
-
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/2.jpg" alt="Gopal Sir">
-            </div>
-
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/3.jpg" alt="Hritik Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/4.jpg" alt="Ved Prakash Sir">
-            </div>
-
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/5.jpg" alt="Sumesh Sir">
-            </div>
-
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/6.jpg" alt="Abhishek Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/7.jpg" alt="Aditya Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/8.jpg" alt="Ritu Maam">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/9.jpg" alt="Tanu Shree Maam">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/10.jpg" alt="Divya Maam">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/11.jpg" alt="Masoom Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/12.jpg" alt="Dinesh Rawat">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/13.jpg" alt="Gayatri Maam">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/14.jpg" alt="Gaurav Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/15.jpg" alt="Madhuri Maam">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/16.jpg" alt="Pushkal Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/17.jpg" alt="Devendra Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/18.jpg" alt="Roshani Maam">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/19.jpg" alt="Vivek Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/20.jpg" alt="Saurabh Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/21.jpg" alt="Mayank Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/22.jpg" alt="Abhay Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/23.jpg" alt="Irsad Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/24.jpg" alt="Shiva Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/25.jpg" alt="Priti Maam">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/26.jpg" alt="Ayaz Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/27.jpg" alt="Richa Maam">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/28.jpg" alt="Abhay Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/29.jpg" alt="Anurag Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/30.jpg" alt="Deepa Mam">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/31.jpg" alt="Kriti Mam">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/32.jpg" alt="Yogesh Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/33.jpg" alt="Priyanshu Sir">
-            </div>
-            <div class="item">
-                <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                    data-src="<?= base_url('public') ?>/assets/images/banners/33.jpg" alt="Rajkumar Sir">
-            </div>
-        </div>
-    </div>
-
-
-    <center class="mb-4">
-        <h3 class="fw-bold">Our Recent Projects</h3>
-        <a href="<?= base_url() ?>Home/OurProjects" class="view-more-btn">
-            View More →
-        </a>
-    </center>
-
-    <div class="page-content page-container">
-        <div class="container">
-            <div class="owl-carousel recent-project-carousel" id="recent_project">
-
-                <?php foreach ($userdata as $projects) { ?>
-                    <div class="item" id="item-card">
-                        <div class="project-card">
-
-                            <div class="project-image">
-                                <img class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
-                                    data-src="<?= base_url('public/uploads/projects/') . $projects->image ?>"
-                                    alt="<?= $projects->title ?>">
-                            </div>
-
-                            <div class="project-content">
-
-                                <!--  Tooltip Title -->
-                                <div class="title-tooltip">
-                                    <h5 class="project-title">
-                                        <?= $projects->title ?>
-                                    </h5>
-                                    <span class="tooltip-text">
-                                        <?= $projects->title ?>
-                                    </span>
-                                </div>
-
-                                <p class="date">
-                                    <?php
-                                    $date = strtotime($projects->add_date);
-                                    echo date('M Y', $date);
-                                    ?>
-                                </p>
-
-                                <div class="d-flex justify-content-center align-items-center mt-2 w-100 px-2 pb-2" style="gap: 15px;">
-                                    <span style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: default; display: inline-block; text-align: center;"><?= $projects->type ?></span>
-                                    <a href="<?= $projects->url ?>" target="_blank" style="background: linear-gradient(135deg, #28a745, #218838); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-block; text-align: center; box-shadow: none;"><i class="fa fa-external-link"></i> Visit</a>
-                                    <button onclick="openProjectEnquiryModal('<?= $projects->id ?>', '<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>')" style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; border: none; box-shadow: none; transition: all 0.3s; display: inline-block; text-align: center;">Enquiry</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                <?php } ?>
-
-            </div>
-        </div>
-    </div>
-
-    <!--===========  feature-large-images-wrapper  Start =============-->
-    <div class="feature-large-images-wrapper section-space--ptb_100" style="padding: 10px !important;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- section-title-wrap Start -->
-                    <div class="section-title-wrap text-center section-space--mb_60">
-
-                        <h3 class="heading">We provide all kinds of IT services that <br> will boost your <span
-                                class="text-color-primary"> BUSINESS</span></h3>
-                    </div>
-                    <!-- section-title-wrap Start -->
-                </div>
-            </div>
-
-            <div class="cybersecurity-about-box section-space--pb_100">
-                <div class="row">
-                    <div class="col-lg-4 offset-lg-1">
-                        <div class="modern-number-01">
-                            <h2 class="heading  mr-5"><span class="mark-text">10+</span>Years’ of Experienced Team</h2>
-                            <h6 class="heading mt-30" id="meetourteam">Let's meet our team to know more.</h6>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-5 offset-lg-1">
-                        <div class="cybersecurity-about-text">
-                            <div class="text text-justify">DigiCoders, An organization where we totally focus on
-                                business development of our clients. Our motto is to providing consulting and IT
-                                Solutions for your business growth. We will pleased to serve you more and more from
-                                DigiCoders. Want to know more about us </div>
-                            <div class="button-text">
-                                <a href="<?= base_url() ?>Home/AboutDigiCoders" class="btn-text">
-                                    Discover now
-                                    <span class="button-icon ml-1">
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 wow move-up">
-                            <!-- ht-box-icon Start -->
-                            <a href="<?= base_url() ?>Home/AboutDigiCoders" class="ht-large-box-images style-03">
-                                <div class="large-image-box">
-                                    <div class="box-image">
-                                        <div class="default-image">
-                                            <img class="img-fluid lazy"
-                                                src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/WhoWeAre.jpg"
-                                                alt="how we are" style="max-height: 250px; width: 100%;">
-                                        </div>
-                                    </div>
-                                    <div class="content pb-80">
-                                        <h5 class="heading">Who we are?</h5>
-                                        <div class="text">
-                                            DigiCoders Technologies is a leading development services providers in
-                                            Lucknow, Uttar Pradesh and North India.
-                                        </div>
-                                        <div class="box-images-arrow">
-                                            <span class="button-text">Discover now</span>
-                                            <i class="fa-solid fa-arrow-right-long"></i>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- ht-box-icon End -->
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow move-up">
-                            <!-- ht-box-icon Start -->
-                            <a href="" class="ht-large-box-images style-03">
-                                <div class="large-image-box">
-                                    <div class="box-image">
-                                        <div class="default-image">
-                                            <img class="img-fluid  aboutdigicoders-img lazy"
-                                                src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/WhatWeDo.jpg"
-                                                title="what we do" alt="what we do">
-                                        </div>
-                                    </div>
-                                    <div class="content pb-80">
-                                        <h5 class="heading">What We Do</h5>
-                                        <div class="text">
-                                            We provide all IT Solutions like Software, Website and Mobile Application
-                                            Development and Training Programs.
-                                        </div>
-                                        <div class="box-images-arrow">
-                                            <span class="button-text">Discover now</span>
-                                            <i class="fa-solid fa-arrow-right-long"></i>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- ht-box-icon End -->
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow move-up">
-                            <!-- ht-box-icon Start -->
-                            <a href="<?= base_url() ?>Home/" class="ht-large-box-images style-03">
-                                <div class="large-image-box">
-                                    <div class="box-image">
-                                        <div class="default-image">
-                                            <img class="aboutdigicoders-img lazy"
-                                                src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/HowWeDoIT.jpg"
-                                                title="how we do" alt="how we do">
-                                        </div>
-                                    </div>
-                                    <div class="content pb-80">
-                                        <h5 class="heading">How We Do It</h5>
-                                        <div class="text">
-                                            At DigiCoders We are working with Young Engineer, Entrepreneur our Most
-                                            innovative team.
-                                        </div>
-                                        <div class="box-images-arrow">
-                                            <span class="button-text">Discover now</span>
-                                            <i class="fa-solid fa-arrow-right-long"></i>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- ht-box-icon End -->
-                        </div>
-                    </div>
-                    <div class="section-under-heading text-center section-space--mt_20">Challenges are just
-                        opportunities in disguise <a href="<?= base_url() ?>Home/ContactUs">Take the challenge!</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--===========  feature-large-images-wrapper  End =============-->
-    <!--===========  feature-icon-wrapper  Start =============-->
-    <div class="feature-icon-wrapper bg-gray section-space--ptb_100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title-wrap text-center section-space--mb_40">
-                        <h6 class="section-sub-title mb-20">An Umbrella Solution for All IT Needs</h6>
-                        <h3 class="heading">Reach out to the world’s most <br><span class="text-color-primary"> reliable
-                                IT services.</span></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="feature-list__two">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 wow move-up">
-                                <div class="ht-box-icon style-02 single-svg-icon-box">
-                                    <div class="icon-box-wrap">
-                                        <div class="icon">
-                                            <i class="fa fa-globe fa-4x"></i>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="heading">Software Development </h5>
-                                            <div class="text">
-                                                We provide custome software development for your business, Billing,
-                                                Inventory and Every custom software
-                                            </div>
-                                            <div class="feature-btn">
-                                                <a href="<?= base_url() ?>Home/SoftwareDevelopment">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fa-solid fa-arrow-right-long"></i>
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 wow move-up">
-                                <div class="ht-box-icon style-02 single-svg-icon-box">
-                                    <div class="icon-box-wrap">
-                                        <div class="icon">
-                                            <i class="fa fa-globe fa-4x"></i>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="heading">Website Development </h5>
-                                            <div class="text">
-                                                We provide website design &amp; development to make your business online
-                                                to drive more customers and sales
-                                            </div>
-                                            <div class="feature-btn">
-                                                <a href="<?= base_url() ?>Home/WebsiteDevelopment">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fa-solid fa-arrow-right-long"></i>
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 wow move-up">
-                                <div class="ht-box-icon style-02 single-svg-icon-box">
-                                    <div class="icon-box-wrap">
-                                        <div class="icon">
-                                            <i class="fa fa-globe fa-4x"></i>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="heading">Mobile App Development </h5>
-                                            <div class="text">
-                                                We provide Android &amp; iOS Application development, we can turn your
-                                                idea into reality, Start your Startup with us
-                                            </div>
-                                            <div class="feature-btn">
-                                                <a href="<?= base_url() ?>Home/MobileApplicationDevelopment">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fa-solid fa-arrow-right-long"></i>
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 wow move-up">
-                                <div class="ht-box-icon style-02 single-svg-icon-box">
-                                    <div class="icon-box-wrap">
-                                        <div class="icon">
-                                            <i class="fa fa-globe fa-4x"></i>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="heading">Digital Marketing </h5>
-                                            <div class="text">
-                                                We provide best digital marketing services to drive more trafic on your
-                                                mobile app or website to boost your sales
-                                            </div>
-                                            <div class="feature-btn">
-                                                <a href="<?= base_url() ?>Home/DigitalMarketing">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fa-solid fa-arrow-right-long"></i>
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 wow move-up">
-                                <div class="ht-box-icon style-02 single-svg-icon-box">
-                                    <div class="icon-box-wrap">
-                                        <div class="icon">
-                                            <i class="fa fa-globe fa-4x"></i>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="heading">Graphics Design </h5>
-                                            <div class="text">
-                                                We provide graphics design to stay touch with your customers using
-                                                promotional banners, offers &amp; many more
-                                            </div>
-                                            <div class="feature-btn">
-                                                <a href="<?= base_url() ?>Home/GraphicsDesigning">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fa-solid fa-arrow-right-long"></i>
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 wow move-up">
-                                <div class="ht-box-icon style-02 single-svg-icon-box">
-                                    <div class="icon-box-wrap">
-                                        <div class="icon">
-                                            <i class="fa fa-globe fa-4x"></i>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="heading"> Domain &amp; Hosting </h5>
-                                            <div class="text">
-                                                We provide domain, hosting and a reliable server to never let your
-                                                business down, start your startup with us
-                                            </div>
-                                            <div class="feature-btn">
-                                                <a href="<?= base_url() ?>Home/DomainAndHosting">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fa-solid fa-arrow-right-long"></i>
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 wow move-up">
-                                <div class="ht-box-icon style-02 single-svg-icon-box">
-                                    <div class="icon-box-wrap">
-                                        <div class="icon">
-                                            <i class="fa fa-globe fa-4x"></i>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="heading"> ERP &amp; CRM Development </h5>
-                                            <div class="text">
-                                                We provide ERP &amp; CRM to automate your business with fast execution
-                                                and pricess strategies.
-                                            </div>
-                                            <div class="feature-btn">
-                                                <a href="<?= base_url() ?>Home/ERPandCRMDevelopment">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fa-solid fa-arrow-right-long"></i>
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 wow move-up">
-                                <div class="ht-box-icon style-02 single-svg-icon-box">
-                                    <div class="icon-box-wrap">
-                                        <div class="icon">
-                                            <i class="fa fa-globe fa-4x"></i>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="heading"> Maintenance Services </h5>
-                                            <div class="text">
-                                                We provide reliable annual maintenance services for your website,
-                                                software, erp, crm or mobile application
-                                            </div>
-                                            <div class="feature-btn">
-                                                <a href="<?= base_url() ?>Home/MaintenanceServices">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fa-solid fa-arrow-right-long"></i>
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 wow move-up">
-                                <div class="ht-box-icon style-02 single-svg-icon-box">
-                                    <div class="icon-box-wrap">
-                                        <div class="icon">
-                                            <i class="fa fa-globe fa-4x"></i>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="heading"> Explore More Services </h5>
-                                            <div class="text">
-                                                We provide many more IT servies like training programs, internships, mlm
-                                                software and many more, discover to know more.
-                                            </div>
-                                            <div class="feature-btn">
-                                                <a href="<?= base_url() ?>Home/ITServices">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fa-solid fa-arrow-right-long"></i>
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--===========  feature-icon-wrapper  End =============-->
-    <!--=========== fun fact Wrapper Start ==========-->
-    <div class="fun-fact-wrapper bg-theme-default section-space--pb_30 section-space--pt_60">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 wow move-up">
-                    <div class="fun-fact--two text-center">
-                        <div class="fun-fact__count"><span class="counter">850</span>+</div>
-                        <h6 class="fun-fact__text">Happy clients</h6>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 wow move-up">
-                    <div class="fun-fact--two text-center">
-                        <div class="fun-fact__count"><span class="counter">1000</span>+</div>
-                        <h6 class="fun-fact__text">Finished projects</h6>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 wow move-up">
-                    <div class="fun-fact--two text-center">
-                        <div class="fun-fact__count"><span class="counter">50</span>+</div>
-                        <h6 class="fun-fact__text">Skilled Experts</h6>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 wow move-up">
-                    <div class="fun-fact--two text-center">
-                        <div class="fun-fact__count"><span class="counter">100</span>+</div>
-                        <h6 class="fun-fact__text">Products</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--=========== fun fact Wrapper End ==========-->
-    <!--========= Pricing Table Area Start ==========-->
-    <div class="pricing-table-area section-space--pb_100 bg-gradient mt-40">
-        <div class="pricing-table-title-area position-relative">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title-wrapper text-center section-space--mb_60 wow move-up">
-                            <h6 class="section-sub-title mb-20">Pricing and Packages</h6>
-
-
-                            <h3 class="section-title"><span><img class="img-fluid blog-img"
-                                        src="<?= base_url('public') ?>/assets/images/offer2.gif" alt="offer"
-                                        style="height:50px; width:50px"></span>6 Months free maintenance for <span
-                                    class="text-color-primary">all IT services.</span> </h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="pricing-table-content-area">
-            <div class="container">
-                <div class="row pricing-table-one">
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 pricing-table wow move-up">
-                        <div class="pricing-table__inner">
-                            <div class="pricing-table__header">
-                                <h6 class="sub-title">Website Starter</h6>
-                                <div class="pricing-table__image lazy">
-                                    <img src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                        data-src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
-                                        class="img-fluid lazy" title="Website Starter" alt="Website Starter">
-                                </div>
-                                <div class="pricing-table__price-wrap">
-                                    <h6 class="currency">₹</h6>
-                                    <h6 class="price">9999</h6>
-                                    <h6 class="period">/onward</h6>
-                                </div>
-                            </div>
-                            <div class="pricing-table__body">
-                                <div class="pricing-table__footer">
-                                    <a href="<?= base_url() ?>Home/RequestProposal"
-                                        class="ht-btn ht-btn-md ht-btn--outline">Get this Offer!</a>
-                                </div>
-                                <ul class="pricing-table__list text-left">
-                                    <li>1 Year Domain</li>
-                                    <li>1 Year Hosting</li>
-                                    <li>Dynamic Website</li>
-                                    <li>Official 5 Emails</li>
-                                    <li>Basic SEO</li>
-                                    <li>Many More...</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 pricing-table pricing-table--popular wow move-up">
-                        <div class="pricing-table__inner">
-                            <div class="pricing-table__feature-mark">
-                                <span>Most Popular</span>
-                            </div>
-                            <div class="pricing-table__header">
-                                <h6 class="sub-title">Mobile App Starter</h6>
-                                <div class="pricing-table__image lazy">
-                                    <img src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                        data-src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
-                                        class="img-fluid lazy" title="Mobile App Starter" alt="Mobile App Starter">
-                                </div>
-                                <div class="pricing-table__price-wrap">
-                                    <h6 class="currency">₹</h6>
-                                    <h6 class="price">24999</h6>
-                                    <h6 class="period">/onward</h6>
-                                </div>
-                            </div>
-                            <div class="pricing-table__body">
-                                <div class="pricing-table__footer">
-                                    <a href="<?= base_url() ?>Home/RequestProposal" class="ht-btn  ht-btn-md ">Get this
-                                        Offer!</a>
-                                </div>
-                                <ul class="pricing-table__list text-left">
-                                    <li>E Commerce App</li>
-                                    <li>Taxi Booking App</li>
-                                    <li>Food Delivery App</li>
-                                    <li>Gaming Tournaments App</li>
-                                    <li>Service App</li>
-                                    <li>MLM Application</li>
-                                    <li>Many more...</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 pricing-table wow move-up">
-                        <div class="pricing-table__inner">
-                            <div class="pricing-table__header">
-                                <h6 class="sub-title">Software Starter</h6>
-                                <div class="pricing-table__image lazy">
-                                    <img src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                        data-src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
-                                        class="img-fluid lazy" title="Software Starter" alt="Software Starter">
-                                </div>
-                                <div class="pricing-table__price-wrap">
-                                    <h6 class="currency">₹</h6>
-                                    <h6 class="price">15999</h6>
-                                    <h6 class="period">/onward</h6>
-                                </div>
-                            </div>
-                            <div class="pricing-table__body">
-                                <div class="pricing-table__footer">
-                                    <a href="<?= base_url() ?>Home/RequestProposal"
-                                        class="ht-btn ht-btn-md ht-btn--outline">Get this Offer!</a>
-                                </div>
-                                <ul class="pricing-table__list text-left">
-                                    <li>Billing Software</li>
-                                    <li>Inventory Software</li>
-                                    <li>CRM &amp; ERP </li>
-                                    <li>School Management ERP </li>
-                                    <li>MLM Software</li>
-                                    <li>Many More... </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 text-center">
-                        <a href="<?= base_url() ?>Home/Packages" class="ht-btn  ht-btn-md">Explore All Packages <i
-                                class="fa fa-long-arrow-right"></i> </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--========= Pricing Table Area End ==========-->
-    <!--====================  Blog Section Start ====================-->
-    <div class="blog-section-wrapper section-space--pt_100  section-space--pb_70">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-12 wow move-up">
-
-                    <div
-                        class="section-title section-title tablet-mb__60 section-space--mb_30 tablet-mt__0 small-mt__0 small-mb__60 mt-30">
-                        <h6 class="section-sub-title mb-20">Blogs & news</h6>
-                        <h3 class="heading">Interesting facts &amp; <span class="text-color-primary"> IT updates </span>
-                        </h3>
-                        <ul class="infotechno-blog-list mt-30">
-                            <li>
-                                <a href="<?= base_url() ?>Home/Blogs">How to choose best software company?</a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>Home/Blogs">How to choose technology for your project?</a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>Home/Blogs">Data &amp; Source Code security tpis!</a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>Home/Blogs">Steps to start promoting your startup.</a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>Home/Blogs">Latest tools for Digital Marketing.</a>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <?php
-                foreach ($blogdata as $data) {
-                    ?>
-
-                    <div class="col-lg-4 col-md-6 wow move-up">
-                        <!--======= Single Blog Item Start ========-->
-                        <div class="single-blog-item blog-grid">
-                            <!-- Post Feature Start -->
-                            <div class="post-feature blog-thumbnail">
-                                <a href="<?= base_url() ?>Home/Blogs">
-                                    <img class="img-fluid blog-img lazy"
-                                        src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                        data-src="<?= base_url('public/uploads/Blog/') . $data->image; ?>"
-                                        alt="Blog Images">
-                                </a>
-                            </div>
-                            <!-- Post Feature End -->
-                            <!-- Post info Start -->
-                            <div class="post-info lg-blog-post-info">
-                                <div class="post-meta">
-                                    <div class="post-date">
-                                        <span class="far fa-calendar meta-icon"></span>
-                                        <?= $data->date; ?>
-                                    </div>
-                                </div>
-
-                                <h5 class="post-title font-weight--bold">
-                                    <a href="<?= base_url() ?>Home/Blogs"><?= $data->title; ?></a>
-                                </h5>
-
-                                <div class="post-excerpt mt-15">
-                                    <p><?= $data->full_discription; ?></p>
-                                </div>
-                                <div class="btn-text">
-                                    <a href="<?= base_url() ?>Home/Blogs">Read more <i
-                                            class="ml-1 button-icon fa-solid fa-arrow-right-long"></i></a>
-                                </div>
-                            </div>
-                            <!-- Post info End -->
-                        </div>
-                        <!--===== Single Blog Item End =========-->
-
-                    </div>
-                    <?php
-                }
-                ?>
-
-
-            </div>
-        </div>
-    </div>
-    <!--====================  Blog Section End  ====================-->
-    <!--===========  rev_redraw-wrapper  Start =============-->
-    <div class="rev_redraw-wrapper ">
-        <div class="rev_redraw-inner-box  bg-gray-2  section-space--mt_40 section-space--mb_40  rev_redraw-space">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="redraw-content text-center">
-                            <h3 class="font-weight--bold">Qualified Methods <span class="text-color-primary">at its
-                                    best</span></h3>
-                            <p class="redwaw-dec">We know how to use technology to change people's lives for the better,
-                                powered by our expertise in modern stacks.</p>
-                            <div class="bedraw-button">
-                                <a href="<?= base_url() ?>/Home/ContactUs" class="ht-btn ht-btn-md"> Request Proposal
-                                    for Free <i class="fa-solid fa-arrow-right-long"></i></a>
-                            </div>
-                        </div>
-
-                        <div class="tech-grid">
-                            <div class="tech-item wow zoomIn" data-wow-delay="0.1s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/2.jpg" alt="DotNet">
-                                <span>ASP.NET </span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="0.2s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/7.jpg" alt="Android">
-                                <span>Android</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="0.3s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/28.jpg" alt="Java">
-                                <span>Java</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="0.4s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/15.jpg" alt="CodeIgniter">
-                                <span>CodeIgniter</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="0.5s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/40.jpg" alt="PHP">
-                                <span>PHP</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="0.6s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/27.jpg" alt="Java script">
-                                <span>Java Script</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="0.7s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/35.jpg" alt="MySQL">
-                                <span>MySQL</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="0.8s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/31.jpg" alt="MERN Stack">
-                                <span>MERN Stack</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="0.9s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/50.jpg" alt="UI UX">
-                                <span>UI/UX Design</span>
-                            </div>
-
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/30.jpg" alt="Laravel">
-                                <span>Laravel</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/25.jpg" alt="Flutter">
-                                <span>Flutter</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/20.jpg" alt="Django">
-                                <span>Django</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/51.jpg" alt="NodeJS">
-                                <span>Node JS</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/41.jpg" alt="Postre SQL">
-                                <span>PostgreSQL</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/22.jpg" alt="Express JS">
-                                <span>Express JS</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/33.jpg" alt="MongoDB">
-                                <span>MongoDB</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/1.jpg" alt="WordPress">
-                                <span>WordPress</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/46.jpg" alt="Shopify">
-                                <span>Shopify</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/10.jpg" alt="C">
-                                <span>C</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/12.jpg" alt="C++">
-                                <span>C++</span>
-                            </div>
-                            <div class="tech-item wow zoomIn" data-wow-delay="1.0s">
-                                <img src="<?= base_url('public') ?>/assets/images/tech_logo/24.jpg" alt="Firebase">
-                                <span>Firebase</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--===========  rev_redraw-wrapper  End =============-->
-    <!--====================  Conact us Section Start ====================-->
-    <div class="contact-us-section-wrappaer section-space--ptb_100">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-lg-6">
-                    <div class="conact-us-wrap-one">
-                        <h3 class="heading">Obtaining further information by <span class="text-color-primary">droping a
-                                message </span> to our experienced IT professionals. </h3>
-
-                        <div class="sub-heading">We’re available for 16 hours a day!<br>Contact will require a detailed
-                            analysis and assessment of your plan. Our experienced team can give you a best esitimation
-                            for technology and budget for your requirement.</div>
-
-                    </div>
-                </div>
-                 <script>
-    function submitregform() {
-        document.getElementById('submitbtn').disabled = false
-    }
-    </script>
-                <!--Contact Form-->
-                <div class="col-lg-6 col-lg-6">
-                    <div class="contact-form-wrap">
-                        <form id="contact" action="<?= base_url() ?>Home/SubmitForm/contactForm" method="post">
-                            <?php
-                            $csrf = array(
-                                'name' => $this->security->get_csrf_token_name(),
-                                'hash' => $this->security->get_csrf_hash()
-                            );
-                            ?>
-                            <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>"   />
-                            <div class="contact-form">
-                                <div class="contact-input">
-                                    <div class="contact-inner">
-                                        <input name="Name" type="text" placeholder="Name *" required="required">
-                                    </div>
-                                    <div class="contact-inner">
-                                        <input name="Email" type="email" placeholder="Email *" required="required">
-                                    </div>
-                                </div>
-                                <div class="contact-inner contact-message">
-                                    <input name="Mobile" type="text" placeholder="Mobile Number *" required="required"
-                                        maxlength="10" min="10">
-                                </div>
-                                <div class="contact-select">
-                                    <div class="form-item contact-inner">
-                                        <span class="inquiry">
-                                            <select name="Enquiry" class="select-item">
-                                                <option value="">Your Enquiry for</option>
-                                                <option>For Website Development</option>
-                                                <option>For Software Development</option>
-                                                <option>For Mobile Application Development</option>
-                                                <option>For Graphics Designing</option>
-                                                <option>For Digital Marketing</option>
-                                                <option>For Domain &amp; Hosting</option>
-                                                <option>For ERP &amp; CRM</option>
-                                                <option>For Training Programs</option>
-                                                <option>Any Other</option>
-                                            </select>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="contact-inner contact-message">
-                                    <textarea name="Message" placeholder="Please describe what you need."
-                                        maxlength="250"></textarea>
-                                </div>
-                                <div class="col-lg-12">
-                                    <label>Security Verification <span class="text-danger">*</span></label>
-                                    <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>" data-callback="submitregform">
-                                    </div>
-                                </div>
-                                <div class="submit-btn mt-20">
-                                    <button class="ht-btn ht-btn-md" type="submit" id="submitbtn"><i class="fas fa-spinner fa-spin d-none"></i>&ensp;Get a free consultation</button>
-                                    <p class="form-messege"></p>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Partners Section -->
-    <h2 style="text-align: center;">Our Clients</h2>
-    <h6 style="text-align: center;"><a href="<?= base_url() ?>Home/OurClient">View More &rarr;</a></h6>
-    <br>
-    <section class="partners">
-        <div class="elementor-element elementor-element-d3ef69b e-flex e-con-boxed e-con e-parent" data-id="d3ef69b"
-            data-element_type="container">
-            <div class="e-con-inner">
-                <div class="elementor-element elementor-element-ac15ae1 elementor-widget elementor-widget-image-carousel"
-                    data-id="ac15ae1" data-element_type="widget"
-                    data-settings="{&quot;slides_to_show&quot;:&quot;4&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;autoplay_speed&quot;:3000,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}"
-                    data-widget_type="image-carousel.default">
-                    <div class="elementor-widget-container">
-                        <div class="elementor-image-carousel-wrapper swiper" role="region"
-                            aria-roledescription="carousel" aria-label="Image Carousel" dir="ltr">
-                            <div class="elementor-image-carousel swiper-wrapper" aria-live="off">
-
-                                <?php
-                                foreach ($clientdata as $client) {
-                                    ?>
-                                    <div class="swiper-slide" role="group" aria-roledescription="slide">
-                                        <figure class="swiper-slide-inner">
-                                            <img class="swiper-slide-image lazy-img"
-                                                src="<?= base_url('public') ?>/assets/images/loader2.jpg"
-                                                data-src="<?= base_url('public/uploads/client/' . $client->image); ?>"
-                                                alt="Client Logo">
-                                        </figure>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <br><br>
-
-    <!--====================  Conact us Section End  ====================-->
-    <!--============ Contact Us Area Start =================-->
-    <div class="contact-us-area infotechno-contact-us-bg section-space--pat_100">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <div class="image">
-                        <img class="img-fluid lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                            data-src="<?= base_url('public') ?>/assets/images/teamwork.png" title="contact us"
-                            alt="contact us">
-                    </div>
-                </div>
-
-                <div class="col-lg-4 ml-auto">
-                    <div class="contact-info style-two text-left">
-
-                        <div class="contact-info-title-wrap text-center">
-                            <h3 class="heading  mb-10">4.9/5.0</h3>
-                            <div class="ht-star-rating lg-style">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                            <p class="sub-text">by 1600+ customers over social media.</p>
-                        </div>
-
-                        <div class="contact-list-item">
-                            <a href="tel:0522-4235604" class="single-contact-list">
-                                <div class="content-wrap">
-                                    <div class="content">
-                                        <div class="icon">
-                                            <span class="fal fa-phone"></span>
-                                        </div>
-                                        <div class="main-content">
-                                            <h6 class="heading">Call for advice now!</h6>
-                                            <div class="text">9198483820</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="mailto:info@digicoders.in" class="single-contact-list">
-                                <div class="content-wrap">
-                                    <div class="content">
-                                        <div class="icon">
-                                            <span class="fal fa-envelope"></span>
-                                        </div>
-                                        <div class="main-content">
-                                            <h6 class="heading">Say hello</h6>
-                                            <div class="text">info@digicoders.in</div>
-                                            <br /><br />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!--===========  Social Review Section Start =============-->
-    <div class="social-review-area section-space--ptb_60">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="taggbox" style="width:100%;height:100%;overflow:auto;" data-widget-id="314856"
-                        data-website="1" data-show-header="false" data-header="false"></div>
-                    <script src="https://widget.taggbox.com/embed.min.js" type="text/javascript"></script>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--===========  Social Review Section End =============-->
-
-
-    <!--============ Contact Us Area End =================-->
-
-    <?php include('include/jslinks.php') ?>
-    <?php include('include/footer.php') ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script>
-        $(document).ready(function () {
-
-            $('#banner_slider').owlCarousel({
-                loop: true,
-                margin: 10,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true,
-                nav: false,
-                dots: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 2
-                    },
-                    1000: {
-                        items: 4
-                    }
-                }
-            });
-            $("#recent_project").owlCarousel({
-                autoplay: true,
-                autoplayTimeout: 2000,
-                items: 3,
-                loop: true,
-                margin: 15,
-                center: true,
-                dots: false,
-                nav: false,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 2
-                    },
-                    1000: {
-                        items: 3
-                    }
-                }
-            });
-            $('#expert_team').owlCarousel({
-                loop: true,
-                margin: 15,
-                items: 4,
-                autoplay: true,
-                autoplayTimeout: 2500,
-                autoplayHoverPause: true,
-                smartSpeed: 800,
-                dots: false,
-                nav: false,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    576: {
-                        items: 2
-                    },
-                    992: {
-                        items: 3
-                    },
-                    1200: {
-                        items: 4
-                    }
-                }
-            });
-        });
-        // ==================== SWIPER SLIDER ====================
-        document.addEventListener("DOMContentLoaded", function () {
-            new Swiper(".elementor-image-carousel-wrapper.swiper", {
-                slidesPerView: 4,
-                spaceBetween: 20,
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false
-                },
-                speed: 500,
-                pauseOnMouseEnter: true,
-                grabCursor: true,
-                breakpoints: {
-                    320: {
-                        slidesPerView: 1
-                    },
-                    576: {
-                        slidesPerView: 2
-                    },
-                    768: {
-                        slidesPerView: 3
-                    },
-                    1024: {
-                        slidesPerView: 4
-                    }
-                }
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const lazyImages = document.querySelectorAll("img.lazy-img");
-
-            lazyImages.forEach(img => {
-                const realSrc = img.getAttribute("data-src");
-                if (realSrc) {
-                    img.src = realSrc;
-                }
-            });
-        });
-    </script>
-
-    <script>
-        $('#top_banner_slider').owlCarousel({
-            loop: true,
-            margin: 0,
-            autoplay: true,
-            autoplayTimeout: 2000,
-            autoplayHoverPause: true,
-            nav: true,
-            dots: true,
-            animateOut: 'fadeOut',
-            animateIn: 'fadeIn',
-            smartSpeed: 1000,
-            items: 1,
-            navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
-            responsive: {
-                0: {
-                    nav: false
-                },
-                768: {
-                    nav: true
-                }
-            }
-        });
-    </script>
-
-    <!-- Global Project Enquiry Modal -->
-    <div class="modal fade" id="projectEnquiryModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px;">
-            <div class="modal-content" style="border-radius:20px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden;">
-                <div class="modal-header" style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:30px 25px 20px; border:none; position: relative;">
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="position:absolute; top:15px; right:20px; opacity: 0.8; text-shadow:none;">
-                        <span aria-hidden="true" style="font-size: 28px;">&times;</span>
-                    </button>
-                    <div class="w-100 text-center mt-2">
-                        <div style="width:60px; height:60px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
-                            <i class="fa fa-paper-plane text-white" style="font-size:24px;"></i>
-                        </div>
-                        <h4 class="modal-title text-white" style="font-weight:700; font-size:22px; margin-bottom:5px;">Project Enquiry</h4>
-                        <p class="text-white" id="modal_project_name_display" style="opacity: 0.9; font-size: 14px; font-weight:600; margin:0;"></p>
-                    </div>
-                </div>
-                <div class="modal-body" style="padding: 30px 25px; background: #f8f9fa;">
-                    <div id="projectEnquiryAlert" class="mb-3 text-center" style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;"></div>
-                    <form id="projectEnquiryForm">
-                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
-                        <input type="hidden" name="project_id" id="modal_project_id">
-                        <input type="hidden" name="project_name" id="modal_project_name">
-
-                        <div class="form-group mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-user"></i></span>
-                                </div>
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-envelope"></i></span>
-                                </div>
-                                <input type="email" name="email" class="form-control" placeholder="Email Address" required style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-phone-alt"></i></span>
-                                </div>
-                                <input type="tel" name="mobile" class="form-control" placeholder="Mobile Number" required pattern="[0-9]{10}" maxlength="10" style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <textarea name="message" class="form-control" placeholder="Tell us about your requirements..." rows="3" required style="border-radius:10px; background:#fff; box-shadow:none; font-size:14px; color:#444; resize:none; padding:15px;"></textarea>
-                        </div>
-
-                        <button type="submit" id="btnProjectEnquirySubmit" class="btn btn-primary w-100" style="height:50px; border-radius:25px; font-weight:700; font-size:16px; background:linear-gradient(135deg, #086AD8, #00C6FF); border:none; box-shadow:0 8px 20px rgba(8,106,216,0.3); transition:all 0.3s;">Submit Enquiry <i class="fa fa-arrow-right ml-2"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function openProjectEnquiryModal(id, title) {
-            $('#modal_project_id').val(id);
-            $('#modal_project_name').val(title);
-            $('#modal_project_name_display').text(title);
-            $('#projectEnquiryAlert').hide();
-            $('#projectEnquiryForm')[0].reset();
-            $('#projectEnquiryModal').modal('show');
-        }
-
-        $('#projectEnquiryForm').on('submit', function(e) {
-            e.preventDefault();
-            var btn = $('#btnProjectEnquirySubmit');
-            var originalText = btn.html();
-            btn.html('<i class="fa fa-spinner fa-spin"></i> Submitting...').prop('disabled', true);
-            
-            $.ajax({
-                url: '<?= base_url('Home/submitProjectEnquiry') ?>',
-                type: 'POST',
-                data: $(this).serialize(),
-                dataType: 'json',
-                success: function(res) {
-                    btn.html(originalText).prop('disabled', false);
-                    var alertBox = $('#projectEnquiryAlert');
-                    if(res.status == 'success') {
-                        alertBox.removeClass('alert-danger').addClass('alert-success').text(res.msg).show();
-                        $('#projectEnquiryForm')[0].reset();
-                        setTimeout(function(){
-                            $('#projectEnquiryModal').modal('hide');
-                        }, 2000);
-                    } else {
-                        alertBox.removeClass('alert-success').addClass('alert-danger').text(res.msg).show();
-                    }
-                },
-                error: function() {
-                    btn.html(originalText).prop('disabled', false);
-                    $('#projectEnquiryAlert').removeClass('alert-success').addClass('alert-danger').text('Something went wrong. Please try again.').show();
-                }
-            });
-        });
-    </script>
+                $('#projectEnquiryForm').on('submit', function (e) {
+                    e.preventDefault();
+                    var btn = $('#btnProjectEnquirySubmit');
+                    var originalText = btn.html();
+                    btn.html('<i class="fa fa-spinner fa-spin"></i> Submitting...').prop('disabled', true);
+
+                    $.ajax({
+                        url: '<?= base_url('Home/submitProjectEnquiry') ?>',
+                        type: 'POST',
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success: function (res) {
+                            btn.html(originalText).prop('disabled', false);
+                            var alertBox = $('#projectEnquiryAlert');
+                            if (res.status == 'success') {
+                                alertBox.removeClass('alert-danger').addClass('alert-success').text(res.msg).show();
+                                $('#projectEnquiryForm')[0].reset();
+                                setTimeout(function () {
+                                    $('#projectEnquiryModal').modal('hide');
+                                }, 2000);
+                            } else {
+                                alertBox.removeClass('alert-success').addClass('alert-danger').text(res.msg).show();
+                            }
+                        },
+                        error: function () {
+                            btn.html(originalText).prop('disabled', false);
+                            $('#projectEnquiryAlert').removeClass('alert-success').addClass('alert-danger').text('Something went wrong. Please try again.').show();
+                        }
+                    });
+                });
+            </script>
 </body>
 
 </html>

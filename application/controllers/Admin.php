@@ -1716,4 +1716,123 @@ class Admin extends MY_Controller
 		$data['enquiries'] = $this->db->order_by('id', 'desc')->get('project_enquiries')->result();
 		$this->load->view('Admin/ManageProjectEnquiries', $data);
 	}
+
+	public function ManageExpertBanners()
+	{
+		$data['userdata'] = $this->db->order_by('id', 'desc')->get('expert_banners')->result();
+		if ($this->uri->segment(3)) {
+			if ($this->uri->segment(3) == 'Add') {
+				$this->form_validation->set_rules('name', 'Name', 'required');
+				if (empty($_FILES['image']['name'])) {
+					$this->form_validation->set_rules('image', 'Image', 'required');
+				}
+
+				if ($this->form_validation->run() == false) {
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+				} else {
+					$upload_status = 'true';
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+					$slug = url_title($this->input->post('name'), '-', TRUE);
+					$filename = $slug . "-" . time() . "." . $ext;
+
+					$config['upload_path'] = './public/uploads/expert_banners/';
+					$config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
+					$config['max_size'] = 2048; // In KB
+					$config['file_name'] = $filename;
+					$this->load->library('upload', $config);
+
+					if (!$this->upload->do_upload('image')) {
+						$upload_status = "false";
+						$upload_error = strip_tags($this->upload->display_errors());
+					} else {
+						$upload_status = "true";
+					}
+
+					$data_arr = array(
+						"name" => $this->input->post('name'),
+						"image" => $filename,
+						"status" => 'true'
+					);
+
+					if ($upload_status == "true") {
+						if ($this->db->insert('expert_banners', $data_arr)) {
+							echo json_encode(array("status" => "success", "msg" => "Banner Successfully Added", "title" => "Successfully Added!", "reload" => "true", "redirect" => 'false'));
+						} else {
+							echo json_encode(array("status" => "error", "msg" => isset($upload_error) ? $upload_error : "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+						}
+					} else {
+						echo json_encode(array("status" => "error", "msg" => isset($upload_error) ? $upload_error : "Upload failed", "title" => "Error!", "reload" => "false", "redirect" => 'false'));
+					}
+				}
+			} elseif ($this->uri->segment(3) == 'Edit') {
+
+				$userdata = $this->db->get_where('expert_banners', array('id' => $this->input->post('id')))->row();
+				$old_img = $userdata->image;
+				$upload_status = 'true';
+				$filename = $old_img;
+				if (!empty($_FILES['image']['name'])) {
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+					$slug = url_title($this->input->post('name'), '-', TRUE);
+					$filename = $slug . "-" . time() . "." . $ext;
+
+					$config['upload_path'] = './public/uploads/expert_banners/';
+					$config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
+					$config['max_size'] = 2048; // In KB
+					$config['file_name'] = $filename;
+					$this->load->library('upload', $config);
+
+					if (!$this->upload->do_upload('image')) {
+						$upload_status = "false";
+						$upload_error = strip_tags($this->upload->display_errors());
+					} else {
+						$upload_status = "true";
+					}
+				}
+
+				$data_arr = array(
+					"name" => $this->input->post('name'),
+					"image" => $filename,
+					"status" => 'true'
+				);
+
+				if ($upload_status == 'true') {
+					if ($this->db->where('id', $userdata->id)->update('expert_banners', $data_arr)) {
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Banner Successfully Updated");
+						if ($filename != $old_img && !empty($old_img)) {
+							$file_path = './public/uploads/expert_banners/' . $old_img;
+							if (file_exists($file_path)) {
+								@unlink($file_path);
+							}
+						}
+						redirect(base_url('Admin/ManageExpertBanners'));
+					} else {
+						$this->session->set_flashdata("status", "error");
+						$this->session->set_flashdata("msg", "Something Went Wrong");
+						redirect(base_url('Admin/ManageExpertBanners'));
+					}
+				} else {
+					$this->session->set_flashdata("status", "error");
+					$this->session->set_flashdata("msg", isset($upload_error) ? $upload_error : "Upload failed");
+					redirect(base_url('Admin/ManageExpertBanners'));
+				}
+
+			} elseif ($this->uri->segment(3) == 'Delete') {
+				$id = $this->input->post('id');
+				$userdata = $this->db->get_where('expert_banners', array('id' => $id))->row();
+				if ($userdata) {
+					if (file_exists('./public/uploads/expert_banners/' . $userdata->image)) {
+						@unlink('./public/uploads/expert_banners/' . $userdata->image);
+					}
+					if ($this->db->where('id', $id)->delete('expert_banners')) {
+						echo json_encode(array("status" => "success", "msg" => "Banner Successfully Deleted", "title" => "Success!", "reload" => "true", "redirect" => 'false'));
+					} else {
+						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Error!", "reload" => "false", "redirect" => 'false'));
+					}
+				}
+			}
+		} else {
+			$this->load->view('Admin/expert_banners', $data);
+		}
+	}
 }
