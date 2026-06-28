@@ -102,12 +102,14 @@
       var latitude = "";
       var longitude = "";
       var address = "";
+      var locationError = null;
 
       // Capture Geolocation Silently
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
           latitude = position.coords.latitude;
           longitude = position.coords.longitude;
+          locationError = null;
 
           // Get Address using Google Reverse Geocoding
           var geocoder = new google.maps.Geocoder();
@@ -130,6 +132,7 @@
           });
         }, function(error) {
           console.error("Error capturing location: ", error);
+          locationError = error;
           address = "Permission Denied or Error (Code: "+error.code+")";
         }, {timeout: 10000});
       } else {
@@ -156,20 +159,8 @@
         }, 1000);
       }
 
-      $('#sendOtpBtn, #resendOtpBtn').click(function() {
-        var email = $('#inputEmailAddress').val();
-        if (email == "") {
-          iziToast.error({
-            title: 'Error',
-            message: 'Please enter email address',
-            position: 'topRight'
-          });
-          return;
-        }
-        var btn = $(this);
-        var oldHtml = btn.html();
+      function sendOtpAjax(email, btn, oldHtml) {
         btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Sending...');
-
         $.ajax({
           url: "<?= base_url('Authentication/SendOTP') ?>",
           type: "POST",
@@ -182,7 +173,7 @@
           },
           dataType: "json",
           success: function(res) {
-            btn.prop('disabled', false).html('Send OTP');
+            btn.prop('disabled', false).html(oldHtml);
             if (res.status == 'success') {
               iziToast.success({
                 title: 'Success',
@@ -201,6 +192,89 @@
             }
           }
         });
+      }
+
+      $('#sendOtpBtn, #resendOtpBtn').click(function() {
+        var email = $('#inputEmailAddress').val();
+        if (email == "") {
+          iziToast.error({
+            title: 'Error',
+            message: 'Please enter email address',
+            position: 'topRight'
+          });
+          return;
+        }
+
+        var btn = $(this);
+        var oldHtml = btn.html();
+
+        if (!navigator.geolocation) {
+          iziToast.error({
+            title: 'Location Required',
+            message: 'Geolocation is not supported by your browser. You cannot log in without location access.',
+            position: 'topRight'
+          });
+          return;
+        }
+
+        // If coordinates already loaded successfully
+        if (latitude !== "" && longitude !== "") {
+          sendOtpAjax(email, btn, oldHtml);
+          return;
+        }
+
+        // If location permission is explicitly denied
+        if (locationError && locationError.code === 1) { // PERMISSION_DENIED
+          iziToast.error({
+            title: 'Location Required',
+            message: 'Location permission is denied. Please reset permissions in your browser address bar and allow location access to log in.',
+            position: 'topRight'
+          });
+          return;
+        }
+
+        // If not loaded yet, or had other transient errors, request location again
+        btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Getting Location...');
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+          latitude = position.coords.latitude;
+          longitude = position.coords.longitude;
+          locationError = null;
+
+          var geocoder = new google.maps.Geocoder();
+          var latlng = {
+            lat: parseFloat(latitude),
+            lng: parseFloat(longitude)
+          };
+          geocoder.geocode({
+              'location': latlng
+          }, function(results, status) {
+            if (status === 'OK') {
+              if (results[0]) {
+                address = results[0].formatted_address;
+              }
+            } else {
+              address = "Location captured but address not found (Status: "+status+")";
+            }
+            sendOtpAjax(email, btn, oldHtml);
+          });
+        }, function(error) {
+          locationError = error;
+          btn.prop('disabled', false).html(oldHtml);
+          var errorMsg = "Please allow location permission to log in.";
+          if (error.code === 1) {
+            errorMsg = "Location permission denied. You cannot log in without location access.";
+          } else if (error.code === 2) {
+            errorMsg = "Location information is unavailable. Please try again.";
+          } else if (error.code === 3) {
+            errorMsg = "Location request timed out. Please try again.";
+          }
+          iziToast.error({
+            title: 'Location Required',
+            message: errorMsg,
+            position: 'topRight'
+          });
+        }, {timeout: 10000});
       });
 
       // Verify OTP

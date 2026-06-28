@@ -35,6 +35,11 @@ class Authentication extends CI_Controller
 				$longitude = $this->input->post('longitude');
 				$address = $this->input->post('address');
 
+				if ($latitude === '' || $longitude === '' || $latitude === null || $longitude === null) {
+					echo json_encode(array("status" => "error", "msg" => "Location permission is required to login to Admin."));
+					return;
+				}
+
 				$this->session->set_userdata('login_otp', $otp);
 				$this->session->set_userdata('otp_email', $email);
 				$this->session->set_userdata('otp_expiry', time() + 120); // 2 minutes
