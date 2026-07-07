@@ -111,18 +111,15 @@
     <!-- reveal-footer -->
     <div class="footer-area section-space--pb_60">
         <div class="container">
-
-
             <section class="dg-office-section">
                 <div class="dg-office-container">
                     <!-- Delhi NCR Office -->
                     <div class="dg-office-block">
                         <img src="<?= base_url('public') ?>/assets/images/loader1.jpg"
-                            data-src="<?= base_url('public') ?>/assets/images/Digicoders-new-logo.png"
+                            data-src="<?= base_url('public') ?>/assets/images/DigiCoders Technologies Logo.jpg"
                             class="img-fluid footer-logo lazy" title="digicoderslogo" alt="digicoderslogo"
                             style="left:30%;" />
                     </div>
-
                     <!-- Gorakhpur Office -->
                     <div class="dg-office-block">
                         <h3>LUCKNOW OFFICE</h3>
