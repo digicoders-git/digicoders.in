@@ -80,8 +80,8 @@ class Authentication extends CI_Controller
 					$this->email->initialize($config);
 					$from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
 					$this->email->from($from_email, 'digicoders.in Admin');
-					$this->email->to('saurabhkumarssp@gmail.com');
-					// $this->email->to('digicoderstech@gmail.com');
+					// $this->email->to('saurabhkumarssp@gmail.com');
+					$this->email->to('digicoderstech@gmail.com');
 					$this->email->subject('Login OTP - Digicoders');
 
 					$message = "<html><body style='background-color: #f4f7f6; padding: 20px; font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;'>";

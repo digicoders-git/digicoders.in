@@ -726,8 +726,8 @@ class Home extends CI_Controller
 			$this->email->set_newline("\r\n");
 			$from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
 			$this->email->from($from_email, 'digicoders.in Website');
-		// $this->email->to('digicoderstech@gmail.com');
-		$this->email->to('saurabhkumarssp@gmail.com');
+		$this->email->to('digicoderstech@gmail.com');
+		// $this->email->to('saurabhkumarssp@gmail.com');
 			$this->email->subject($subject);
 
 			$message = "<html>
