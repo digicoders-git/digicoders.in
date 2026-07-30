@@ -5,7 +5,13 @@
     =         Wow Active            =
     ================================*/
 
-    new WOW().init();
+    if (typeof WOW !== 'undefined') {
+        try {
+            new WOW().init();
+        } catch (e) {
+            console.warn("WOW init error:", e);
+        }
+    }
     
     /*=============================================
     =       Menu sticky & Scroll to top          =
@@ -927,16 +933,24 @@
         Svg Icon Draw
     ====================================*/ 
     var $svgIconBox = $('.single-svg-icon-box');
-    $svgIconBox.each(function() {
-        var $this = $(this),
-            $svgIcon = $this.find('.svg-icon'),
-            $id = $svgIcon.attr('id'),
-            $icon = $svgIcon.data('svg-icon');
-        var $vivus = new Vivus($id, { duration: 100, file: $icon });
-        $this.on('mouseenter', function () {
-            $vivus.reset().play();
+    if ($svgIconBox.length && typeof Vivus !== 'undefined') {
+        $svgIconBox.each(function() {
+            var $this = $(this),
+                $svgIcon = $this.find('.svg-icon'),
+                $id = $svgIcon.attr('id'),
+                $icon = $svgIcon.data('svg-icon');
+            if ($id && $icon && document.getElementById($id)) {
+                try {
+                    var $vivus = new Vivus($id, { duration: 100, file: $icon });
+                    $this.on('mouseenter', function () {
+                        $vivus.reset().play();
+                    });
+                } catch(e) {
+                    console.warn("Vivus init error:", e);
+                }
+            }
         });
-    });
+    }
     
     /*=====================================
     =          Countdown Time Circles     =

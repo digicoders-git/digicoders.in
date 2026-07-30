@@ -51,7 +51,7 @@
                                     <div class="ht-team-member">
                                         <div class="team-image">
 
-                                            <img data-src="<?= base_url('public') ?>/assets/images/team/himanshu.png" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:auto" class="lazy img-fluid team-img" title="Er.Himanshu Kashyap digicoders" alt="Er.Himanshu Kashyap digicoders" />
+                                            <img src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public') ?>/assets/images/team/himanshu-kashyap-co-founder.png" style="height:auto" class="lazy img-fluid team-img" title="Er. Himanshu Kashyap" alt="Er. Himanshu Kashyap DigiCoders" />
                                         </div>
                                         <div class="team-info ">
                                             <h5 class="name">Er. Himanshu Kashyap </h5>
@@ -64,7 +64,7 @@
                                 <div class="grid-item">
                                     <div class="ht-team-member">
                                         <div class="team-image">
-                                            <img data-src="<?= base_url('public') ?>/assets/images/team/gopal.png" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:auto" class="lazy img-fluid team-img" title="Er.Gopal Singh digicoders" alt="Er.Gopal Singh digicoders" />
+                                            <img src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public') ?>/assets/images/team/gopal-singh-co-founder.png" style="height:auto" class="lazy img-fluid team-img" title="Er. Gopal Singh" alt="Er. Gopal Singh" />
                                         </div>
                                         <div class="team-info ">
                                             <h5 class="name">Er. Gopal Singh </h5>
@@ -98,7 +98,7 @@
                             <div class="grid-item  mb-30">
                                 <div class="ht-team-member">
                                     <div class="team-image">
-                                        <img src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public/uploads/expert/').$experts->image; ?>"  class=" img-fluid employee-img lazy" title="Employees" alt="Employees" />
+                                        <img src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public/uploads/expert/').$experts->image; ?>" class="img-fluid employee-img lazy" title="<?= htmlspecialchars($experts->name, ENT_QUOTES) ?>" alt="<?= htmlspecialchars($experts->name, ENT_QUOTES) ?>" />
                                     </div>
                                     <div class="team-info text-center">
                                         <h5 class="name"><?= $experts->name ?></h5>
@@ -127,7 +127,7 @@
                             <div class="grid-item  mb-30">
                                 <div class="ht-team-member">
                                     <div class="team-image">
-                                       <img src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public/uploads/expert/').$interns->image; ?>"  class=" img-fluid employee-img lazy" title="Employees" alt="Employees" />
+                                       <img src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public/uploads/expert/').$interns->image; ?>" class="img-fluid employee-img lazy" title="<?= htmlspecialchars($interns->name, ENT_QUOTES) ?>" alt="<?= htmlspecialchars($interns->name, ENT_QUOTES) ?>" />
                                     </div>
                                     <div class="team-info text-center">
                                         <h5 class="name"><?= $interns->name ?></h5>

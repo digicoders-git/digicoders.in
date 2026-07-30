@@ -64,6 +64,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Title</th>
                                     <th>Image</th>
                                     <th>Date</th>
                                     <th>Time</th>
@@ -78,13 +79,14 @@
                                 ?>
                                     <tr>
                                         <td><?= $sr++ ?></td>
-                                        <td> <img src="<?= base_url('public/uploads/client/').$data->image; ?>" alt="ddd" style="height: 120px; width:120px"/> </td>
+                                        <td><strong><?= !empty($data->title) ? htmlspecialchars($data->title) : 'N/A'; ?></strong></td>
+                                        <td> <img src="<?= base_url('public/uploads/client/').$data->image; ?>" alt="<?= !empty($data->title) ? htmlspecialchars($data->title, ENT_QUOTES) : 'Client'; ?>" style="height: 100px; width:100px; object-fit:contain;"/> </td>
                                         <td><?= $data->date; ?></td>
                                         <td><?= $data->time; ?></td>
                                         <td>
                                         <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'client','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked" <?php if($data->status == 'true'){ echo "checked"; } ?>>
-                                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                                <input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'client','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked<?= $data->id ?>" <?php if($data->status == 'true'){ echo "checked"; } ?>>
+                                                <label class="form-check-label" for="flexSwitchCheckChecked<?= $data->id ?>"></label>
                                             </div>
                                         </td>
                                         <td>
@@ -102,28 +104,10 @@
                                 }
                                 ?>
                             </tbody>
-                            <!-- <tfoot>
-                                <tr>
-                                <th>#</th>
-                                    <th>Title</th>
-                                    <th>Profile</th>
-                                    <th>Location</th>
-                                    <th>Salary</th>
-                                    <th>Eligibility</th>
-                                    <th>Skills</th>
-                                    <th>Experience</th>
-                                    <th>Description</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot> -->
                         </table>
                     </div>
                 </div>
             </div>
-
-
-
-
 
         </main>
         <!--end page main-->
@@ -142,8 +126,6 @@
 
 </body>
 
-
-
 <div class="modal fade" id="ClientModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
         <div class="modal-content">
@@ -159,9 +141,14 @@ $csrf = array(
         'hash' => $this->security->get_csrf_hash()
 );
 ?>
-<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
                     <div class="form-group mb-3">
-                    <input type="file" id="input-file-now" name="image" class="dropify" required />
+                        <label class="form-label fw-bold">Client Title / Name <span class="text-danger">*</span></label>
+                        <input type="text" name="title" class="form-control" placeholder="Enter Client Title / Name" required />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label fw-bold">Client Image <span class="text-danger">*</span></label>
+                        <input type="file" id="input-file-now" name="image" class="dropify" required />
                     </div>
             </div>
             <div class="modal-footer">

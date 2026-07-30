@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="<?= base_url() ?>public/assets/css/plugins/plugins.min.css">
 <!-- Main Style CSS -->
 <link rel="stylesheet" href="<?= base_url() ?>public/assets/css/style.css">
-<link rel="stylesheet" href="<?= base_url() ?>public/assets/css/CustomStyle.css" />
+<link rel="stylesheet" href="<?= base_url() ?>public/assets/css/CustomStyle.css?v=<?= time() ?>" />
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
 <link href="<?= base_url('public/assets') ?>/Mycss/ExternalCss.css" rel="stylesheet" />

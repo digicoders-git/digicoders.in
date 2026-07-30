@@ -2343,26 +2343,27 @@
                                 <!-- forecach  loop -->
                                 <?php
                                 foreach ($projects as $project)
-                                 {
+                                {
+                                    $is_link_active = (!isset($project->link_status) || $project->link_status == 'true' || $project->link_status == '1');
                                 ?>
                                     <div class="single-item col-lg-4 col-md-6 mt-30 wow move-up">
-                                        <!-- ht-box-icon Start -->
-                                        <!-- <a href="<?php echo $project->url; ?>" target="_blank" style="width:100%;"> -->
-                                            <div class="image-box-wrap" style="width:100%;">
-                                                <div class="box-image" style="width:100%;">
-                                                    <img class="lazy" src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public/uploads/projects/').$project->image; ?>" title="projects" alt="projects" style="height: 200px; width: 100% " />
-                                                </div>
-                                                <div class="content ht-box-images style-04 text-center">
-                                                  <h5 class="heading" title="<?= $project->title; ?>" data-title="<?= $project->title; ?>"><?= $project->title; ?></h5>
-
-                                                    <div class="text"><?php  $date = strtotime($project->add_date); echo $date = date('M Y', $date);  ?>&nbsp;<i class="fa fa-link"></i></div>
-                                                    <div class="text">
-                                                        <h6><?= $project->type; ?></h6>
-                                                    </div>
-                                                </div>
+                                        <div class="image-box-wrap" style="width:100%;">
+                                            <div class="box-image" style="width:100%;">
+                                                <img class="lazy" src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public/uploads/projects/').$project->image; ?>" title="<?= htmlspecialchars($project->title) ?>" alt="<?= htmlspecialchars($project->title) ?>" style="height: 200px; width: 100%; object-fit: cover;" />
                                             </div>
-                                        <!-- </a> -->
-                                        <!-- ht-box-icon End -->
+                                            <div class="content ht-box-images style-04 text-center p-3">
+                                                <h5 class="heading mb-2" title="<?= htmlspecialchars($project->title); ?>" data-title="<?= htmlspecialchars($project->title); ?>"><?= htmlspecialchars($project->title); ?></h5>
+                                                <div class="text text-muted mb-2"><?php $date = strtotime($project->add_date); echo date('M Y', $date); ?></div>
+                                                <div class="text mb-3">
+                                                    <span class="badge bg-primary text-white"><?= htmlspecialchars($project->type); ?></span>
+                                                </div>
+                                                <?php if ($is_link_active && !empty($project->url)): ?>
+                                                    <a href="<?= $project->url ?>" target="_blank" class="btn btn-sm btn-success rounded-pill px-3 py-1 text-white" style="font-size: 13px; font-weight: 600;">
+                                                        <i class="fa fa-external-link me-1"></i> Visit
+                                                    </a>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
                                     </div>
                                 <?php
                                 }

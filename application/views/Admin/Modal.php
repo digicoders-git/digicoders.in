@@ -39,9 +39,15 @@ if (!empty($table)) {
 					<input type="date" name="date" value="<?= $userdata->add_date ?>" class="form-control" placeholder="Date">
 				</div>
 				<div class="form-group mb-3">
-
 					<input type="text" name="link" value="<?= $userdata->url ?>" class="form-control"
 						placeholder="Enter Project Link">
+				</div>
+				<div class="form-group mb-3">
+					<label class="form-label fw-bold">Link Status</label>
+					<select name="link_status" class="form-control">
+						<option value="true" <?php if (!isset($userdata->link_status) || $userdata->link_status == 'true' || $userdata->link_status == '1') { echo "selected"; } ?>>Link Active</option>
+						<option value="false" <?php if (isset($userdata->link_status) && ($userdata->link_status == 'false' || $userdata->link_status == '0')) { echo "selected"; } ?>>Link Disabled</option>
+					</select>
 				</div>
 
 				<div class="form-group mb-3 ">
@@ -65,42 +71,171 @@ if (!empty($table)) {
 
 		// blog Start Here 
 		case "blog":
-			//var_dump($userdata);
+			$img_file = !empty($userdata->img) ? $userdata->img : $userdata->image;
+			$blog_content = !empty($userdata->content) ? $userdata->content : $userdata->full_discription;
+			$blog_meta = !empty($userdata->meta_description) ? $userdata->meta_description : $userdata->short_discription;
 			?>
-			<form action="<?= base_url() ?>Admin/ManageBlog/Edit" enctype="multipart/form-data" method="POST" id="project-form">
+			<form action="<?= base_url() ?>Admin/ManageBlog/Edit" enctype="multipart/form-data" method="POST" class="form" id="edit-blog-form">
 				<?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
 				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+				<input value="<?= $userdata->id ?>" type="hidden" name="id" class="form-control" required />
 
-				<input value="<?= $userdata->id ?>" type="hidden" name="id" class="form-control" required placeholder="Blog Id">
 				<div class="form-group mb-3">
-					<input value="<?= $userdata->title ?>" type="text" name="title" class="form-control" placeholder="Blog Title">
+					<label for="">Title</label>
+					<input type="text" name="title" id="edit_blog_title" class="form-control" value="<?= htmlspecialchars($userdata->title ?? '', ENT_QUOTES, 'UTF-8') ?>" required />
 				</div>
 				<div class="form-group mb-3">
-					<input type="date" name="Blog_date" value="<?= $userdata->Blog_date ?>" class="form-control" placeholder="Date">
+					<label for="">URL (Slug)</label>
+					<input type="text" name="url" id="edit_blog_url" class="form-control" value="<?= htmlspecialchars($userdata->url ?? '', ENT_QUOTES, 'UTF-8') ?>" required />
+				</div>
+				<!-- 
+				<div class="form-group mb-3">
+					<label for="">Select Location</label>
+					<select name="location" class="form-control">
+						<option value="">Select Location</option>
+						<option value="lucknow" <?= (isset($userdata->location) && $userdata->location == 'lucknow') ? 'selected' : '' ?>>Lucknow</option>
+						<option value="kanpur" <?= (isset($userdata->location) && $userdata->location == 'kanpur') ? 'selected' : '' ?>>Kanpur</option>
+						<option value="gorakhpur" <?= (isset($userdata->location) && $userdata->location == 'gorakhpur') ? 'selected' : '' ?>>Gorakhpur</option>
+						<option value="bestsummertraining" <?= (isset($userdata->location) && $userdata->location == 'bestsummertraining') ? 'selected' : '' ?>>Best Summer Training</option>
+						<option value="digitaldaur" <?= (isset($userdata->location) && $userdata->location == 'digitaldaur') ? 'selected' : '' ?>>Digital Daur</option>
+						<option value="digicoderstechnologies" <?= (isset($userdata->location) && $userdata->location == 'digicoderstechnologies') ? 'selected' : '' ?>>Digicoders Technologies</option>
+						<option value="digitalcoders" <?= (isset($userdata->location) && $userdata->location == 'digitalcoders') ? 'selected' : '' ?>>Digital Coders</option>
+						<option value="softwarecompanyinlucknow" <?= (isset($userdata->location) && $userdata->location == 'softwarecompanyinlucknow') ? 'selected' : '' ?>>Software Company In Lucknow</option>
+					</select>
+				</div>
+				-->
+				<div class="form-group mb-3">
+					<label for="">Meta Description</label>
+					<textarea name="meta_description" class="form-control" rows="3"><?= htmlspecialchars($blog_meta ?? '', ENT_QUOTES, 'UTF-8') ?></textarea>
 				</div>
 				<div class="form-group mb-3">
-					<input type="text" name="short_discription" value="<?= $userdata->short_discription ?>" class="form-control"
-						placeholder="Short Discription">
+					<label for="">Keywords</label>
+					<input type="text" id="edit_blog_keyword_input" class="form-control" placeholder="e.g. PHP training (Press Enter)" />
+					<div id="edit_blog_chips_container" class="mt-2 d-flex flex-wrap gap-2"></div>
+					<input type="hidden" name="keywords" id="edit_blog_keywords_hidden" value="<?= !empty($userdata->keywords) ? htmlspecialchars($userdata->keywords, ENT_QUOTES, 'UTF-8') : '' ?>" />
 				</div>
 				<div class="form-group mb-3">
-					<label for="" class="my-2 fw-bold">Discriptioin</label>
-					<textarea name="full_discription" id="summernote" cols="30" rows="5" class="form-control"
-						placeholder="Discriptioin..."><?= $userdata->full_discription ?></textarea>
+					<label for="">Content</label>
+					<textarea name="content" cols="30" rows="5" class="form-control summernote"><?= $blog_content ?></textarea>
 				</div>
 
-				<div class="form-group mb-3 ">
-					<div class="imgdata border">
-						<input type="file" id="input-file-now"
-							data-default-file="<?= base_url('public/uploads/Blog/') . $userdata->image; ?>" name="image"
-							class="dropify" required />
+				<!-- Blog FAQs Section -->
+				<div class="card mb-3 border">
+					<div class="card-header bg-light">
+						<h6 class="mb-0">Blog FAQs</h6>
 					</div>
+					<div class="card-body">
+						<div id="edit-faq-list">
+							<?php
+							$faqs = array();
+							if (!empty($userdata->faqs)) {
+								$faqs = json_decode($userdata->faqs, true);
+							}
+							if (!empty($faqs)) {
+								foreach ($faqs as $index => $faq) {
+									?>
+									<div class="faq-row mb-3 pb-3 border-bottom">
+										<div class="mb-2">
+											<label class="form-label font-weight-bold">Question</label>
+											<input type="text" name="faq_questions[]" class="form-control" value="<?= htmlspecialchars($faq['question'] ?? '', ENT_QUOTES, 'UTF-8') ?>" />
+										</div>
+										<div>
+											<label class="form-label font-weight-bold">Answer</label>
+											<textarea name="faq_answers[]" class="form-control" rows="2"><?= htmlspecialchars($faq['answer'] ?? '', ENT_QUOTES, 'UTF-8') ?></textarea>
+										</div>
+										<div class="text-end mt-2">
+											<button type="button" class="btn btn-danger btn-sm edit-remove-faq-btn">Remove</button>
+										</div>
+									</div>
+									<?php
+								}
+							} else {
+								?>
+								<div class="faq-row mb-3 pb-3 border-bottom">
+									<div class="mb-2">
+										<label class="form-label font-weight-bold">Question</label>
+										<input type="text" name="faq_questions[]" class="form-control" placeholder="e.g. What is PHP?" />
+									</div>
+									<div>
+										<label class="form-label font-weight-bold">Answer</label>
+										<textarea name="faq_answers[]" class="form-control" rows="2" placeholder="e.g. PHP is a scripting language."></textarea>
+									</div>
+									<div class="text-end mt-2">
+										<button type="button" class="btn btn-danger btn-sm edit-remove-faq-btn" style="display: none;">Remove</button>
+									</div>
+								</div>
+								<?php
+							}
+							?>
+						</div>
+						<button type="button" class="btn btn-success btn-sm" id="edit-add-faq-row-btn"><i class="fa fa-plus"></i> Add FAQ</button>
+					</div>
+				</div>
+
+				<div class="form-group mb-3">
+					<label>Upload Image</label>
+					<input type="file" data-default-file="<?= base_url('public/uploads/Blog/') . $img_file; ?>" id="input-file-now" name="image" class="dropify" />
 				</div>
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Save changes</button>
+					<button type="submit" class="btn btn-primary" id="submitBtn"><i class="fa fa-spinner fa-spin" style="display:none;" id="submitSpin"></i>&ensp;Update</button>
 				</div>
 			</form>
+			<script>
+				function generateEditSlug(text) {
+					return text.toString().toLowerCase()
+						.replace(/\s+/g, '-')
+						.replace(/[^\w\-]+/g, '')
+						.replace(/\-\-+/g, '-')
+						.replace(/^-+/, '')
+						.replace(/-+$/, '');
+				}
+				$('#edit_blog_title').on('keyup', function() {
+					$('#edit_blog_url').val(generateEditSlug($(this).val()));
+				});
+
+				$(document).ready(function() {
+					if (typeof initializeTagsInput === 'function') {
+						initializeTagsInput('edit_blog_keyword_input', 'edit_blog_chips_container', 'edit_blog_keywords_hidden');
+					}
+
+					$('#edit-add-faq-row-btn').on('click', function() {
+						var newRow = `
+							<div class="faq-row mb-3 pb-3 border-bottom">
+								<div class="mb-2">
+									<label class="form-label font-weight-bold">Question</label>
+									<input type="text" name="faq_questions[]" class="form-control" placeholder="e.g. What is PHP?" />
+								</div>
+								<div>
+									<label class="form-label font-weight-bold">Answer</label>
+									<textarea name="faq_answers[]" class="form-control" rows="2" placeholder="e.g. PHP is a scripting language."></textarea>
+								</div>
+								<div class="text-end mt-2">
+									<button type="button" class="btn btn-danger btn-sm edit-remove-faq-btn">Remove</button>
+								</div>
+							</div>
+						`;
+						$('#edit-faq-list').append(newRow);
+						toggleEditRemoveButtons();
+					});
+
+					$(document).on('click', '.edit-remove-faq-btn', function() {
+						$(this).closest('.faq-row').remove();
+						toggleEditRemoveButtons();
+					});
+
+					function toggleEditRemoveButtons() {
+						var rows = $('#edit-faq-list .faq-row');
+						if (rows.length <= 1) {
+							rows.find('.edit-remove-faq-btn').hide();
+						} else {
+							rows.find('.edit-remove-faq-btn').show();
+						}
+					}
+					toggleEditRemoveButtons();
+				});
+			</script>
 			<?php
 
 			break;
@@ -175,7 +310,13 @@ if (!empty($table)) {
 				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 				<input value="<?= $userdata->id ?>" type="hidden" name="id" class="form-control" required placeholder="Project Id">
 
-				<div class='img-fluid borderd p-2'>
+				<div class="form-group mb-3">
+					<label class="form-label fw-bold">Client Title / Name <span class="text-danger">*</span></label>
+					<input value="<?= isset($userdata->title) ? htmlspecialchars($userdata->title) : '' ?>" type="text" name="title" class="form-control" placeholder="Enter Client Title / Name" required />
+				</div>
+
+				<div class='img-fluid borderd p-2 mb-3'>
+					<label class="form-label fw-bold">Client Image</label>
 					<input type="file" id="input-file-now"
 						data-default-file="<?= base_url('public/uploads/client/') . $userdata->image; ?>" name="image"
 						class="dropify" />

@@ -1,5 +1,5 @@
 <div class="modal fade" id="edit-modal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modal-head"></h5>
@@ -52,6 +52,25 @@
 
 <script>
 
+	function uploadSummernoteImage(file, editor) {
+		var data = new FormData();
+		data.append("image", file);
+		$.ajax({
+			url: "<?= base_url('Admin/UploadSummernoteImage') ?>",
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: data,
+			type: "POST",
+			success: function(url) {
+				$(editor).summernote('insertImage', url);
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	}
+
   function EditData(table, id, head) {
     // alert(id);
     var data = "<br><div class='text-center'><i class='fas fa-circle-notch fa-spin fa-2x'></i></div><br>";
@@ -63,6 +82,23 @@
       url: "<?= base_url('Admin/EditData/') ?>" + table + '/' + id,
       success: function (res) {
         $("#modal-body").html(res);
+        if (typeof $.fn.dropify === 'function') {
+          $('#modal-body .dropify').dropify();
+        }
+        if (typeof $.fn.summernote === 'function') {
+          $('#modal-body .summernote').summernote({
+            placeholder: 'Write Here ...',
+            tabsize: 2,
+            height: 200,
+            callbacks: {
+              onImageUpload: function(files) {
+                for (let i = 0; i < files.length; i++) {
+                  uploadSummernoteImage(files[i], this);
+                }
+              }
+            }
+          });
+        }
       }
     })
   }
@@ -100,7 +136,7 @@
 
     $('#password-verify-form').submit(function(e) {
       e.preventDefault();
-      var pass = $('#admin_password_input').val();
+      var pass = $.trim($('#admin_password_input').val());
       var btn = $('#unlockBtn');
 
       btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Verifying...');
@@ -113,6 +149,7 @@
           "<?= $this->security->get_csrf_token_name(); ?>": "<?= $this->security->get_csrf_hash(); ?>"
         },
         dataType: "json",
+        timeout: 15000,
         success: function(res) {
           if(res.status == 'success') {
             iziToast.success({title: 'Success', message: res.msg, position: 'topRight'});
@@ -122,6 +159,30 @@
             btn.prop('disabled', false).html('Unlock Dashboard');
             iziToast.error({title: 'Error', message: res.msg, position: 'topRight'});
           }
+        },
+        error: function(xhr, status, error) {
+          btn.prop('disabled', false).html('Unlock Dashboard');
+          var res = null;
+          if (xhr.responseJSON) {
+            res = xhr.responseJSON;
+          } else if (xhr.responseText) {
+            try {
+              res = JSON.parse(xhr.responseText);
+            } catch (e) {}
+          }
+
+          if (res && res.status === 'success') {
+            iziToast.success({title: 'Success', message: res.msg, position: 'topRight'});
+            $('#password-verify-modal').modal('hide');
+            location.reload();
+            return;
+          }
+
+          var errorMsg = (res && res.msg) ? res.msg : "Failed to verify password. Please try again.";
+          if (status === 'timeout') {
+            errorMsg = "Verification timed out. Please try again.";
+          }
+          iziToast.error({title: 'Error', message: errorMsg, position: 'topRight'});
         }
       });
     });
@@ -180,10 +241,33 @@
           dataType: "json",
           success: function (res) {
             if (res.status == 'success') {
-              iziToast.success({title: 'Success', message: res.msg, position: 'topRight'});
+              iziToast.success({title: 'Success', message: res.msg || 'Successfully Deleted.', position: 'topRight'});
               setTimeout(function(){ location.reload(); }, 1000);
             } else {
-              iziToast.error({title: 'Error', message: res.msg, position: 'topRight'});
+              iziToast.error({title: 'Error', message: res.msg || 'Something went wrong.', position: 'topRight'});
+            }
+          },
+          error: function (xhr, status, error) {
+            var res = null;
+            if (xhr.responseJSON) {
+              res = xhr.responseJSON;
+            } else if (xhr.responseText) {
+              try {
+                var jsonMatch = xhr.responseText.match(/\{.*?\}/s);
+                if (jsonMatch) {
+                  res = JSON.parse(jsonMatch[0]);
+                }
+              } catch (e) {}
+            }
+
+            if (res && res.status === 'success') {
+              iziToast.success({title: 'Success', message: res.msg || 'Successfully Deleted.', position: 'topRight'});
+              setTimeout(function(){ location.reload(); }, 1000);
+            } else if (xhr.status === 200) {
+              iziToast.success({title: 'Success', message: 'Successfully Deleted.', position: 'topRight'});
+              setTimeout(function(){ location.reload(); }, 1000);
+            } else {
+              iziToast.error({title: 'Error', message: 'Delete failed. Please try again.', position: 'topRight'});
             }
           }
         });

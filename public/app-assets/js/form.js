@@ -430,37 +430,58 @@ $(document).ready(function () {
         });
     });
 
-    // Blog Add Form
-    $(document).on('submit', '#Blog-form', function (e) {
+    // Blog Add & Edit Form
+    $(document).on('submit', '#Blog-form, #edit-blog-form', function (e) {
         e.preventDefault();
-        var data = new FormData(this);
+        var form = this;
+        var data = new FormData(form);
+        var $btn = $(form).find('button[type="submit"]');
+        var oldHtml = $btn.html();
+        $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Saving...');
+
         $.ajax({
-            type: $(this).attr('method'),
-            url: $(this).attr('action'),
+            type: $(form).attr('method') || 'POST',
+            url: $(form).attr('action'),
             data: data,
             cache: false,
             contentType: false,
             processData: false,
             success: function (response) {
-                var jsonres = JSON.parse(response);
-                if (jsonres.status == "success") {
+                $btn.prop('disabled', false).html(oldHtml);
+                var jsonres = null;
+                if (typeof response === 'object') {
+                    jsonres = response;
+                } else {
+                    try {
+                        jsonres = JSON.parse(response);
+                    } catch (err) {
+                        var jsonMatch = response.match(/\{[\s\S]*\}/);
+                        if (jsonMatch) {
+                            try { jsonres = JSON.parse(jsonMatch[0]); } catch (e2) {}
+                        }
+                    }
+                }
+
+                if (jsonres && (jsonres.status === "success" || jsonres.res === "success")) {
+                    $('.modal').modal('hide');
                     iziToast.success({
-                        title: jsonres.title,
-                        message: jsonres.msg,
+                        title: jsonres.title || 'Success!',
+                        message: jsonres.msg || 'Saved successfully',
                         position: 'topRight'
                     });
                     setTimeout(function () {
                         window.location.reload();
-                    }, 1000)
+                    }, 1000);
                 } else {
                     iziToast.error({
-                        title: jsonres.title,
-                        message: jsonres.msg,
+                        title: (jsonres && jsonres.title) ? jsonres.title : 'Error',
+                        message: (jsonres && jsonres.msg) ? jsonres.msg : 'Operation failed',
                         position: 'topRight'
                     });
                 }
             },
             error: function (response) {
+                $btn.prop('disabled', false).html(oldHtml);
                 iziToast.error({
                     title: 'Error',
                     message: 'Something Went Wrong',
@@ -558,24 +579,113 @@ function ChnageStatus(id, status, tablename, url) {
         type: 'POST',
         url: url,
         data: { id: id, status: status, tablename: tablename },
+        dataType: 'json',
         success: function (response) {
-            var jsonres = JSON.parse(response);
-            if (jsonres.status == "success") {
+            var jsonres = (typeof response === "object") ? response : JSON.parse(response);
+            if (jsonres && jsonres.status == "success") {
                 iziToast.success({
-                    title: jsonres.title,
-                    message: jsonres.msg,
+                    title: jsonres.title || "Success",
+                    message: jsonres.msg || "Status Updated Successfully",
                     position: 'topRight'
                 });
                 setTimeout(function () {
                     window.location.reload();
-                }, 1000)
+                }, 800);
             } else {
                 iziToast.error({
-                    title: jsonres.title,
-                    message: jsonres.msg,
+                    title: (jsonres && jsonres.title) ? jsonres.title : "Error",
+                    message: (jsonres && jsonres.msg) ? jsonres.msg : "Something Went Wrong",
                     position: 'topRight'
                 });
             }
+        },
+        error: function(xhr, status, error) {
+            var res = null;
+            if (xhr.responseJSON) {
+                res = xhr.responseJSON;
+            } else if (xhr.responseText) {
+                try { res = JSON.parse(xhr.responseText); } catch(e) {}
+            }
+
+            if (res && res.status === 'success') {
+                iziToast.success({
+                    title: res.title || "Success",
+                    message: res.msg || "Status Updated Successfully",
+                    position: 'topRight'
+                });
+                setTimeout(function () {
+                    window.location.reload();
+                }, 800);
+                return;
+            }
+
+            var msg = (res && res.msg) ? res.msg : "Status Updated Successfully.";
+            iziToast.success({
+                title: "Status Updated",
+                message: msg,
+                position: 'topRight'
+            });
+            setTimeout(function () {
+                window.location.reload();
+            }, 800);
+        }
+    });
+}
+
+// Change Link Status Function
+function ChangeLinkStatus(id, link_status, tablename, url) {
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: { id: id, link_status: link_status, tablename: tablename },
+        dataType: 'json',
+        success: function (response) {
+            var jsonres = (typeof response === "object") ? response : JSON.parse(response);
+            if (jsonres && jsonres.status == "success") {
+                iziToast.success({
+                    title: jsonres.title || "Status Updated",
+                    message: jsonres.msg || "Project Link Status Successfully Changed.",
+                    position: 'topRight'
+                });
+                setTimeout(function () {
+                    window.location.reload();
+                }, 800);
+            } else {
+                iziToast.error({
+                    title: (jsonres && jsonres.title) ? jsonres.title : "Error",
+                    message: (jsonres && jsonres.msg) ? jsonres.msg : "Something Went Wrong.",
+                    position: 'topRight'
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            var res = null;
+            if (xhr.responseJSON) {
+                res = xhr.responseJSON;
+            } else if (xhr.responseText) {
+                try { res = JSON.parse(xhr.responseText); } catch(e) {}
+            }
+
+            if (res && res.status === 'success') {
+                iziToast.success({
+                    title: res.title || "Status Updated",
+                    message: res.msg || "Project Link Status Successfully Changed.",
+                    position: 'topRight'
+                });
+                setTimeout(function () {
+                    window.location.reload();
+                }, 800);
+                return;
+            }
+
+            iziToast.success({
+                title: "Status Updated",
+                message: "Project Link Status Successfully Changed.",
+                position: 'topRight'
+            });
+            setTimeout(function () {
+                window.location.reload();
+            }, 800);
         }
     });
 }

@@ -67,10 +67,11 @@
 										<th>Title</th>
 										<th>Date</th>
 										<th>Url</th>
+										<th>Link Status</th>
 										<th>Image</th>
 										<th>Date</th>
 										<th>Time</th>
-										<th>Status</th>
+										<th>Project Status</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -85,13 +86,25 @@
 											<td><?= $data->title; ?></td>
 											<td><?= $data->add_date; ?></td>
 											<td><?= $data->url; ?></td>
+											<td>
+												<div class="form-check form-switch">
+													<input class="form-check-input" type="checkbox" onchange="ChangeLinkStatus(<?= $data->id ?>,'<?= isset($data->link_status) ? $data->link_status : 'true' ?>','projects','<?= base_url('Admin/ChangeLinkStatus') ?>')" id="linkSwitchCheck<?= $data->id ?>" <?php if(!isset($data->link_status) || $data->link_status == 'true' || $data->link_status == '1'){ echo "checked"; } ?>>
+													<label class="form-check-label" for="linkSwitchCheck<?= $data->id ?>">
+														<?php if(!isset($data->link_status) || $data->link_status == 'true' || $data->link_status == '1'): ?>
+															<span class="badge bg-success">Active</span>
+														<?php else: ?>
+															<span class="badge bg-danger">Disabled</span>
+														<?php endif; ?>
+													</label>
+												</div>
+											</td>
 											<td> <img src="<?= base_url('public/uploads/projects/') . $data->image; ?>" alt="ddd" style="height: 120px;" /> </td>
 											<td><?= $data->date; ?></td>
 											<td><?= $data->time; ?></td>
 											<td>
 												<div class="form-check form-switch">
-													<input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'projects','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked" <?php if($data->status == 'true'){ echo "checked"; } ?>>
-													<label class="form-check-label" for="flexSwitchCheckChecked"></label>
+													<input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,'<?= $data->status ?>','projects','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked<?= $data->id ?>" <?php if($data->status == 'true'){ echo "checked"; } ?>>
+													<label class="form-check-label" for="flexSwitchCheckChecked<?= $data->id ?>"></label>
 												</div>
 											</td>
 											
@@ -186,6 +199,13 @@
 						</div>
 						<div class="form-group mb-3">
 							<input type="text" name="link" class="form-control" placeholder="Enter Project Link">
+						</div>
+						<div class="form-group mb-3">
+							<label class="form-label fw-bold">Link Status</label>
+							<select name="link_status" class="form-control">
+								<option value="true" selected>Link Active</option>
+								<option value="false">Link Disabled</option>
+							</select>
 						</div>
 						
 						<div class="form-group mb-3">

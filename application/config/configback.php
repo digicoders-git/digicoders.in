@@ -457,7 +457,7 @@ $config['csrf_expire'] = 7200;
 // $config['csrf_regenerate'] = TRUE;
 $config['csrf_regenerate'] = FALSE;
 
-$config['csrf_exclude_uris'] = array("Admin/Delete","Admin/ChangeStatus","Admin/EditData","Admin/ManageProject/Update","Admin/ManageBlog/Edit","Admin/ManageGallery/Edit","Admin/ManageNews/Edit","Admin/ManageExpertList/Edit","Admin/ManageClient/Edit","Admin/deleteWithFilename","Admin/ChangeStatus","Admin/EditData","Authentication/logout/logout");
+$config['csrf_exclude_uris'] = array("Admin/Delete","Admin/ChangeStatus","Admin/ChangeLinkStatus","Admin/EditData","Admin/ManageProject/Update","Admin/ManageBlog/Edit","Admin/ManageGallery/Edit","Admin/ManageNews/Edit","Admin/ManageExpertList/Edit","Admin/ManageClient/Edit","Admin/deleteWithFilename","Admin/ChangeStatus","Admin/EditData","Authentication/logout/logout","Authentication/SendOTP","Authentication/VerifyOTP","Authentication/VerifyPassword");
 
 /*
 |--------------------------------------------------------------------------

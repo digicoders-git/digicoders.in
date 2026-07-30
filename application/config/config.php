@@ -24,14 +24,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$host = $_SERVER['HTTP_HOST'];
+$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? 'https://' : 'http://';
+$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
 
-if ($host == 'localhost' || $host == '127.0.0.1') {
+if ($host == 'localhost' || $host == '127.0.0.1' || strpos($host, '192.168.') === 0) {
     // LOCALHOST
-    $config['base_url'] = 'https://localhost/digicoders-in/';
+    $config['base_url'] = $protocol . $host . '/digicoders-in/';
 } else {
     // LIVE SERVER
-    $config['base_url'] = 'https://digicoders.in/';
+    $config['base_url'] = $protocol . $host . '/';
 }
 
 
@@ -466,8 +467,7 @@ $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
 // $config['csrf_regenerate'] = TRUE;
 $config['csrf_regenerate'] = FALSE;
-
-$config['csrf_exclude_uris'] = array("Admin/Delete", "Admin/ChangeStatus", "Admin/EditData", "Admin/ManageProject/Update", "Admin/ManageBlog/Edit", "Admin/ManageGallery/Edit", "Admin/ManageNews/Edit", "Admin/ManageExpertList/Edit", "Admin/ManageClient/Edit", "Admin/deleteWithFilename", "Admin/ChangeStatus", "Admin/EditData", "Authentication/logout/logout", "Admin/Manageintern/Edit", "Admin/OurProduct/Edit", "Home/SubmitForm/callBackReq");
+$config['csrf_exclude_uris'] = array("Admin/Delete", "Admin/ChangeStatus", "Admin/ChangeLinkStatus", "Admin/EditData", "Admin/ManageProject/Update", "Admin/ManageBlog/Edit", "Admin/ManageGallery/Edit", "Admin/ManageNews/Edit", "Admin/ManageExpertList/Edit", "Admin/ManageClient/Edit", "Admin/deleteWithFilename", "Admin/ChangeStatus", "Admin/EditData", "Authentication/logout/logout", "Admin/Manageintern/Edit", "Admin/OurProduct/Edit", "Home/SubmitForm/callBackReq", "Authentication/SendOTP", "Authentication/VerifyOTP", "Authentication/VerifyPassword", "Home/submitProjectEnquiry", "home/submitProjectEnquiry", "home/submitprojectenquiry", "Home/submitDemoRequest", "home/submitDemoRequest", "home/submitdemorequest");
 
 /*
 |--------------------------------------------------------------------------

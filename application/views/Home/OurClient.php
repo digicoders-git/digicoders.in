@@ -183,10 +183,21 @@
                 <?php
                 foreach ($userdata as $client)
                 {
+                    $client_title = !empty($client->title) ? htmlspecialchars($client->title) : '';
                 ?>
-                    <div class="col-lg-2 pb-3 card">
-                        <div class="p-4" style="min-height:80px !important;width:100%">
-                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src=" <?= base_url('public/uploads/client/').$client->image; ?>" class="pt-4 " style="width:100%" />
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6 pb-3">
+                        <div class="card text-center p-3 h-100 shadow-sm" style="border-radius: 12px; border: 1px solid #eee; transition: all 0.3s ease;">
+                            <div class="d-flex align-items-center justify-content-center" style="min-height:90px; width:100%">
+                                <img class="lazy img-fluid" 
+                                     src="<?= base_url('public') ?>/assets/images/loader2.jpg" 
+                                     data-src="<?= base_url('public/uploads/client/').$client->image; ?>" 
+                                     title="<?= !empty($client_title) ? $client_title : 'Client Logo'; ?>" 
+                                     alt="<?= !empty($client_title) ? $client_title : 'Client Logo'; ?>" 
+                                     style="max-height: 80px; width: auto; object-fit: contain;" />
+                            </div>
+                            <?php if (!empty($client_title)): ?>
+                                <h6 class="mt-2 mb-0 text-dark fw-bold" style="font-size: 13px; font-weight: 600; word-break: break-word; text-align: center;"><?= $client_title; ?></h6>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php

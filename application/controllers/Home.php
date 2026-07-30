@@ -70,23 +70,34 @@ class Home extends CI_Controller
 		print_r($res);
 		die();
 	}
-	public function BlogsDetails($id = NULL)
+	public function BlogsDetails($slug_or_id = NULL)
 	{
-		// If the ID is missing, show a 404 error
-		if ($id === NULL) {
-			echo ("hiii");// Show 404 error if ID is missing
+		if ($slug_or_id === NULL) {
+			redirect(base_url('blogs'));
+			return;
 		}
 
-		// Fetch the blog based on the ID
-		$data['blog'] = $this->db->where('id', $id)->get('blog')->row();
-
-		// Debugging: If no blog is found, show an error message
-		if (!$data['blog']) {
-			echo "Error: Blog not found for ID = " . $id;
-			die();  // Stop further execution
+		// Try fetching by url slug first, then fallback to id
+		$blog = $this->db->get_where('blog', array('url' => $slug_or_id))->row();
+		if (!$blog && is_numeric($slug_or_id)) {
+			$blog = $this->db->get_where('blog', array('id' => $slug_or_id))->row();
 		}
 
-		// Loading the blog details page with the fetched data
+		if (!$blog) {
+			show_404();
+			return;
+		}
+
+		$data['blog'] = $blog;
+
+		// Fetch recent blogs for sticky sidebar (excluding current)
+		$data['recent_blogs'] = $this->db
+			->where('id !=', $blog->id)
+			->order_by('id', 'DESC')
+			->limit(5)
+			->get('blog')
+			->result();
+
 		$this->load->view('Home/BlogsDetails', $data);
 	}
 
@@ -293,11 +304,11 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$data['clientdata'] = $this->db->order_by('id', 'desc')->limit(25)->get('client')->result();
-		$data['userdata'] = $this->db->order_by('id', 'desc')->get('projects')->result();
+		$data['userdata'] = $this->db->where('status', 'true')->order_by('id', 'desc')->limit(12)->get('projects')->result();
 		$data['blogdata'] = $this->db->order_by('id', 'desc')->limit(2)->get('blog')->result();
 		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('slider', array('status' => 'true'))->result();
 
-		$data['expertdata'] = $this->db->order_by('id', 'asc')->get_where('expert_banners', ['status' => 'true'])->result();
+		$data['expertdata'] = $this->db->order_by('sequence', 'asc')->get_where('expert', ['status' => 'true'])->result();
 
 		// Fetch Software Products
 		$softwares = $this->db->order_by('id', 'asc')->get_where('software_products', array('status' => 'Active'))->result();
@@ -311,25 +322,39 @@ class Home extends CI_Controller
 
 	public function submitDemoRequest()
 	{
-		if ($this->input->is_ajax_request()) {
-			$data = array(
-				'software_id' => $this->input->post('software_id'),
-				'software_name' => $this->input->post('software_name'),
-				'name' => $this->input->post('name'),
-				'mobile' => $this->input->post('mobile'),
-				'email' => $this->input->post('email'),
-				'message' => $this->input->post('message'),
-				'created_at' => date('Y-m-d H:i:s')
-			);
+		header('Access-Control-Allow-Origin: *');
+		header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+		header('Access-Control-Allow-Headers: Content-Type, X-Requested-With');
+		if ($this->input->method() === 'options') {
+			exit(0);
+		}
 
-			if ($this->db->insert('software_demo_requests', $data)) {
+		while (ob_get_level()) {
+			ob_end_clean();
+		}
+		header('Content-Type: application/json');
+
+		$data = array(
+			'software_id' => $this->input->post('software_id'),
+			'software_name' => $this->input->post('software_name'),
+			'name' => $this->input->post('name'),
+			'mobile' => $this->input->post('mobile'),
+			'email' => $this->input->post('email'),
+			'message' => $this->input->post('message'),
+			'created_at' => date('Y-m-d H:i:s')
+		);
+
+		if ($this->db->insert('software_demo_requests', $data)) {
+			try {
 				$this->send_form_email('New Demo Request', $data);
-				echo json_encode(array('status' => 'success', 'message' => 'Your demo request has been submitted successfully. Our team will contact you soon!'));
-			} else {
-				echo json_encode(array('status' => 'error', 'message' => 'Failed to submit request. Please try again.'));
+			} catch (Throwable $t) {
+				log_message('error', 'Email error in submitDemoRequest: ' . $t->getMessage());
 			}
+			echo json_encode(array('status' => 'success', 'message' => 'Your demo request has been submitted successfully. Our team will contact you soon!', 'msg' => 'Your demo request has been submitted successfully. Our team will contact you soon!'));
+			exit;
 		} else {
-			show_404();
+			echo json_encode(array('status' => 'error', 'message' => 'Failed to submit request. Please try again.', 'msg' => 'Failed to submit request. Please try again.'));
+			exit;
 		}
 	}
 	public function AboutDigiCoders()
@@ -388,6 +413,22 @@ class Home extends CI_Controller
 	{
 		$this->load->view('Home/ContactUs');
 	}
+	public function LucknowBranch()
+	{
+		$data['userdata'] = $this->db->where('status', 'true')->order_by('id', 'desc')->limit(8)->get('projects')->result();
+		$data['expertdata'] = $this->db->order_by('sequence', 'asc')->get_where('expert', ['status' => 'true'])->result();
+		$this->load->view('Home/LucknowBranch', $data);
+	}
+	public function KanpurBranch()
+	{
+		$data['userdata'] = $this->db->where('status', 'true')->order_by('id', 'desc')->limit(8)->get('projects')->result();
+		$this->load->view('Home/KanpurBranch', $data);
+	}
+	public function GorakhpurBranch()
+	{
+		$data['userdata'] = $this->db->where('status', 'true')->order_by('id', 'desc')->limit(8)->get('projects')->result();
+		$this->load->view('Home/GorakhpurBranch', $data);
+	}
 	public function ITServices()
 	{
 		$this->load->view('Home/ITServices');
@@ -430,7 +471,7 @@ class Home extends CI_Controller
 	}
 	public function OurProjects()
 	{
-		$data['userdata'] = $this->db->order_by('id', 'desc')->get('projects')->result();
+		$data['userdata'] = $this->db->where('status', 'true')->order_by('id', 'desc')->get('projects')->result();
 		$this->load->view('Home/OurProjects', $data);
 	}
 	public function OurClient()
@@ -577,7 +618,7 @@ class Home extends CI_Controller
 			->order_by('service_name', 'ASC')
 			->get('seo_pages')
 			->result();
-		$data['projects'] = $this->db->order_by('id', 'desc')->limit(9)->get('projects')->result();
+		$data['projects'] = $this->db->where('status', 'true')->order_by('id', 'desc')->limit(9)->get('projects')->result();
 		$this->load->view('Home/city_pages', $data);
 	}
 
@@ -644,7 +685,7 @@ class Home extends CI_Controller
 			->order_by('service_name', 'ASC')
 			->get('seo_pages')
 			->result();
-		$data['projects'] = $this->db->order_by('id', 'desc')->limit(9)->get('projects')->result();
+		$data['projects'] = $this->db->where('status', 'true')->order_by('id', 'desc')->limit(9)->get('projects')->result();
 		$this->load->view('Home/Service_page', $data);
 	}
 
@@ -669,8 +710,7 @@ class Home extends CI_Controller
 
 		$data['page'] = $page;
 		$data['service_name'] = $page->service_name;
-		$data['projects'] = $this->db->order_by('id', 'desc')->limit(9)->get('projects')->result();
-
+		$data['projects'] = $this->db->where('status', 'true')->order_by('id', 'desc')->limit(9)->get('projects')->result();
 		$this->load->view('Home/service', $data);
 	}
 
@@ -678,85 +718,90 @@ class Home extends CI_Controller
 
 	private function send_form_email($subject, $data)
 	{
-		$this->load->library('email');
-		$this->config->load('smtp_config');
-		$config = $this->config->item('smtp_noreply');
-		$this->email->initialize($config);
-		$this->email->set_newline("\r\n");
-		$this->email->from('noreply@digicoders.in', 'digicoders.in Website');
-		$this->email->to('digicoderstech@gmail.com');
-		// $this->email->to('saurabhkumarssp@gmail.com');
-		$this->email->subject($subject);
+		try {
+			$this->load->library('email');
+			$this->config->load('smtp_config');
+			$config = $this->config->item('smtp_noreply');
+			$this->email->initialize($config);
+			$this->email->set_newline("\r\n");
+			$from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
+			$this->email->from($from_email, 'digicoders.in Website');
+		// $this->email->to('digicoderstech@gmail.com');
+		$this->email->to('saurabhkumarssp@gmail.com');
+			$this->email->subject($subject);
 
-		$message = "<html>
-		<body style='background-color: #f4f7f6; padding: 20px; font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;'>
-			<div style='max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee;'>
-				<!-- Header -->
-				<div style='background: linear-gradient(135deg, #006DAB 0%, #00964C 100%); padding: 25px; text-align: center;'>
-					<h2 style='color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 1px;'>Digicoders " . $subject . "</h2>
-					<p style='color: rgba(255,255,255,0.8); margin: 5px 0 0; font-size: 13px;'>New Submission from DigiCoders Website</p>
-				</div>
-				
-				<!-- Content -->
-				<div style='padding: 30px;'>
-					<p style='color: #333; font-size: 16px; margin-bottom: 20px;'>Hello Admin, you have received a new enquiry. Here are the details:</p>
+			$message = "<html>
+			<body style='background-color: #f4f7f6; padding: 20px; font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;'>
+				<div style='max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee;'>
+					<!-- Header -->
+					<div style='background: linear-gradient(135deg, #006DAB 0%, #00964C 100%); padding: 25px; text-align: center;'>
+						<h2 style='color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 1px;'>Digicoders " . $subject . "</h2>
+						<p style='color: rgba(255,255,255,0.8); margin: 5px 0 0; font-size: 13px;'>New Submission from DigiCoders Website</p>
+					</div>
 					
-					<table style='width: 100%; border-collapse: collapse; margin-bottom: 20px;'>";
-		$date = "";
-		$time = "";
-		foreach ($data as $key => $value) {
-			if ($key == 'status') {
-				continue;
-			}
-			if ($key == 'date') {
-				$date = $value;
-				continue;
-			}
-			if ($key == 'time') {
-				$time = $value;
-				continue;
+					<!-- Content -->
+					<div style='padding: 30px;'>
+						<p style='color: #333; font-size: 16px; margin-bottom: 20px;'>Hello Admin, you have received a new enquiry. Here are the details:</p>
+						
+						<table style='width: 100%; border-collapse: collapse; margin-bottom: 20px;'>";
+			$date = "";
+			$time = "";
+			foreach ($data as $key => $value) {
+				if ($key == 'status') {
+					continue;
+				}
+				if ($key == 'date') {
+					$date = $value;
+					continue;
+				}
+				if ($key == 'time') {
+					$time = $value;
+					continue;
+				}
+
+				$display_value = $value;
+				if ($key == 'resume') {
+					$display_value = "<a href='" . base_url('public/uploads/career/' . $value) . "' target='_blank' style='color: #006DAB; text-decoration: none; font-weight: 600;'>" . $value . "</a>";
+				}
+
+				$message .= "
+							<tr>
+								<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #666; font-weight: 600; width: 35%; background: #f9f9f9;'>" . ucfirst(str_replace('_', ' ', $key)) . "</td>
+								<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #333;'>" . $display_value . "</td>
+							</tr>";
 			}
 
-			$display_value = $value;
-			if ($key == 'resume') {
-				$display_value = "<a href='" . base_url('public/uploads/career/' . $value) . "' target='_blank' style='color: #006DAB; text-decoration: none; font-weight: 600;'>" . $value . "</a>";
+			if (!empty($date) || !empty($time)) {
+				$message .= "
+							<tr>
+								<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #666; font-weight: 600; width: 35%; background: #f9f9f9;'>Date & Time</td>
+								<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #333;'>" . trim($date . " " . $time) . "</td>
+							</tr>";
 			}
-
 			$message .= "
-						<tr>
-							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #666; font-weight: 600; width: 35%; background: #f9f9f9;'>" . ucfirst(str_replace('_', ' ', $key)) . "</td>
-							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #333;'>" . $display_value . "</td>
-						</tr>";
-		}
-
-		if (!empty($date) || !empty($time)) {
-			$message .= "
-						<tr>
-							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #666; font-weight: 600; width: 35%; background: #f9f9f9;'>Date & Time</td>
-							<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #333;'>" . trim($date . " " . $time) . "</td>
-						</tr>";
-		}
-		$message .= "
-					</table>
+						</table>
+						
+						<div style='background: #fff8f1; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px;'>
+							<p style='margin: 0; font-size: 13px; color: #666;'>
+								<strong>Note:</strong> This is an automated notification. Please log in to the admin panel for more details.
+							</p>
+						</div>
+					</div>
 					
-					<div style='background: #fff8f1; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px;'>
-						<p style='margin: 0; font-size: 13px; color: #666;'>
-							<strong>Note:</strong> This is an automated notification. Please log in to the admin panel for more details.
-						</p>
+					<!-- Footer -->
+					<div style='background: #fafafa; padding: 15px; text-align: center; border-top: 1px solid #eee;'>
+						<p style='color: #999; font-size: 11px; margin: 0;'>&copy; " . date('Y') . " DigiCoders Technologies. All rights reserved.</p>
 					</div>
 				</div>
-				
-				<!-- Footer -->
-				<div style='background: #fafafa; padding: 15px; text-align: center; border-top: 1px solid #eee;'>
-					<p style='color: #999; font-size: 11px; margin: 0;'>&copy; " . date('Y') . " DigiCoders Technologies. All rights reserved.</p>
-				</div>
-			</div>
-		</body>
-		</html>";
+			</body>
+			</html>";
 
-		$this->email->message($message);
-		if (!$this->email->send()) {
-			log_message('error', 'Email sending failed: ' . $this->email->print_debugger());
+			$this->email->message($message);
+			if (!$this->email->send()) {
+				log_message('error', 'Email sending failed: ' . $this->email->print_debugger(array('headers', 'subject')));
+			}
+		} catch (Throwable $t) {
+			log_message('error', 'Email sending exception: ' . $t->getMessage());
 		}
 	}
 
@@ -779,6 +824,18 @@ class Home extends CI_Controller
 	}
 	public function submitProjectEnquiry()
 	{
+		header('Access-Control-Allow-Origin: *');
+		header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+		header('Access-Control-Allow-Headers: Content-Type, X-Requested-With');
+		if ($this->input->method() === 'options') {
+			exit(0);
+		}
+
+		while (ob_get_level()) {
+			ob_end_clean();
+		}
+		header('Content-Type: application/json');
+
 		$this->form_validation->set_rules('name', 'Name', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('mobile', 'Mobile', 'required|numeric|exact_length[10]');
@@ -786,7 +843,7 @@ class Home extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE) {
 			echo json_encode(['status' => 'error', 'msg' => strip_tags(validation_errors(' ', ' '))]);
-			return;
+			exit;
 		}
 
 		$data = array(
@@ -801,10 +858,16 @@ class Home extends CI_Controller
 		);
 
 		if ($this->db->insert('project_enquiries', $data)) {
-			$this->send_form_email('New Project Enquiry', $data);
+			try {
+				$this->send_form_email('New Project Enquiry', $data);
+			} catch (Throwable $t) {
+				log_message('error', 'Email error in submitProjectEnquiry: ' . $t->getMessage());
+			}
 			echo json_encode(['status' => 'success', 'msg' => 'Your enquiry has been submitted successfully! We will contact you soon.']);
+			exit;
 		} else {
 			echo json_encode(['status' => 'error', 'msg' => 'Failed to submit enquiry. Please try again.']);
+			exit;
 		}
 	}
 }

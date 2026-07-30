@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 // $db['default'] = array(
 // 	'dsn'	=> '',
-	// 'hostname' => 'localhost:3306',
-	// 'username' => 'programmerkashya_digicodersuser',
-	// 'password' => 'nQKp71YDOCB(',
-	// 'database' => 'programmerkashya_digicoders',
+// 'hostname' => 'localhost:3306',
+// 'username' => 'programmerkashya_digicodersuser',
+// 'password' => 'nQKp71YDOCB(',
+// 'database' => 'programmerkashya_digicoders',
 // 	'hostname' => 'localhost:3307',
 // 	'username' => 'root',
 // 	'password' => '',	
@@ -99,13 +99,13 @@ $query_builder = TRUE;
 // 	'save_queries' => TRUE
 // );
 
-$host = $_SERVER['HTTP_HOST'];
+$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
 
 if ($host == 'localhost' || $host == '127.0.0.1') {
 
     // ===== LOCAL DATABASE =====
     $db['default'] = array(
-        'dsn'   => '',
+        'dsn' => '',
         'hostname' => '127.0.0.1',
         'username' => 'root',
         'password' => '',
@@ -130,7 +130,7 @@ if ($host == 'localhost' || $host == '127.0.0.1') {
 
     // ===== LIVE DATABASE =====
     $db['default'] = array(
-        'dsn'   => '',
+        'dsn' => '',
         'hostname' => 'localhost:3306',
         'username' => 'programmerkashya_digicodersuser',
         'password' => 'nQKp71YDOCB(',
@@ -138,7 +138,7 @@ if ($host == 'localhost' || $host == '127.0.0.1') {
         'dbdriver' => 'mysqli',
         'dbprefix' => '',
         'pconnect' => FALSE,
-        'db_debug' => FALSE,   
+        'db_debug' => FALSE,
         'cache_on' => FALSE,
         'cachedir' => '',
         'char_set' => 'utf8',

@@ -3,160 +3,180 @@
 
 <head>
     <title>Our Projects | Best IT Company in Lucknow - DigiCoders</title>
-	<meta name="description" content="We provide a wide range of app and web development services in Lucknow, India. Browse our all projects and see our development work.">
+    <meta name="description" content="We provide a wide range of app and web development services in Lucknow, India. Browse our all projects and see our development work.">
     <?php include('include/headerlinks.php') ?>
     <style>
-/* ================= CARD BASE ================= */
-.single-item {
-    animation: fadeUp 0.9s ease both;
-}
+        /* ================= PREMIUM PROJECT CARD SYSTEM ================= */
+        .project-filter-section {
+            margin-bottom: 35px;
+        }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .project-filter-pill-container {
+            background: #f1f5f9;
+            padding: 6px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
 
-.single-item .image-box-wrap {
-    background: #fff;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+        .project-filter-btn {
+            background: transparent;
+            color: #475569;
+            font-size: 13.5px;
+            font-weight: 600;
+            padding: 9px 20px;
+            border-radius: 8px; /* Max 5% style radius */
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
 
-.single-item .image-box-wrap:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
-}
+        .project-filter-btn:hover {
+            color: #0d6efd;
+        }
 
-/* ================= IMAGE (70%) ================= */
-.single-item .box-image {
-    flex: 7;
-    overflow: hidden;
-}
+        .project-filter-btn.active {
+            background: #ffffff;
+            color: #0d6efd;
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        }
 
-.single-item .box-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
+        .project-card-item {
+            background: #ffffff;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
 
-.single-item .image-box-wrap:hover .box-image img {
-    transform: scale(1.12);
-}
+        .project-card-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 35px rgba(13, 110, 253, 0.12);
+            border-color: rgba(13, 110, 253, 0.3);
+        }
 
-/* ================= CONTENT (30%) ================= */
-.single-item .content {
-    flex: 3;
-    padding: 16px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+        .project-card-thumb {
+            height: 210px;
+            position: relative;
+            overflow: hidden;
+            background: #f1f5f9;
+        }
 
-/* ================= TITLE ================= */
-.single-item .heading {
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 6px;
-    position: relative;
-    cursor: pointer;
+        .project-card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.5s ease;
+        }
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+        .project-card-item:hover .project-card-thumb img {
+            transform: scale(1.06);
+        }
 
-/* ================= TOOLTIP ================= */
-.single-item .heading::after {
-    content: attr(data-title);
-    position: absolute;
-    bottom: 130%;
-    left: 50%;
-    transform: translateX(-50%) scale(0.95);
+        .project-top-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.3px;
+        }
 
-    min-width: 220px;
-    max-width: 280px;
-    background: rgba(0, 0, 0, 0.85);
-    color: #fff;
-    padding: 9px 14px;
-    border-radius: 8px;
-    font-size: 14px;
-    line-height: 1.4;
-    text-align: center;
+        .project-card-body {
+            padding: 18px 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
 
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.35s ease;
-    z-index: 99;
-}
+        .project-card-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.35;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-.single-item .heading::before {
-    content: "";
-    position: absolute;
-    bottom: 118%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+        .project-card-meta {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #64748b;
+        }
 
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.35s ease;
-}
+        .project-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 12px;
+            margin-top: 12px;
+        }
 
-/* Desktop hover */
-.single-item .heading:hover::after,
-.single-item .heading:hover::before,
-.single-item .heading.tooltip-active::after,
-.single-item .heading.tooltip-active::before {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) scale(1);
-}
+        .badge-type-pill {
+            background: #eff6ff;
+            color: #0d6efd;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid #dbeafe;
+            white-space: nowrap;
+        }
 
-/* ================= DATE ================= */
-.single-item .content .text {
-    font-size: 14px;
-    color: #6c757d;
-    margin-bottom: 6px;
-}
+        .btn-card-visit {
+            background: #10b981;
+            color: #ffffff !important;
+            font-size: 12.5px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 6px;
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.25s ease;
+            border: none;
+            white-space: nowrap;
+        }
 
-/* ================= TYPE BADGE ================= */
-.single-item .content h6 {
-    display: inline-block;
-    align-self: center;
-    background: linear-gradient(135deg, #0d6efd, #6610f2);
-    color: #fff;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-}
+        .btn-card-visit:hover {
+            background: #059669;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
 
-/* ================= MOBILE ================= */
-@media (max-width: 576px) {
-    .single-item .box-image img {
-        height: 100%;
-    }
+        .btn-card-enquiry {
+            background: #0d6efd;
+            color: #ffffff !important;
+            font-size: 12.5px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
 
-    .single-item .heading::after {
-        max-width: 240px;
-        font-size: 13px;
-    }
-}
-
+        .btn-card-enquiry:hover {
+            background: #0b5ed7;
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+        }
     </style>
 </head>
 
@@ -170,12 +190,10 @@
                 <div class="col-12">
                     <div class="breadcrumb_box text-center">
                         <h2 class="breadcrumb-title">Our Projects</h2>
-                        <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-list">
-                            <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?= base_url() ?>">Home</a></li>
                             <li class="breadcrumb-item active">Our Projects</li>
                         </ul>
-                        <!-- breadcrumb-list end -->
                     </div>
                 </div>
             </div>
@@ -184,186 +202,99 @@
     <!-- breadcrumb-area end -->
 
     <div class="site-wrapper-reveal">
-        <!--===========  feature-images-wrapper  Start =============-->
         <div class="feature-images-wrapper bg-gray section-space--ptb_100">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="feature-images__four">
-                            <div class="row">
-                                <!-- forecach  loop -->
-                                <?php
-                                foreach ($userdata as $projects)
-                                 {
-                                ?>
-                                    <div class="single-item col-lg-4 col-md-6 mt-30 wow move-up">
-                                        <!-- ht-box-icon Start -->
-                                         <div style="width:100%;"> 
-                                            <div class="image-box-wrap" style="width:100%;">
-                                                <div class="box-image" style="width:100%;">
-                                                    <img class="lazy" src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public/uploads/projects/').$projects->image; ?>" title="projects" alt="projects" style="height: 200px; width: 100% " />
-                                                </div>
-                                                <div class="content ht-box-images style-04 text-center">
-                                                  <h5 class="heading" title="<?= $projects->title; ?>" data-title="<?= $projects->title; ?>"><?= $projects->title; ?></h5>
+                <!-- Filter Tabs -->
+                <div class="project-filter-section text-center">
+                    <div class="project-filter-pill-container d-inline-flex flex-wrap justify-content-center">
+                        <button type="button" class="project-filter-btn active" data-filter="all">
+                            <i class="fas fa-th-large mr-1"></i> All Projects
+                        </button>
+                        <button type="button" class="project-filter-btn" data-filter="website">
+                            <i class="fas fa-globe mr-1"></i> Website
+                        </button>
+                        <button type="button" class="project-filter-btn" data-filter="mobile">
+                            <i class="fas fa-mobile-alt mr-1"></i> Mobile App
+                        </button>
+                        <button type="button" class="project-filter-btn" data-filter="software">
+                            <i class="fas fa-laptop-code mr-1"></i> Software
+                        </button>
+                    </div>
+                </div>
 
-                                                    <div class="text"><?php  $date = strtotime($projects->add_date); echo $date = date('M Y', $date);  ?>&nbsp;<i class="fa fa-link"></i></div>
-                                                    <div class="d-flex justify-content-center align-items-center mt-2" style="gap: 15px;">
-                                                        <span style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: default; display: inline-block; text-align: center; margin: 0;"><?= $projects->type; ?></span>
-                                                        <a href="<?= $projects->url; ?>" target="_blank" style="background: linear-gradient(135deg, #28a745, #218838); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-block; text-align: center; margin: 0; box-shadow: none;"><i class="fa fa-external-link"></i> Visit</a>
-                                                        <button onclick="openProjectEnquiryModal('<?= $projects->id ?>', '<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>')" style="background: linear-gradient(135deg, #0d6efd, #6610f2); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; border: none; box-shadow: none; transition: all 0.3s; display: inline-block; text-align: center; margin: 0;">Enquiry</button>
-                                                    </div>
-                                                </div>
+                <div class="row" id="projects-grid">
+                    <?php if (!empty($userdata)): ?>
+                        <?php foreach ($userdata as $projects): 
+                            $is_link_active = (!isset($projects->link_status) || $projects->link_status == 'true' || $projects->link_status == '1');
+                            $proj_type = !empty($projects->type) ? $projects->type : 'Website';
+                        ?>
+                            <div class="col-lg-4 col-md-6 mb-4 project-filter-item" data-category="<?= strtolower(htmlspecialchars($proj_type)) ?>">
+                                <div class="project-card-item">
+                                    <div class="project-card-thumb">
+                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/loader2.jpg" data-src="<?= base_url('public/uploads/projects/') . $projects->image; ?>" alt="<?= htmlspecialchars($projects->title); ?>" loading="lazy">
+                                        <!-- <span class="project-top-badge"><?= htmlspecialchars($proj_type); ?></span> -->
+                                    </div>
+                                    <div class="project-card-body">
+                                        <h5 class="project-card-title" title="<?= htmlspecialchars($projects->title); ?>">
+                                            <?= htmlspecialchars($projects->title); ?>
+                                        </h5>
+                                        <div class="project-card-meta mb-2">
+                                            <i class="far fa-calendar-alt mr-1"></i> <?php $date = strtotime($projects->add_date); echo date('M Y', $date); ?>
+                                        </div>
+                                        <div class="project-card-footer">
+                                            <span class="badge-type-pill"><?= htmlspecialchars($proj_type); ?></span>
+                                            <div class="d-flex align-items-center" style="gap: 6px;">
+                                                <?php if ($is_link_active && !empty($projects->url)): ?>
+                                                    <a href="<?= $projects->url; ?>" target="_blank" class="btn-card-visit">
+                                                        <i class="fas fa-external-link-alt mr-1"></i> Visit
+                                                    </a>
+                                                <?php endif; ?>
+                                                <button type="button" onclick="openProjectEnquiryModal('<?= $projects->id ?>', '<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>')" class="btn-card-enquiry">
+                                                    Enquiry
+                                                </button>
                                             </div>
                                         </div>
-                                        <!-- ht-box-icon End -->
                                     </div>
-                                <?php
-                                }
-                                ?>
-                                <!-- foreach loop end -->
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
-      
-        <!--===========  feature-images-wrapper  End =============-->
     </div>
-
-    <!-- @section scripts{
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
-
-        } -->
 
     <?php include('include/jslinks.php') ?>
+    <?php include('include/project_enquiry_modal.php') ?>
     <?php include('include/footer.php') ?>
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".single-item .heading").forEach(function (el) {
-
-        el.addEventListener("click", function (e) {
-            e.stopPropagation();
-
-            // remove other active tooltips
-            document.querySelectorAll(".heading.tooltip-active")
-                .forEach(h => h.classList.remove("tooltip-active"));
-
-            // toggle current
-            el.classList.toggle("tooltip-active");
-        });
-    });
-
-    // click outside to close
-    document.addEventListener("click", function () {
-        document.querySelectorAll(".heading.tooltip-active")
-            .forEach(h => h.classList.remove("tooltip-active"));
-    });
-});
-</script>
-
-</script>
-
-    <!-- Global Project Enquiry Modal -->
-    <div class="modal fade" id="projectEnquiryModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px;">
-            <div class="modal-content" style="border-radius:20px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden;">
-                <div class="modal-header" style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:30px 25px 20px; border:none; position: relative;">
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="position:absolute; top:15px; right:20px; opacity: 0.8; text-shadow:none;">
-                        <span aria-hidden="true" style="font-size: 28px;">&times;</span>
-                    </button>
-                    <div class="w-100 text-center mt-2">
-                        <div style="width:60px; height:60px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
-                            <i class="fa fa-paper-plane text-white" style="font-size:24px;"></i>
-                        </div>
-                        <h4 class="modal-title text-white" style="font-weight:700; font-size:22px; margin-bottom:5px;">Project Enquiry</h4>
-                        <p class="text-white" id="modal_project_name_display" style="opacity: 0.9; font-size: 14px; font-weight:600; margin:0;"></p>
-                    </div>
-                </div>
-                <div class="modal-body" style="padding: 30px 25px; background: #f8f9fa;">
-                    <div id="projectEnquiryAlert" class="mb-3 text-center" style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;"></div>
-                    <form id="projectEnquiryForm">
-                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>">
-                        <input type="hidden" name="project_id" id="modal_project_id">
-                        <input type="hidden" name="project_name" id="modal_project_name">
-
-                        <div class="form-group mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-user"></i></span>
-                                </div>
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-envelope"></i></span>
-                                </div>
-                                <input type="email" name="email" class="form-control" placeholder="Email Address" required style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i class="fa fa-phone-alt"></i></span>
-                                </div>
-                                <input type="tel" name="mobile" class="form-control" placeholder="Mobile Number" required pattern="[0-9]{10}" maxlength="10" style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <textarea name="message" class="form-control" placeholder="Tell us about your requirements..." rows="3" required style="border-radius:10px; background:#fff; box-shadow:none; font-size:14px; color:#444; resize:none; padding:15px;"></textarea>
-                        </div>
-
-                        <button type="submit" id="btnProjectEnquirySubmit" class="btn btn-primary w-100" style="height:50px; border-radius:25px; font-weight:700; font-size:16px; background:linear-gradient(135deg, #086AD8, #00C6FF); border:none; box-shadow:0 8px 20px rgba(8,106,216,0.3); transition:all 0.3s;">Submit Enquiry <i class="fa fa-arrow-right ml-2"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
-        function openProjectEnquiryModal(id, title) {
-            $('#modal_project_id').val(id);
-            $('#modal_project_name').val(title);
-            $('#modal_project_name_display').text(title);
-            $('#projectEnquiryAlert').hide();
-            $('#projectEnquiryForm')[0].reset();
-            $('#projectEnquiryModal').modal('show');
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const filterBtns = document.querySelectorAll(".project-filter-btn");
+            const projectItems = document.querySelectorAll(".project-filter-item");
 
-        $('#projectEnquiryForm').on('submit', function(e) {
-            e.preventDefault();
-            var btn = $('#btnProjectEnquirySubmit');
-            var originalText = btn.html();
-            btn.html('<i class="fa fa-spinner fa-spin"></i> Submitting...').prop('disabled', true);
-            
-            $.ajax({
-                url: '<?= base_url('Home/submitProjectEnquiry') ?>',
-                type: 'POST',
-                data: $(this).serialize(),
-                dataType: 'json',
-                success: function(res) {
-                    btn.html(originalText).prop('disabled', false);
-                    var alertBox = $('#projectEnquiryAlert');
-                    if(res.status == 'success') {
-                        alertBox.removeClass('alert-danger').addClass('alert-success').text(res.msg).show();
-                        $('#projectEnquiryForm')[0].reset();
-                        setTimeout(function(){
-                            $('#projectEnquiryModal').modal('hide');
-                        }, 2000);
-                    } else {
-                        alertBox.removeClass('alert-success').addClass('alert-danger').text(res.msg).show();
-                    }
-                },
-                error: function() {
-                    btn.html(originalText).prop('disabled', false);
-                    $('#projectEnquiryAlert').removeClass('alert-success').addClass('alert-danger').text('Something went wrong. Please try again.').show();
-                }
+            filterBtns.forEach(btn => {
+                btn.addEventListener("click", function () {
+                    filterBtns.forEach(b => b.classList.remove("active"));
+                    this.classList.add("active");
+
+                    const filter = this.getAttribute("data-filter").toLowerCase();
+
+                    projectItems.forEach(item => {
+                        const cat = (item.getAttribute("data-category") || "").toLowerCase();
+                        if (filter === "all") {
+                            item.style.display = "block";
+                        } else if (filter === "website" && cat.includes("website")) {
+                            item.style.display = "block";
+                        } else if (filter === "mobile" && (cat.includes("mobile") || cat.includes("app") || cat.includes("android") || cat.includes("ios"))) {
+                            item.style.display = "block";
+                        } else if (filter === "software" && cat.includes("software")) {
+                            item.style.display = "block";
+                        } else {
+                            item.style.display = "none";
+                        }
+                    });
+                });
             });
         });
     </script>

@@ -112,7 +112,7 @@
           locationError = null;
 
           // Get Address using Google Reverse Geocoding
-          var geocoder = new google.maps.Geocoder();
+              var geocoder = new google.maps.Geocoder();
           var latlng = {
             lat: parseFloat(latitude),
             lng: parseFloat(longitude)
@@ -122,9 +122,9 @@
           }, function(results, status) {
             if (status === 'OK') {
               if (results[0]) {
-                address = results[0].formatted_address;
-                console.log("Location Captured: " + address);
-              }
+                  address = results[0].formatted_address;
+                  console.log("Location Captured: " + address);
+                }
             } else {
               console.error("Geocoder failed due to: " + status);
               address = "Location captured but address not found (Status: "+status+")";
@@ -172,17 +172,19 @@
             "<?= $csrf['name']; ?>": $('#csrf_token').val()
           },
           dataType: "json",
+          timeout: 15000,
           success: function(res) {
             btn.prop('disabled', false).html(oldHtml);
             if (res.status == 'success') {
               iziToast.success({
-                title: 'Success',
+                title: 'OTP Sent',
                 message: res.msg,
-                position: 'topRight'
+                position: 'topRight',
+                timeout: 10000
               });
               $('.email-section').hide();
               $('.otp-section').fadeIn();
-              startTimer(120); // 2 minutes
+              startTimer(120); // 2 minutes strictly
             } else {
               iziToast.error({
                 title: 'Error',
@@ -190,6 +192,40 @@
                 position: 'topRight'
               });
             }
+          },
+          error: function(xhr, status, error) {
+            btn.prop('disabled', false).html(oldHtml);
+            var res = null;
+            if (xhr.responseJSON) {
+              res = xhr.responseJSON;
+            } else if (xhr.responseText) {
+              try {
+                res = JSON.parse(xhr.responseText);
+              } catch (e) {}
+            }
+
+            if (res && res.status === 'success') {
+              iziToast.success({
+                title: 'OTP Sent',
+                message: res.msg || "OTP sent to your email.",
+                position: 'topRight',
+                timeout: 10000
+              });
+              $('.email-section').hide();
+              $('.otp-section').fadeIn();
+              startTimer(120); // 2 minutes strictly
+              return;
+            }
+
+            var errorMsg = (res && res.msg) ? res.msg : "Failed to send OTP. Please try again.";
+            if (status === 'timeout') {
+              errorMsg = "Server connection timed out. Please try again.";
+            }
+            iziToast.error({
+              title: 'Error',
+              message: errorMsg,
+              position: 'topRight'
+            });
           }
         });
       }
@@ -210,76 +246,28 @@
 
         if (!navigator.geolocation) {
           iziToast.error({
-            title: 'Location Required',
+            title: 'Location Permission Required',
             message: 'Geolocation is not supported by your browser. You cannot log in without location access.',
             position: 'topRight'
           });
           return;
         }
 
-        // If coordinates already loaded successfully
-        if (latitude !== "" && longitude !== "") {
-          sendOtpAjax(email, btn, oldHtml);
-          return;
-        }
-
-        // If location permission is explicitly denied
-        if (locationError && locationError.code === 1) { // PERMISSION_DENIED
+        if (locationError || latitude === "" || longitude === "") {
           iziToast.error({
-            title: 'Location Required',
-            message: 'Location permission is denied. Please reset permissions in your browser address bar and allow location access to log in.',
+            title: 'Location Permission Required',
+            message: 'Location permission is required to log in to Admin. Please allow location access in your browser address bar and try again.',
             position: 'topRight'
           });
           return;
         }
 
-        // If not loaded yet, or had other transient errors, request location again
-        btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Getting Location...');
-
-        navigator.geolocation.getCurrentPosition(function(position) {
-          latitude = position.coords.latitude;
-          longitude = position.coords.longitude;
-          locationError = null;
-
-          var geocoder = new google.maps.Geocoder();
-          var latlng = {
-            lat: parseFloat(latitude),
-            lng: parseFloat(longitude)
-          };
-          geocoder.geocode({
-              'location': latlng
-          }, function(results, status) {
-            if (status === 'OK') {
-              if (results[0]) {
-                address = results[0].formatted_address;
-              }
-            } else {
-              address = "Location captured but address not found (Status: "+status+")";
-            }
-            sendOtpAjax(email, btn, oldHtml);
-          });
-        }, function(error) {
-          locationError = error;
-          btn.prop('disabled', false).html(oldHtml);
-          var errorMsg = "Please allow location permission to log in.";
-          if (error.code === 1) {
-            errorMsg = "Location permission denied. You cannot log in without location access.";
-          } else if (error.code === 2) {
-            errorMsg = "Location information is unavailable. Please try again.";
-          } else if (error.code === 3) {
-            errorMsg = "Location request timed out. Please try again.";
-          }
-          iziToast.error({
-            title: 'Location Required',
-            message: errorMsg,
-            position: 'topRight'
-          });
-        }, {timeout: 10000});
+        sendOtpAjax(email, btn, oldHtml);
       });
 
       // Verify OTP
       $('#verifyOtpBtn').click(function() {
-        var otp = $('#inputOTP').val();
+        var otp = $.trim($('#inputOTP').val());
         if (otp == "" || otp.length != 6) {
           iziToast.error({
             title: 'Error',
@@ -289,7 +277,8 @@
           return;
         }
 
-        $(this).prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Verifying...');
+        var btn = $(this);
+        btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Verifying...');
 
         $.ajax({
           url: "<?= base_url('Authentication/VerifyOTP') ?>",
@@ -299,6 +288,7 @@
             "<?= $csrf['name']; ?>": $('#csrf_token').val()
           },
           dataType: "json",
+          timeout: 15000,
           success: function(res) {
             if (res.status == 'success') {
               iziToast.success({
@@ -308,13 +298,44 @@
               });
               window.location.href = res.redirectLink;
             } else {
-              $('#verifyOtpBtn').prop('disabled', false).html('Verify OTP & Sign In');
+              btn.prop('disabled', false).html('Verify OTP & Sign In');
               iziToast.error({
                 title: 'Error',
                 message: res.msg,
                 position: 'topRight'
               });
             }
+          },
+          error: function(xhr, status, error) {
+            btn.prop('disabled', false).html('Verify OTP & Sign In');
+            var res = null;
+            if (xhr.responseJSON) {
+              res = xhr.responseJSON;
+            } else if (xhr.responseText) {
+              try {
+                res = JSON.parse(xhr.responseText);
+              } catch (e) {}
+            }
+
+            if (res && res.status === 'success') {
+              iziToast.success({
+                title: 'Success',
+                message: res.msg,
+                position: 'topRight'
+              });
+              window.location.href = res.redirectLink;
+              return;
+            }
+
+            var errorMsg = (res && res.msg) ? res.msg : "Failed to verify OTP. Please try again.";
+            if (status === 'timeout') {
+              errorMsg = "Verification timed out. Please try again.";
+            }
+            iziToast.error({
+              title: 'Error',
+              message: errorMsg,
+              position: 'topRight'
+            });
           }
         });
       });

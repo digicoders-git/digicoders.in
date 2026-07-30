@@ -33,13 +33,14 @@ label {
     color: red!important
 }
 
+#footer2 {
+    display: none !important
+}
+
 @media(min-width:900px) {
     #btn-desktop {
         display: none!important;
         color: #000!important
-    }
-    #footer2 {
-        display: none!important
     }
 }
 
@@ -53,22 +54,42 @@ label {
     position: fixed;
     left: -3px;
     top: 50%;
-    z-index: 1000;
+    z-index: 10000;
     transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
-    margin-left: -75px
+    margin-left: -75px;
 }
 
 #feedback2 a {
-    font-family: CerebriSans;
+    font-family: CerebriSans, sans-serif;
     display: block;
     background: #00a123;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 10px;
     text-align: center;
     color: #fff;
     font-size: 18px;
     font-weight: 700;
-    text-decoration: none
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+    #feedback2 {
+        top: 50% !important;
+        left: -3px !important;
+        bottom: auto !important;
+        transform: rotate(-90deg) !important;
+        -webkit-transform: rotate(-90deg) !important;
+        margin-left: -55px !important;
+        z-index: 10000 !important;
+    }
+
+    #feedback2 a {
+        padding: 4px 8px !important;
+        font-size: 13.5px !important;
+        border-radius: 4px !important;
+        box-shadow: none !important;
+    }
 }

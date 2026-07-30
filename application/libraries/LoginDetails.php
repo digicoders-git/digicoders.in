@@ -47,7 +47,7 @@ class LoginDetails
 
 	function get_os()
 	{
-		$user_agent = $_SERVER['HTTP_USER_AGENT'];
+		$user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 
 		$os_platform = "Unknown OS Platform";
 
@@ -91,7 +91,7 @@ class LoginDetails
 
 	function get_useragent()
 	{
-		$user_agent = $_SERVER['HTTP_USER_AGENT'];
+		$user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 
 		$browser = "Unknown Browser";
 

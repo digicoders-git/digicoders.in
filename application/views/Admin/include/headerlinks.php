@@ -41,7 +41,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
    <!-- CKEditor CDN -->
-    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+   <!-- <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script> -->
   <style>
     .parsley-required
     {
@@ -49,8 +49,24 @@
       list-style: none;
     }
     .dropify-wrapper .dropify-message span.file-icon {
-    font-size: 26px!important;
-    color: #CCC;
-}
-
+      font-size: 26px!important;
+      color: #CCC;
+    }
+    /* Fix Summernote Toolbar & Fullscreen inside Bootstrap Modal */
+    .note-editor .note-toolbar {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 5 !important;
+        background: #f8f9fa !important;
+    }
+    .note-editor.note-frame.fullscreen {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 1060 !important;
+        background-color: #fff !important;
+    }
   </style>
