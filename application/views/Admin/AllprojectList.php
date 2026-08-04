@@ -85,7 +85,7 @@
 											<td><?= $data->type; ?></td>
 											<td><?= $data->title; ?></td>
 											<td><?= $data->add_date; ?></td>
-											<td><?= $data->url; ?></td>
+											<td><a href="<?= $data->url; ?>" style="text-decoration: none;"><?= $data->url; ?></a></td>
 											<td>
 												<div class="form-check form-switch">
 													<input class="form-check-input" type="checkbox" onchange="ChangeLinkStatus(<?= $data->id ?>,'<?= isset($data->link_status) ? $data->link_status : 'true' ?>','projects','<?= base_url('Admin/ChangeLinkStatus') ?>')" id="linkSwitchCheck<?= $data->id ?>" <?php if(!isset($data->link_status) || $data->link_status == 'true' || $data->link_status == '1'){ echo "checked"; } ?>>
