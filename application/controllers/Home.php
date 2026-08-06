@@ -559,6 +559,14 @@ class Home extends CI_Controller
 	{
 		$this->load->view('Home/TermOfPayment');
 	}
+	public function ReturnPolicy()
+	{
+		$this->load->view('Home/ReturnPolicy');
+	}
+	public function ShippingPolicy()
+	{
+		$this->load->view('Home/ShippingPolicy');
+	}
 	public function OurGallery()
 	{
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get('gallery')->result();
@@ -726,8 +734,8 @@ class Home extends CI_Controller
 			$this->email->set_newline("\r\n");
 			$from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
 			$this->email->from($from_email, 'digicoders.in Website');
-		// $this->email->to('digicoderstech@gmail.com');
-		$this->email->to('saurabhkumarssp@gmail.com');
+		$this->email->to('digicoderstech@gmail.com');
+		// $this->email->to('saurabhkumarssp@gmail.com');
 			$this->email->subject($subject);
 
 			$message = "<html>

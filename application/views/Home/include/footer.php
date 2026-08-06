@@ -122,19 +122,22 @@
                     <!-- Lucknow Office -->
                     <div class="dg-office-block">
                         <h3>LUCKNOW Head OFFICE</h3>
-                        <p>2nd Floor, B-36, Sector O, Near Ram Ram Bank Chauraha, Aliganj, Lucknow, Uttar Pradesh, 226021</p>
+                        <p>2nd Floor, B-36, Sector O, Near Ram Ram Bank Chauraha, Aliganj, Lucknow, Uttar Pradesh,
+                            226021</p>
                     </div>
 
                     <!-- Kanpur Office -->
                     <div class="dg-office-block">
                         <h3>KANPUR OFFICE</h3>
-                        <p>1st Floor, 128/3/98, Shivaji Park (Near Rahul Petrol Pump Indian Oil), Yashoda Nagar, Kanpur, Uttar Pradesh, 208011</p>
+                        <p>1st Floor, 128/3/98, Shivaji Park (Near Rahul Petrol Pump Indian Oil), Yashoda Nagar, Kanpur,
+                            Uttar Pradesh, 208011</p>
                     </div>
 
                     <!-- Gorakhpur Office -->
                     <div class="dg-office-block">
                         <h3>GORAKHPUR OFFICE</h3>
-                        <p>INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR, UP, 273209</p>
+                        <p>INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR, UP,
+                            273209</p>
                     </div>
                 </div>
             </section>
@@ -144,49 +147,70 @@
                     <h6 class="footer-widget__title mb-20">Contact US</h6>
                     <ul class="footer-widget__list">
                         <li><a href="tel:<?= $this->data['telephone_no'] ?>"
-                                class="hover-style-link text-black font-weight--bold"><i class="fas fa-phone-alt mr-2 text-success"></i><?= $this->data['telephone_no'] ?></a>
+                                class="hover-style-link text-black font-weight--bold"><i
+                                    class="fas fa-phone-alt mr-2 text-success"></i><?= $this->data['telephone_no'] ?></a>
                         </li>
-                        <li><a href="tel:+916394296293" class="hover-style-link text-black font-weight--bold"><i class="fas fa-mobile-alt mr-2 text-success"></i>6394296293</a></li>
-                        <li><a href="tel:+919140967607" class="hover-style-link text-black font-weight--bold"><i class="fas fa-mobile-alt mr-2 text-success"></i>9140967607</a></li>
-                        <li><a href="tel:+919198483820" class="hover-style-link text-black font-weight--bold"><i class="fas fa-mobile-alt mr-2 text-success"></i>9198483820</a></li>
-                        <li class="mt-2"><a href="mailto:<?= $this->data['email'] ?>" class="hover-style-link"><i class="fas fa-envelope mr-2 text-success"></i><?= $this->data['email'] ?></a></li>
-                        <li><a href="mailto:digicoderstech@gmail.com" class="hover-style-link"><i class="fas fa-envelope mr-2 text-success"></i>digicoderstech@gmail.com</a></li>
+                        <li><a href="tel:+916394296293" class="hover-style-link text-black font-weight--bold"><i
+                                    class="fas fa-mobile-alt mr-2 text-success"></i>6394296293</a></li>
+                        <li><a href="tel:+919140967607" class="hover-style-link text-black font-weight--bold"><i
+                                    class="fas fa-mobile-alt mr-2 text-success"></i>9140967607</a></li>
+                        <li><a href="tel:+919198483820" class="hover-style-link text-black font-weight--bold"><i
+                                    class="fas fa-mobile-alt mr-2 text-success"></i>9198483820</a></li>
+                        <li class="mt-2"><a href="mailto:<?= $this->data['email'] ?>" class="hover-style-link"><i
+                                    class="fas fa-envelope mr-2 text-success"></i><?= $this->data['email'] ?></a></li>
+                        <li><a href="mailto:digicoderstech@gmail.com" class="hover-style-link"><i
+                                    class="fas fa-envelope mr-2 text-success"></i>digicoderstech@gmail.com</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-widget mb-30">
                     <h6 class="footer-widget__title mb-20">IT Services</h6>
                     <ul class="footer-widget__list">
-                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/SoftwareDevelopment">Software Development</a></li>
-                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/WebsiteDevelopment">Website Development</a></li>
-                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/MobileApplicationDevelopment">Mobile App Development</a></li>
-                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/DigitalMarketing">Digital Marketing</a></li>
-                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/GraphicsDesigning">Graphics Designing</a></li>
-                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/DomainAndHosting">Domain &amp; Hosting</a></li>
-                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/PrivacyPolicies">Privacy Policy</a></li>
+                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/SoftwareDevelopment">Software
+                                Development</a></li>
+                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/WebsiteDevelopment">Website
+                                Development</a></li>
+                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/MobileApplicationDevelopment">Mobile
+                                App Development</a></li>
+                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/DigitalMarketing">Digital
+                                Marketing</a></li>
+                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/GraphicsDesigning">Graphics
+                                Designing</a></li>
+                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/DomainAndHosting">Domain &amp;
+                                Hosting</a></li>
+                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/PrivacyPolicies">Privacy Policy</a>
+                        </li>
+                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/ShippingPolicy">Shipping &amp; Delivery Policy</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-widget mb-30">
                     <h6 class="footer-widget__title mb-20">Quick Links</h6>
                     <ul class="footer-widget__list">
-                        <li><a href="https://rzp.io/l/pa3Rlt0qI" target="_blank" class="hover-style-link">Pay Online</a></li>
+                        <li><a href="https://rzp.io/l/pa3Rlt0qI" target="_blank" class="hover-style-link">Pay Online</a>
+                        </li>
                         <li><a href="<?= base_url() ?>Home/OurProjects" class="hover-style-link">Our Projects</a></li>
                         <li><a href="<?= base_url() ?>Home/OurGallery" class="hover-style-link">Photo Gallery</a></li>
                         <li><a href="<?= base_url() ?>Home/OurVideo" class="hover-style-link">Video Gallery</a></li>
-                        <li><a href="<?= base_url() ?>Home/TermOfPayment" class="hover-style-link">Terms of Payment</a></li>
-                        <li><a href="<?= base_url() ?>Home/TermsAndConditions" class="hover-style-link">Terms &amp; Condition</a></li>
+                        <li><a href="<?= base_url() ?>Home/TermOfPayment" class="hover-style-link">Terms of Payment</a>
+                        </li>
+                        <li><a href="<?= base_url() ?>Home/TermsAndConditions" class="hover-style-link">Terms &amp;
+                                Condition</a></li>
                         <li><a href="<?= base_url() ?>Home/RefundAndCancellation" class="hover-style-link">Refund &amp; Cancellation</a></li>
+                        <li><a href="<?= base_url() ?>Home/ReturnPolicy" class="hover-style-link">Return Policy</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-widget mb-30">
                     <h6 class="footer-widget__title mb-20">Support</h6>
                     <ul class="footer-widget__list">
-                        <li><a href="<?= base_url() ?>Home/RequestProposal" class="hover-style-link">Request a Proposal</a></li>
+                        <li><a href="<?= base_url() ?>Home/RequestProposal" class="hover-style-link">Request a
+                                Proposal</a></li>
                         <li><a href="tel:9198483820" class="hover-style-link">Talk to Expert</a></li>
                         <li><a href="<?= base_url() ?>Home/FAQs">Help &amp; FAQ</a></li>
                         <li><a href="<?= base_url() ?>Home/ContactUs" class="hover-style-link">Contact Us</a></li>
-                        <li><a href="<?= base_url() ?>Home/Packages" class="hover-style-link">Pricing &amp; Packages</a></li>
+                        <li><a href="<?= base_url() ?>Home/Packages" class="hover-style-link">Pricing &amp; Packages</a>
+                        </li>
                         <li><a href="<?= base_url() ?>Home/Blogs" class="hover-style-link">Blogs</a></li>
-                        <li><a href="<?= base_url() ?>Home/DigiCodersInNews" class="hover-style-link">DigiCoders In News</a></li>
+                        <li><a href="<?= base_url() ?>Home/DigiCodersInNews" class="hover-style-link">DigiCoders In
+                                News</a></li>
                     </ul>
                 </div>
             </div>
@@ -196,32 +220,46 @@
                     <div class="row justify-content-center align-items-center logo-badges-row">
                         <div class="col-6 col-sm-4 col-md-2 text-center py-2">
                             <div class="logo-badge-item">
-                                <img class="lazy footer-img img-fluid" src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public') ?>/assets/images/icons/mca.png" alt="MCA" />
+                                <img class="lazy footer-img img-fluid"
+                                    src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                    data-src="<?= base_url('public') ?>/assets/images/icons/mca.png" alt="MCA" />
                             </div>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 text-center py-2">
                             <div class="logo-badge-item">
-                                <img class="lazy footer-img img-fluid" src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public') ?>/assets/images/icons/gem.png" alt="GeM" />
+                                <img class="lazy footer-img img-fluid"
+                                    src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                    data-src="<?= base_url('public') ?>/assets/images/icons/gem.png" alt="GeM" />
                             </div>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 text-center py-2">
                             <div class="logo-badge-item">
-                                <img class="lazy footer-img img-fluid" src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public') ?>/assets/images/icons/iso.png" alt="ISO" />
+                                <img class="lazy footer-img img-fluid"
+                                    src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                    data-src="<?= base_url('public') ?>/assets/images/icons/iso.png" alt="ISO" />
                             </div>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 text-center py-2">
                             <div class="logo-badge-item">
-                                <img class="lazy footer-img img-fluid" src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public') ?>/assets/images/icons/startupindia.png" alt="Startup India" />
+                                <img class="lazy footer-img img-fluid"
+                                    src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                    data-src="<?= base_url('public') ?>/assets/images/icons/startupindia.png"
+                                    alt="Startup India" />
                             </div>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 text-center py-2">
                             <div class="logo-badge-item">
-                                <img class="lazy footer-img img-fluid" src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public') ?>/assets/images/icons/msme.png" alt="MSME" />
+                                <img class="lazy footer-img img-fluid"
+                                    src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                    data-src="<?= base_url('public') ?>/assets/images/icons/msme.png" alt="MSME" />
                             </div>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 text-center py-2">
                             <div class="logo-badge-item">
-                                <img class="lazy footer-img img-fluid" src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public') ?>/assets/images/icons/digital.png" alt="Digital India" />
+                                <img class="lazy footer-img img-fluid"
+                                    src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                                    data-src="<?= base_url('public') ?>/assets/images/icons/digital.png"
+                                    alt="Digital India" />
                             </div>
                         </div>
                     </div>
@@ -235,12 +273,14 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center">
                     <div class="footer-legal-info">
-                        <span class="legal-badge"><strong>Legal Name:</strong> DigiCoders Technologies Private Limited</span>
+                        <span class="legal-badge"><strong>Legal Name:</strong> DigiCoders Technologies Private
+                            Limited</span>
                         <span class="legal-badge"><strong>Company Type:</strong> Private Limited</span>
                         <span class="legal-badge"><strong>Date of Incorporation:</strong> 14-Feb-2019</span>
                         <span class="legal-badge"><strong>CIN:</strong> U72900UP2019PTC113696</span>
                         <span class="legal-badge"><strong>GSTIN:</strong> 09AAHCD1032D1Z6</span>
-                        <span class="legal-badge"><strong>Registered Office:</strong> B-36, Sector-'O', Aliganj, Lucknow, 226024</span>
+                        <span class="legal-badge"><strong>Registered Office:</strong> B-36, Sector-'O', Aliganj,
+                            Lucknow, 226024</span>
                     </div>
                 </div>
             </div>
@@ -251,10 +291,12 @@
         <div class="container border-top pt-3">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-left col-sm-12 footer-icon mb-2 mb-md-0">
-                    <span class="copyright-text">&copy; 2019 - <?= date("Y") ?> DigiCoders Technologies (P) Ltd. All Rights Reserved.</span>
+                    <span class="copyright-text">&copy; 2019 - <?= date("Y") ?> DigiCoders Technologies (P) Ltd. All
+                        Rights Reserved.</span>
                 </div>
                 <div class="col-md-6 text-center text-md-right col-sm-12">
-                    <ul class="list ht-social-networks solid-rounded-icon footer-icon justify-content-center justify-content-md-end">
+                    <ul
+                        class="list ht-social-networks solid-rounded-icon footer-icon justify-content-center justify-content-md-end">
                         <li class="item">
                             <a href="https://api.whatsapp.com/send?phone=91<?= $this->data['mobile_no'] ?>&text=Hello DigiCoders Technologies, I want to discuss about my project"
                                 target="_blank" aria-label="WhatsApp"
@@ -328,7 +370,8 @@
                         <div class="logo">
                             <a href="<?= base_url() ?>">
                                 <img src="<?= base_url('public/assets/images/DigiCoders Technologies Logo.jpg') ?>"
-                                    class="img-fluid header-logo-img" title="Digicoders Technologies" alt="Digicoders Technologies" />
+                                    class="img-fluid header-logo-img" title="Digicoders Technologies"
+                                    alt="Digicoders Technologies" />
                             </a>
                         </div>
                     </div>
@@ -353,11 +396,16 @@
                             <li class="has-children">
                                 <a href="<?= base_url() ?>Home/AboutDigiCoders"><span>About us</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?= base_url() ?>Home/AboutDigiCoders"><span>About DigiCoders</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutTheDigiCoders"><span>About The DigiCoders</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutDigiCodersTechnologies"><span>About DigiCoders Technologies</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutCodersAdda"><span>About CodersAdda</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutDigitalCoders"><span>About DigitalCoders</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutDigiCoders"><span>About
+                                                DigiCoders</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutTheDigiCoders"><span>About The
+                                                DigiCoders</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutDigiCodersTechnologies"><span>About
+                                                DigiCoders Technologies</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutCodersAdda"><span>About
+                                                CodersAdda</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutDigitalCoders"><span>About
+                                                DigitalCoders</span></a></li>
                                 </ul>
                             </li>
                             <li><a href="<?= base_url() ?>Home/Leadership"><span>Leadership</span></a></li>
@@ -402,9 +450,11 @@
                     </li>
 
                     <li class="has-children">
-                        <a href="<?= base_url() ?>Home/LucknowBranch" aria-label="dropdown"><span>Our Branches</span></a>
+                        <a href="<?= base_url() ?>Home/LucknowBranch" aria-label="dropdown"><span>Our
+                                Branches</span></a>
                         <ul class="sub-menu">
-                            <li><a href="<?= base_url() ?>Home/LucknowBranch"><span>Lucknow (Main Office)</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/LucknowBranch"><span>Lucknow (Main Office)</span></a>
+                            </li>
                             <li><a href="<?= base_url() ?>Home/KanpurBranch"><span>Kanpur Office</span></a></li>
                             <li><a href="<?= base_url() ?>Home/GorakhpurBranch"><span>Gorakhpur Office</span></a></li>
                         </ul>
