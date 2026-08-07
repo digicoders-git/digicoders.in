@@ -91,7 +91,7 @@
                                         <td><?= $data->email; ?></td>
                                         <td><?= $data->mobile; ?></td>
                                         <td><?= $data->appaly_for; ?></td>
-                                        <td> <a href="<?= base_url('public/uploads/career/').$data->resume; ?>"><?= $data->resume; ?></a></td>
+                                        <td> <a href="<?= base_url('public/uploads/career/').$data->resume; ?>" target="_blank"><?= $data->resume; ?></a></td>
                                         <td><?= $data->message; ?></td>
                                         <td><?= $data->status; ?></td>
                                         <td><?= $data->date; ?></td>

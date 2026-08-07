@@ -199,17 +199,23 @@ class Home extends CI_Controller
 					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = 'true';
+					$upload_error = '';
+					$upload_dir = './public/uploads/career/';
+					if (!is_dir($upload_dir)) {
+						mkdir($upload_dir, 0777, true);
+					}
 					$ext = pathinfo($_FILES["UploadFile"]["name"], PATHINFO_EXTENSION);
-					$filename = $this->input->post('Name') . "_" . $this->input->post('Mobile') . "_resume" . "." . $ext;
-					$config['upload_path'] = './public/uploads/career/';
+					$clean_name = preg_replace('/[^a-zA-Z0-9_]/', '_', $this->input->post('Name'));
+					$filename = $clean_name . "_" . $this->input->post('Mobile') . "_resume" . "." . $ext;
+					$config['upload_path'] = $upload_dir;
 					$config['allowed_types'] = 'jpg|png|jpeg|pdf';
 					$config['max_size'] = 8024; // In KB
-					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
 
 					if (!$this->upload->do_upload('UploadFile')) {
 						$upload_status = "false";
+						$upload_error = strip_tags($this->upload->display_errors());
 					} else {
 						$upload_status = "true";
 					}
@@ -224,7 +230,7 @@ class Home extends CI_Controller
 						"date" => $this->data['date'],
 						"time" => $this->data['time']
 					);
-					if ($upload_status = "true") {
+					if ($upload_status == "true") {
 						if ($this->db->insert('career', $data_arr)) {
 							$this->send_form_email('New Career Application', $data_arr);
 							echo json_encode(array("status" => "success", "msg" => "Career Successfully Saved", "title" => "Successfully Saved!", "reload" => "true", "redirect" => 'false'));
@@ -232,7 +238,7 @@ class Home extends CI_Controller
 							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 						}
 					} else {
-						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+						echo json_encode(array("status" => "error", "msg" => (!empty($upload_error) ? $upload_error : "Failed to upload resume file"), "title" => "Upload Error!", "reload" => "false", "redirect" => 'false'));
 					}
 
 				}
