@@ -742,22 +742,68 @@ class Home extends CI_Controller
 			$this->email->from($from_email, 'digicoders.in Website');
 		$this->email->to('digicoderstech@gmail.com');
 		// $this->email->to('saurabhkumarssp@gmail.com');
-			$this->email->subject($subject);
+			$applicant_name = !empty($data['name']) ? $data['name'] : (!empty($data['Name']) ? $data['Name'] : '');
+			$apply_for = !empty($data['appaly_for']) ? $data['appaly_for'] : (!empty($data['apply_for']) ? $data['apply_for'] : '');
 
-			$message = "<html>
-			<body style='background-color: #f4f7f6; padding: 20px; font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;'>
-				<div style='max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee;'>
-					<!-- Header -->
-					<div style='background: linear-gradient(135deg, #006DAB 0%, #00964C 100%); padding: 25px; text-align: center;'>
-						<h2 style='color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 1px;'>Digicoders " . $subject . "</h2>
-						<p style='color: rgba(255,255,255,0.8); margin: 5px 0 0; font-size: 13px;'>New Submission from DigiCoders Website</p>
-					</div>
-					
-					<!-- Content -->
-					<div style='padding: 30px;'>
-						<p style='color: #333; font-size: 16px; margin-bottom: 20px;'>Hello Admin, you have received a new enquiry. Here are the details:</p>
+			if (stripos($subject, 'career') !== false || stripos($subject, 'job') !== false) {
+				$full_subject = "[Job Application] New Resume Received" . (!empty($applicant_name) ? " - " . $applicant_name : "") . (!empty($apply_for) ? " (" . $apply_for . ")" : "") . " | digicoders.in";
+			} else if (stripos($subject, 'contact') !== false) {
+				$full_subject = "[Contact Us Form] New Message" . (!empty($applicant_name) ? " from " . $applicant_name : "") . " | digicoders.in Website";
+			} else if (stripos($subject, 'demo') !== false) {
+				$full_subject = "[Demo Request] New Request" . (!empty($applicant_name) ? " from " . $applicant_name : "") . " | digicoders.in Website";
+			} else if (stripos($subject, 'proposal') !== false) {
+				$full_subject = "[Proposal Request] New Request" . (!empty($applicant_name) ? " from " . $applicant_name : "") . " | digicoders.in Website";
+			} else if (stripos($subject, 'call') !== false) {
+				$full_subject = "[Call Back Request] New Request" . (!empty($applicant_name) ? " from " . $applicant_name : "") . " | digicoders.in Website";
+			} else {
+				$full_subject = "[New Enquiry] " . $subject . (!empty($applicant_name) ? " from " . $applicant_name : "") . " | digicoders.in Website";
+			}
+			$this->email->subject($full_subject);
+
+			$message = "<!DOCTYPE html>
+			<html xmlns='http://www.w3.org/1999/xhtml'>
+			<head>
+				<meta charset='utf-8'>
+				<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+				<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+				<title>" . htmlspecialchars($full_subject) . "</title>
+				<style type='text/css'>
+					body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+					table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+					img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+					body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; background-color: #f0f3f8; font-family: \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; }
+					* { box-sizing: border-box; }
+
+					@media screen and (max-width: 600px) {
+						.email-wrapper { padding: 10px 6px !important; }
+						.email-card { width: 100% !important; max-width: 100% !important; border-radius: 12px !important; }
+						.email-header { padding: 22px 16px !important; }
+						.email-header h1 { font-size: 20px !important; }
+						.email-body { padding: 20px 16px !important; }
+						.email-body-title { font-size: 18px !important; }
+						.responsive-table { width: 100% !important; border-radius: 8px !important; }
+						.responsive-tr { display: block !important; width: 100% !important; border-bottom: 1px solid #e2e8f0 !important; margin-bottom: 6px !important; }
+						.responsive-td-label { display: block !important; width: 100% !important; background: #f1f5f9 !important; padding: 8px 12px 4px 12px !important; border-bottom: none !important; font-weight: 700 !important; font-size: 12px !important; text-transform: uppercase; color: #475569 !important; }
+						.responsive-td-value { display: block !important; width: 100% !important; padding: 4px 12px 10px 12px !important; border-bottom: none !important; font-size: 13px !important; word-break: break-word !important; }
+						.btn-resume { display: block !important; width: 100% !important; text-align: center !important; margin-top: 6px !important; font-size: 12px !important; word-break: break-all !important; }
+					}
+				</style>
+			</head>
+			<body style='margin: 0; padding: 25px 10px; background-color: #f0f3f8; font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;'>
+				<div class='email-wrapper' style='width: 100%; max-width: 620px; margin: 0 auto;'>
+					<div class='email-card' style='background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;'>
+						<!-- Header -->
+						<div class='email-header' style='background: linear-gradient(135deg, #006DAB 0%, #00964C 100%); padding: 30px 25px; text-align: center;'>
+							<h1 style='color: #ffffff; margin: 0; font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;'>DigiCoders</h1>
+							<span style='display: inline-block; background: rgba(255,255,255,0.2); color: #ffffff; padding: 4px 14px; border-radius: 20px; font-size: 12px; margin-top: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;'>" . (stripos($subject, 'career') !== false ? "Job Application Alert" : "Website Inquiry Alert") . "</span>
+						</div>
 						
-						<table style='width: 100%; border-collapse: collapse; margin-bottom: 20px;'>";
+						<!-- Content -->
+						<div class='email-body' style='padding: 35px 30px;'>
+							<h2 class='email-body-title' style='color: #1e293b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;'>" . htmlspecialchars($subject) . "</h2>
+							<p style='color: #64748b; font-size: 14px; margin-bottom: 25px; line-height: 1.5;'>Hello Admin, a new form submission was received on <b>digicoders.in</b>. Candidate/User submission details are listed below:</p>
+							
+							<table class='responsive-table' style='width: 100%; border-collapse: collapse; margin-bottom: 25px; font-size: 14px; border-radius: 10px; overflow: hidden; border: 1px solid #e2e8f0;'>";
 			$date = "";
 			$time = "";
 			foreach ($data as $key => $value) {
@@ -773,38 +819,46 @@ class Home extends CI_Controller
 					continue;
 				}
 
+				$label = ucfirst(str_replace('_', ' ', $key));
+				if ($key == 'appaly_for' || $key == 'apply_for') {
+					$label = "Applied For Position";
+				}
+
 				$display_value = $value;
 				if ($key == 'resume') {
-					$display_value = "<a href='" . base_url('public/uploads/career/' . $value) . "' target='_blank' style='color: #006DAB; text-decoration: none; font-weight: 600;'>" . $value . "</a>";
+					$display_value = "<a href='" . base_url('public/uploads/career/' . $value) . "' target='_blank' class='btn-resume' style='display: inline-block; background: #006DAB; color: #ffffff; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; box-shadow: 0 3px 10px rgba(0,109,171,0.2); word-break: break-all;'>📄 View / Download Resume PDF (" . htmlspecialchars($value) . ")</a>";
+				} else {
+					$display_value = nl2br(htmlspecialchars($value));
 				}
 
 				$message .= "
-							<tr>
-								<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #666; font-weight: 600; width: 35%; background: #f9f9f9;'>" . ucfirst(str_replace('_', ' ', $key)) . "</td>
-								<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #333;'>" . $display_value . "</td>
+							<tr class='responsive-tr'>
+								<td class='responsive-td-label' style='padding: 12px 16px; border-bottom: 1px solid #e2e8f0; color: #475569; font-weight: 600; width: 38%; background: #f8fafc;'>" . $label . "</td>
+								<td class='responsive-td-value' style='padding: 12px 16px; border-bottom: 1px solid #e2e8f0; color: #0f172a; font-weight: 500; word-break: break-word;'>" . $display_value . "</td>
 							</tr>";
 			}
 
 			if (!empty($date) || !empty($time)) {
 				$message .= "
-							<tr>
-								<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #666; font-weight: 600; width: 35%; background: #f9f9f9;'>Date & Time</td>
-								<td style='padding: 12px 15px; border-bottom: 1px solid #f0f0f0; color: #333;'>" . trim($date . " " . $time) . "</td>
+							<tr class='responsive-tr'>
+								<td class='responsive-td-label' style='padding: 12px 16px; border-bottom: 1px solid #e2e8f0; color: #475569; font-weight: 600; width: 38%; background: #f8fafc;'>Submission Date & Time</td>
+								<td class='responsive-td-value' style='padding: 12px 16px; border-bottom: 1px solid #e2e8f0; color: #0f172a; font-weight: 500; word-break: break-word;'>" . trim($date . " " . $time) . "</td>
 							</tr>";
 			}
 			$message .= "
-						</table>
-						
-						<div style='background: #fff8f1; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px;'>
-							<p style='margin: 0; font-size: 13px; color: #666;'>
-								<strong>Note:</strong> This is an automated notification. Please log in to the admin panel for more details.
-							</p>
+							</table>
+							
+							<div style='background: #fff7ed; border-left: 4px solid #f97316; padding: 16px; border-radius: 8px;'>
+								<p style='margin: 0; font-size: 13px; color: #c2410c; line-height: 1.5;'>
+									<strong>Note:</strong> This is an automated notification from digicoders.in. You can review and manage all career applications and inquiries in the Admin Panel.
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					<!-- Footer -->
-					<div style='background: #fafafa; padding: 15px; text-align: center; border-top: 1px solid #eee;'>
-						<p style='color: #999; font-size: 11px; margin: 0;'>&copy; " . date('Y') . " DigiCoders Technologies. All rights reserved.</p>
+						
+						<!-- Footer -->
+						<div style='background: #f8fafc; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0;'>
+							<p style='color: #94a3b8; font-size: 12px; margin: 0;'>&copy; " . date('Y') . " DigiCoders Technologies. All rights reserved.</p>
+						</div>
 					</div>
 				</div>
 			</body>
