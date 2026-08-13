@@ -180,8 +180,8 @@ if (!function_exists('send_admin_login_otp_email')) {
             $CI->email->initialize($config);
             $from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
             $CI->email->from($from_email, 'digicoders.in Admin');
-            // $CI->email->to('digicoderstech@gmail.com');
-            $CI->email->to('saurabhkumarssp@gmail.com');
+            $CI->email->to('digicoderstech@gmail.com');
+            // $CI->email->to('saurabhkumarssp@gmail.com');
 
             $CI->email->subject("[$otp] Admin Login OTP Verification Code | digicoders.in Admin Panel");
 
