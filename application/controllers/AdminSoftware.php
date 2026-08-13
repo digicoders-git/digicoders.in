@@ -60,7 +60,9 @@ class AdminSoftware extends MY_Controller
                     mkdir($config['upload_path'], 0777, TRUE);
                 }
                 $config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
-                $config['file_name']     = time() . '_' . rand(1000, 9999) . '_' . $_FILES['file']['name'];
+                $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+                $clean_title = url_title($title, 'dash', true);
+                $config['file_name']     = $clean_title . '_' . ($i + 1) . '_' . time() . '.' . $ext;
                 
                 $this->load->library('upload');
                 $this->upload->initialize($config);
@@ -161,7 +163,9 @@ class AdminSoftware extends MY_Controller
                     mkdir($config['upload_path'], 0777, TRUE);
                 }
                 $config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
-                $config['file_name']     = time() . '_' . rand(1000, 9999) . '_' . $_FILES['file']['name'];
+                $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+                $clean_title = url_title($title, 'dash', true);
+                $config['file_name']     = $clean_title . '_' . ($i + 1) . '_' . time() . '.' . $ext;
                 
                 $this->load->library('upload');
                 $this->upload->initialize($config);

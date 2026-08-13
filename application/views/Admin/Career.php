@@ -211,46 +211,43 @@ $csrf = array(
     $('.dropify').dropify();
 
     function toggleHiringStatus() {
-        if (confirm("Are you sure you want to change the website Hiring Status?")) {
-            $.ajax({
-                url: "<?= base_url('Admin/toggleHiringStatus') ?>",
-                type: "POST",
-                dataType: "json",
-                data: {
-                    "<?= $this->security->get_csrf_token_name(); ?>": "<?= $this->security->get_csrf_hash(); ?>"
-                },
-                success: function(response) {
-                    if (response.status == 'success') {
-                        if (typeof Swal !== 'undefined') {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to change the website Hiring Status?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmColor: '#3085d6',
+            cancelColor: '#d33',
+            confirmButtonText: 'Yes, change it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "<?= base_url('Admin/toggleHiringStatus') ?>",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "<?= $this->security->get_csrf_token_name(); ?>": "<?= $this->security->get_csrf_hash(); ?>"
+                    },
+                    success: function(response) {
+                        if (response.status == 'success') {
                             Swal.fire({
                                 icon: 'success',
-                                title: response.title,
-                                text: response.msg,
+                                title: response.title || 'Updated!',
+                                text: response.msg || 'Hiring status changed successfully.',
                                 timer: 1500,
                                 showConfirmButton: false
                             }).then(function() {
                                 location.reload();
                             });
-                        } else if (typeof iziToast !== 'undefined') {
-                            iziToast.success({
-                                title: response.title,
-                                message: response.msg,
-                                position: 'topRight'
-                            });
-                            setTimeout(function(){ location.reload(); }, 600);
                         } else {
-                            alert(response.msg);
-                            location.reload();
+                            Swal.fire('Error!', response.msg || 'Something went wrong!', 'error');
                         }
-                    } else {
-                        alert(response.msg || 'Something went wrong!');
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire('Error!', 'Something went wrong while processing your request.', 'error');
                     }
-                },
-                error: function(xhr, status, error) {
-                    alert("Error: " + error + "\nPlease try again.");
-                    location.reload();
-                }
-            });
-        }
+                });
+            }
+        });
     }
 </script>
