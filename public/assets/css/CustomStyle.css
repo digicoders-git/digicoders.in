@@ -44,6 +44,69 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* --------------------------------------------------------------------------
+   0. Top Hiring Announcement Bar (Fixed & Centered)
+   -------------------------------------------------------------------------- */
+.hiring-ticker-wrapper {
+    background: linear-gradient(90deg, #00458e 0%, #006cd8 50%, #003673 100%);
+    color: #ffffff;
+    padding: 7px 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1002;
+    text-align: center;
+}
+
+.hiring-ticker-container {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hiring-ticker-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+.hiring-icon {
+    color: #ffd700;
+    font-size: 14px;
+}
+
+.hiring-linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #ffffff;
+    color: #006cd8 !important;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 3px 12px;
+    border-radius: 12px;
+    text-decoration: none !important;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+}
+
+.hiring-linkedin-btn:hover {
+    background: #ffd700;
+    color: #002654 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------------------------------------------------------------------
    1. Modern Clean Light Top Bar (Full Width)
    -------------------------------------------------------------------------- */
 .topbar-wrapper {
@@ -1965,4 +2028,214 @@ textarea.branch-form-control {
         height: 26px !important;
         font-size: 10px !important;
     }
+}
+
+/* --------------------------------------------------------------------------
+   Software & Project Card Redesign (#E26324 for Inquiry, #01964A for Arrow)
+   -------------------------------------------------------------------------- */
+.project-card .project-title {
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+}
+
+.btn-project-inquiry {
+    background: #E26324 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 7px 16px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 10px rgba(226, 99, 36, 0.3) !important;
+}
+
+.btn-project-inquiry:hover {
+    background: #c8531b !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 14px rgba(226, 99, 36, 0.45) !important;
+}
+
+.btn-project-visit-arrow {
+    background: #01964A !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(1, 150, 74, 0.35) !important;
+    border: none !important;
+}
+
+.btn-project-visit-arrow:hover {
+    background: #017a3c !important;
+    transform: scale(1.1) rotate(-10deg) !important;
+    box-shadow: 0 6px 16px rgba(1, 150, 74, 0.5) !important;
+}
+
+/* --------------------------------------------------------------------------
+   10+ Years of Experience Showcase Enlarge
+   -------------------------------------------------------------------------- */
+.exp-big-num {
+    font-size: 82px !important;
+    font-weight: 900 !important;
+    line-height: 0.95 !important;
+}
+
+.exp-main-title {
+    font-size: 23px !important;
+    font-weight: 800 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Balanced Footer Spacing (Logo Badges to Legal Info)
+   -------------------------------------------------------------------------- */
+.logo-badges-row {
+    margin-bottom: 12px !important;
+    padding-bottom: 0 !important;
+}
+
+.logo-badge-item {
+    margin: 0 auto !important;
+}
+
+.logo-badge-item img,
+.footer-img {
+    margin-bottom: 0 !important;
+}
+
+.footer-bottom {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.footer-legal-info {
+    margin-top: 10px !important;
+    margin-bottom: 4px !important;
+    padding-top: 0 !important;
+}
+
+.footer-area {
+    padding-bottom: 10px !important;
+}
+
+.footer-copyright-area {
+    padding-top: 5px !important;
+}
+
+.footer-copyright-area .container {
+    padding-top: 10px !important;
+}
+
+/* Software & Project Card Image Fit (No Crop) */
+.project-image {
+    height: 230px !important;
+    background: #f8fafc !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px !important;
+}
+
+.project-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
+/* --------------------------------------------------------------------------
+   Career Page - Hiring Closed Alert Box & Disabled Form
+   -------------------------------------------------------------------------- */
+.hiring-closed-alert-box {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1.5px solid #fed7aa;
+    border-radius: 14px;
+    padding: 18px 24px;
+    box-shadow: 0 4px 16px rgba(234, 88, 12, 0.1);
+}
+
+.hiring-alert-content {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.hiring-alert-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #f97316;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.hiring-alert-text {
+    flex: 1 1 300px;
+}
+
+.hiring-alert-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: #9a3412;
+    margin-bottom: 4px;
+}
+
+.hiring-alert-desc {
+    font-size: 14px;
+    color: #c2410c;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.hiring-alert-linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #E26324 !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 13.5px;
+    padding: 9px 20px;
+    border-radius: 6px;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(226, 99, 36, 0.35);
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.hiring-alert-linkedin-btn:hover {
+    background: #c9531a !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(226, 99, 36, 0.45);
+}
+
+.form-disabled-wrap {
+    position: relative;
+}
+
+.form-disabled-wrap input,
+.form-disabled-wrap select,
+.form-disabled-wrap textarea {
+    background-color: #f1f5f9 !important;
+    cursor: not-allowed !important;
+    border-color: #cbd5e1 !important;
+    color: #64748b !important;
+}
+
+.disabled-hiring-btn {
+    background: #94a3b8 !important;
+    border-color: #94a3b8 !important;
+    color: #ffffff !important;
+    cursor: not-allowed !important;
+    opacity: 0.85 !important;
+    box-shadow: none !important;
+}
+
+.disabled-hiring-btn:hover {
+    background: #64748b !important;
+    border-color: #64748b !important;
 }

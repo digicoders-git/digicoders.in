@@ -60,7 +60,7 @@
                                 <div class="pricing-table__header">
                                     <h6 class="sub-title">Website Starter</h6>
                                     <div class="pricing-table__image">
-                                        <img src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
+                                        <img src="<?= base_url('public') ?>/assets/images/logo_circle.png"
                                             class="lazy img-fluid" title="Website Starter" alt="Website Starter">
                                     </div>
                                     <div class="pricing-table__price-wrap">
@@ -93,7 +93,7 @@
                                 <div class="pricing-table__header">
                                     <h6 class="sub-title">Mobile App Starter</h6>
                                     <div class="pricing-table__image">
-                                        <img src="<?= base_url('public') ?>/assets/images/Digicoders Technology-with-tagline.png"
+                                        <img src="<?= base_url('public') ?>/assets/images/logo_circle.png"
                                             class="lazy img-fluid" title="Mobile App Starter" alt="Mobile App Starter">
                                     </div>
                                     <div class="pricing-table__price-wrap">
@@ -124,7 +124,7 @@
                                 <div class="pricing-table__header">
                                     <h6 class="sub-title">Software Starter</h6>
                                     <div class="pricing-table__image">
-                                        <img src="<?= base_url('public') ?>/assets/images/Digicoders-Logo-with-tagline.png"
+                                        <img src="<?= base_url('public') ?>/assets/images/logo_circle.png"
                                             class="lazy img-fluid" title="Software Starter" alt="Software Starter">
                                     </div>
                                     <div class="pricing-table__price-wrap">

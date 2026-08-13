@@ -187,6 +187,11 @@ class Home extends CI_Controller
 			}
 			##career form Submit Action
 			if ($this->uri->segment(3) == 'career' && $this->input->is_ajax_request()) {
+				if (get_hiring_status() !== 'open') {
+					echo json_encode(array("status" => "error", "msg" => "Currently we are not hiring! Follow our LinkedIn page for future job updates.", "title" => "Hiring Currently Closed", "reload" => "false", "redirect" => 'false'));
+					exit;
+				}
+
 				$this->form_validation->set_rules('ApplyFor', 'ApplyFor', 'required');
 				$this->form_validation->set_rules('Name', 'Name', 'required');
 				$this->form_validation->set_rules('Email', 'Email', 'required');
@@ -233,14 +238,13 @@ class Home extends CI_Controller
 					if ($upload_status == "true") {
 						if ($this->db->insert('career', $data_arr)) {
 							send_form_email('New Career Application', $data_arr);
-							echo json_encode(array("status" => "success", "msg" => "Career Successfully Saved", "title" => "Successfully Saved!", "reload" => "true", "redirect" => 'false'));
+							echo json_encode(array("status" => "success", "msg" => "Career Application Successfully Submitted!", "title" => "Successfully Submitted!", "reload" => "true", "redirect" => 'false'));
 						} else {
 							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 						}
 					} else {
 						echo json_encode(array("status" => "error", "msg" => (!empty($upload_error) ? $upload_error : "Failed to upload resume file"), "title" => "Upload Error!", "reload" => "false", "redirect" => 'false'));
 					}
-
 				}
 			}
 

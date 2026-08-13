@@ -1583,6 +1583,25 @@ class Admin extends MY_Controller
 		}
 	}
 
+	// Toggle Hiring Status (OPEN / CLOSED)
+	public function toggleHiringStatus()
+	{
+		$current_status = get_hiring_status();
+		$new_status = ($current_status === 'open') ? 'closed' : 'open';
+		set_hiring_status($new_status);
+
+		if ($this->input->is_ajax_request()) {
+			echo json_encode(array(
+				"status" => "success",
+				"hiring_status" => $new_status,
+				"msg" => "Hiring status successfully updated to " . strtoupper($new_status) . "!",
+				"title" => "Status Updated!"
+			));
+			exit;
+		}
+		redirect(base_url('Admin/ManageCareer'));
+	}
+
 	//Manage call back request
 	public function ManageCallBackReq()
 	{

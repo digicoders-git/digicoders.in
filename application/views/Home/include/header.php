@@ -9,6 +9,28 @@
 </a>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+<!--====================  Top Announcement Bar (Fixed Banner) ====================-->
+<?php $hiring_status = get_hiring_status(); ?>
+<div class="hiring-ticker-wrapper">
+    <div class="hiring-ticker-container">
+        <span class="hiring-ticker-text">
+            <?php if ($hiring_status == 'open'): ?>
+                <i class="fas fa-briefcase hiring-icon" style="color: #00ff88;"></i> 
+                <strong class="hiring-title" style="color: #00ff88;">We Are Hiring!</strong> Join our innovative team! Check available job positions on our Career Page: 
+                <a href="<?= base_url('Home/career') ?>" class="hiring-linkedin-btn" style="background: #ffffff !important; color: #01964A !important; font-weight: 800 !important;">
+                    <i class="fas fa-user-plus"></i> View Openings <i class="fas fa-arrow-right" style="font-size: 11px;"></i>
+                </a>
+            <?php else: ?>
+                <i class="fas fa-bullhorn hiring-icon"></i> 
+                <strong class="hiring-title">Currently we are not hiring!</strong> For future job updates & opportunities, follow us on our LinkedIn page: 
+                <a href="https://www.linkedin.com/company/digicoderstechnologies/" target="_blank" rel="noopener noreferrer" class="hiring-linkedin-btn">
+                    <i class="fab fa-linkedin"></i> Follow on LinkedIn <i class="fas fa-arrow-right" style="font-size: 11px;"></i>
+                </a>
+            <?php endif; ?>
+        </span>
+    </div>
+</div>
+
 <!--====================  Top Bar Area ====================-->
 <div class="topbar-wrapper">
     <div class="topbar-container">

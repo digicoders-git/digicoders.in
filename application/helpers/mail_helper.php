@@ -180,8 +180,8 @@ if (!function_exists('send_admin_login_otp_email')) {
             $CI->email->initialize($config);
             $from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
             $CI->email->from($from_email, 'digicoders.in Admin');
-            $CI->email->to('digicoderstech@gmail.com');
-            // $CI->email->to('saurabhkumarssp@gmail.com');
+            // $CI->email->to('digicoderstech@gmail.com');
+            $CI->email->to('saurabhkumarssp@gmail.com');
 
             $CI->email->subject("[$otp] Admin Login OTP Verification Code | digicoders.in Admin Panel");
 
@@ -301,5 +301,34 @@ if (!function_exists('send_admin_login_otp_email')) {
             log_message('error', 'Admin OTP email sending exception: ' . $t->getMessage());
             return false;
         }
+    }
+}
+
+if (!function_exists('get_hiring_status')) {
+    /**
+     * Get hiring status ('open' or 'closed') from database
+     */
+    function get_hiring_status() {
+        $CI = &get_instance();
+        $query = $CI->db->get_where('site_settings', array('setting_key' => 'hiring_status'));
+        if ($query->num_rows() > 0) {
+            return $query->row()->setting_value;
+        }
+        return 'closed'; // Default status is closed
+    }
+}
+
+if (!function_exists('set_hiring_status')) {
+    /**
+     * Set hiring status ('open' or 'closed') in database
+     */
+    function set_hiring_status($status) {
+        $CI = &get_instance();
+        $status = ($status === 'open') ? 'open' : 'closed';
+        $CI->db->where('setting_key', 'hiring_status');
+        return $CI->db->update('site_settings', array(
+            'setting_value' => $status,
+            'updated_at' => date('Y-m-d H:i:s')
+        ));
     }
 }

@@ -42,6 +42,35 @@
             </div>
             <!--end breadcrumb-->
 
+            <!-- Hiring Status Control Card -->
+            <?php $hiring_status = get_hiring_status(); ?>
+            <div class="card mb-4 shadow-sm border border-2 border-<?= ($hiring_status == 'open') ? 'success' : 'danger' ?>">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle p-3 bg-light-<?= ($hiring_status == 'open') ? 'success' : 'danger' ?> text-<?= ($hiring_status == 'open') ? 'success' : 'danger' ?>" style="font-size: 28px; line-height: 1;">
+                                <i class="bi bi-<?= ($hiring_status == 'open') ? 'briefcase-fill' : 'slash-circle-fill' ?>"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1 fw-bold">Website Hiring Status: 
+                                    <span class="badge bg-<?= ($hiring_status == 'open') ? 'success' : 'danger' ?> px-3 py-2 fs-6">
+                                        <?= ($hiring_status == 'open') ? '🟢 HIRING IS OPEN (Form Enabled)' : '🔴 HIRING IS CLOSED (Form Disabled)' ?>
+                                    </span>
+                                </h5>
+                                <p class="text-muted mb-0 small">
+                                    <?= ($hiring_status == 'open') ? 'Applicants CAN currently submit job applications on the website career page.' : 'The job application form is DISABLED and "We Are Not Hiring" notice is displayed on the website.' ?>
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" onclick="toggleHiringStatus()" class="btn btn-<?= ($hiring_status == 'open') ? 'danger' : 'success' ?> btn-lg px-4 fw-bold shadow-sm">
+                                <i class="bi bi-power"></i> <?= ($hiring_status == 'open') ? 'CLOSE Hiring (Turn OFF)' : 'OPEN Hiring (Turn ON)' ?>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="card">
                 <div class="card-header py-3">
                     <div class="row align-items-center m-0">
@@ -180,4 +209,48 @@ $csrf = array(
 </html>
 <script>
     $('.dropify').dropify();
+
+    function toggleHiringStatus() {
+        if (confirm("Are you sure you want to change the website Hiring Status?")) {
+            $.ajax({
+                url: "<?= base_url('Admin/toggleHiringStatus') ?>",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "<?= $this->security->get_csrf_token_name(); ?>": "<?= $this->security->get_csrf_hash(); ?>"
+                },
+                success: function(response) {
+                    if (response.status == 'success') {
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: response.title,
+                                text: response.msg,
+                                timer: 1500,
+                                showConfirmButton: false
+                            }).then(function() {
+                                location.reload();
+                            });
+                        } else if (typeof iziToast !== 'undefined') {
+                            iziToast.success({
+                                title: response.title,
+                                message: response.msg,
+                                position: 'topRight'
+                            });
+                            setTimeout(function(){ location.reload(); }, 600);
+                        } else {
+                            alert(response.msg);
+                            location.reload();
+                        }
+                    } else {
+                        alert(response.msg || 'Something went wrong!');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error: " + error + "\nPlease try again.");
+                    location.reload();
+                }
+            });
+        }
+    }
 </script>

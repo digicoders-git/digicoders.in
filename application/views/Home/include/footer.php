@@ -109,7 +109,7 @@
     </div>
 
     <!-- reveal-footer -->
-    <div class="footer-area section-space--pb_60">
+    <div class="footer-area pb-2">
         <div class="container">
             <section class="dg-office-section">
                 <div class="dg-office-container">
@@ -215,31 +215,31 @@
                 </div>
             </div>
 
-            <div class="footer-bottom py-3">
+            <div class="footer-bottom py-1">
                 <div class="container">
-                    <div class="row justify-content-center align-items-center logo-badges-row">
-                        <div class="col-6 col-sm-4 col-md-2 text-center py-2">
+                    <div class="row justify-content-center align-items-center logo-badges-row mb-2">
+                        <div class="col-6 col-sm-4 col-md-2 text-center py-1">
                             <div class="logo-badge-item">
                                 <img class="lazy footer-img img-fluid"
                                     src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                                     data-src="<?= base_url('public') ?>/assets/images/icons/mca.png" alt="MCA" />
                             </div>
                         </div>
-                        <div class="col-6 col-sm-4 col-md-2 text-center py-2">
+                        <div class="col-6 col-sm-4 col-md-2 text-center py-1">
                             <div class="logo-badge-item">
                                 <img class="lazy footer-img img-fluid"
                                     src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                                     data-src="<?= base_url('public') ?>/assets/images/icons/gem.png" alt="GeM" />
                             </div>
                         </div>
-                        <div class="col-6 col-sm-4 col-md-2 text-center py-2">
+                        <div class="col-6 col-sm-4 col-md-2 text-center py-1">
                             <div class="logo-badge-item">
                                 <img class="lazy footer-img img-fluid"
                                     src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                                     data-src="<?= base_url('public') ?>/assets/images/icons/iso.png" alt="ISO" />
                             </div>
                         </div>
-                        <div class="col-6 col-sm-4 col-md-2 text-center py-2">
+                        <div class="col-6 col-sm-4 col-md-2 text-center py-1">
                             <div class="logo-badge-item">
                                 <img class="lazy footer-img img-fluid"
                                     src="<?= base_url('public') ?>/assets/images/loader1.jpg"
@@ -247,14 +247,14 @@
                                     alt="Startup India" />
                             </div>
                         </div>
-                        <div class="col-6 col-sm-4 col-md-2 text-center py-2">
+                        <div class="col-6 col-sm-4 col-md-2 text-center py-1">
                             <div class="logo-badge-item">
                                 <img class="lazy footer-img img-fluid"
                                     src="<?= base_url('public') ?>/assets/images/loader1.jpg"
                                     data-src="<?= base_url('public') ?>/assets/images/icons/msme.png" alt="MSME" />
                             </div>
                         </div>
-                        <div class="col-6 col-sm-4 col-md-2 text-center py-2">
+                        <div class="col-6 col-sm-4 col-md-2 text-center py-1">
                             <div class="logo-badge-item">
                                 <img class="lazy footer-img img-fluid"
                                     src="<?= base_url('public') ?>/assets/images/loader1.jpg"
@@ -263,24 +263,20 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="footer-bottom py-3">
-        <div class="container border-top pt-3">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                    <div class="footer-legal-info">
-                        <span class="legal-badge"><strong>Legal Name:</strong> DigiCoders Technologies Private
-                            Limited</span>
-                        <span class="legal-badge"><strong>Company Type:</strong> Private Limited</span>
-                        <span class="legal-badge"><strong>Date of Incorporation:</strong> 14-Feb-2019</span>
-                        <span class="legal-badge"><strong>CIN:</strong> U72900UP2019PTC113696</span>
-                        <span class="legal-badge"><strong>GSTIN:</strong> 09AAHCD1032D1Z6</span>
-                        <span class="legal-badge"><strong>Registered Office:</strong> B-36, Sector-'O', Aliganj,
-                            Lucknow, 226024</span>
+                    <div class="row border-top pt-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                            <div class="footer-legal-info">
+                                <span class="legal-badge"><strong>Legal Name:</strong> DigiCoders Technologies Private
+                                    Limited</span>
+                                <span class="legal-badge"><strong>Company Type:</strong> Private Limited</span>
+                                <span class="legal-badge"><strong>Date of Incorporation:</strong> 14-Feb-2019</span>
+                                <span class="legal-badge"><strong>CIN:</strong> U72900UP2019PTC113696</span>
+                                <span class="legal-badge"><strong>GSTIN:</strong> 09AAHCD1032D1Z6</span>
+                                <span class="legal-badge"><strong>Registered Office:</strong> B-36, Sector-'O', Aliganj,
+                                    Lucknow, 226024</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

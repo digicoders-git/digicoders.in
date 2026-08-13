@@ -150,20 +150,24 @@
         .project-image {
             position: relative;
             overflow: hidden;
-            height: 200px;
-            background: #f1f5f9;
+            height: 230px;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
         }
 
         .project-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: top;
-            transition: transform 0.5s ease;
+            object-fit: contain;
+            object-position: center;
+            transition: transform 0.4s ease;
         }
 
         .project-card:hover .project-image img {
-            transform: scale(1.06);
+            transform: scale(1.04);
         }
 
         .project-content {
@@ -177,9 +181,9 @@
         }
 
         .project-title {
-            font-size: 16px;
+            font-size: 19px;
             font-weight: 700;
-            color: #1e293b;
+            color: #0f172a;
             margin-bottom: 0;
             white-space: nowrap;
             overflow: hidden;
@@ -198,51 +202,52 @@
             margin-bottom: 2px;
         }
 
-        /* Inquiry & Visit Arrow Buttons */
+        /* Inquiry & Visit Arrow Buttons (Solid Brand Colors: #E26324 for Inquiry, #01964A for Arrow) */
         .btn-project-inquiry {
-            background: #edf2f7;
-            color: #0d6efd;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            padding: 6px 14px;
-            font-size: 12px;
-            font-weight: 600;
+            background: #E26324;
+            color: #ffffff !important;
+            border: none;
+            border-radius: 8px;
+            padding: 7px 16px;
+            font-size: 13px;
+            font-weight: 700;
             display: inline-flex;
             align-items: center;
             cursor: pointer;
             transition: all 0.25s ease;
             outline: none;
             line-height: 1;
+            box-shadow: 0 4px 10px rgba(226, 99, 36, 0.3);
         }
 
         .btn-project-inquiry:hover {
-            background: #0d6efd;
-            color: #ffffff;
-            border-color: #0d6efd;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.25);
+            background: #c8531b;
+            color: #ffffff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(226, 99, 36, 0.45);
         }
 
         .btn-project-visit-arrow {
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: #0d6efd;
+            background: #01964A;
             color: #ffffff !important;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-size: 14px;
-            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+            box-shadow: 0 4px 12px rgba(1, 150, 74, 0.35);
             transition: all 0.3s ease;
             text-decoration: none !important;
             flex-shrink: 0;
+            border: none;
         }
 
         .btn-project-visit-arrow:hover {
-            background: #0b5ed7;
+            background: #017a3c;
             transform: scale(1.1) rotate(-10deg);
-            box-shadow: 0 6px 16px rgba(13, 110, 253, 0.45);
+            box-shadow: 0 6px 16px rgba(1, 150, 74, 0.5);
         }
 
         /* ==========================================
@@ -305,23 +310,23 @@
         }
 
         .exp-big-num {
-            font-size: 54px;
+            font-size: 82px;
             font-weight: 900;
-            color: #0d6efd;
-            line-height: 1;
+            color: #c49a6c;
+            line-height: 0.95;
             letter-spacing: -2px;
             display: block;
         }
 
         .exp-main-title {
-            font-size: 19px;
+            font-size: 23px;
             font-weight: 800;
             color: #0f172a;
             line-height: 1.25;
         }
 
         .exp-sub-title {
-            font-size: 12.5px;
+            font-size: 13.5px;
             font-weight: 600;
             color: #64748b;
         }
@@ -496,72 +501,120 @@
         }
 
         /* ==========================================
-           RELIABLE IT SERVICES (PREMIUM REDESIGN)
+           RELIABLE IT SERVICES (IMAGE 2 DESIGN REDESIGN)
            ========================================== */
         .services-section-wrapper {
             padding: 70px 0;
             background: #ffffff;
         }
 
+        .services-grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .services-grid-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .services-grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .services-grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            .services-grid-container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
         .service-box-card {
             background: #ffffff;
-            border-radius: 0;
             border: 1px solid #e2e8f0;
-            padding: 28px 24px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            border-radius: 4px;
+            padding: 28px 18px 22px 18px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
             justify-content: space-between;
+            height: 100%;
             position: relative;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .service-box-card:hover,
+        .service-box-card.active {
+            border-color: #cbd5e1;
+            border-bottom: 3.5px solid #0056b3;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
         }
 
         .service-icon-box {
-            width: 48px;
-            height: 48px;
-            border-radius: 0;
-            background: #f0f7ff;
-            color: #0d6efd;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
             flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .service-box-card:hover .service-icon-box {
+            transform: scale(1.08);
         }
 
         .service-box-title {
-            font-size: 17px;
-            font-weight: 800;
-            color: #0f172a;
-            line-height: 1.3;
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.35;
+            margin-bottom: 10px;
+            text-align: center;
         }
 
         .service-box-text {
-            font-size: 13.5px;
+            font-size: 12.5px;
             color: #64748b;
-            line-height: 1.6;
+            line-height: 1.55;
+            margin-bottom: 14px;
+            text-align: center;
             flex-grow: 1;
         }
 
         .service-box-footer {
             border-top: 1px solid #f1f5f9;
-            padding-top: 14px;
+            padding-top: 12px;
+            width: 100%;
+            text-align: center;
             margin-top: auto;
         }
 
         .service-discover-link {
-            font-size: 13.5px;
+            font-size: 12.5px;
             font-weight: 700;
-            color: #0d6efd !important;
+            color: #0056b3 !important;
             text-decoration: none !important;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            transition: all 0.3s ease;
+            gap: 5px;
+            transition: all 0.25s ease;
         }
 
         .service-discover-link:hover {
-            color: #0b5ed7 !important;
-            transform: translateX(5px);
+            color: #004085 !important;
+            transform: translateX(4px);
         }
 
         /* ==========================================
@@ -656,102 +709,126 @@
         }
 
         /* ==========================================
-           PRICING & PACKAGES REDESIGN (MAX 5% RADIUS)
+           PRICING & PACKAGES REDESIGN (IMAGE 2 THEME)
            ========================================== */
         .pricing-section-wrapper {
-            padding: 60px 0 20px 0;
-            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            padding: 70px 0 40px 0;
+            background: #ffffff;
         }
 
         .pricing-card-box {
             background: #ffffff;
             border-radius: 6px;
-            border: 1px solid #e2e8f0;
-            padding: 36px 28px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e5e7eb;
+            padding: 38px 28px 30px 28px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            overflow: hidden;
             transition: all 0.35s ease;
         }
 
         .pricing-card-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 36px rgba(13, 110, 253, 0.12);
-            border-color: rgba(13, 110, 253, 0.35);
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+            border-color: #cbd5e1;
         }
 
         .pricing-card-box.featured {
-            border: 2px solid #0d6efd;
-            border-radius: 6px;
-            box-shadow: 0 14px 36px rgba(13, 110, 253, 0.14);
+            border: 1px solid #d1d5db;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
         }
 
-        .pricing-popular-badge {
+        .pricing-corner-ribbon {
             position: absolute;
-            top: 14px;
-            right: 14px;
-            background: linear-gradient(135deg, #0d6efd 0%, #086AD8 100%);
+            top: 20px;
+            right: -36px;
+            transform: rotate(45deg);
+            background: linear-gradient(135deg, #c49a6c 0%, #a67c4e 100%);
             color: #ffffff;
-            font-size: 11px;
+            font-size: 9.5px;
             font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 6px;
+            padding: 5px 36px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 3px 8px rgba(13, 110, 253, 0.3);
+            letter-spacing: 0.8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            z-index: 5;
+            text-align: center;
+            line-height: 1.2;
         }
 
         .pricing-subtitle {
             font-size: 13px;
             font-weight: 700;
-            color: #64748b;
+            color: #475569;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
+            margin-bottom: 22px;
         }
 
         .pricing-icon-avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 6px;
-            background: linear-gradient(135deg, #e0f2fe 0%, #eff6ff 100%);
-            color: #0d6efd;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
-            margin: 0 auto 20px;
-            border: 1px solid #bae6fd;
-            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.08);
+            margin: 0 auto 24px;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
             transition: all 0.35s ease;
+            overflow: hidden;
         }
 
         .pricing-card-box:hover .pricing-icon-avatar {
-            background: #0d6efd;
-            color: #ffffff;
-            border-color: #0d6efd;
-            box-shadow: 0 6px 16px rgba(13, 110, 253, 0.3);
+            background: #ffffff;
+            border-color: #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            transform: scale(1.03);
+        }
+
+        .pricing-icon-avatar img {
+            max-width: 92%;
+            max-height: 92%;
+            object-fit: contain;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-brand-badge {
+            background: #d1d5db;
+            color: #374151;
+            font-size: 13.5px;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-family: system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.3px;
         }
 
         .pricing-price-amount {
             display: flex;
             align-items: baseline;
             justify-content: center;
-            gap: 4px;
-            margin-bottom: 20px;
+            gap: 3px;
+            margin-bottom: 22px;
         }
 
         .pricing-price-amount .currency {
             font-size: 20px;
             font-weight: 700;
-            color: #0f172a;
+            color: #1e293b;
+            vertical-align: super;
         }
 
         .pricing-price-amount .price {
-            font-size: 42px;
+            font-size: 46px;
             font-weight: 800;
-            color: #0f172a;
+            color: #1e293b;
             letter-spacing: -1px;
             line-height: 1;
         }
@@ -766,7 +843,7 @@
             display: block;
             width: 100%;
             padding: 12px 20px;
-            border-radius: 6px;
+            border-radius: 4px;
             font-size: 14px;
             font-weight: 700;
             text-align: center;
@@ -774,25 +851,25 @@
             transition: all 0.3s ease;
             background: #ffffff;
             color: #0d6efd !important;
-            border: 2px solid #0d6efd;
+            border: 1px solid #0d6efd;
         }
 
         .btn-pricing-action:hover {
             background: #0d6efd;
             color: #ffffff !important;
-            box-shadow: 0 4px 14px rgba(13, 110, 253, 0.3);
+            box-shadow: 0 4px 14px rgba(13, 110, 253, 0.25);
         }
 
         .btn-pricing-action.featured {
-            background: linear-gradient(135deg, #0d6efd 0%, #086AD8 100%);
+            background: #0d6efd;
             color: #ffffff !important;
-            border-color: #0d6efd;
-            box-shadow: 0 4px 14px rgba(13, 110, 253, 0.35);
+            border: 1px solid #0d6efd;
+            box-shadow: 0 4px 14px rgba(13, 110, 253, 0.25);
         }
 
         .btn-pricing-action.featured:hover {
             background: #0b5ed7;
-            box-shadow: 0 6px 18px rgba(13, 110, 253, 0.45);
+            box-shadow: 0 6px 18px rgba(13, 110, 253, 0.35);
         }
 
         .pricing-features-list {
@@ -813,9 +890,9 @@
         }
 
         .pricing-features-list li i {
-            color: #0d6efd;
-            font-size: 15px;
-            margin-right: 10px;
+            color: #c49a6c;
+            font-size: 14px;
+            margin-right: 12px;
         }
 
         .btn-explore-packages {
@@ -2102,109 +2179,76 @@
         <div class="recent-projects-wrapper" id="software-products">
             <div class="container">
                 <!-- Section Header -->
-                <div class="recent-projects-header mb-4">
-                    <div class="row align-items-center">
-                        <div class="col-12 col-md-8 text-center text-md-left">
-                            <h2 class="recent-projects-heading mb-1">
-                                Our <span class="text-primary-blue">Software Solutions</span>
-                            </h2>
-                            <p class="recent-projects-subheading mb-0">Transform your business with powerful software
-                                solutions developed by DigiCoders.</p>
-                        </div>
-                        <div class="col-12 col-md-4 text-center text-md-right mt-3 mt-md-0">
-                            <a href="#software-products" class="view-all-projects-link">
-                                Explore Solutions <i class="fa fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
+                <div class="recent-projects-header mb-4 text-center">
+                    <h2 class="recent-projects-heading mb-1">
+                        Our <span class="text-primary-blue">Software Solutions</span>
+                    </h2>
+                    <p class="recent-projects-subheading mb-0">Transform your business with powerful software
+                        solutions developed by DigiCoders.</p>
                 </div>
 
-                <!-- Software Swiper Carousel -->
-                <div class="swiper-container software-swiper"
-                    style="padding: 10px 5px 30px 5px; overflow: hidden; width: 100%;">
-                    <div class="swiper-wrapper">
-                        <?php foreach ($softwares as $sw): ?>
-                            <div class="swiper-slide py-2">
-                                <div class="project-card">
-                                    <?php
-                                    $add_imgs = [];
-                                    if (!empty($sw->additional_images)) {
-                                        $add_imgs = json_decode($sw->additional_images, true);
-                                    }
-                                    if (empty($add_imgs) && !empty($sw->image)) {
-                                        $add_imgs[] = $sw->image; // Fallback
-                                    }
-                                    $main_display_img = !empty($add_imgs) ? $add_imgs[0] : 'placeholder.jpg';
-                                    ?>
+                <!-- Software Grid Cards -->
+                <div class="row">
+                    <?php foreach ($softwares as $sw): ?>
+                        <div class="col-12 col-md-6 col-lg-4 mb-4">
+                            <div class="project-card h-100">
+                                <?php
+                                $add_imgs = [];
+                                if (!empty($sw->additional_images)) {
+                                    $add_imgs = json_decode($sw->additional_images, true);
+                                }
+                                if (empty($add_imgs) && !empty($sw->image)) {
+                                    $add_imgs[] = $sw->image; // Fallback
+                                }
+                                $main_display_img = !empty($add_imgs) ? $add_imgs[0] : 'placeholder.jpg';
+                                ?>
 
-                                    <div class="project-image">
-                                        <img id="main-img-<?= $sw->id ?>"
-                                            src="<?= base_url('public/uploads/software/' . $main_display_img) ?>"
-                                            alt="<?= htmlspecialchars($sw->title) ?>" loading="lazy">
+                                <div class="project-image">
+                                    <img id="main-img-<?= $sw->id ?>"
+                                        src="<?= base_url('public/uploads/software/' . $main_display_img) ?>"
+                                        alt="<?= htmlspecialchars($sw->title) ?>" loading="lazy">
+                                </div>
+
+                                <div class="project-content">
+                                    <div class="project-title-wrap mb-2 text-center">
+                                        <h5 class="project-title text-center" title="<?= htmlspecialchars($sw->title) ?>">
+                                            <?= htmlspecialchars($sw->title) ?>
+                                        </h5>
                                     </div>
 
-                                    <div class="project-content">
-                                        <div class="project-title-wrap mb-2">
-                                            <h5 class="project-title" title="<?= htmlspecialchars($sw->title) ?>">
-                                                <?= htmlspecialchars($sw->title) ?>
-                                            </h5>
+                                    <div class="d-flex align-items-center justify-content-between mt-3 pt-2"
+                                        style="border-top: 1px solid #f1f5f9; gap: 8px;">
+                                        <!-- Type Badge on Left -->
+                                        <div class="project-badges-wrap">
+                                            <span class="project-type-badge">Software</span>
                                         </div>
 
-                                        <div class="d-flex align-items-center justify-content-between mt-3 pt-2"
-                                            style="border-top: 1px solid #f1f5f9; gap: 8px;">
-                                            <!-- Type Badge on Left -->
-                                            <div class="project-badges-wrap">
-                                                <span class="project-type-badge">Software</span>
-                                            </div>
-
-                                            <!-- Action Buttons (Book Demo + View Details Arrow) on Right -->
-                                            <div class="project-actions-wrap d-flex align-items-center">
-                                                <?php if (!empty($sw->book_demo_link)): ?>
-                                                    <a href="<?= $sw->book_demo_link ?>" target="_blank"
-                                                        class="btn-project-inquiry">
-                                                        Buy Now
-                                                    </a>
-                                                <?php else: ?>
-                                                    <button type="button" class="btn-project-inquiry"
-                                                        onclick="openBookDemoModal('<?= $sw->id ?>', '<?= htmlspecialchars($sw->title, ENT_QUOTES) ?>')"
-                                                        title="Book a Free Demo">
-                                                        Book Demo
-                                                    </button>
-                                                <?php endif; ?>
-
-                                                <a href="<?= base_url('Home/softwareDetails/' . $sw->slug) ?>"
-                                                    class="btn-project-visit-arrow ml-2" title="View Details">
-                                                    <i class="fa fa-arrow-right"></i>
+                                        <!-- Action Buttons (Book Demo + View Details Arrow) on Right -->
+                                        <div class="project-actions-wrap d-flex align-items-center">
+                                            <?php if (!empty($sw->book_demo_link)): ?>
+                                                <a href="<?= $sw->book_demo_link ?>" target="_blank"
+                                                    class="btn-project-inquiry">
+                                                    Buy Now
                                                 </a>
-                                            </div>
+                                            <?php else: ?>
+                                                <button type="button" class="btn-project-inquiry"
+                                                    onclick="openBookDemoModal('<?= $sw->id ?>', '<?= htmlspecialchars($sw->title, ENT_QUOTES) ?>')"
+                                                    title="Book a Free Demo">
+                                                    Book Demo
+                                                </button>
+                                            <?php endif; ?>
+
+                                            <a href="<?= base_url('Home/softwareDetails/' . $sw->slug) ?>"
+                                                class="btn-project-visit-arrow ml-2" title="View Details">
+                                                <i class="fa fa-arrow-right"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        if (typeof Swiper !== 'undefined' && document.querySelector(".software-swiper")) {
-                            new Swiper(".software-swiper", {
-                                slidesPerView: 3,
-                                spaceBetween: 20,
-                                loop: true,
-                                autoplay: {
-                                    delay: 3500,
-                                    disableOnInteraction: false,
-                                },
-                                breakpoints: {
-                                    480: { slidesPerView: 1, spaceBetween: 15 },
-                                    768: { slidesPerView: 2, spaceBetween: 15 },
-                                    992: { slidesPerView: 3, spaceBetween: 20 }
-                                }
-                            });
-                        }
-                    });
-                </script>
                 <style>
                     .custom-scrollbar::-webkit-scrollbar {
                         width: 4px;
@@ -2398,7 +2442,7 @@
     <?php endif; ?>
     <!--===========  Software Products Section End =============-->
 
-    <div class="page-content page-container pt-60" id="page-content">
+    <!-- <div class="page-content page-container pt-60" id="page-content">
         <div class="padding">
             <div class="row container-fluid">
                 <div class="col-lg-12 grid-margin stretch-card">
@@ -2441,7 +2485,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="section-space--ptb_60" style="background: #f8fafc;">
         <div class="container-fluid px-4 px-lg-5">
@@ -2525,7 +2569,9 @@
 
             <!-- Project Cards Carousel -->
             <div class="owl-carousel recent-project-carousel" id="recent_project">
-                <?php foreach ($userdata as $projects) {
+                <?php 
+                $recent_projects_12 = !empty($userdata) ? array_slice($userdata, 0, 12) : [];
+                foreach ($recent_projects_12 as $projects) {
                     $is_link_active = (!isset($projects->link_status) || $projects->link_status == 'true' || $projects->link_status == '1');
                     ?>
                     <div class="item py-2">
@@ -2577,6 +2623,13 @@
                         </div>
                     </div>
                 <?php } ?>
+            </div>
+
+            <!-- View All Projects Bottom CTA Button -->
+            <div class="text-center mt-4">
+                <a href="<?= base_url() ?>Home/OurProjects" class="view-all-projects-link d-inline-flex align-items-center justify-content-center px-4 py-2" style="background: #e0f2fe; color: #0284c7; border-radius: 6px; font-weight: 700; text-decoration: none;">
+                    View All Projects <i class="fa fa-arrow-right ml-2"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -2784,193 +2837,244 @@
                 </h2>
             </div>
 
-            <div class="row align-items-stretch">
-                <!-- Service 1: Software Development -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-box-card h-100">
-                        <div class="service-box-header d-flex align-items-center mb-3">
-                            <div class="service-icon-box mr-3">
-                                <i class="fa fa-laptop-code"></i>
-                            </div>
-                            <h5 class="service-box-title mb-0">Software Development</h5>
-                        </div>
-                        <p class="service-box-text mb-3">
-                            We provide custome software development for your business, Billing, Inventory and Every
-                            custom software
-                        </p>
-                        <div class="service-box-footer">
-                            <a href="<?= base_url() ?>Home/SoftwareDevelopment" class="service-discover-link">
-                                <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
+            <div class="services-grid-container">
+                <!-- Service 1: Software Development (Active) -->
+                <div class="service-box-card active">
+                    <div class="service-icon-box">
+                        <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="10" width="52" height="34" rx="4" stroke="#0e69b5" stroke-width="2.5" fill="#f8fafc"/>
+                            <path d="M22 44L16 54H48L42 44" stroke="#0e69b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 54H50" stroke="#0e69b5" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M20 24L14 27L20 30" stroke="#f5a623" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M44 24L50 27L44 30" stroke="#f5a623" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M34 22L30 32" stroke="#0e69b5" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h5 class="service-box-title">Software Development</h5>
+                    <p class="service-box-text">
+                        We provide custome software development for your business, Billing, Inventory and Every custom software
+                    </p>
+                    <div class="service-box-footer">
+                        <a href="<?= base_url() ?>Home/SoftwareDevelopment" class="service-discover-link">
+                            <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Service 2: Website Development -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-box-card h-100">
-                        <div class="service-box-header d-flex align-items-center mb-3">
-                            <div class="service-icon-box mr-3">
-                                <i class="fa fa-desktop"></i>
-                            </div>
-                            <h5 class="service-box-title mb-0">Website Development</h5>
-                        </div>
-                        <p class="service-box-text mb-3">
-                            We provide website design &amp; development to make your business online to drive more
-                            customers and sales
-                        </p>
-                        <div class="service-box-footer">
-                            <a href="<?= base_url() ?>Home/WebsiteDevelopment" class="service-discover-link">
-                                <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
+                <div class="service-box-card">
+                    <div class="service-icon-box">
+                        <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="10" width="52" height="40" rx="4" stroke="#0e69b5" stroke-width="2.5" fill="#f8fafc"/>
+                            <path d="M6 20H58" stroke="#0e69b5" stroke-width="2.5"/>
+                            <circle cx="14" cy="15" r="2" fill="#f5a623"/>
+                            <circle cx="20" cy="15" r="2" fill="#f5a623"/>
+                            <circle cx="26" cy="15" r="2" fill="#f5a623"/>
+                            <rect x="14" y="26" width="16" height="18" rx="2" stroke="#0e69b5" stroke-width="2"/>
+                            <rect x="34" y="26" width="16" height="8" rx="2" stroke="#f5a623" stroke-width="2"/>
+                            <rect x="34" y="38" width="16" height="6" rx="2" stroke="#0e69b5" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h5 class="service-box-title">Website Development</h5>
+                    <p class="service-box-text">
+                        We provide website design &amp; development to make your business online to drive more customers and sales
+                    </p>
+                    <div class="service-box-footer">
+                        <a href="<?= base_url() ?>Home/WebsiteDevelopment" class="service-discover-link">
+                            <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Service 3: Mobile App Development -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-box-card h-100">
-                        <div class="service-box-header d-flex align-items-center mb-3">
-                            <div class="service-icon-box mr-3">
-                                <i class="fa fa-mobile-alt"></i>
-                            </div>
-                            <h5 class="service-box-title mb-0">Mobile App Development</h5>
-                        </div>
-                        <p class="service-box-text mb-3">
-                            We provide Android &amp; iOS Application development, we can turn your idea into reality,
-                            Start your Startup with us
-                        </p>
-                        <div class="service-box-footer">
-                            <a href="<?= base_url() ?>Home/MobileApplicationDevelopment" class="service-discover-link">
-                                <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
+                <div class="service-box-card">
+                    <div class="service-icon-box">
+                        <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="18" y="8" width="28" height="48" rx="5" stroke="#0e69b5" stroke-width="2.5" fill="#f8fafc"/>
+                            <line x1="28" y1="13" x2="36" y2="13" stroke="#0e69b5" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="32" cy="50" r="2.5" fill="#0e69b5"/>
+                            <rect x="23" y="19" width="18" height="14" rx="3" stroke="#f5a623" stroke-width="2" fill="#fff9ec"/>
+                            <path d="M28 26L32 23L36 26" stroke="#f5a623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="23" y="36" width="8" height="8" rx="2" stroke="#0e69b5" stroke-width="2"/>
+                            <rect x="33" y="36" width="8" height="8" rx="2" stroke="#f5a623" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h5 class="service-box-title">Mobile App Development</h5>
+                    <p class="service-box-text">
+                        We provide Android &amp; iOS Application development, we can turn your idea into reality, Start your Startup with us
+                    </p>
+                    <div class="service-box-footer">
+                        <a href="<?= base_url() ?>Home/MobileApplicationDevelopment" class="service-discover-link">
+                            <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Service 4: Digital Marketing -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-box-card h-100">
-                        <div class="service-box-header d-flex align-items-center mb-3">
-                            <div class="service-icon-box mr-3">
-                                <i class="fa fa-chart-line"></i>
-                            </div>
-                            <h5 class="service-box-title mb-0">Digital Marketing</h5>
-                        </div>
-                        <p class="service-box-text mb-3">
-                            We provide best digital marketing services to drive more trafic on your mobile app or
-                            website to boost your sales
-                        </p>
-                        <div class="service-box-footer">
-                            <a href="<?= base_url() ?>Home/DigitalMarketing" class="service-discover-link">
-                                <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
+                <div class="service-box-card">
+                    <div class="service-icon-box">
+                        <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 50H56" stroke="#0e69b5" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="14" y="34" width="8" height="16" rx="2" stroke="#0e69b5" stroke-width="2.5" fill="#f8fafc"/>
+                            <rect x="28" y="24" width="8" height="26" rx="2" stroke="#0e69b5" stroke-width="2.5" fill="#f8fafc"/>
+                            <rect x="42" y="14" width="8" height="36" rx="2" stroke="#0e69b5" stroke-width="2.5" fill="#f8fafc"/>
+                            <path d="M12 28L26 18L38 24L52 10" stroke="#f5a623" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M44 10H52V18" stroke="#f5a623" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="52" cy="10" r="3" fill="#f5a623"/>
+                        </svg>
+                    </div>
+                    <h5 class="service-box-title">Digital Marketing</h5>
+                    <p class="service-box-text">
+                        We provide best digital marketing services to drive more trafic on your mobile app or website to boost your sales
+                    </p>
+                    <div class="service-box-footer">
+                        <a href="<?= base_url() ?>Home/DigitalMarketing" class="service-discover-link">
+                            <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Service 5: Graphics Design -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-box-card h-100">
-                        <div class="service-box-header d-flex align-items-center mb-3">
-                            <div class="service-icon-box mr-3">
-                                <i class="fa fa-palette"></i>
-                            </div>
-                            <h5 class="service-box-title mb-0">Graphics Design</h5>
-                        </div>
-                        <p class="service-box-text mb-3">
-                            We provide graphics design to stay touch with your customers using promotional banners,
-                            offers &amp; many more
-                        </p>
-                        <div class="service-box-footer">
-                            <a href="<?= base_url() ?>Home/GraphicsDesigning" class="service-discover-link">
-                                <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
+                <div class="service-box-card">
+                    <div class="service-icon-box">
+                        <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 10C18.745 10 8 20.745 8 34C8 42.5 12.5 48 20 48C23.5 48 25 45.5 25 43.5C25 41.5 24 40.5 24 39C24 37 25.5 36 27.5 36H34C46 36 56 30 56 18C56 13.5 44 10 32 10Z" stroke="#0e69b5" stroke-width="2.5" stroke-linejoin="round" fill="#f8fafc"/>
+                            <circle cx="20" cy="22" r="3.5" fill="#f5a623"/>
+                            <circle cx="32" cy="18" r="3.5" fill="#0e69b5"/>
+                            <circle cx="44" cy="22" r="3.5" fill="#f5a623"/>
+                            <circle cx="18" cy="32" r="3.5" fill="#0e69b5"/>
+                            <circle cx="18" cy="42" r="3" stroke="#f5a623" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h5 class="service-box-title">Graphics Design</h5>
+                    <p class="service-box-text">
+                        We provide graphics design to stay touch with your customers using promotional banners, offers &amp; many more
+                    </p>
+                    <div class="service-box-footer">
+                        <a href="<?= base_url() ?>Home/GraphicsDesigning" class="service-discover-link">
+                            <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Service 6: Domain & Hosting -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-box-card h-100">
-                        <div class="service-box-header d-flex align-items-center mb-3">
-                            <div class="service-icon-box mr-3">
-                                <i class="fa fa-server"></i>
-                            </div>
-                            <h5 class="service-box-title mb-0">Domain &amp; Hosting</h5>
-                        </div>
-                        <p class="service-box-text mb-3">
-                            We provide domain, hosting and a reliable server to never let your business down, start your
-                            startup with us
-                        </p>
-                        <div class="service-box-footer">
-                            <a href="<?= base_url() ?>Home/DomainAndHosting" class="service-discover-link">
-                                <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
+                <div class="service-box-card">
+                    <div class="service-icon-box">
+                        <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="10" width="44" height="18" rx="3" stroke="#0e69b5" stroke-width="2.5" fill="#f8fafc"/>
+                            <rect x="10" y="34" width="44" height="18" rx="3" stroke="#0e69b5" stroke-width="2.5" fill="#f8fafc"/>
+                            <circle cx="18" cy="19" r="2.5" fill="#f5a623"/>
+                            <circle cx="26" cy="19" r="2.5" fill="#0e69b5"/>
+                            <circle cx="18" cy="43" r="2.5" fill="#f5a623"/>
+                            <circle cx="26" cy="43" r="2.5" fill="#0e69b5"/>
+                            <line x1="36" y1="19" x2="48" y2="19" stroke="#0e69b5" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="36" y1="43" x2="48" y2="43" stroke="#0e69b5" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M46 28C48 26 52 26 53 29C55 29 56 31 55 33C56 35 54 37 52 37H44C42 37 41 35 42 33C41 31 43 28 46 28Z" stroke="#f5a623" stroke-width="2" fill="#fff9ec"/>
+                        </svg>
+                    </div>
+                    <h5 class="service-box-title">Domain &amp; Hosting</h5>
+                    <p class="service-box-text">
+                        We provide domain, hosting and a reliable server to never let your business down, start your startup with us
+                    </p>
+                    <div class="service-box-footer">
+                        <a href="<?= base_url() ?>Home/DomainAndHosting" class="service-discover-link">
+                            <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Service 7: ERP & CRM Development -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-box-card h-100">
-                        <div class="service-box-header d-flex align-items-center mb-3">
-                            <div class="service-icon-box mr-3">
-                                <i class="fa fa-cogs"></i>
-                            </div>
-                            <h5 class="service-box-title mb-0">ERP &amp; CRM Development</h5>
-                        </div>
-                        <p class="service-box-text mb-3">
-                            We provide ERP &amp; CRM to automate your business with fast execution and pricess
-                            strategies.
-                        </p>
-                        <div class="service-box-footer">
-                            <a href="<?= base_url() ?>Home/ERPandCRMDevelopment" class="service-discover-link">
-                                <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
+                <div class="service-box-card">
+                    <div class="service-icon-box">
+                        <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 52V26L22 34V26L34 34V16H54V52H10Z" stroke="#0e69b5" stroke-width="2.5" stroke-linejoin="round" fill="#f8fafc"/>
+                            <line x1="10" y1="52" x2="54" y2="52" stroke="#0e69b5" stroke-width="2.5"/>
+                            <rect x="40" y="24" width="6" height="6" rx="1" fill="#0e69b5"/>
+                            <rect x="40" y="34" width="6" height="6" rx="1" fill="#0e69b5"/>
+                            <rect x="28" y="40" width="6" height="6" rx="1" fill="#0e69b5"/>
+                            <rect x="16" y="40" width="6" height="6" rx="1" fill="#0e69b5"/>
+                            <circle cx="44" cy="14" r="6" stroke="#f5a623" stroke-width="2" fill="#fff9ec"/>
+                            <path d="M44 6V10M44 18V22M36 14H40M48 14H52" stroke="#f5a623" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h5 class="service-box-title">ERP &amp; CRM Development</h5>
+                    <p class="service-box-text">
+                        We provide ERP &amp; CRM to automate your business with fast execution and pricess strategies.
+                    </p>
+                    <div class="service-box-footer">
+                        <a href="<?= base_url() ?>Home/ERPandCRMDevelopment" class="service-discover-link">
+                            <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Service 8: Maintenance Services -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-box-card h-100">
-                        <div class="service-box-header d-flex align-items-center mb-3">
-                            <div class="service-icon-box mr-3">
-                                <i class="fa fa-tools"></i>
-                            </div>
-                            <h5 class="service-box-title mb-0">Maintenance Services</h5>
-                        </div>
-                        <p class="service-box-text mb-3">
-                            We provide reliable annual maintenance services for your website, software, erp, crm or
-                            mobile application
-                        </p>
-                        <div class="service-box-footer">
-                            <a href="<?= base_url() ?>Home/MaintenanceServices" class="service-discover-link">
-                                <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
+                <div class="service-box-card">
+                    <div class="service-icon-box">
+                        <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 22H36V46H8V22Z" stroke="#0e69b5" stroke-width="2.5" stroke-linejoin="round" fill="#f8fafc"/>
+                            <path d="M36 30H46L54 38V46H36V30Z" stroke="#0e69b5" stroke-width="2.5" stroke-linejoin="round" fill="#f8fafc"/>
+                            <circle cx="20" cy="46" r="5" stroke="#0e69b5" stroke-width="2.5" fill="#ffffff"/>
+                            <circle cx="44" cy="46" r="5" stroke="#0e69b5" stroke-width="2.5" fill="#ffffff"/>
+                            <path d="M22 26C22 26 26 25 28 28C28 32 26 35 22 37C18 35 16 32 16 28C18 25 22 26 22 26Z" stroke="#f5a623" stroke-width="2" fill="#fff9ec"/>
+                            <path d="M19 31L21 33L25 29" stroke="#f5a623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h5 class="service-box-title">Maintenance Services</h5>
+                    <p class="service-box-text">
+                        We provide reliable annual maintenance services for your website, software, erp, crm or mobile application
+                    </p>
+                    <div class="service-box-footer">
+                        <a href="<?= base_url() ?>Home/MaintenanceServices" class="service-discover-link">
+                            <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Service 9: Explore More Services -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-box-card h-100">
-                        <div class="service-box-header d-flex align-items-center mb-3">
-                            <div class="service-icon-box mr-3">
-                                <i class="fa fa-th-large"></i>
-                            </div>
-                            <h5 class="service-box-title mb-0">Explore More Services</h5>
-                        </div>
-                        <p class="service-box-text mb-3">
-                            We provide many more IT servies like training programs, internships, mlm software and many
-                            more, discover to know more.
-                        </p>
-                        <div class="service-box-footer">
-                            <a href="<?= base_url() ?>Home/ITServices" class="service-discover-link">
-                                <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
+                <!-- Service 9: UI/UX Designing -->
+                <div class="service-box-card">
+                    <div class="service-icon-box">
+                        <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="10" width="48" height="36" rx="4" stroke="#0e69b5" stroke-width="2.5" fill="#f8fafc"/>
+                            <path d="M8 20H56" stroke="#0e69b5" stroke-width="2"/>
+                            <path d="M38 48L48 38L54 44L44 54L34 54L38 48Z" stroke="#f5a623" stroke-width="2.5" fill="#fff9ec" stroke-linejoin="round"/>
+                            <path d="M44 42L48 46" stroke="#f5a623" stroke-width="2"/>
+                            <rect x="14" y="26" width="12" height="14" rx="2" stroke="#0e69b5" stroke-width="2"/>
+                            <circle cx="14" cy="15" r="1.5" fill="#f5a623"/>
+                            <circle cx="19" cy="15" r="1.5" fill="#f5a623"/>
+                            <circle cx="24" cy="15" r="1.5" fill="#f5a623"/>
+                        </svg>
+                    </div>
+                    <h5 class="service-box-title">UI/UX Designing</h5>
+                    <p class="service-box-text">
+                        We provide modern UI/UX design services, wireframing &amp; prototyping for seamless mobile and web user experience
+                    </p>
+                    <div class="service-box-footer">
+                        <a href="<?= base_url() ?>Home/GraphicsDesigning" class="service-discover-link">
+                            <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 10: Explore More Services -->
+                <div class="service-box-card">
+                    <div class="service-icon-box">
+                        <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 24L14 10H50L54 24" stroke="#0e69b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 24V52H54V24" stroke="#0e69b5" stroke-width="2.5" stroke-linejoin="round" fill="#f8fafc"/>
+                            <path d="M10 24C12 24 13 22 15 22C17 22 18 24 20 24C22 24 23 22 25 22C27 22 28 24 30 24C32 24 33 22 35 22C37 22 38 24 40 24C42 24 43 22 45 22C47 22 48 24 50 24C52 24 53 22 54 24" stroke="#f5a623" stroke-width="2.5"/>
+                            <rect x="24" y="34" width="16" height="18" rx="2" stroke="#0e69b5" stroke-width="2"/>
+                            <circle cx="36" cy="43" r="1.5" fill="#f5a623"/>
+                        </svg>
+                    </div>
+                    <h5 class="service-box-title">Explore More Services</h5>
+                    <p class="service-box-text">
+                        We provide many more IT servies like training programs, internships, mlm software and many more, discover to know more.
+                    </p>
+                    <div class="service-box-footer">
+                        <a href="<?= base_url() ?>Home/ITServices" class="service-discover-link">
+                            <span>Discover now</span> <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -3064,10 +3168,10 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="pricing-card-box h-100">
                         <div>
+                            <h6 class="pricing-subtitle text-center">Website Starter</h6>
                             <div class="pricing-icon-avatar">
-                                <i class="fa fa-globe"></i>
+                                <img src="<?= base_url('public/assets/images/logo_circle.png') ?>" alt="DigiCoders Logo" loading="lazy">
                             </div>
-                            <h6 class="pricing-subtitle text-center mb-2">Website Starter</h6>
                             <div class="pricing-price-amount">
                                 <span class="currency">₹</span>
                                 <span class="price">9999</span>
@@ -3079,28 +3183,28 @@
                                 </a>
                             </div>
                             <ul class="pricing-features-list">
-                                <li><i class="fa fa-check-circle"></i> 1 Year Domain</li>
-                                <li><i class="fa fa-check-circle"></i> 1 Year Hosting</li>
-                                <li><i class="fa fa-check-circle"></i> Dynamic Website</li>
-                                <li><i class="fa fa-check-circle"></i> Official 5 Emails</li>
-                                <li><i class="fa fa-check-circle"></i> Basic SEO</li>
-                                <li><i class="fa fa-check-circle"></i> Many More...</li>
+                                <li><i class="fa fa-check"></i> 1 Year Domain</li>
+                                <li><i class="fa fa-check"></i> 1 Year Hosting</li>
+                                <li><i class="fa fa-check"></i> Dynamic Website</li>
+                                <li><i class="fa fa-check"></i> Official 5 Emails</li>
+                                <li><i class="fa fa-check"></i> Basic SEO</li>
+                                <li><i class="fa fa-check"></i> Many More...</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2: Mobile App Starter (Most Popular) -->
+                <!-- Card 2: Mobile App Starter (Most Popular - Image 2 Ribbon) -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="pricing-card-box featured h-100">
-                        <div class="pricing-popular-badge">
-                            <i class="fa fa-fire mr-1"></i> Most Popular
+                        <div class="pricing-corner-ribbon">
+                            MOST POPULAR
                         </div>
                         <div>
+                            <h6 class="pricing-subtitle text-center">Mobile App Starter</h6>
                             <div class="pricing-icon-avatar">
-                                <i class="fa fa-mobile-alt"></i>
+                                <img src="<?= base_url('public/assets/images/logo_circle.png') ?>" alt="DigiCoders Logo" loading="lazy">
                             </div>
-                            <h6 class="pricing-subtitle text-center mb-2">Mobile App Starter</h6>
                             <div class="pricing-price-amount">
                                 <span class="currency">₹</span>
                                 <span class="price">24999</span>
@@ -3112,13 +3216,13 @@
                                 </a>
                             </div>
                             <ul class="pricing-features-list">
-                                <li><i class="fa fa-check-circle"></i> E Commerce App</li>
-                                <li><i class="fa fa-check-circle"></i> Taxi Booking App</li>
-                                <li><i class="fa fa-check-circle"></i> Food Delivery App</li>
-                                <li><i class="fa fa-check-circle"></i> Gaming Tournaments App</li>
-                                <li><i class="fa fa-check-circle"></i> Service App</li>
-                                <li><i class="fa fa-check-circle"></i> MLM Application</li>
-                                <li><i class="fa fa-check-circle"></i> Many more...</li>
+                                <li><i class="fa fa-check"></i> E Commerce App</li>
+                                <li><i class="fa fa-check"></i> Taxi Booking App</li>
+                                <li><i class="fa fa-check"></i> Food Delivery App</li>
+                                <li><i class="fa fa-check"></i> Gaming Tournaments App</li>
+                                <li><i class="fa fa-check"></i> Service App</li>
+                                <li><i class="fa fa-check"></i> MLM Application</li>
+                                <li><i class="fa fa-check"></i> Many more...</li>
                             </ul>
                         </div>
                     </div>
@@ -3128,10 +3232,10 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="pricing-card-box h-100">
                         <div>
+                            <h6 class="pricing-subtitle text-center">Software Starter</h6>
                             <div class="pricing-icon-avatar">
-                                <i class="fa fa-laptop-code"></i>
+                                <img src="<?= base_url('public/assets/images/logo_circle.png') ?>" alt="DigiCoders Logo" loading="lazy">
                             </div>
-                            <h6 class="pricing-subtitle text-center mb-2">Software Starter</h6>
                             <div class="pricing-price-amount">
                                 <span class="currency">₹</span>
                                 <span class="price">15999</span>
@@ -3143,12 +3247,12 @@
                                 </a>
                             </div>
                             <ul class="pricing-features-list">
-                                <li><i class="fa fa-check-circle"></i> Billing Software</li>
-                                <li><i class="fa fa-check-circle"></i> Inventory Software</li>
-                                <li><i class="fa fa-check-circle"></i> CRM &amp; ERP</li>
-                                <li><i class="fa fa-check-circle"></i> School Management ERP</li>
-                                <li><i class="fa fa-check-circle"></i> MLM Software</li>
-                                <li><i class="fa fa-check-circle"></i> Many More...</li>
+                                <li><i class="fa fa-check"></i> Billing Software</li>
+                                <li><i class="fa fa-check"></i> Inventory Software</li>
+                                <li><i class="fa fa-check"></i> CRM &amp; ERP</li>
+                                <li><i class="fa fa-check"></i> School Management ERP</li>
+                                <li><i class="fa fa-check"></i> MLM Software</li>
+                                <li><i class="fa fa-check"></i> Many More...</li>
                             </ul>
                         </div>
                     </div>
