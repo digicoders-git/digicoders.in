@@ -162,21 +162,21 @@
                         Get started immediately or schedule a call with our experts to see how it can transform your
                         business.</p>
 
-                    <div class="d-flex flex-wrap justify-content-center"
-                        style="gap: 15px; position:relative; z-index:2;">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center text-center mx-auto"
+                        style="gap: 15px; position:relative; z-index:2; width:100%;">
                         <?php if (!empty($software->book_demo_link)): ?>
                             <a href="<?= $software->book_demo_link ?>" target="_blank" class="btn"
-                                style="background-color: #ffffff; color: #0052D4; padding: 10px 24px; font-size: 15px; font-weight: 700; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 2px solid #ffffff; transition: all 0.3s;"><i
+                                style="background-color: #ffffff; color: #0052D4; padding: 10px 24px; font-size: 15px; font-weight: 700; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 2px solid #ffffff; transition: all 0.3s; display: inline-flex; align-items: center; justify-content: center;"><i
                                     class="fa fa-shopping-cart" style="margin-right: 8px;"></i> Buy Now</a>
                         <?php else: ?>
                             <button
                                 onclick="openBookDemoModal('<?= $software->id ?>', '<?= htmlspecialchars($software->title, ENT_QUOTES) ?>')"
                                 class="btn"
-                                style="background-color: #ffffff; color: #0052D4; padding: 10px 24px; font-size: 15px; font-weight: 700; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 2px solid #ffffff; transition: all 0.3s;"><i
+                                style="background-color: #ffffff; color: #0052D4; padding: 10px 24px; font-size: 15px; font-weight: 700; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 2px solid #ffffff; transition: all 0.3s; display: inline-flex; align-items: center; justify-content: center;"><i
                                     class="fa fa-calendar-check" style="margin-right: 8px;"></i> Book Demo</button>
                         <?php endif; ?>
                         <a href="https://wa.me/9198483820" target="_blank" class="btn"
-                            style="background-color: #25D366; color: #ffffff; padding: 10px 24px; font-size: 15px; font-weight: 700; border-radius: 6px; border: 2px solid #25D366; box-shadow: 0 4px 10px rgba(37,211,102,0.3); transition: all 0.3s;"><i
+                            style="background-color: #25D366; color: #ffffff; padding: 10px 24px; font-size: 15px; font-weight: 700; border-radius: 6px; border: 2px solid #25D366; box-shadow: 0 4px 10px rgba(37,211,102,0.3); transition: all 0.3s; display: inline-flex; align-items: center; justify-content: center;"><i
                                 class="fab fa-whatsapp" style="margin-right: 8px;"></i> WhatsApp Chat</a>
                     </div>
                 </div>
