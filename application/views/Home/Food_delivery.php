@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-2" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/ludo_khiladi1.jpeg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:250px; width:520px"  class="lazy img-fluid leader-img" title="leader-img" alt="leader-img" />
+                        <img src="<?= base_url('public/assets/images/projects/ludo_khiladi1.jpeg') ?>" style="height:250px; width:520px" class="img-fluid leader-img" loading="lazy" title="leader-img" alt="leader-img" />
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                         <div class="col-lg-5 col-md-5 order-1 order-lg-1" style="margin-top:40px">
-						 <img data-src="<?= base_url('public') ?>/assets/images/projects/ludo_khiladi.jpeg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:250px; width:520px" class="lazy img-fluid leader-img" title="leader-img" alt="leader-img" />
+						 <img src="<?= base_url('public/assets/images/projects/ludo_khiladi.jpeg') ?>" style="height:250px; width:520px" class="img-fluid leader-img" loading="lazy" title="leader-img" alt="leader-img" />
                     </div>
                 </div>
             </div>

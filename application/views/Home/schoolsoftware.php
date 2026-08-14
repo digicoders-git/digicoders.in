@@ -130,7 +130,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-2" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/school-erp.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="lazy img-fluid leader-img" title="School Management Software" alt="School ERP System" />
+                        <img src="<?= base_url('public/assets/images/projects/school-erp.jpg') ?>" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="img-fluid leader-img" loading="lazy" title="School Management Software" alt="School ERP System" />
                     </div>
                 </div>
                 <br/><br/><br/>
@@ -251,7 +251,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-1" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/school-dashboard.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:10px 10px #cacaca;" class="lazy img-fluid leader-img" title="School Dashboard" alt="School Management Dashboard" />
+                        <img src="<?= base_url('public/assets/images/projects/school-dashboard.jpg') ?>" style="height:280px; width:520px; box-shadow:10px 10px #cacaca;" class="img-fluid leader-img" loading="lazy" title="School Dashboard" alt="School Management Dashboard" />
                     </div>
                 </div>
                 
@@ -397,7 +397,7 @@
     
     <script>
         // Lazy loading initialization
-        document.addEventListener("DOMContentLoaded", function() {
+        function initLazyLoad() {
             var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
             
             if ("IntersectionObserver" in window) {
@@ -405,7 +405,9 @@
                     entries.forEach(function(entry) {
                         if (entry.isIntersecting) {
                             let lazyImage = entry.target;
-                            lazyImage.src = lazyImage.dataset.src;
+                            if (lazyImage.dataset.src) {
+                                lazyImage.src = lazyImage.dataset.src;
+                            }
                             lazyImage.classList.remove("lazy");
                             lazyImageObserver.unobserve(lazyImage);
                         }
@@ -415,8 +417,21 @@
                 lazyImages.forEach(function(lazyImage) {
                     lazyImageObserver.observe(lazyImage);
                 });
+            } else {
+                lazyImages.forEach(function(lazyImage) {
+                    if (lazyImage.dataset.src) {
+                        lazyImage.src = lazyImage.dataset.src;
+                    }
+                    lazyImage.classList.remove("lazy");
+                });
             }
-        });
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initLazyLoad);
+        } else {
+            initLazyLoad();
+        }
     </script>
 </body>
 

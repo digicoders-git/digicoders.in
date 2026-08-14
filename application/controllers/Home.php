@@ -523,14 +523,14 @@ class Home extends CI_Controller
 	{
 		$this->load->view('Home/feesoftware');
 	}
-	// public function multigame_plateform_in_digicoder_in_lucknow()
-	// {
-	// 	$this->load->view('Home/multigame');
-	// }
-	// public function Food_delivery_App_in_digicoder_in_lucknow()
-	// {
-	// 	$this->load->view('Home/Food_delivery');
-	//}
+	public function multigame_plateform_in_digicoder_in_lucknow()
+	{
+		$this->load->view('Home/multigame');
+	}
+	public function Food_delivery_App_in_digicoder_in_lucknow()
+	{
+		$this->load->view('Home/Food_delivery');
+	}
 	public function Packages()
 	{
 		$this->load->view('Home/Packages');

@@ -273,7 +273,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-2" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/lead-dashboard.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="lazy img-fluid leader-img" title="Lead Management Dashboard" alt="Lead Tracking System" />
+                        <img src="<?= base_url('public/assets/images/projects/lead-dashboard.jpg') ?>" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="img-fluid leader-img" loading="lazy" title="Lead Management Dashboard" alt="Lead Tracking System" />
                     </div>
                 </div>
                 <br/><br/><br/>

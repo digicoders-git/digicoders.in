@@ -228,7 +228,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-2" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/erp-dashboard.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="lazy img-fluid leader-img" title="ERP Software Dashboard" alt="Enterprise Resource Planning System" />
+                        <img src="<?= base_url('public/assets/images/projects/erp-dashboard.jpg') ?>" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="img-fluid leader-img" loading="lazy" title="ERP Software Dashboard" alt="Enterprise Resource Planning System" />
                     </div>
                 </div>
                 <br/><br/><br/>
@@ -508,7 +508,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-1" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/erp-analytics.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:10px 10px #cacaca;" class="lazy img-fluid leader-img" title="ERP Analytics Dashboard" alt="ERP Business Intelligence" />
+                        <img src="<?= base_url('public/assets/images/projects/erp-analytics.jpg') ?>" style="height:280px; width:520px; box-shadow:10px 10px #cacaca;" class="img-fluid leader-img" loading="lazy" title="ERP Analytics Dashboard" alt="ERP Business Intelligence" />
                     </div>
                 </div>
                 

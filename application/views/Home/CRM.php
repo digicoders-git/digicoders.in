@@ -212,7 +212,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-2" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/crm-dashboard.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="lazy img-fluid leader-img" title="CRM Software Dashboard" alt="Customer Relationship Management System" />
+                        <img src="<?= base_url('public/assets/images/projects/crm-dashboard.jpg') ?>" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="img-fluid leader-img" loading="lazy" title="CRM Software Dashboard" alt="Customer Relationship Management System" />
                     </div>
                 </div>
                 <br/><br/><br/>
@@ -513,7 +513,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-1" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/crm-mobile.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:10px 10px #cacaca;" class="lazy img-fluid leader-img" title="CRM Mobile App" alt="CRM Mobile Application" />
+                        <img src="<?= base_url('public/assets/images/projects/crm-mobile.jpg') ?>" style="height:280px; width:520px; box-shadow:10px 10px #cacaca;" class="img-fluid leader-img" loading="lazy" title="CRM Mobile App" alt="CRM Mobile Application" />
                     </div>
                 </div>
                 

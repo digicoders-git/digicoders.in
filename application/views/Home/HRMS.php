@@ -187,7 +187,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-2" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/hrms-dashboard.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="lazy img-fluid leader-img" title="HRMS Software Dashboard" alt="HR Management System" />
+                        <img src="<?= base_url('public/assets/images/projects/hrms-dashboard.jpg') ?>" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="img-fluid leader-img" loading="lazy" title="HRMS Software Dashboard" alt="HR Management System" />
                     </div>
                 </div>
                 <br/><br/><br/>
@@ -422,7 +422,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-1" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/hrms-analytics.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:10px 10px #cacaca;" class="lazy img-fluid leader-img" title="HR Analytics Dashboard" alt="HRMS Analytics" />
+                        <img src="<?= base_url('public/assets/images/projects/hrms-analytics.jpg') ?>" style="height:280px; width:520px; box-shadow:10px 10px #cacaca;" class="img-fluid leader-img" loading="lazy" title="HR Analytics Dashboard" alt="HRMS Analytics" />
                     </div>
                 </div>
                 
@@ -586,7 +586,7 @@
     
     <script>
         // Lazy loading initialization
-        document.addEventListener("DOMContentLoaded", function() {
+        function initLazyLoad() {
             var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
             
             if ("IntersectionObserver" in window) {
@@ -594,7 +594,9 @@
                     entries.forEach(function(entry) {
                         if (entry.isIntersecting) {
                             let lazyImage = entry.target;
-                            lazyImage.src = lazyImage.dataset.src;
+                            if (lazyImage.dataset.src) {
+                                lazyImage.src = lazyImage.dataset.src;
+                            }
                             lazyImage.classList.remove("lazy");
                             lazyImageObserver.unobserve(lazyImage);
                         }
@@ -604,8 +606,21 @@
                 lazyImages.forEach(function(lazyImage) {
                     lazyImageObserver.observe(lazyImage);
                 });
+            } else {
+                lazyImages.forEach(function(lazyImage) {
+                    if (lazyImage.dataset.src) {
+                        lazyImage.src = lazyImage.dataset.src;
+                    }
+                    lazyImage.classList.remove("lazy");
+                });
             }
-        });
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initLazyLoad);
+        } else {
+            initLazyLoad();
+        }
         
         // Simple counter animation for stats
         function animateCounter(element, target) {

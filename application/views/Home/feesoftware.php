@@ -284,7 +284,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-2" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/fee-dashboard.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="lazy img-fluid leader-img" title="Fee Management Dashboard" alt="Fee Collection System" />
+                        <img src="<?= base_url('public/assets/images/projects/fee-dashboard.jpg') ?>" style="height:280px; width:520px; box-shadow:-10px 10px #f2f2f2;" class="img-fluid leader-img" loading="lazy" title="Fee Management Dashboard" alt="Fee Collection System" />
                     </div>
                 </div>
                 <br/><br/><br/>
@@ -751,7 +751,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 order-1 order-lg-1" style="margin-top:40px">
-                        <img data-src="<?= base_url('public') ?>/assets/images/projects/fee-reports.jpg" src="<?= base_url('public') ?>/assets/images/loader1.jpg" style="height:280px; width:520px; box-shadow:10px 10px #cacaca;" class="lazy img-fluid leader-img" title="Fee Reports Dashboard" alt="Fee Management Reports" />
+                        <img src="<?= base_url('public/assets/images/projects/fee-reports.jpg') ?>" style="height:280px; width:520px; box-shadow:10px 10px #cacaca;" class="img-fluid leader-img" loading="lazy" title="Fee Reports Dashboard" alt="Fee Management Reports" />
                     </div>
                 </div>
                 
