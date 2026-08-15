@@ -294,8 +294,8 @@
                     <ul
                         class="list ht-social-networks solid-rounded-icon footer-icon justify-content-center justify-content-md-end">
                         <li class="item">
-                            <a href="https://api.whatsapp.com/send?phone=91<?= $this->data['mobile_no'] ?>&text=Hello DigiCoders Technologies, I want to discuss about my project"
-                                target="_blank" aria-label="WhatsApp"
+                            <a href="https://www.whatsapp.com/channel/0029VaDTIxW5EjxzOyubYT3l"
+                                target="_blank" aria-label="WhatsApp Channel" title="WhatsApp Channel"
                                 class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-whatsapp link-icon"></i>
                             </a>
@@ -307,21 +307,27 @@
                             </a>
                         </li>
                         <li class="item">
-                            <a href="https://facebook.com/DigiCodersTech/" target="_blank" rel="noopener"
+                            <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" rel="noopener"
                                 aria-label="Facebook" class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-facebook-f link-icon"></i>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="https://www.instagram.com/digicoderstech/" target="_blank" rel="noopener"
+                            <a href="https://www.instagram.com/digicoderstech" target="_blank" rel="noopener"
                                 aria-label="Instagram" class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-instagram link-icon"></i>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="https://linkedin.com/company/digicoders/" target="_blank" rel="noopener"
+                            <a href="https://www.linkedin.com/company/digicoders/" target="_blank" rel="noopener"
                                 aria-label="Linkedin" class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-linkedin link-icon"></i>
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.youtube.com/@digicoders" target="_blank" rel="noopener"
+                                aria-label="YouTube" title="YouTube" class="social-link hint--bounce hint--top hint--primary">
+                                <i class="fab fa-youtube link-icon"></i>
                             </a>
                         </li>
                     </ul>

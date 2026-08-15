@@ -462,6 +462,17 @@ body::-webkit-scrollbar-thumb {
     color: #ffffff !important;
 }
 
+.social-circle.yt {
+    border: 1px solid #ff0000 !important;
+    color: #ff0000 !important;
+    background: #ffffff !important;
+}
+
+.social-circle.yt:hover {
+    background: #ff0000 !important;
+    color: #ffffff !important;
+}
+
 /* --------------------------------------------------------------------------
    2. Native Sticky Modern Navbar (STAYS PINNED ON SCROLL)
    -------------------------------------------------------------------------- */

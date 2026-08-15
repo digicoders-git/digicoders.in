@@ -60,7 +60,7 @@
                                         <h4 class="hiring-alert-title">Currently We Are Not Hiring!</h4>
                                         <p class="hiring-alert-desc mb-0">We are currently not accepting new job applications. For future job openings & career opportunities, please follow us on our official LinkedIn page.</p>
                                     </div>
-                                    <a href="https://www.linkedin.com/company/digicoderstechnologies/" target="_blank" rel="noopener noreferrer" class="hiring-alert-linkedin-btn">
+                                    <a href="https://www.linkedin.com/company/digicoders/" target="_blank" rel="noopener noreferrer" class="hiring-alert-linkedin-btn">
                                         <i class="fab fa-linkedin"></i> Follow on LinkedIn <i class="fas fa-arrow-right" style="font-size: 11px;"></i>
                                     </a>
                                 </div>

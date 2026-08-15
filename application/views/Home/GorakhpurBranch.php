@@ -1551,9 +1551,10 @@
                                     <p class="team-role"><?= htmlspecialchars($member['role']) ?></p>
                                     <div class="team-socials mt-auto">
                                         <a href="https://api.whatsapp.com/send?phone=91<?= $this->data['mobile_no'] ?? '9198483820' ?>&text=Hello%20<?= urlencode($member['name']) ?>" target="_blank" aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                        <a href="https://facebook.com/DigiCodersTech/" target="_blank" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="https://www.instagram.com/digicoderstech/" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                        <a href="https://www.linkedin.com/company/digicoderstech" target="_blank" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="https://www.instagram.com/digicoderstech" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                        <a href="https://www.linkedin.com/company/digicoders/" target="_blank" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://www.youtube.com/@digicoders" target="_blank" aria-label="YouTube" title="YouTube"><i class="fab fa-youtube"></i></a>
                                     </div>
                                 </div>
                             </div>

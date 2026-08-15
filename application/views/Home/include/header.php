@@ -23,7 +23,7 @@
             <?php else: ?>
                 <i class="fas fa-bullhorn hiring-icon"></i> 
                 <strong class="hiring-title">Currently we are not hiring!</strong> For future job updates & opportunities, follow us on our LinkedIn page: 
-                <a href="https://www.linkedin.com/company/digicoderstechnologies/" target="_blank" rel="noopener noreferrer" class="hiring-linkedin-btn">
+                <a href="https://www.linkedin.com/company/digicoders/" target="_blank" rel="noopener noreferrer" class="hiring-linkedin-btn">
                     <i class="fab fa-linkedin"></i> Follow on LinkedIn <i class="fas fa-arrow-right" style="font-size: 11px;"></i>
                 </a>
             <?php endif; ?>
@@ -141,17 +141,20 @@
 
         <!-- Right Group: Social Media Circles -->
         <div class="topbar-social-group">
-            <a href="https://wa.me/919198483820" target="_blank" class="social-circle wa" title="WhatsApp">
+            <a href="https://www.whatsapp.com/channel/0029VaDTIxW5EjxzOyubYT3l" target="_blank" class="social-circle wa" title="WhatsApp Channel">
                 <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="https://www.facebook.com/digicoderstechnologies/" target="_blank" class="social-circle fb" title="Facebook">
+            <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" class="social-circle fb" title="Facebook">
                 <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="https://www.instagram.com/digicoders.in/" target="_blank" class="social-circle insta" title="Instagram">
+            <a href="https://www.instagram.com/digicoderstech" target="_blank" class="social-circle insta" title="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.linkedin.com/company/digicoderstechnologies/" target="_blank" class="social-circle in" title="LinkedIn">
+            <a href="https://www.linkedin.com/company/digicoders/" target="_blank" class="social-circle in" title="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.youtube.com/@digicoders" target="_blank" class="social-circle yt" title="YouTube">
+                <i class="fab fa-youtube"></i>
             </a>
         </div>
     </div>
