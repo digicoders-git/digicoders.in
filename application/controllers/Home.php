@@ -531,6 +531,22 @@ class Home extends CI_Controller
 	{
 		$this->load->view('Home/Food_delivery');
 	}
+	public function Taxi_booking_app_in_digicoder_in_lucknow()
+	{
+		$this->load->view('Home/taxisoftware');
+	}
+	public function Grocery_delivery_app_in_digicoder_in_lucknow()
+	{
+		$this->load->view('Home/grocerysoftware');
+	}
+	public function Ecommerce_website_in_digicoder_in_lucknow()
+	{
+		$this->load->view('Home/ecommercesoftware');
+	}
+	public function Online_courses_app_in_digicoder_in_lucknow()
+	{
+		$this->load->view('Home/coursessoftware');
+	}
 	public function Packages()
 	{
 		$this->load->view('Home/Packages');

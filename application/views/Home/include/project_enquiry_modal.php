@@ -1,12 +1,12 @@
 <!-- Global Project Enquiry Modal -->
-<div class="modal fade" id="projectEnquiryModal" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 1060;">
+<div class="modal fade" id="projectEnquiryModal" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 99999 !important;">
     <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 440px; margin: 1.75rem auto;">
         <div class="modal-content" style="border-radius:20px; border:none; box-shadow:0 25px 60px rgba(0,0,0,0.25); overflow: hidden; position: relative;">
             
             <!-- Modal Header -->
             <div class="modal-header d-block text-center" style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding: 25px 20px 20px 20px; border: none; position: relative; border-radius: 20px 20px 0 0;">
                 <button type="button" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"
-                    style="position: absolute; top: 14px; right: 14px; background: rgba(255, 255, 255, 0.25); color: #ffffff; border: none; border-radius: 50%; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; cursor: pointer; z-index: 20; outline: none; padding: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.15);"
+                    style="position: absolute; top: 14px; right: 14px; background: rgba(255, 255, 255, 0.25); color: #ffffff; border: none; border-radius: 50%; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; cursor: pointer; z-index: 20; outline: none; padding: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.15);"
                     onmouseover="this.style.background='rgba(255,255,255,0.45)'"
                     onmouseout="this.style.background='rgba(255,255,255,0.25)'">
                     <span aria-hidden="true" style="margin-top: -2px;">&times;</span>
@@ -59,9 +59,11 @@
                         <textarea name="message" class="form-control" rows="3" placeholder="Tell us about your project requirements..." required style="border: 1px solid #cbd5e1; border-radius: 10px; background: #fff; box-shadow: none; font-size: 14px; color: #333; padding: 10px 14px;"></textarea>
                     </div>
 
-                    <button type="submit" id="btnProjectEnquirySubmit" class="btn text-white w-100" style="background: linear-gradient(135deg, #086AD8, #00C6FF); border-radius:30px; height:48px; font-weight:700; font-size:15px; letter-spacing:0.5px; box-shadow: 0 8px 18px rgba(8,106,216,0.3); border:none; transition: all 0.3s ease;">
-                        Send Enquiry <i class="fa fa-paper-plane ml-1"></i>
-                    </button>
+                    <div class="text-center">
+                        <button type="submit" id="btnProjectEnquirySubmit" class="btn text-white" style="background: linear-gradient(135deg, #086AD8, #00C6FF); border-radius:6px; height:48px; padding: 0 35px; font-weight:700; font-size:15px; letter-spacing:0.5px; box-shadow: 0 8px 18px rgba(8,106,216,0.3); border:none; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; min-width: 220px;">
+                            Send Enquiry <i class="fa fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

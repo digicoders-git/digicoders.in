@@ -2269,28 +2269,29 @@
                     }
                 </style>
                 <!-- Global Book Demo Modal -->
-                <div class="modal fade" id="bookDemoModal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px;">
+                <div class="modal fade" id="bookDemoModal" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 99999 !important;">
+                    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px; margin: 1.75rem auto;">
                         <div class="modal-content"
-                            style="border-radius:20px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden;">
-                            <div class="modal-header"
-                                style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:30px 25px 20px; border:none; position: relative;">
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"
-                                    style="position:absolute; top:15px; right:20px; opacity: 0.8; text-shadow:none;">
-                                    <span aria-hidden="true" style="font-size: 28px;">&times;</span>
+                            style="border-radius:6px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden; position: relative;">
+                            <div class="modal-header d-block text-center"
+                                style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:25px 20px 20px; border:none; position: relative; border-radius: 6px 6px 0 0;">
+                                <button type="button" class="close text-white" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"
+                                    style="position:absolute; top:15px; right:15px; background: rgba(255, 255, 255, 0.25); color: #ffffff; border: none; border-radius: 50%; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; cursor: pointer; z-index: 20; outline: none; padding: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.15); opacity: 1;"
+                                    onmouseover="this.style.background='rgba(255,255,255,0.45)'"
+                                    onmouseout="this.style.background='rgba(255,255,255,0.25)'">
+                                    <span aria-hidden="true" style="margin-top: -2px;">&times;</span>
                                 </button>
-                                <div class="w-100 text-center mt-2">
+                                <div class="w-100 text-center">
                                     <div
-                                        style="width:60px; height:60px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
-                                        <i class="fa fa-calendar-check text-white" style="font-size:24px;"></i>
+                                        style="width:54px; height:54px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin: 0 auto 10px auto;">
+                                        <i class="fa fa-calendar-check text-white" style="font-size:22px;"></i>
                                     </div>
                                     <h4 class="modal-title text-white"
-                                        style="font-weight:700; font-size:22px; margin-bottom:5px;">Book a Free Demo</h4>
-                                    <p class="text-white" style="opacity: 0.9; font-size: 13px; margin:0;">Experience our
-                                        software in action!</p>
+                                        style="font-weight:700; font-size:20px; margin-bottom:4px; line-height:1.2;">Book a Free Demo</h4>
+                                    <p class="text-white mb-0" style="opacity: 0.95; font-size: 13.5px; font-weight:500;">Experience our software in action!</p>
                                 </div>
                             </div>
-                            <div class="modal-body" style="padding: 30px 25px; background: #f8f9fa;">
+                            <div class="modal-body" style="padding: 25px 22px; background: #f8f9fa;">
                                 <div id="bookDemoAlert" class="mb-3 text-center"
                                     style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;">
                                 </div>
@@ -2300,14 +2301,12 @@
                                     <input type="hidden" name="software_name" id="book_software_name">
 
                                     <div class="form-group mb-3">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"
-                                                    style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
-                                                        class="fa fa-laptop-code"></i></span>
+                                        <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
+                                            <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
+                                                <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-laptop-code"></i></span>
                                             </div>
                                             <select name="software_id" id="book_software_id" class="form-control" required
-                                                style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px; color:#444;">
+                                                style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; color: #444; padding-left: 10px;">
                                                 <option value="">Select Software</option>
                                                 <?php foreach ($softwares as $sw): ?>
                                                     <option value="<?= $sw->id ?>"><?= $sw->title ?></option>
@@ -2317,56 +2316,52 @@
                                     </div>
 
                                     <div class="form-group mb-3">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"
-                                                    style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
-                                                        class="fa fa-user"></i></span>
+                                        <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
+                                            <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
+                                                <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-user"></i></span>
                                             </div>
                                             <input type="text" name="name" class="form-control" required
                                                 placeholder="Your Full Name"
-                                                style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
+                                                style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; padding-left: 10px;">
                                         </div>
                                     </div>
 
                                     <div class="form-group mb-3">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"
-                                                    style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
-                                                        class="fa fa-phone-alt"></i></span>
+                                        <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
+                                            <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
+                                                <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-phone-alt"></i></span>
                                             </div>
                                             <input type="text" name="mobile" class="form-control" required
                                                 placeholder="Mobile Number" maxlength="10" minlength="10"
-                                                style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
+                                                style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; padding-left: 10px;">
                                         </div>
                                     </div>
 
                                     <div class="form-group mb-3">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"
-                                                    style="background:#fff; border-right:none; border-radius:10px 0 0 10px; color:#086AD8; padding-left:15px;"><i
-                                                        class="fa fa-envelope"></i></span>
+                                        <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
+                                            <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
+                                                <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-envelope"></i></span>
                                             </div>
                                             <input type="email" name="email" class="form-control"
                                                 placeholder="Email Address (Optional)"
-                                                style="border-left:none; border-radius:0 10px 10px 0; height:50px; background:#fff; box-shadow:none; font-size:14px;">
+                                                style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; padding-left: 10px;">
                                         </div>
                                     </div>
 
                                     <div class="form-group mb-4">
                                         <textarea name="message" class="form-control" rows="2"
                                             placeholder="Any specific requirements?"
-                                            style="border-radius:10px; padding:15px; background:#fff; box-shadow:none; resize:none; font-size:14px; border:1px solid #ced4da;"></textarea>
+                                            style="border: 1px solid #cbd5e1; border-radius:10px; padding:12px 14px; background:#fff; box-shadow:none; resize:none; font-size:14px; color:#333;"></textarea>
                                     </div>
 
-                                    <button type="submit" class="btn w-100" id="btnBookDemo"
-                                        style="background: linear-gradient(135deg, #086AD8, #00C6FF); color:#fff; font-weight:700; font-size:15px; padding:14px; border-radius:10px; border:none; box-shadow:0 8px 20px rgba(8,106,216,0.3); text-transform:uppercase; letter-spacing:1px; transition:all 0.3s ease;">
-                                        <span class="spinner-border spinner-border-sm d-none" id="bookDemoSpinner"
-                                            role="status" aria-hidden="true" style="margin-right:8px;"></span>
-                                        Confirm Booking
-                                    </button>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn text-white" id="btnBookDemo"
+                                            style="background: linear-gradient(135deg, #086AD8, #00C6FF); height: 48px; padding: 0 35px; border-radius: 6px; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; border: none; box-shadow: 0 8px 18px rgba(8,106,216,0.3); transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; min-width: 220px;">
+                                            <span class="spinner-border spinner-border-sm d-none" id="bookDemoSpinner"
+                                                role="status" aria-hidden="true" style="margin-right:8px;"></span>
+                                            Confirm Booking
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -3914,7 +3909,7 @@
 
     <!-- Global Project Enquiry Modal -->
     <div class="modal fade" id="projectEnquiryModal" tabindex="-1" role="dialog" aria-hidden="true"
-        style="z-index: 1060;">
+        style="z-index: 99999 !important;">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 440px; margin: 1.75rem auto;">
             <div class="modal-content"
                 style="border-radius:20px; border:none; box-shadow:0 25px 60px rgba(0,0,0,0.25); overflow: hidden; position: relative;">
@@ -3923,7 +3918,7 @@
                 <div class="modal-header d-block text-center"
                     style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding: 25px 20px 20px 20px; border: none; position: relative; border-radius: 20px 20px 0 0;">
                     <button type="button" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"
-                        style="position: absolute; top: 14px; right: 14px; background: rgba(255, 255, 255, 0.25); color: #ffffff; border: none; border-radius: 50%; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; cursor: pointer; z-index: 20; outline: none; padding: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.15);"
+                        style="position: absolute; top: 14px; right: 14px; background: rgba(255, 255, 255, 0.25); color: #ffffff; border: none; border-radius: 50%; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; cursor: pointer; z-index: 20; outline: none; padding: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.15);"
                         onmouseover="this.style.background='rgba(255,255,255,0.45)'"
                         onmouseout="this.style.background='rgba(255,255,255,0.25)'">
                         <span aria-hidden="true" style="margin-top: -2px;">&times;</span>
@@ -3945,7 +3940,7 @@
                 <div class="modal-body" style="padding: 25px 22px; background: #f8f9fa;">
                     <div id="projectEnquiryAlert" class="mb-3 text-center"
                         style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;"></div>
-                    <form id="projectEnquiryForm">
+                    <form id="projectEnquiryForm" action="javascript:void(0);" onsubmit="return false;">
                         <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>"
                             value="<?= $this->security->get_csrf_hash() ?>">
                         <input type="hidden" name="project_id" id="modal_project_id">
@@ -3995,10 +3990,12 @@
                                 style="border: 1px solid #cbd5e1; border-radius: 10px; background: #fff; box-shadow: none; font-size: 14px; color: #333; padding: 10px 14px;"></textarea>
                         </div>
 
-                        <button type="submit" id="btnProjectEnquirySubmit" class="btn text-white w-100"
-                            style="background: linear-gradient(135deg, #086AD8, #00C6FF); border-radius:30px; height:48px; font-weight:700; font-size:15px; letter-spacing:0.5px; box-shadow: 0 8px 18px rgba(8,106,216,0.3); border:none; transition: all 0.3s ease;">
-                            Send Enquiry <i class="fa fa-paper-plane ml-1"></i>
-                        </button>
+                        <div class="text-center">
+                            <button type="submit" id="btnProjectEnquirySubmit" class="btn text-white"
+                                style="background: linear-gradient(135deg, #086AD8, #00C6FF); border-radius:6px; height:48px; padding: 0 35px; font-weight:700; font-size:15px; letter-spacing:0.5px; box-shadow: 0 8px 18px rgba(8,106,216,0.3); border:none; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; min-width: 220px;">
+                                Send Enquiry <i class="fa fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -4007,44 +4004,96 @@
 
     <script>
         function openProjectEnquiryModal(id, title) {
-            $('#modal_project_id').val(id);
-            $('#modal_project_name').val(title);
-            $('#modal_project_name_display').text(title);
-            $('#projectEnquiryAlert').hide();
-            $('#projectEnquiryForm')[0].reset();
-            $('#projectEnquiryModal').modal('show');
+            id = id || '';
+            title = title || 'Project Enquiry';
+            if (typeof $ !== 'undefined' && $('#projectEnquiryAlert').length) {
+                $('#projectEnquiryAlert').hide();
+                if ($('#projectEnquiryForm').length) {
+                    $('#projectEnquiryForm')[0].reset();
+                }
+                $('#modal_project_id').val(id);
+                $('#modal_project_name').val(title);
+                $('#modal_project_name_display').text(title);
+                $('#projectEnquiryModal').modal('show');
+            } else if (typeof jQuery !== 'undefined') {
+                jQuery('#projectEnquiryAlert').hide();
+                if (jQuery('#projectEnquiryForm').length) {
+                    jQuery('#projectEnquiryForm')[0].reset();
+                }
+                jQuery('#modal_project_id').val(id);
+                jQuery('#modal_project_name').val(title);
+                jQuery('#modal_project_name_display').text(title);
+                jQuery('#projectEnquiryModal').modal('show');
+            }
         }
 
-        $('#projectEnquiryForm').on('submit', function (e) {
-            e.preventDefault();
-            var btn = $('#btnProjectEnquirySubmit');
-            var originalText = btn.html();
-            btn.html('<i class="fa fa-spinner fa-spin"></i> Submitting...').prop('disabled', true);
-
-            $.ajax({
-                url: '<?= base_url('Home/submitProjectEnquiry') ?>',
-                type: 'POST',
-                data: $(this).serialize(),
-                dataType: 'json',
-                success: function (res) {
-                    btn.html(originalText).prop('disabled', false);
-                    var alertBox = $('#projectEnquiryAlert');
-                    if (res.status == 'success') {
-                        alertBox.removeClass('alert-danger alert-warning').addClass('alert alert-success').html('<i class="fa fa-check-circle mr-1"></i> ' + res.msg).show();
-                        $('#projectEnquiryForm')[0].reset();
-                        setTimeout(function () {
-                            alertBox.hide();
-                            $('#projectEnquiryModal').modal('hide');
-                        }, 3000);
-                    } else {
-                        alertBox.removeClass('alert-success alert-warning').addClass('alert alert-danger').html('<i class="fa fa-exclamation-triangle mr-1"></i> ' + res.msg).show();
-                    }
-                },
-                btn.html(originalText).prop('disabled', false);
-                $('#projectEnquiryAlert').removeClass('alert-success alert-warning').addClass('alert alert-danger').html('<i class="fa fa-exclamation-circle mr-1"></i> Something went wrong. Please try again.').show();
+        (function initProjectEnquiryForm() {
+            if (typeof jQuery === 'undefined') {
+                setTimeout(initProjectEnquiryForm, 50);
+                return;
             }
+            jQuery(document).ready(function ($) {
+                $(document).off('submit', '#projectEnquiryForm').on('submit', '#projectEnquiryForm', function (e) {
+                    e.preventDefault();
+                    var btn = $('#btnProjectEnquirySubmit');
+                    var originalText = btn.html();
+                    btn.html('<i class="fa fa-spinner fa-spin"></i> Submitting...').prop('disabled', true);
+
+                    var rawUrl = '<?= site_url('Home/submitProjectEnquiry') ?>';
+                    var targetUrl = rawUrl;
+                    try {
+                        if (rawUrl.indexOf('://') !== -1) {
+                            var parsed = new URL(rawUrl);
+                            targetUrl = parsed.pathname + parsed.search;
+                        }
+                    } catch (err) {
+                        targetUrl = rawUrl;
+                    }
+
+                    $.ajax({
+                        url: targetUrl,
+                        type: 'POST',
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            btn.html(originalText).prop('disabled', false);
+                            var res = {};
+                            try {
+                                res = (typeof response === 'object') ? response : JSON.parse(response);
+                            } catch (e) {
+                                res = { status: 'error', msg: 'Invalid response from server' };
+                            }
+                            var alertBox = $('#projectEnquiryAlert');
+                            if (res && res.status == 'success') {
+                                alertBox.removeClass('alert-danger alert-warning').addClass('alert alert-success').html('<i class="fa fa-check-circle mr-1"></i> ' + res.msg).show();
+                                $('#projectEnquiryForm')[0].reset();
+                                setTimeout(function () {
+                                    alertBox.hide();
+                                    $('#projectEnquiryModal').modal('hide');
+                                }, 3000);
+                            } else {
+                                var errMsg = (res && res.msg) ? res.msg : 'Failed to submit enquiry. Please try again.';
+                                alertBox.removeClass('alert-success alert-warning').addClass('alert alert-danger').html('<i class="fa fa-exclamation-triangle mr-1"></i> ' + errMsg).show();
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            btn.html(originalText).prop('disabled', false);
+                            var alertBox = $('#projectEnquiryAlert');
+                            var serverMsg = 'Something went wrong. Please try again.';
+                            try {
+                                if (xhr.responseText) {
+                                    var errJson = JSON.parse(xhr.responseText);
+                                    if (errJson && errJson.msg) {
+                                        serverMsg = errJson.msg;
+                                    }
+                                }
+                            } catch(e) {}
+                            alertBox.removeClass('alert-success alert-warning').addClass('alert alert-danger').html('<i class="fa fa-exclamation-circle mr-1"></i> ' + serverMsg).show();
+                        }
+                    });
+                    return false;
+                });
             });
-        });
+        })();
     </script>
 </body>
 
