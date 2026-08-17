@@ -2519,22 +2519,18 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center"
                                     style="gap: 6px; margin-top: auto; width: 100%;">
+                                    <a href="https://api.whatsapp.com/send?phone=91<?= $this->data['mobile_no'] ?? '9198483820' ?>&text=Hello%20<?= urlencode($expert->name) ?>" target="_blank" rel="noopener"
+                                        title="WhatsApp" aria-label="WhatsApp"
+                                        style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
+                                            class="fab fa-whatsapp"></i></a>
                                     <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" rel="noopener"
-                                        title="Facebook"
+                                        title="Facebook" aria-label="Facebook"
                                         style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
                                             class="fab fa-facebook-f"></i></a>
                                     <a href="https://www.instagram.com/digicoderstech" target="_blank" rel="noopener"
-                                        title="Instagram"
+                                        title="Instagram" aria-label="Instagram"
                                         style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
                                             class="fab fa-instagram"></i></a>
-                                    <a href="https://www.linkedin.com/company/digicoders/" target="_blank" rel="noopener"
-                                        title="LinkedIn"
-                                        style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://www.youtube.com/@digicoders" target="_blank" rel="noopener"
-                                        title="YouTube"
-                                        style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
-                                            class="fab fa-youtube"></i></a>
                                 </div>
                             </div>
                         </div>

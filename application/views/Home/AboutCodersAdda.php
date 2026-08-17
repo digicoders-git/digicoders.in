@@ -85,7 +85,7 @@
                                             <div class="middle-dot"></div>
                                             <div class="middle-dot dot-2"></div>
                                             <a href="https://www.codersadda.com/Home/" target="_blank">
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                                             <div class="middle-dot"></div>
                                             <div class="middle-dot dot-2"></div>
                                             <a href="https://www.codersadda.com/Home/" target="_blank">
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
                                             <div class="middle-dot"></div>
                                             <div class="middle-dot dot-2"></div>
                                             <a href="https://www.codersadda.com/Home/" target="_blank">
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -157,7 +157,7 @@
                                             <div class="middle-dot"></div>
                                             <div class="middle-dot dot-2"></div>
                                             <a href="https://www.codersadda.com/Home/" target="_blank">
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -181,7 +181,7 @@
                                             <div class="middle-dot"></div>
                                             <div class="middle-dot dot-2"></div>
                                             <a href="https://www.codersadda.com/Home/" target="_blank">
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -205,7 +205,7 @@
                                             <div class="middle-dot"></div>
                                             <div class="middle-dot dot-2"></div>
                                             <a href="https://www.codersadda.com/Home/" target="_blank">
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -228,7 +228,7 @@
                                             <div class="middle-dot"></div>
                                             <div class="middle-dot dot-2"></div>
                                             <a href="https://www.codersadda.com/Home/" target="_blank">
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -251,7 +251,7 @@
                                             <div class="middle-dot"></div>
                                             <div class="middle-dot dot-2"></div>
                                             <a href="https://www.codersadda.com/Home/" target="_blank">
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </a>
                                         </div>
                                     </div>

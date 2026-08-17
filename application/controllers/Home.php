@@ -342,15 +342,31 @@ class Home extends CI_Controller
 		while (ob_get_level()) {
 			ob_end_clean();
 		}
-		header('Content-Type: application/json');
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('mobile', 'Mobile', 'required|numeric|exact_length[10]');
+
+		if ($this->form_validation->run() == FALSE) {
+			echo json_encode(array('status' => 'error', 'message' => 'Please fill Name and valid 10-digit Mobile number.', 'msg' => 'Please fill Name and valid 10-digit Mobile number.'));
+			exit;
+		}
+
+		$software_id = $this->input->post('software_id');
+		$software_name = $this->input->post('software_name');
+
+		if (empty($software_name) && !empty($software_id)) {
+			$sw = $this->db->get_where('software_products', array('id' => $software_id))->row();
+			if ($sw) {
+				$software_name = $sw->title;
+			}
+		}
 
 		$data = array(
-			'software_id' => $this->input->post('software_id'),
-			'software_name' => $this->input->post('software_name'),
-			'name' => $this->input->post('name'),
-			'mobile' => $this->input->post('mobile'),
-			'email' => $this->input->post('email'),
-			'message' => $this->input->post('message'),
+			'software_id' => $software_id,
+			'software_name' => $software_name,
+			'name' => trim((string)$this->input->post('name')),
+			'mobile' => trim((string)$this->input->post('mobile')),
+			'email' => trim((string)$this->input->post('email')),
+			'message' => trim((string)$this->input->post('message')),
 			'created_at' => date('Y-m-d H:i:s')
 		);
 
@@ -517,7 +533,7 @@ class Home extends CI_Controller
 	}
 	public function lead_management_digicoder_in_lucknow()
 	{
-		$this->load->view('Home/leadsoftware');
+		$this->load->view('Home/Leadsoftware');
 	}
 	public function fee_management_digicoder_in_lucknow()
 	{

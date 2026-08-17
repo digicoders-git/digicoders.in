@@ -604,42 +604,102 @@
         .contact-info-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 30px;
+            border-radius: 18px;
+            padding: 32px 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.07);
         }
 
         .c-info-item {
             display: flex;
             align-items: flex-start;
-            gap: 14px;
-            margin-bottom: 20px;
+            gap: 16px;
+            margin-bottom: 18px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .c-info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .c-info-item:hover {
+            background: #f8fafc;
+            transform: translateX(4px);
         }
 
         .c-info-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: #046a38;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #046a38 0%, #00964c 100%);
             color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 15px;
+            font-size: 17px;
             flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(4,106,56,0.25);
         }
 
         .c-info-lbl {
-            font-size: 12px;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
             color: #64748b;
-            margin: 0;
+            margin: 0 0 2px 0;
         }
 
         .c-info-val {
-            font-size: 13.5px;
+            font-size: 14px;
             font-weight: 700;
             color: #0f172a;
             margin: 0;
-            line-height: 1.4;
+            line-height: 1.45;
+        }
+
+        .c-info-val a {
+            color: #0f172a;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .c-info-val a:hover {
+            color: #046a38;
+        }
+
+        .contact-map-wrapper {
+            border-radius: 18px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 420px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            background: #f8fafc;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .contact-map-wrapper:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+        }
+
+        .contact-map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 420px;
+            border: 0;
+            display: block;
         }
 
         /* FORM */
@@ -1418,12 +1478,10 @@
                                 </div>
                                 <h5 class="team-name" title="<?= htmlspecialchars($expert->name, ENT_QUOTES) ?>"><?= htmlspecialchars($expert->name) ?></h5>
                                 <p class="team-role"><?= htmlspecialchars($expert->role) ?></p>
-                                <div class="team-socials mt-auto">
+                                 <div class="team-socials mt-auto">
                                     <a href="https://api.whatsapp.com/send?phone=91<?= $this->data['mobile_no'] ?? '9198483820' ?>&text=Hello%20<?= urlencode($expert->name) ?>" target="_blank" aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                                     <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                                     <a href="https://www.instagram.com/digicoderstech" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                    <a href="https://www.linkedin.com/company/digicoders/" target="_blank" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://www.youtube.com/@digicoders" target="_blank" aria-label="YouTube" title="YouTube"><i class="fab fa-youtube"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -1551,12 +1609,12 @@
     =========================================== -->
     <section id="contact" class="py-5" style="background: #ffffff;">
         <div class="container py-3">
-            <div class="row g-4">
+            <div class="row g-4 align-items-stretch">
                 <!-- Left Address Info -->
-                <div class="col-lg-5 col-md-12">
-                    <div class="contact-info-card" style="height: 100%;">
-                        <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Get In <span style="color: #046a38;">Touch</span></h3>
-                        <p style="font-size: 13.5px; color: #64748b; margin-bottom: 25px;">We'd love to hear from you</p>
+                <div class="col-lg-5 col-md-12 d-flex">
+                    <div class="contact-info-card w-100">
+                        <h3 style="font-size: 26px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Get In <span style="color: #046a38;">Touch</span></h3>
+                        <p style="font-size: 13.5px; color: #64748b; margin-bottom: 24px;">We'd love to hear from you. Visit our office or reach out to us directly.</p>
 
                         <div class="c-info-item">
                             <div class="c-info-icon"><i class="fas fa-map-marker-alt"></i></div>
@@ -1570,7 +1628,7 @@
                             <div class="c-info-icon"><i class="fas fa-phone-alt"></i></div>
                             <div>
                                 <p class="c-info-lbl">Phone</p>
-                                <p class="c-info-val">+91 919 848 3820 | 0522-4235604</p>
+                                <p class="c-info-val"><a href="tel:+919198483820">+91 919 848 3820</a> | <a href="tel:05224235604">0522-4235604</a></p>
                             </div>
                         </div>
 
@@ -1578,7 +1636,7 @@
                             <div class="c-info-icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <p class="c-info-lbl">Email</p>
-                                <p class="c-info-val">info@digicoders.in</p>
+                                <p class="c-info-val"><a href="mailto:info@digicoders.in">info@digicoders.in</a></p>
                             </div>
                         </div>
 
@@ -1593,8 +1651,8 @@
                 </div>
 
                 <!-- Right Map Container -->
-                <div class="col-lg-7 col-md-12">
-                    <div style="border-radius: 20px; overflow: hidden; height: 100%; min-height: 380px; border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+                <div class="col-lg-7 col-md-12 d-flex">
+                    <div class="contact-map-wrapper w-100">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d211.37018978878302!2d80.9493697!3d26.9044997!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd90f852511b%3A0xea3004cdf494ecbb!2sDigiCoders%20Technologies%20Private%20Limited%2C%20Best%20Software%2FWebsite%2FMobile%20App%20Development%20Company%20in%20Lucknow!5e1!3m2!1sen!2sin!4v1785160700575!5m2!1sen!2sin"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>

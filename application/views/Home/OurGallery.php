@@ -50,7 +50,7 @@
                                         <img class="lazy gallery-img lazy " style="object-fit:cover !important ; object-position:center;" src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public/uploads/gallery/').$gallery->image; ?>" alt="digicoders-gallery" />
                                         <div class="ht-overlay"></div>
                                         <div class="overlay-icon">
-                                            <i class="far fa-search"></i>
+                                            <i class="fa fa-search"></i>
                                         </div>
                                     </div>
 

@@ -88,7 +88,7 @@ if (!function_exists('send_form_email')) {
             $date = "";
             $time = "";
             foreach ($data as $key => $value) {
-                if ($key == 'status') {
+                if ($key == 'status' || $key == 'csrf_test_name') {
                     continue;
                 }
                 if ($key == 'date') {
@@ -99,17 +99,31 @@ if (!function_exists('send_form_email')) {
                     $time = $value;
                     continue;
                 }
+                if ($key == 'created_at' || $key == 'add_date') {
+                    $date = $value;
+                    continue;
+                }
 
                 $label = ucfirst(str_replace('_', ' ', $key));
                 if ($key == 'appaly_for' || $key == 'apply_for') {
                     $label = "Applied For Position";
+                } else if ($key == 'software_name') {
+                    $label = "Software Requested";
+                } else if ($key == 'software_id') {
+                    continue; // Skip raw DB ID if software_name is present
+                } else if ($key == 'project_name') {
+                    $label = "Project Requested";
+                } else if ($key == 'project_id') {
+                    continue; // Skip raw DB ID if project_name is present
+                } else if ($key == 'req_date') {
+                    $label = "Requested Date";
                 }
 
-                $display_value = $value;
+                $raw_val = ($value !== null && $value !== '') ? (string)$value : 'N/A';
                 if ($key == 'resume') {
-                    $display_value = "<a href='" . base_url('public/uploads/career/' . $value) . "' target='_blank' class='btn-resume' style='display: inline-block; background: #006DAB; color: #ffffff; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; box-shadow: 0 3px 10px rgba(0,109,171,0.2); word-break: break-all;'>📄 View / Download Resume PDF (" . htmlspecialchars($value) . ")</a>";
+                    $display_value = "<a href='" . base_url('public/uploads/career/' . $raw_val) . "' target='_blank' class='btn-resume' style='display: inline-block; background: #006DAB; color: #ffffff; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; box-shadow: 0 3px 10px rgba(0,109,171,0.2); word-break: break-all;'>📄 View / Download Resume PDF (" . htmlspecialchars($raw_val) . ")</a>";
                 } else {
-                    $display_value = nl2br(htmlspecialchars($value));
+                    $display_value = nl2br(htmlspecialchars($raw_val));
                 }
 
                 $message .= "

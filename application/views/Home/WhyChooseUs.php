@@ -71,7 +71,7 @@
                                             </div>
                                             <div class="box-images-arrow">
                                                 <span class="button-text">Discover now</span>
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="box-images-arrow">
                                                 <span class="button-text">Discover now</span>
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                             </div>
                                             <div class="box-images-arrow">
                                                 <span class="button-text">Discover now</span>
-                                                <i class="far fa-long-arrow-right"></i>
+                                                <i class="fas fa-arrow-right"></i>
                                             </div>
                                         </div>
                                     </div>

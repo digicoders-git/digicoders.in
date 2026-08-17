@@ -52,7 +52,7 @@
                                         <img src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public/uploads/news/').$news->image ?>" class="news-img lazy" title="digicoders-news" alt="digicoders-news" style="height:700px"/>
                                         <div class="ht-overlay"></div>
                                         <div class="overlay-icon">
-                                            <i class="far fa-search"></i>
+                                            <i class="fa fa-search"></i>
                                         </div>
                                     </div>
                               
