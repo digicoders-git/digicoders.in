@@ -695,8 +695,8 @@ class Admin extends MY_Controller
 	{
 		if (!empty($_FILES['image']['name'])) {
 			$config['upload_path'] = './public/uploads/summernote/';
-			$config['allowed_types'] = 'jpg|jpeg|png|gif|webp|JPG|JPEG|PNG|GIF|WEBP';
-			$config['max_size'] = 5120; // 5MB in KB
+			$config['allowed_types'] = 'jpg|jpeg|png|gif|webp|svg|JPG|JPEG|PNG|GIF|WEBP|SVG';
+			$config['max_size'] = 10240; // 10MB in KB
 
 			$ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 			$clean_name = url_title(pathinfo($_FILES['image']['name'], PATHINFO_FILENAME), '-', TRUE);
@@ -714,11 +714,13 @@ class Admin extends MY_Controller
 			$this->upload->initialize($config);
 
 			if (!$this->upload->do_upload('image')) {
-				echo $this->upload->display_errors();
+				echo strip_tags($this->upload->display_errors());
 			} else {
 				$data = $this->upload->data();
 				echo base_url('public/uploads/summernote/') . $data['file_name'];
 			}
+		} else {
+			echo "No image provided.";
 		}
 	}
 

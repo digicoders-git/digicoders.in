@@ -362,30 +362,138 @@
             text-center;
         }
 
-        /* FAQ Accordion Styling */
-        .faq-accordion .accordion-item {
-            border: 1px solid #e2e8f0;
-            border-radius: 6px !important;
-            margin-bottom: 12px;
-            overflow: hidden;
+        /* Dynamic Blog FAQ Section Styling */
+        .blog-faq-section {
+            margin-top: 45px;
+            padding-top: 30px;
+            border-top: 1px dashed #e2e8f0;
         }
-        .faq-accordion .accordion-button {
-            font-weight: 600;
-            color: #0f172a;
-            background-color: #ffffff;
-            padding: 18px 20px;
+        .blog-faq-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .blog-faq-icon-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.1);
+        }
+        .blog-faq-title-wrap h3 {
+            font-size: 1.45rem !important;
+            font-weight: 700 !important;
+            color: #0f172a !important;
+            margin: 0 !important;
+            line-height: 1.3 !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+        .blog-faq-title-wrap p {
+            font-size: 0.875rem !important;
+            color: #64748b !important;
+            margin: 3px 0 0 0 !important;
+        }
+        .blog-faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .blog-faq-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 12px !important;
+            overflow: hidden;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+        }
+        .blog-faq-item:hover {
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+        }
+        .blog-faq-item.is-open {
+            border-color: #bfdbfe !important;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+        }
+        .blog-faq-btn {
+            width: 100% !important;
+            background: #ffffff !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            padding: 18px 22px !important;
+            margin: 0 !important;
+            font-size: 1.05rem !important;
+            font-weight: 600 !important;
+            color: #1e293b !important;
+            text-align: left !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 16px !important;
+            cursor: pointer !important;
+            transition: background-color 0.2s ease, color 0.2s ease !important;
+            border-radius: 12px !important;
+            line-height: 1.5 !important;
+        }
+        .blog-faq-btn:hover {
+            background-color: #f8fafc !important;
+            color: #2563eb !important;
+        }
+        .blog-faq-btn:focus {
+            outline: none !important;
             box-shadow: none !important;
         }
-        .faq-accordion .accordion-button:not(.collapsed) {
-            color: #2563eb;
-            background-color: #f8fafc;
+        .blog-faq-btn:not(.collapsed), 
+        .blog-faq-btn[aria-expanded="true"] {
+            background-color: #f0f7ff !important;
+            color: #2563eb !important;
+            border-bottom-left-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
         }
-        .faq-accordion .accordion-body {
+        .blog-faq-btn-text {
+            flex-grow: 1;
+        }
+        .blog-faq-arrow {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease, color 0.25s ease;
+        }
+        .blog-faq-btn:hover .blog-faq-arrow {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+        .blog-faq-btn:not(.collapsed) .blog-faq-arrow,
+        .blog-faq-btn[aria-expanded="true"] .blog-faq-arrow {
+            transform: rotate(180deg);
+            background: #2563eb;
+            color: #ffffff;
+        }
+        .blog-faq-content {
+            background: #ffffff;
+            border-top: 1px solid #edf2f7;
+            padding: 20px 22px 24px;
             color: #475569;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            padding: 18px 20px;
-            background-color: #ffffff;
+            font-size: 0.975rem;
+            line-height: 1.75;
+        }
+        .blog-faq-content p:last-child {
+            margin-bottom: 0;
         }
 
         /* Author Box */
@@ -476,30 +584,52 @@
                     <article class="article-content bg-white p-4 p-md-5 rounded-4 border" id="article-body">
                         <?php 
                             $content_html = !empty($blog->content) ? $blog->content : $blog->full_discription;
+                            if (!empty($content_html)) {
+                                $content_html = preg_replace('/src=["\'](?!https?:\/\/|\/|data:)([^"\']+)["\']/i', 'src="' . base_url('$1') . '"', $content_html);
+                            }
                             echo $content_html;
                         ?>
                     </article>
 
                     <!-- Dynamic FAQs Section (if present) -->
                     <?php if (!empty($faqs_data)): ?>
-                        <section class="mt-5 pt-3">
-                            <div class="d-flex align-items-center gap-2 mb-4">
-                                <i class="fa fa-question-circle text-primary fs-3"></i>
-                                <h3 class="fw-bold mb-0 text-slate-800" style="color: #0f172a;">Frequently Asked Questions</h3>
+                        <section class="blog-faq-section">
+                            <div class="blog-faq-header">
+                                <div class="blog-faq-icon-badge">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div class="blog-faq-title-wrap">
+                                    <h3>Frequently Asked Questions</h3>
+                                    <p>Find quick answers to common questions related to this article</p>
+                                </div>
                             </div>
-                            <div class="accordion faq-accordion" id="blogFaqAccordion">
+
+                            <div class="blog-faq-container" id="blogFaqAccordion">
                                 <?php foreach ($faqs_data as $index => $faq): 
                                     $q_id = "faq_collapse_" . $index;
                                     $h_id = "faq_heading_" . $index;
+                                    $is_first = ($index === 0);
                                 ?>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="<?= $h_id ?>">
-                                            <button class="accordion-button <?= ($index !== 0) ? 'collapsed' : '' ?>" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $q_id ?>" aria-expanded="<?= ($index === 0) ? 'true' : 'false' ?>" aria-controls="<?= $q_id ?>">
-                                                <?= htmlspecialchars($faq['question'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                                    <div class="blog-faq-item <?= $is_first ? 'is-open' : '' ?>">
+                                        <div id="<?= $h_id ?>">
+                                            <button class="blog-faq-btn <?= !$is_first ? 'collapsed' : '' ?>" 
+                                                    type="button" 
+                                                    data-toggle="collapse" 
+                                                    data-target="#<?= $q_id ?>" 
+                                                    data-bs-toggle="collapse" 
+                                                    data-bs-target="#<?= $q_id ?>" 
+                                                    aria-expanded="<?= $is_first ? 'true' : 'false' ?>" 
+                                                    aria-controls="<?= $q_id ?>">
+                                                <span class="blog-faq-btn-text"><?= htmlspecialchars($faq['question'] ?? '', ENT_QUOTES, 'UTF-8') ?></span>
+                                                <span class="blog-faq-arrow"><i class="fas fa-chevron-down"></i></span>
                                             </button>
-                                        </h2>
-                                        <div id="<?= $q_id ?>" class="accordion-collapse collapse <?= ($index === 0) ? 'show' : '' ?>" aria-labelledby="<?= $h_id ?>" data-bs-parent="#blogFaqAccordion">
-                                            <div class="accordion-body">
+                                        </div>
+                                        <div id="<?= $q_id ?>" 
+                                             class="collapse <?= $is_first ? 'show' : '' ?>" 
+                                             aria-labelledby="<?= $h_id ?>" 
+                                             data-parent="#blogFaqAccordion"
+                                             data-bs-parent="#blogFaqAccordion">
+                                            <div class="blog-faq-content">
                                                 <?= nl2br(htmlspecialchars($faq['answer'] ?? '', ENT_QUOTES, 'UTF-8')) ?>
                                             </div>
                                         </div>
@@ -634,6 +764,61 @@
 
                 li.appendChild(a);
                 tocList.appendChild(li);
+            });
+        });
+
+        // Dynamic Blog FAQ Accordion Interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqButtons = document.querySelectorAll('.blog-faq-btn');
+            
+            faqButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('data-target') || this.getAttribute('data-bs-target');
+                    const targetEl = targetId ? document.querySelector(targetId) : null;
+                    const parentItem = this.closest('.blog-faq-item');
+                    
+                    // Toggle manually if jQuery Bootstrap collapse is not active
+                    if (targetEl && typeof $ === 'undefined') {
+                        const isShowing = targetEl.classList.contains('show');
+                        document.querySelectorAll('.blog-faq-container .collapse').forEach(c => c.classList.remove('show'));
+                        document.querySelectorAll('.blog-faq-btn').forEach(b => {
+                            b.classList.add('collapsed');
+                            b.setAttribute('aria-expanded', 'false');
+                        });
+                        document.querySelectorAll('.blog-faq-item').forEach(i => i.classList.remove('is-open'));
+
+                        if (!isShowing) {
+                            targetEl.classList.add('show');
+                            this.classList.remove('collapsed');
+                            this.setAttribute('aria-expanded', 'true');
+                            if (parentItem) parentItem.classList.add('is-open');
+                        }
+                        return;
+                    }
+
+                    // Update UI active state on click / Bootstrap collapse events
+                    setTimeout(() => {
+                        document.querySelectorAll('.blog-faq-item').forEach(item => {
+                            const button = item.querySelector('.blog-faq-btn');
+                            const collapse = item.querySelector('.collapse');
+                            const isOpen = collapse && collapse.classList.contains('show');
+                            
+                            if (isOpen) {
+                                item.classList.add('is-open');
+                                if (button) {
+                                    button.classList.remove('collapsed');
+                                    button.setAttribute('aria-expanded', 'true');
+                                }
+                            } else {
+                                item.classList.remove('is-open');
+                                if (button) {
+                                    button.classList.add('collapsed');
+                                    button.setAttribute('aria-expanded', 'false');
+                                }
+                            }
+                        });
+                    }, 150);
+                });
             });
         });
     </script>

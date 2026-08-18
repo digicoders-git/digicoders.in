@@ -73,6 +73,9 @@ if (!empty($table)) {
 		case "blog":
 			$img_file = !empty($userdata->img) ? $userdata->img : $userdata->image;
 			$blog_content = !empty($userdata->content) ? $userdata->content : $userdata->full_discription;
+			if (!empty($blog_content)) {
+				$blog_content = preg_replace('/src=["\'](?!https?:\/\/|\/|data:)([^"\']+)["\']/i', 'src="' . base_url('$1') . '"', $blog_content);
+			}
 			$blog_meta = !empty($userdata->meta_description) ? $userdata->meta_description : $userdata->short_discription;
 			?>
 			<form action="<?= base_url() ?>Admin/ManageBlog/Edit" enctype="multipart/form-data" method="POST" class="form" id="edit-blog-form">

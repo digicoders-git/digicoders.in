@@ -55,6 +55,14 @@
 	function uploadSummernoteImage(file, editor) {
 		var data = new FormData();
 		data.append("image", file);
+		var csrfName = "<?= $this->security->get_csrf_token_name(); ?>";
+		var csrfHash = "<?= $this->security->get_csrf_hash(); ?>";
+		var csrfInput = $('input[name="' + csrfName + '"]');
+		if (csrfInput.length > 0 && csrfInput.val()) {
+			csrfHash = csrfInput.val();
+		}
+		data.append(csrfName, csrfHash);
+
 		$.ajax({
 			url: "<?= base_url('Admin/UploadSummernoteImage') ?>",
 			cache: false,
@@ -63,10 +71,16 @@
 			data: data,
 			type: "POST",
 			success: function(url) {
-				$(editor).summernote('insertImage', url);
+				var trimmedUrl = (url || '').trim();
+				if (trimmedUrl.indexOf('http') === 0 || trimmedUrl.indexOf('/') === 0) {
+					$(editor).summernote('insertImage', trimmedUrl);
+				} else {
+					alert("Image upload error: " + trimmedUrl);
+				}
 			},
-			error: function(data) {
-				console.log(data);
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.error("Summernote image upload error:", textStatus, errorThrown);
+				alert("Image upload failed. Please try again.");
 			}
 		});
 	}
@@ -89,14 +103,23 @@
           $('#modal-body .summernote').summernote({
             placeholder: 'Write Here ...',
             tabsize: 2,
-            height: 200,
+            height: 250,
             callbacks: {
               onImageUpload: function(files) {
                 for (let i = 0; i < files.length; i++) {
                   uploadSummernoteImage(files[i], this);
                 }
               }
-            }
+            },
+            toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline', 'clear']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['table', ['table']],
+              ['insert', ['link', 'picture', 'video']],
+              ['view', ['fullscreen', 'codeview', 'help']]
+            ]
           });
         }
       }
