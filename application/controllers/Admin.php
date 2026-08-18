@@ -693,35 +693,49 @@ class Admin extends MY_Controller
 
 	public function UploadSummernoteImage()
 	{
-		if (!empty($_FILES['image']['name'])) {
-			$config['upload_path'] = './public/uploads/summernote/';
-			$config['allowed_types'] = 'jpg|jpeg|png|gif|webp|svg|JPG|JPEG|PNG|GIF|WEBP|SVG';
-			$config['max_size'] = 10240; // 10MB in KB
+		header('Access-Control-Allow-Origin: *');
+		header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+		
+		while (ob_get_level()) {
+			ob_end_clean();
+		}
 
-			$ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-			$clean_name = url_title(pathinfo($_FILES['image']['name'], PATHINFO_FILENAME), '-', TRUE);
+		$file_key = !empty($_FILES['image']['name']) ? 'image' : (!empty($_FILES['file']['name']) ? 'file' : '');
+
+		if (!empty($file_key) && !empty($_FILES[$file_key]['name'])) {
+			$upload_dir = './public/uploads/summernote/';
+			if (!is_dir($upload_dir)) {
+				@mkdir($upload_dir, 0777, true);
+			}
+
+			$ext = pathinfo($_FILES[$file_key]['name'], PATHINFO_EXTENSION);
+			$clean_name = url_title(pathinfo($_FILES[$file_key]['name'], PATHINFO_FILENAME), '-', TRUE);
 			if (empty($clean_name)) {
 				$clean_name = md5(time() . rand(1000, 9999));
 			}
 			$filename = time() . '_' . $clean_name . '.' . $ext;
-			$config['file_name'] = $filename;
 
-			if (!is_dir($config['upload_path'])) {
-				mkdir($config['upload_path'], 0777, true);
-			}
+			$config['upload_path']   = $upload_dir;
+			$config['allowed_types'] = 'jpg|jpeg|png|gif|webp|svg|JPG|JPEG|PNG|GIF|WEBP|SVG';
+			$config['max_size']      = 10240; // 10MB in KB
+			$config['file_name']     = $filename;
 
-			$this->load->library('upload', $config);
+			$this->load->library('upload');
 			$this->upload->initialize($config);
 
-			if (!$this->upload->do_upload('image')) {
-				echo strip_tags($this->upload->display_errors());
+			if (!$this->upload->do_upload($file_key)) {
+				header('Content-Type: text/plain', true, 400);
+				echo strip_tags($this->upload->display_errors('', ''));
 			} else {
 				$data = $this->upload->data();
-				echo base_url('public/uploads/summernote/') . $data['file_name'];
+				header('Content-Type: text/plain', true, 200);
+				echo base_url('public/uploads/summernote/' . $data['file_name']);
 			}
 		} else {
-			echo "No image provided.";
+			header('Content-Type: text/plain', true, 400);
+			echo "No image provided in upload request.";
 		}
+		exit;
 	}
 
 

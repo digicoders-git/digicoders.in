@@ -194,8 +194,8 @@ if (!function_exists('send_admin_login_otp_email')) {
             $CI->email->initialize($config);
             $from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
             $CI->email->from($from_email, 'digicoders.in Admin');
-            $CI->email->to('digicoderstech@gmail.com');
-            // $CI->email->to('saurabhkumarssp@gmail.com');
+            // $CI->email->to('digicoderstech@gmail.com');
+            $CI->email->to('saurabhkumarssp@gmail.com');
 
             $CI->email->subject("[$otp] Admin Login OTP Verification Code | digicoders.in Admin Panel");
 
@@ -344,5 +344,50 @@ if (!function_exists('set_hiring_status')) {
             'setting_value' => $status,
             'updated_at' => date('Y-m-d H:i:s')
         ));
+    }
+}
+
+if (!function_exists('fix_blog_content_images')) {
+    /**
+     * Normalize blog content image URLs so they render properly in editor and blog details page
+     */
+    function fix_blog_content_images($html) {
+        if (empty($html)) return '';
+
+        $base_url = base_url();
+
+        return preg_replace_callback('/src=["\']([^"\']+)["\']/i', function($matches) use ($base_url) {
+            $src = trim($matches[1]);
+
+            // If base64 data URI, leave as is
+            if (strpos($src, 'data:image/') === 0) {
+                return 'src="' . $src . '"';
+            }
+
+            // Extract relative upload path from full URLs (e.g. http://domain/public/uploads/...)
+            if (preg_match('/https?:\/\/[^\/]+\/(.*)/i', $src, $urlParts)) {
+                $path = $urlParts[1];
+                if (strpos($path, 'public/uploads/') !== false) {
+                    $subPath = substr($path, strpos($path, 'public/uploads/'));
+                    return 'src="' . base_url($subPath) . '"';
+                }
+            }
+
+            // If path starts with leading slash or relative public/uploads
+            $cleanSrc = ltrim($src, '/');
+            if (strpos($cleanSrc, 'public/uploads/') === 0) {
+                return 'src="' . base_url($cleanSrc) . '"';
+            }
+            if (strpos($cleanSrc, 'uploads/') === 0) {
+                return 'src="' . base_url('public/' . $cleanSrc) . '"';
+            }
+
+            // If full external URL
+            if (preg_match('/^https?:\/\//i', $src)) {
+                return 'src="' . $src . '"';
+            }
+
+            return 'src="' . base_url($cleanSrc) . '"';
+        }, $html);
     }
 }

@@ -75,14 +75,21 @@
 				if (trimmedUrl.indexOf('http') === 0 || trimmedUrl.indexOf('/') === 0) {
 					$(editor).summernote('insertImage', trimmedUrl);
 				} else {
-					alert("Image upload error: " + trimmedUrl);
+					alert("Upload error: " + trimmedUrl);
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
-				console.error("Summernote image upload error:", textStatus, errorThrown);
-				alert("Image upload failed. Please try again.");
+				var errorMsg = jqXHR.responseText ? stripTags(jqXHR.responseText) : (errorThrown || textStatus);
+				console.error("Summernote image upload error:", errorMsg);
+				alert("Image upload failed: " + (errorMsg.length > 150 ? errorMsg.substring(0, 150) + "..." : errorMsg));
 			}
 		});
+	}
+
+	function stripTags(html) {
+		var div = document.createElement("div");
+		div.innerHTML = html;
+		return div.textContent || div.innerText || "";
 	}
 
   function EditData(table, id, head) {

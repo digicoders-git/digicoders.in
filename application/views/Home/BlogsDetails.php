@@ -172,12 +172,15 @@
         .article-content h1, 
         .article-content h2, 
         .article-content h3, 
-        .article-content h4 {
+        .article-content h4,
+        .article-content h5,
+        .article-content h6,
+        [id^="toc-heading-"] {
             color: #0f172a;
             font-weight: 700;
             margin-top: 35px;
             margin-bottom: 16px;
-            scroll-margin-top: 100px;
+            scroll-margin-top: 130px !important;
         }
         .article-content h2 {
             font-size: 1.65rem;
@@ -227,8 +230,6 @@
             background-color: #f1f5f9;
             font-weight: 600;
         }
-
-        /* Sticky Sidebar & Widgets */
         .sticky-sidebar {
             position: sticky;
             top: 100px;
@@ -357,9 +358,9 @@
         .cta-widget {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: #ffffff;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 28px 24px;
-            text-center;
+            text-align: center !important;
         }
 
         /* Dynamic Blog FAQ Section Styling */
@@ -532,7 +533,11 @@
             color: #ffffff !important;
             text-decoration: none;
             font-size: 0.9rem;
+            margin-right: 8px;
             transition: transform 0.2s ease;
+        }
+        .share-btn:last-child {
+            margin-right: 0;
         }
         .share-btn:hover {
             transform: translateY(-3px);
@@ -584,10 +589,7 @@
                     <article class="article-content bg-white p-4 p-md-5 rounded-4 border" id="article-body">
                         <?php 
                             $content_html = !empty($blog->content) ? $blog->content : $blog->full_discription;
-                            if (!empty($content_html)) {
-                                $content_html = preg_replace('/src=["\'](?!https?:\/\/|\/|data:)([^"\']+)["\']/i', 'src="' . base_url('$1') . '"', $content_html);
-                            }
-                            echo $content_html;
+                            echo fix_blog_content_images($content_html);
                         ?>
                     </article>
 
@@ -646,7 +648,7 @@
                             <h5 class="fw-bold mb-1" style="color: #0f172a;">DigiCoders Tech Team</h5>
                             <p class="text-muted small mb-2">We build scalable web applications, mobile apps, and enterprise software solutions to empower businesses worldwide.</p>
                             
-                            <div class="d-flex align-items-center gap-2 mt-2">
+                            <div class="d-flex align-items-center flex-wrap mt-2" style="gap: 10px;">
                                 <span class="small fw-bold text-slate-600 me-2">Share Article:</span>
                                 <a href="https://api.whatsapp.com/send?text=<?= urlencode($blog_title . ' ' . $canonical_url) ?>" target="_blank" class="share-btn btn-whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
                                 <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode($canonical_url) ?>" target="_blank" class="share-btn btn-facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -692,27 +694,11 @@
                             </div>
                         <?php endif; ?>
 
-                        <!-- Keywords / Tags Cloud Widget -->
-                        <?php if (!empty($blog_keywords)): 
-                            $tags_arr = array_filter(array_map('trim', explode(',', $blog_keywords)));
-                        ?>
-                            <?php if (!empty($tags_arr)): ?>
-                                <div class="sidebar-widget">
-                                    <h4 class="widget-title"><i class="fas fa-tags me-2 text-primary"></i> Related Tags</h4>
-                                    <div class="tag-cloud">
-                                        <?php foreach ($tags_arr as $tag_item): ?>
-                                            <span class="tag-pill">#<?= htmlspecialchars($tag_item, ENT_QUOTES, 'UTF-8') ?></span>
-                                        <?php endforeach; ?>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
-
                         <!-- CTA Promo Banner -->
-                        <div class="cta-widget shadow-sm">
-                            <h4 class="fw-bold mb-2 text-white">Build Your Dream Software</h4>
-                            <p class="small text-slate-300 mb-3" style="color: #cbd5e1;">Need custom Web Development, Android/iOS App Development, or Industrial Training?</p>
-                            <a href="<?= base_url('Home/Contact') ?>" class="btn btn-primary btn-sm w-100 py-2 fw-semibold" style="border-radius: 6px;">Get Free Quotation <i class="fas fa-arrow-right ms-1"></i></a>
+                        <div class="cta-widget shadow-sm text-center">
+                            <h4 class="fw-bold mb-2 text-white text-center">Build Your Dream Software</h4>
+                            <p class="small text-slate-300 mb-3 text-center" style="color: #cbd5e1;">Need custom Web Development, Android/iOS App Development, or Industrial Training?</p>
+                            <a href="<?= base_url('Home/Contact') ?>" class="btn btn-primary btn-sm px-4 py-2 fw-semibold mx-auto" style="border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">Get Free Quotation <i class="fas fa-arrow-right"></i></a>
                         </div>
 
                     </aside>
@@ -727,66 +713,121 @@
 
     <!-- Dynamic Table of Contents (TOC) Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleBody = document.getElementById('article-body');
-            const tocList = document.getElementById('toc-list');
-            
-            if (!articleBody || !tocList) return;
-
-            // 1. Collect all headings (h1, h2, h3, h4, h5, h6)
-            let headings = Array.from(articleBody.querySelectorAll('h1, h2, h3, h4, h5, h6'));
-
-            // 2. If no standard heading tags exist, fallback to paragraph title elements (p > strong / p > b)
-            if (headings.length === 0) {
-                const strongEls = articleBody.querySelectorAll('p > strong, p > b, div > strong, div > b');
-                strongEls.forEach((el) => {
-                    const text = (el.innerText || el.textContent || '').trim();
-                    if (text.length >= 4 && text.length <= 120) {
-                        headings.push(el);
-                    }
-                });
-            }
-
-            if (headings.length === 0) {
-                tocList.innerHTML = '<li class="text-muted small">No sections in this article.</li>';
-                return;
-            }
-
-            tocList.innerHTML = '';
-            
-            headings.forEach((heading, index) => {
-                const text = (heading.innerText || heading.textContent || '').trim();
-                if (!text) return;
-
-                // Assign a unique ID if not present
-                if (!heading.id) {
-                    heading.id = 'toc-heading-' + (index + 1);
-                }
-
-                const li = document.createElement('li');
-                const tag = heading.tagName.toLowerCase();
-                if (tag === 'h3' || tag === 'h4' || tag === 'h5' || tag === 'h6' || tag === 'strong' || tag === 'b') {
-                    li.classList.add('toc-h3');
-                }
-
-                const a = document.createElement('a');
-                a.href = '#' + heading.id;
-                a.textContent = text;
+        (function() {
+            function initTOC() {
+                const articleBody = document.getElementById('article-body');
+                const tocList = document.getElementById('toc-list');
                 
-                a.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.getElementById(heading.id);
-                    if (target) {
-                        const yOffset = -90; 
-                        const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                        window.scrollTo({ top: y, behavior: 'smooth' });
-                    }
-                });
+                if (!articleBody || !tocList) return;
 
-                li.appendChild(a);
-                tocList.appendChild(li);
-            });
-        });
+                // 1. Collect all headings (h1, h2, h3, h4, h5, h6)
+                let headings = Array.from(articleBody.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+
+                // 2. Fallback to paragraph title elements if no standard headings exist
+                if (headings.length === 0) {
+                    const candidateEls = articleBody.querySelectorAll('p > strong, p > b, div > strong, div > b');
+                    candidateEls.forEach((el) => {
+                        const text = (el.innerText || el.textContent || '').trim();
+                        const parentText = (el.parentElement ? el.parentElement.innerText || el.parentElement.textContent || '' : '').trim();
+                        if (text.length >= 3 && text.length <= 120 && (parentText.length <= text.length + 15)) {
+                            headings.push(el);
+                        }
+                    });
+                }
+
+                if (headings.length === 0) {
+                    tocList.innerHTML = '<li class="text-muted small">No sections in this article.</li>';
+                    return;
+                }
+
+                tocList.innerHTML = '';
+                
+                headings.forEach((heading, index) => {
+                    const text = (heading.innerText || heading.textContent || '').trim();
+                    if (!text) return;
+
+                    // Assign a unique ID if not present
+                    if (!heading.id) {
+                        heading.id = 'toc-heading-' + (index + 1);
+                    }
+
+                    // Set explicit inline scrollMarginTop on target heading
+                    heading.style.scrollMarginTop = '130px';
+                    if (heading.parentElement && (heading.tagName.toLowerCase() === 'strong' || heading.tagName.toLowerCase() === 'b')) {
+                        heading.parentElement.style.scrollMarginTop = '130px';
+                    }
+
+                    const li = document.createElement('li');
+                    const tag = heading.tagName.toLowerCase();
+                    if (tag === 'h3' || tag === 'h4' || tag === 'h5' || tag === 'h6' || tag === 'strong' || tag === 'b') {
+                        li.classList.add('toc-h3');
+                    }
+
+                    const a = document.createElement('a');
+                    a.href = '#' + heading.id;
+                    a.textContent = text;
+                    
+                    a.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Highlight active TOC link
+                        tocList.querySelectorAll('a').forEach(link => link.classList.remove('active'));
+                        a.classList.add('active');
+
+                        // Target element for scroll
+                        const targetEl = (tag === 'strong' || tag === 'b') && heading.parentElement ? heading.parentElement : heading;
+
+                        // Primary: Use native scrollIntoView with scroll-margin-top
+                        let scrolled = false;
+                        if (typeof targetEl.scrollIntoView === 'function') {
+                            try {
+                                targetEl.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                                scrolled = true;
+                            } catch (err) {
+                                scrolled = false;
+                            }
+                        }
+
+                        // Fallback: If scrollIntoView not available or failed
+                        if (!scrolled) {
+                            const headerEl = document.querySelector('.modern-header-area, .header-sticky, header, .header-area');
+                            const headerOffset = headerEl ? (headerEl.offsetHeight + 20) : 120;
+                            
+                            let targetTop = 0;
+                            if (typeof $ !== 'undefined' && $.fn && $.fn.offset) {
+                                targetTop = $(targetEl).offset().top - headerOffset;
+                            } else {
+                                const rect = targetEl.getBoundingClientRect();
+                                const scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop || 0;
+                                targetTop = rect.top + scrollTop - headerOffset;
+                            }
+
+                            if (typeof $ !== 'undefined') {
+                                $('html, body').stop().animate({ scrollTop: Math.max(0, Math.round(targetTop)) }, 400);
+                            } else {
+                                window.scrollTo({ top: Math.max(0, Math.round(targetTop)), behavior: 'smooth' });
+                            }
+                        }
+
+                        if (window.history && window.history.pushState) {
+                            window.history.pushState(null, null, '#' + heading.id);
+                        }
+                    });
+
+                    li.appendChild(a);
+                    tocList.appendChild(li);
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initTOC);
+            } else {
+                initTOC();
+            }
+        })();
 
         // Dynamic Blog FAQ Accordion Interactions
         document.addEventListener('DOMContentLoaded', function() {

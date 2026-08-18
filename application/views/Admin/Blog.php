@@ -102,7 +102,7 @@
                                         <td><?= htmlspecialchars($data->url ?? '', ENT_QUOTES, 'UTF-8'); ?></td>
                                         <td><?= htmlspecialchars($blog_meta ?? '', ENT_QUOTES, 'UTF-8'); ?></td>
                                         <td><?= !empty($data->keywords) ? htmlspecialchars($data->keywords, ENT_QUOTES, 'UTF-8') : '<span class="text-muted">None</span>'; ?></td>
-                                        <td><?= $blog_content; ?></td>
+                                        <td><?= fix_blog_content_images($blog_content); ?></td>
                                         <td>
                                             <?php
                                             $faqs = array();
