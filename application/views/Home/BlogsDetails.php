@@ -147,15 +147,27 @@
             color: #3b82f6;
         }
         .blog-featured-img-container {
-            border-radius: 6px;
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio Fallback */
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
             margin-bottom: 35px;
             background: #f1f5f9;
         }
+        @supports (aspect-ratio: 16 / 9) {
+            .blog-featured-img-container {
+                padding-top: 0;
+            }
+        }
         .blog-featured-img-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-height: 480px;
+            height: 100%;
             object-fit: cover;
             display: block;
             border-radius: 6px;
@@ -267,27 +279,65 @@
             list-style: none;
             padding-left: 0;
             margin-bottom: 0;
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 6px;
+            scroll-behavior: smooth;
+        }
+        #toc-list::-webkit-scrollbar {
+            width: 5px;
+        }
+        #toc-list::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        #toc-list::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        #toc-list::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
         #toc-list li {
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
         #toc-list a {
             color: #475569;
             text-decoration: none;
             font-size: 0.925rem;
             font-weight: 500;
-            display: block;
-            padding: 6px 12px;
+            display: flex;
+            align-items: flex-start;
+            padding: 6px 10px;
             border-radius: 6px;
             transition: all 0.2s ease;
+        }
+        #toc-list a::before {
+            content: "•";
+            color: #2563eb;
+            font-size: 1.25rem;
+            line-height: 1;
+            margin-right: 8px;
+            display: inline-block;
+            flex-shrink: 0;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        #toc-list a:hover::before, #toc-list a.active::before {
+            color: #2563eb;
+            transform: scale(1.3);
         }
         #toc-list a:hover, #toc-list a.active {
             color: #2563eb;
             background: #eff6ff;
-            padding-left: 16px;
+            font-weight: 600;
         }
         #toc-list li.toc-h3 {
-            padding-left: 15px;
+            padding-left: 14px;
+        }
+        #toc-list li.toc-h3 a::before {
+            content: "◦";
+            font-size: 1.1rem;
+            color: #64748b;
         }
 
         /* Recent Blog Item */
@@ -305,8 +355,9 @@
             border-bottom: none;
         }
         .recent-blog-thumb {
-            width: 70px;
-            height: 60px;
+            width: 80px;
+            height: auto;
+            aspect-ratio: 16 / 9;
             border-radius: 6px;
             object-fit: cover;
             flex-shrink: 0;
@@ -581,9 +632,20 @@
                 <!-- Left Column: Article Content & FAQs -->
                 <div class="col-lg-8">
                     <!-- Featured Image -->
-                    <div class="blog-featured-img-container">
+                    <div class="blog-featured-img-container mb-4">
                         <img src="<?= $img_url ?>" alt="<?= htmlspecialchars($blog_title, ENT_QUOTES, 'UTF-8') ?>" class="img-fluid">
                     </div>
+
+                    <!-- Short Excerpt / Meta Description Banner -->
+                    <?php if (!empty($blog_meta)): ?>
+                        <div class="blog-excerpt-banner p-3 p-md-4 mb-4 bg-white rounded-3 shadow-sm" style="border-left: 4px solid #f97316;">
+                            <p class="mb-0 text-slate-700 font-weight-medium" style="font-size: 1.05rem; line-height: 1.7; color: #334155;">
+                                <?= htmlspecialchars($blog_meta, ENT_QUOTES, 'UTF-8') ?>
+                            </p>
+                        </div>
+                    <?php endif; ?>
+
+                    
 
                     <!-- Article Body Content -->
                     <article class="article-content bg-white p-4 p-md-5 rounded-4 border" id="article-body">
@@ -641,19 +703,23 @@
                         </section>
                     <?php endif; ?>
 
-                    <!-- Author Box & Social Share Footer -->
-                    <div class="author-box">
-                        <div class="author-avatar">D</div>
-                        <div>
-                            <h5 class="fw-bold mb-1" style="color: #0f172a;">DigiCoders Tech Team</h5>
-                            <p class="text-muted small mb-2">We build scalable web applications, mobile apps, and enterprise software solutions to empower businesses worldwide.</p>
-                            
-                            <div class="d-flex align-items-center flex-wrap mt-2" style="gap: 10px;">
-                                <span class="small fw-bold text-slate-600 me-2">Share Article:</span>
-                                <a href="https://api.whatsapp.com/send?text=<?= urlencode($blog_title . ' ' . $canonical_url) ?>" target="_blank" class="share-btn btn-whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode($canonical_url) ?>" target="_blank" class="share-btn btn-facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://twitter.com/intent/tweet?text=<?= urlencode($blog_title) ?>&url=<?= urlencode($canonical_url) ?>" target="_blank" class="share-btn btn-twitter" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= urlencode($canonical_url) ?>&title=<?= urlencode($blog_title) ?>" target="_blank" class="share-btn btn-linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <!-- Social Share Card -->
+                    <div class="share-article-card p-4 bg-white rounded-4 border shadow-sm mb-4">
+                        <div class="d-flex align-items-center flex-wrap justify-content-between" style="gap: 16px;">
+                            <div class="d-flex align-items-center">
+                                <div class="share-icon-badge me-3 d-flex align-items-center justify-content-center text-white rounded-circle shadow-sm" style="width: 46px; height: 46px; font-size: 1.15rem; flex-shrink: 0; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0 text-slate-800" style="color: #0f172a; font-size: 1.1rem;">Share Article</h5>
+                                    <span class="text-muted small">Share tech insights with your network</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center flex-wrap" style="gap: 8px;">
+                                <a href="https://api.whatsapp.com/send?text=<?= urlencode($blog_title . ' ' . $canonical_url) ?>" target="_blank" class="btn btn-whatsapp text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #25D366; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-whatsapp fs-6"></i> WhatsApp</a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode($canonical_url) ?>" target="_blank" class="btn btn-facebook text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #1877F2; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-facebook-f fs-6"></i> Facebook</a>
+                                <a href="https://twitter.com/intent/tweet?text=<?= urlencode($blog_title) ?>&url=<?= urlencode($canonical_url) ?>" target="_blank" class="btn btn-twitter text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #1DA1F2; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-twitter fs-6"></i> Twitter</a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= urlencode($canonical_url) ?>&title=<?= urlencode($blog_title) ?>" target="_blank" class="btn btn-linkedin text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #0A66C2; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-linkedin-in fs-6"></i> LinkedIn</a>
                             </div>
                         </div>
                     </div>
@@ -695,10 +761,17 @@
                         <?php endif; ?>
 
                         <!-- CTA Promo Banner -->
-                        <div class="cta-widget shadow-sm text-center">
+                        <div class="cta-widget shadow-sm text-center p-4">
                             <h4 class="fw-bold mb-2 text-white text-center">Build Your Dream Software</h4>
                             <p class="small text-slate-300 mb-3 text-center" style="color: #cbd5e1;">Need custom Web Development, Android/iOS App Development, or Industrial Training?</p>
-                            <a href="<?= base_url('Home/Contact') ?>" class="btn btn-primary btn-sm px-4 py-2 fw-semibold mx-auto" style="border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">Get Free Quotation <i class="fas fa-arrow-right"></i></a>
+                            <div class="d-flex flex-column align-items-center" style="gap: 10px;">
+                                <a href="tel:+919198483820" class="btn btn-success btn-md px-4 py-2 fw-bold w-100 shadow-sm" style="border-radius: 8px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.95rem;">
+                                    <i class="fas fa-phone-alt"></i> Call Now: +91 9198483820
+                                </a>
+                                <a href="<?= base_url('Home/ContactUs') ?>" class="btn btn-primary btn-sm px-4 py-2 fw-semibold w-100" style="border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+                                    Get Free Quotation <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
 
                     </aside>
@@ -773,6 +846,18 @@
                         // Highlight active TOC link
                         tocList.querySelectorAll('a').forEach(link => link.classList.remove('active'));
                         a.classList.add('active');
+
+                        // Scroll active TOC link into view inside scrollable #toc-list container
+                        const containerTop = tocList.scrollTop;
+                        const containerHeight = tocList.clientHeight;
+                        const linkTop = a.offsetTop;
+                        const linkHeight = a.offsetHeight;
+                        if (linkTop < containerTop || (linkTop + linkHeight) > (containerTop + containerHeight)) {
+                            tocList.scrollTo({
+                                top: linkTop - (containerHeight / 2) + (linkHeight / 2),
+                                behavior: 'smooth'
+                            });
+                        }
 
                         // Target element for scroll
                         const targetEl = (tag === 'strong' || tag === 'b') && heading.parentElement ? heading.parentElement : heading;

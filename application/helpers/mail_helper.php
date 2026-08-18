@@ -20,8 +20,8 @@ if (!function_exists('send_form_email')) {
             $CI->email->set_newline("\r\n");
             $from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
             $CI->email->from($from_email, 'digicoders.in Website');
-            $CI->email->to('digicoderstech@gmail.com');
-            // $CI->email->to('saurabhkumarssp@gmail.com');
+            // $CI->email->to('digicoderstech@gmail.com');
+            $CI->email->to('saurabhkumarssp@gmail.com');
             
             $applicant_name = !empty($data['name']) ? $data['name'] : (!empty($data['Name']) ? $data['Name'] : '');
             $apply_for = !empty($data['appaly_for']) ? $data['appaly_for'] : (!empty($data['apply_for']) ? $data['apply_for'] : '');

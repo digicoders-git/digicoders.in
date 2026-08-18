@@ -970,13 +970,30 @@
         }
 
         .blog-card-thumb {
-            height: 200px;
             position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio Fallback */
             overflow: hidden;
-            background: #086AD8;
+            background: #f1f5f9;
+        }
+
+        @supports (aspect-ratio: 16 / 9) {
+            .blog-card-thumb {
+                padding-top: 0;
+            }
+        }
+
+        .blog-card-thumb a {
+            display: block;
+            width: 100%;
+            height: 100%;
         }
 
         .blog-card-thumb img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -3287,28 +3304,32 @@
                     $categories = ['Technology', 'Business', 'Development', 'IT Updates'];
                     foreach ($blogdata as $index => $data) {
                         $category = $categories[$index % count($categories)];
+                        $img_file = !empty($data->img) ? $data->img : $data->image;
+                        $img_url = !empty($img_file) ? base_url('public/uploads/Blog/' . $img_file) : base_url('public/assets/images/blog-default.jpg');
+                        $blog_slug = !empty($data->url) ? $data->url : $data->id;
+                        $detail_url = base_url('blog/' . $blog_slug);
                         ?>
                         <div class="item py-2 h-100">
                             <div class="blog-card-item h-100">
                                 <div class="blog-card-thumb">
-                                    <a href="<?= base_url() ?>Home/Blogs">
-                                        <img src="<?= base_url('public/uploads/Blog/') . $data->image; ?>"
-                                            alt="<?= $data->title; ?>" loading="lazy">
+                                    <a href="<?= $detail_url ?>">
+                                        <img src="<?= $img_url ?>"
+                                            alt="<?= htmlspecialchars($data->title ?? 'DigiCoders Blog', ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
                                     </a>
                                     <span class="blog-cat-badge"><?= $category; ?></span>
                                 </div>
                                 <div class="blog-card-content">
                                     <div class="blog-card-meta mb-2">
-                                        <i class="far fa-calendar-alt mr-1"></i> <?= $data->date; ?>
+                                        <i class="far fa-calendar-alt mr-1"></i> <?= !empty($data->date) ? date('M d, Y', strtotime($data->date)) : date('M d, Y') ?>
                                     </div>
                                     <h5 class="blog-card-title mb-2">
-                                        <a href="<?= base_url() ?>Home/Blogs"><?= $data->title; ?></a>
+                                        <a href="<?= $detail_url ?>"><?= htmlspecialchars($data->title ?? '', ENT_QUOTES, 'UTF-8'); ?></a>
                                     </h5>
                                     <p class="blog-card-text mb-3">
-                                        <?= strip_tags($data->full_discription); ?>
+                                        <?= htmlspecialchars(mb_strimwidth(strip_tags($data->content ?? $data->full_discription ?? ''), 0, 120, '...'), ENT_QUOTES, 'UTF-8'); ?>
                                     </p>
                                     <div class="blog-card-footer">
-                                        <a href="<?= base_url() ?>Home/Blogs" class="service-discover-link font-weight-bold">
+                                        <a href="<?= $detail_url ?>" class="service-discover-link font-weight-bold">
                                             <span>Read More</span> <i class="fa fa-arrow-right ml-1"></i>
                                         </a>
                                     </div>

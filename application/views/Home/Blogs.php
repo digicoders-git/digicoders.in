@@ -52,11 +52,21 @@
         .blog-card-img-wrapper {
             position: relative;
             width: 100%;
-            height: 220px;
+            aspect-ratio: 16 / 9;
+            padding-top: 56.25%; /* 16:9 Fallback */
             overflow: hidden;
             background-color: #f1f5f9;
+            display: block;
+        }
+        @supports (aspect-ratio: 16 / 9) {
+            .blog-card-img-wrapper {
+                padding-top: 0;
+            }
         }
         .blog-card-img-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -185,7 +195,7 @@
                             <article class="blog-card">
                                 <a href="<?= $detail_url ?>" class="blog-card-img-wrapper">
                                     <img src="<?= $img_url ?>" alt="<?= htmlspecialchars($data->title ?? 'DigiCoders Blog', ENT_QUOTES, 'UTF-8') ?>" loading="lazy">
-                                    <span class="blog-card-badge">Tech & Code</span>
+                                   
                                 </a>
                                 <div class="blog-card-body">
                                     <div class="blog-card-meta">
