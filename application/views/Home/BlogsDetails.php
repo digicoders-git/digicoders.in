@@ -733,8 +733,20 @@
             
             if (!articleBody || !tocList) return;
 
-            const headings = articleBody.querySelectorAll('h2, h3');
-            
+            // 1. Collect all headings (h1, h2, h3, h4, h5, h6)
+            let headings = Array.from(articleBody.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+
+            // 2. If no standard heading tags exist, fallback to paragraph title elements (p > strong / p > b)
+            if (headings.length === 0) {
+                const strongEls = articleBody.querySelectorAll('p > strong, p > b, div > strong, div > b');
+                strongEls.forEach((el) => {
+                    const text = (el.innerText || el.textContent || '').trim();
+                    if (text.length >= 4 && text.length <= 120) {
+                        headings.push(el);
+                    }
+                });
+            }
+
             if (headings.length === 0) {
                 tocList.innerHTML = '<li class="text-muted small">No sections in this article.</li>';
                 return;
@@ -743,23 +755,32 @@
             tocList.innerHTML = '';
             
             headings.forEach((heading, index) => {
-                // Assign an ID if not present
+                const text = (heading.innerText || heading.textContent || '').trim();
+                if (!text) return;
+
+                // Assign a unique ID if not present
                 if (!heading.id) {
-                    heading.id = 'section-' + (index + 1);
+                    heading.id = 'toc-heading-' + (index + 1);
                 }
 
                 const li = document.createElement('li');
-                if (heading.tagName.toLowerCase() === 'h3') {
+                const tag = heading.tagName.toLowerCase();
+                if (tag === 'h3' || tag === 'h4' || tag === 'h5' || tag === 'h6' || tag === 'strong' || tag === 'b') {
                     li.classList.add('toc-h3');
                 }
 
                 const a = document.createElement('a');
                 a.href = '#' + heading.id;
-                a.textContent = heading.innerText;
+                a.textContent = text;
                 
                 a.addEventListener('click', function(e) {
                     e.preventDefault();
-                    heading.scrollIntoView({ behavior: 'smooth' });
+                    const target = document.getElementById(heading.id);
+                    if (target) {
+                        const yOffset = -90; 
+                        const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
                 });
 
                 li.appendChild(a);

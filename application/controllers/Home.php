@@ -91,12 +91,22 @@ class Home extends CI_Controller
 		$data['blog'] = $blog;
 
 		// Fetch recent blogs for sticky sidebar (excluding current)
-		$data['recent_blogs'] = $this->db
+		$recent_blogs = $this->db
 			->where('id !=', $blog->id)
 			->order_by('id', 'DESC')
 			->limit(5)
 			->get('blog')
 			->result();
+
+		if (empty($recent_blogs)) {
+			$recent_blogs = $this->db
+				->order_by('id', 'DESC')
+				->limit(5)
+				->get('blog')
+				->result();
+		}
+
+		$data['recent_blogs'] = $recent_blogs;
 
 		$this->load->view('Home/BlogsDetails', $data);
 	}
