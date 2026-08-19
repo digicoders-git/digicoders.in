@@ -41,65 +41,72 @@
     <meta name="twitter:description" content="<?= $blog_meta_clean ?>">
     <meta name="twitter:image" content="<?= $img_url ?>">
 
-    <!-- JSON-LD Article Schema for Google SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "<?= $canonical_url ?>"
-      },
-      "headline": "<?= addslashes($blog_title) ?>",
-      "image": [
-        "<?= $img_url ?>"
-      ],
-      "datePublished": "<?= $pub_date ?>",
-      "dateModified": "<?= $pub_date ?>",
-      "author": {
-        "@type": "Organization",
-        "name": "DigiCoders Technologies",
-        "url": "<?= base_url() ?>"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "DigiCoders Technologies",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "<?= base_url('public/assets/images/logo.png') ?>"
-        }
-      },
-      "description": "<?= addslashes($blog_meta_clean) ?>"
-    }
-    </script>
+    <?php
+        // Build valid Article Schema array
+        $article_schema = array(
+            "@context" => "https://schema.org",
+            "@type" => "BlogPosting",
+            "mainEntityOfPage" => array(
+                "@type" => "WebPage",
+                "@id" => $canonical_url
+            ),
+            "headline" => strip_tags($blog_title),
+            "image" => array($img_url),
+            "datePublished" => $pub_date,
+            "dateModified" => $pub_date,
+            "author" => array(
+                "@type" => "Organization",
+                "name" => "DigiCoders Technologies",
+                "url" => base_url()
+            ),
+            "publisher" => array(
+                "@type" => "Organization",
+                "name" => "DigiCoders Technologies",
+                "logo" => array(
+                    "@type" => "ImageObject",
+                    "url" => base_url('public/assets/images/logo.png')
+                )
+            ),
+            "description" => $blog_meta_clean
+        );
 
-    <?php if (!empty($faqs_data)): ?>
-    <!-- JSON-LD FAQPage Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        <?php 
-        $faq_json_arr = array();
-        foreach ($faqs_data as $faq_item) {
-            $q = addslashes($faq_item['question'] ?? '');
-            $a = addslashes($faq_item['answer'] ?? '');
-            if (!empty($q) && !empty($a)) {
-                $faq_json_arr[] = '{
-                  "@type": "Question",
-                  "name": "'.$q.'",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "'.$a.'"
-                  }
-                }';
+        // Build valid FAQ Schema array if FAQs exist
+        $faq_schema = null;
+        if (!empty($faqs_data)) {
+            $mainEntity = array();
+            foreach ($faqs_data as $faq_item) {
+                $q = trim(strip_tags($faq_item['question'] ?? ''));
+                $a = trim(strip_tags($faq_item['answer'] ?? ''));
+                if (!empty($q) && !empty($a)) {
+                    $mainEntity[] = array(
+                        "@type" => "Question",
+                        "name" => $q,
+                        "acceptedAnswer" => array(
+                            "@type" => "Answer",
+                            "text" => $a
+                        )
+                    );
+                }
+            }
+            if (!empty($mainEntity)) {
+                $faq_schema = array(
+                    "@context" => "https://schema.org",
+                    "@type" => "FAQPage",
+                    "mainEntity" => $mainEntity
+                );
             }
         }
-        echo implode(',', $faq_json_arr);
-        ?>
-      ]
-    }
+    ?>
+
+    <!-- JSON-LD Article Schema for Google SEO -->
+    <script type="application/ld+json">
+    <?= json_encode($article_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>
+    </script>
+
+    <?php if (!empty($faq_schema)): ?>
+    <!-- JSON-LD FAQPage Schema -->
+    <script type="application/ld+json">
+    <?= json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>
     </script>
     <?php endif; ?>
 
@@ -811,14 +818,21 @@
                 // 1. Collect all headings (h1, h2, h3, h4, h5, h6)
                 let headings = Array.from(articleBody.querySelectorAll('h1, h2, h3, h4, h5, h6'));
 
-                // 2. Fallback to paragraph title elements if no standard headings exist
+                // 2. Fallback to bold/strong title lines if no standard heading tags exist
                 if (headings.length === 0) {
-                    const candidateEls = articleBody.querySelectorAll('p > strong, p > b, div > strong, div > b');
-                    candidateEls.forEach((el) => {
+                    const addedEls = new Set();
+                    const bolds = articleBody.querySelectorAll('strong, b');
+                    bolds.forEach((el) => {
                         const text = (el.innerText || el.textContent || '').trim();
-                        const parentText = (el.parentElement ? el.parentElement.innerText || el.parentElement.textContent || '' : '').trim();
-                        if (text.length >= 3 && text.length <= 120 && (parentText.length <= text.length + 15)) {
-                            headings.push(el);
+                        // Find topmost paragraph or div parent
+                        const parentEl = el.closest('p, div, li') || el;
+                        const parentText = (parentEl.innerText || parentEl.textContent || '').trim();
+                        
+                        if (text.length >= 3 && text.length <= 150 && Math.abs(parentText.length - text.length) <= 20) {
+                            if (!addedEls.has(parentEl)) {
+                                addedEls.add(parentEl);
+                                headings.push(el);
+                            }
                         }
                     });
                 }
