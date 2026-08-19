@@ -494,7 +494,6 @@ class Admin extends MY_Controller
 	//Manage Blog
 	public function ManageBlog()
 	{
-
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get('blog')->result();
 
 		$seg3 = $this->uri->segment(3);
@@ -544,8 +543,8 @@ class Admin extends MY_Controller
 			}
 			$faqs_json = !empty($faqs) ? json_encode($faqs, JSON_UNESCAPED_UNICODE) : null;
 
-			$content_val = $this->input->post('content') ?: $this->input->post('discription');
-			$meta_desc_val = $this->input->post('meta_description') ?: $this->input->post('short_discription');
+			$content_val = $this->input->post('content', FALSE) ?: $this->input->post('discription', FALSE);
+			$meta_desc_val = $this->input->post('meta_description', FALSE) ?: $this->input->post('short_discription', FALSE);
 
 			$data_arr = array(
 				"title" => $this->input->post('title'),
@@ -642,8 +641,8 @@ class Admin extends MY_Controller
 			}
 			$faqs_json = !empty($faqs) ? json_encode($faqs, JSON_UNESCAPED_UNICODE) : null;
 
-			$content_val = $this->input->post('content') ?: $this->input->post('discription') ?: $this->input->post('full_discription');
-			$meta_desc_val = $this->input->post('meta_description') ?: $this->input->post('short_discription');
+			$content_val = $this->input->post('content', FALSE) ?: $this->input->post('discription', FALSE) ?: $this->input->post('full_discription', FALSE);
+			$meta_desc_val = $this->input->post('meta_description', FALSE) ?: $this->input->post('short_discription', FALSE);
 
 			$data_arr = array(
 				"title" => $this->input->post('title'),

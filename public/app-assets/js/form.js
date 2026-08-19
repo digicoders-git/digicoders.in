@@ -434,6 +434,12 @@ $(document).ready(function () {
     $(document).on('submit', '#Blog-form, #edit-blog-form', function (e) {
         e.preventDefault();
         var form = this;
+        // Sync Summernote HTML code into textarea before creating FormData
+        $(form).find('.summernote').each(function () {
+            if ($(this).data('summernote')) {
+                $(this).val($(this).summernote('code'));
+            }
+        });
         var data = new FormData(form);
         var $btn = $(form).find('button[type="submit"]');
         var oldHtml = $btn.html();

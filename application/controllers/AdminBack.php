@@ -19,7 +19,7 @@
 		public function Test()
 		{
 			// $res = $this->db->query("UPDATE `transaction` SET `type`='paid',`date`='15-12-2022' WHERE txn_id='TXN167282882243620'");
-			$res = $this->db->query("CREATE TABLE `blog` (`id` INT(10) NOT NULL AUTO_INCREMENT , `image` VARCHAR(100) NOT NULL , `Blog_date` VARCHAR(100) NOT NULL , `title` VARCHAR(100) NOT NULL , `short_discription` VARCHAR(100) NOT NULL , `full_discription` VARCHAR(100) NOT NULL , `status` VARCHAR(100) NOT NULL , `date` VARCHAR(100) NOT NULL , `time` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;");
+			$res = $this->db->query("CREATE TABLE `blog` (`id` INT(10) NOT NULL AUTO_INCREMENT , `image` VARCHAR(500) NOT NULL , `Blog_date` VARCHAR(100) NOT NULL , `title` LONGTEXT NOT NULL , `short_discription` TEXT NOT NULL , `full_discription` LONGTEXT NOT NULL , `content` LONGTEXT NULL , `meta_description` TEXT NULL , `keywords` TEXT NULL , `url` TEXT NULL , `faqs` LONGTEXT NULL , `status` VARCHAR(100) NOT NULL , `date` VARCHAR(100) NOT NULL , `time` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;");
 			
 			//$res = $this->db->get('state_applicant')->result();
 			
@@ -411,8 +411,8 @@
 				}
 				$faqs_json = !empty($faqs) ? json_encode($faqs, JSON_UNESCAPED_UNICODE) : null;
 
-				$content_val = $this->input->post('content') ?: $this->input->post('discription');
-				$meta_desc_val = $this->input->post('meta_description') ?: $this->input->post('short_discription');
+				$content_val = $this->input->post('content', FALSE) ?: $this->input->post('discription', FALSE);
+				$meta_desc_val = $this->input->post('meta_description', FALSE) ?: $this->input->post('short_discription', FALSE);
 
 				$data_arr = array(
 					"title" => $this->input->post('title'),
@@ -509,8 +509,8 @@
 				}
 				$faqs_json = !empty($faqs) ? json_encode($faqs, JSON_UNESCAPED_UNICODE) : null;
 
-				$content_val = $this->input->post('content') ?: $this->input->post('discription') ?: $this->input->post('full_discription');
-				$meta_desc_val = $this->input->post('meta_description') ?: $this->input->post('short_discription');
+				$content_val = $this->input->post('content', FALSE) ?: $this->input->post('discription', FALSE) ?: $this->input->post('full_discription', FALSE);
+				$meta_desc_val = $this->input->post('meta_description', FALSE) ?: $this->input->post('short_discription', FALSE);
 
 				$data_arr = array(
 					"title" => $this->input->post('title'),

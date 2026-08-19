@@ -417,6 +417,7 @@
         /* Dynamic Blog FAQ Section Styling */
         .blog-faq-section {
             margin-top: 45px;
+            margin-bottom: 35px;
             padding-top: 30px;
             border-top: 1px dashed #e2e8f0;
         }
@@ -573,7 +574,11 @@
             flex-shrink: 0;
         }
         
-        /* Share Buttons */
+        /* Share Buttons & Card Styling */
+        .share-article-card {
+            margin-top: 35px;
+            margin-bottom: 35px;
+        }
         .share-btn {
             width: 38px;
             height: 38px;
@@ -657,7 +662,7 @@
 
                     <!-- Dynamic FAQs Section (if present) -->
                     <?php if (!empty($faqs_data)): ?>
-                        <section class="blog-faq-section">
+                        <section class="blog-faq-section mb-4 mb-md-5">
                             <div class="blog-faq-header">
                                 <div class="blog-faq-icon-badge">
                                     <i class="fas fa-question-circle"></i>
@@ -704,7 +709,7 @@
                     <?php endif; ?>
 
                     <!-- Social Share Card -->
-                    <div class="share-article-card p-4 bg-white rounded-4 border shadow-sm mb-4">
+                    <div class="share-article-card p-4 bg-white rounded-4 border shadow-sm mt-4 mt-md-5 mb-4">
                         <div class="d-flex align-items-center flex-wrap justify-content-between" style="gap: 16px;">
                             <div class="d-flex align-items-center">
                                 <div class="share-icon-badge me-3 d-flex align-items-center justify-content-center text-white rounded-circle shadow-sm" style="width: 46px; height: 46px; font-size: 1.15rem; flex-shrink: 0; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
