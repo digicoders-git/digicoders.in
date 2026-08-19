@@ -187,6 +187,7 @@ if (!function_exists('send_admin_login_otp_email')) {
     function send_admin_login_otp_email($email, $otp, $logindetails_data, $latitude = 'N/A', $longitude = 'N/A', $address = '')
     {
         try {
+            
             $CI = &get_instance();
             $CI->load->library('email');
             $CI->config->load('smtp_config');
