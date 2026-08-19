@@ -4,6 +4,14 @@
 <head>
     <title>Blog - <?= $this->data['app_name'] ?></title>
     <?php include('include/headerlinks.php'); ?>
+    <style>
+        .note-editable a,
+        .table td a:not(.btn) {
+            color: #2563eb !important;
+            text-decoration: underline !important;
+            font-weight: 500;
+        }
+    </style>
 </head>
 
 <body>

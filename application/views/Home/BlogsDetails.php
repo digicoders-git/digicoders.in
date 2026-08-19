@@ -181,6 +181,16 @@
             font-family: inherit;
             border-radius: 6px !important;
         }
+        .article-content a {
+            color: #2563eb !important;
+            text-decoration: underline !important;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .article-content a:hover {
+            color: #1d4ed8 !important;
+            text-decoration: underline !important;
+        }
         .article-content h1, 
         .article-content h2, 
         .article-content h3, 
