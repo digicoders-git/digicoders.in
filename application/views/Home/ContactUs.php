@@ -402,23 +402,23 @@
                                 </div>
                                 <div class="team-contact">
                                     <div class="contact-column">
-                                        <div class="phone-number">9628092950</div>
+                                        <div class="phone-number">9140967607</div>
                                         <div class="contact-buttons">
-                                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
+                                            <a href="https://wa.me/9140967607" class="btn-contact btn-whatsapp">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
-                                            <a href="tel:9628092950" class="btn-contact btn-call">
+                                            <a href="tel:9140967607" class="btn-contact btn-call">
                                                 <i class="fas fa-phone"></i>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="contact-column">
-                                        <div class="phone-number">9628092951</div>
+                                        <div class="phone-number">6394296293</div>
                                         <div class="contact-buttons">
-                                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
+                                            <a href="https://wa.me/916394296293" class="btn-contact btn-whatsapp">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
-                                            <a href="tel:9628092951" class="btn-contact btn-call">
+                                            <a href="tel:6394296293" class="btn-contact btn-call">
                                                 <i class="fas fa-phone"></i>
                                             </a>
                                         </div>
@@ -442,23 +442,23 @@
                                 </div>
                                 <div class="team-contact">
                                     <div class="contact-column">
-                                        <div class="phone-number">9628092950</div>
+                                        <div class="phone-number">6394296293</div>
                                         <div class="contact-buttons">
-                                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
+                                            <a href="https://wa.me/916394296293" class="btn-contact btn-whatsapp">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
-                                            <a href="tel:9628092950" class="btn-contact btn-call">
+                                            <a href="tel:6394296293" class="btn-contact btn-call">
                                                 <i class="fas fa-phone"></i>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="contact-column">
-                                        <div class="phone-number">9628092951</div>
+                                        <div class="phone-number">9198483820</div>
                                         <div class="contact-buttons">
-                                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
+                                            <a href="https://wa.me/919198483820" class="btn-contact btn-whatsapp">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
-                                            <a href="tel:9628092951" class="btn-contact btn-call">
+                                            <a href="tel:9198483820" class="btn-contact btn-call">
                                                 <i class="fas fa-phone"></i>
                                             </a>
                                         </div>
@@ -482,23 +482,23 @@
                                 </div>
                                 <div class="team-contact">
                                     <div class="contact-column">
-                                        <div class="phone-number">9628092950</div>
+                                        <div class="phone-number">9140967607</div>
                                         <div class="contact-buttons">
-                                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
+                                            <a href="https://wa.me/9140967607" class="btn-contact btn-whatsapp">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
-                                            <a href="tel:9628092950" class="btn-contact btn-call">
+                                            <a href="tel:9140967607" class="btn-contact btn-call">
                                                 <i class="fas fa-phone"></i>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="contact-column">
-                                        <div class="phone-number">9628092951</div>
+                                        <div class="phone-number">9140967607</div>
                                         <div class="contact-buttons">
-                                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
+                                            <a href="https://wa.me/9140967607" class="btn-contact btn-whatsapp">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
-                                            <a href="tel:9628092951" class="btn-contact btn-call">
+                                            <a href="tel:9140967607" class="btn-contact btn-call">
                                                 <i class="fas fa-phone"></i>
                                             </a>
                                         </div>
@@ -521,23 +521,23 @@
                                 </div>
                                 <div class="team-contact">
                                     <div class="contact-column">
-                                        <div class="phone-number">9628092950</div>
+                                        <div class="phone-number">6394296293</div>
                                         <div class="contact-buttons">
-                                            <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
+                                            <a href="https://wa.me/916394296293" class="btn-contact btn-whatsapp">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
-                                            <a href="tel:9628092950" class="btn-contact btn-call">
+                                            <a href="tel:6394296293" class="btn-contact btn-call">
                                                 <i class="fas fa-phone"></i>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="contact-column">
-                                        <div class="phone-number">9628092951</div>
+                                        <div class="phone-number">9198483820</div>
                                         <div class="contact-buttons">
-                                            <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
+                                            <a href="https://wa.me/9198483820" class="btn-contact btn-whatsapp">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
-                                            <a href="tel:9628092951" class="btn-contact btn-call">
+                                            <a href="tel:9198483820" class="btn-contact btn-call">
                                                 <i class="fas fa-phone"></i>
                                             </a>
                                         </div>
