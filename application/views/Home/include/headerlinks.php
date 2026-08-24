@@ -1,16 +1,20 @@
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php if (empty($has_custom_seo) && empty($blog) && empty($page)): ?>
 <meta name="keywords"
     content="Software Companies in Lucknow, Domain and Hosting Services Lucknow, Best ERP & CRM Development Company, ERP & CRM Development CompanyIT company in lucknow, Graphics Designing Services in Lucknow, Best Software Development Company in Lucknow, best it company in lucknow, software company in lucknow, crm software development company in lucknow, domain & hosting services, Digital Marketing Services, android app development company in Lucknow">
+<?php endif; ?>
 <meta name="theme-color" content="#006cd8">
 <meta name="author" content="DigiCoders Technologies (P) Limited.">
 <meta name="MobileOptimized" content="320">
 <meta name="distribution" content="World Wide Web" />
+<?php if (empty($has_custom_seo) && empty($blog) && empty($page)): ?>
 <meta property="og:image" content="<?= base_url() ?>public/assets/images/favicon-icon.png" />
 <meta property="og:image:secure_url" content="<?= base_url() ?>public/assets/images/favicon-icon.png" />
 <meta property="og:url" content="https://digicoders.in/" />
 <meta property="og:title" content="DigiCoders Technologies (P) Limited." />
+<?php endif; ?>
 
 <meta name="google-site-verification" content="IadmBNu_fQoB-3YJhdwwmF05VbB16bvK86LLmL3_gGQ" />
 <!-- Favicon -->

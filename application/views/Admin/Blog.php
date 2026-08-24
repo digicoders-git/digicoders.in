@@ -68,9 +68,11 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Action</th>
-                                    <th>Display Status</th>
+                                    <th>Status</th>
+                                    <th>Views</th>
                                     <th>Title</th>
-                                    <!-- <th>Location</th> -->
+                                    <th>Meta Title</th>
+                                    <th>Author</th>
                                     <th>URL</th>
                                     <th>Meta Description</th>
                                     <th>Keywords</th>
@@ -88,6 +90,7 @@
                                     $img_file = !empty($data->img) ? $data->img : $data->image;
                                     $blog_content = !empty($data->content) ? $data->content : $data->full_discription;
                                     $blog_meta = !empty($data->meta_description) ? $data->meta_description : $data->short_discription;
+                                    $is_published = ($data->status == 'true');
                                 ?>
                                     <tr>
                                         <td><?= $sr++ ?></td>
@@ -100,13 +103,30 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'blog','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked<?= $data->id ?>" <?php if ($data->status == 'true') { echo "checked"; } ?>>
-                                                <label class="form-check-label" for="flexSwitchCheckChecked<?= $data->id ?>"></label>
+                                            <div class="d-flex flex-column align-items-start gap-1">
+                                                <?php if ($is_published): ?>
+                                                    <span class="badge bg-success text-white px-2 py-1" style="font-size: 0.75rem; cursor: pointer;" onclick="ChnageStatus(<?= $data->id ?>,'true','blog','<?= base_url('Admin/ChangeStatus') ?>')"><i class="bi bi-check-circle-fill me-1"></i>Published</span>
+                                                <?php else: ?>
+                                                    <span class="badge bg-warning text-dark px-2 py-1" style="font-size: 0.75rem; cursor: pointer;" onclick="ChnageStatus(<?= $data->id ?>,'false','blog','<?= base_url('Admin/ChangeStatus') ?>')"><i class="bi bi-pause-circle-fill me-1"></i>Draft</span>
+                                                <?php endif; ?>
+                                                <div class="form-check form-switch mt-1">
+                                                    <input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'blog','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked<?= $data->id ?>" <?php if ($is_published) { echo "checked"; } ?>>
+                                                </div>
                                             </div>
                                         </td>
+                                        <td><button type="button" class="btn btn-sm btn-outline-primary fw-bold" onclick="EditData('blog_views',<?= $data->id ?>,'Blog Viewers History (IP & Time)')" title="Click to view IP address history"><i class="bi bi-eye me-1"></i><?= number_format($data->views ?? 0) ?> Views</button></td>
                                         <td><?= htmlspecialchars($data->title ?? '', ENT_QUOTES, 'UTF-8'); ?></td>
-                                        <!-- <td><?= !empty($data->location) ? ucwords($data->location) : '<span class="text-muted">None</span>'; ?></td> -->
+                                        <td><?= !empty($data->meta_title) ? htmlspecialchars($data->meta_title, ENT_QUOTES, 'UTF-8') : '<span class="text-muted">Same as Title</span>'; ?></td>
+                                        <td>
+                                            <?php if (!empty($data->author_name)): ?>
+                                                <strong><?= htmlspecialchars($data->author_name, ENT_QUOTES, 'UTF-8') ?></strong>
+                                                <?php if (!empty($data->author_designation)): ?>
+                                                    <br><small class="text-muted"><?= htmlspecialchars($data->author_designation, ENT_QUOTES, 'UTF-8') ?></small>
+                                                <?php endif; ?>
+                                            <?php else: ?>
+                                                <span class="text-muted">Default</span>
+                                            <?php endif; ?>
+                                        </td>
                                         <td><?= htmlspecialchars($data->url ?? '', ENT_QUOTES, 'UTF-8'); ?></td>
                                         <td><?= htmlspecialchars($blog_meta ?? '', ENT_QUOTES, 'UTF-8'); ?></td>
                                         <td><?= !empty($data->keywords) ? htmlspecialchars($data->keywords, ENT_QUOTES, 'UTF-8') : '<span class="text-muted">None</span>'; ?></td>
@@ -182,6 +202,20 @@
                         ?>
                         <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="">Publish Status</label>
+                                <select name="status" class="form-control fw-bold">
+                                    <option value="true" selected class="text-success">Published</option>
+                                    <option value="false" class="text-warning">Draft</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="">SEO Meta Title</label>
+                                <input type="text" name="meta_title" class="form-control" placeholder="Custom Meta Title (Default: Main Title)" />
+                            </div>
+                        </div>
+
                         <div class="form-group mb-3">
                             <label for="">Title</label>
                             <input type="text" name="title" id="blog_title" class="form-control" placeholder="Enter Blog title" required/>
@@ -192,22 +226,27 @@
                             <input type="text" name="url" id="blog_url" class="form-control" placeholder="enter-blog-slug" required/>
                         </div>
 
-                        <!-- 
-                        <div class="form-group mb-3">
-                            <label for="">Select Location</label>
-                            <select name="location" class="form-control">
-                                <option value="">Select Location</option>
-                                <option value="lucknow">Lucknow</option>
-                                <option value="kanpur">Kanpur</option>
-                                <option value="gorakhpur">Gorakhpur</option>
-                                <option value="bestsummertraining">Best Summer Training</option>
-                                <option value="digitaldaur">Digital Daur</option>
-                                <option value="digicoderstechnologies">Digicoders Technologies</option>
-                                <option value="digitalcoders">Digital Coders</option>
-                                <option value="softwarecompanyinlucknow">Software Company In Lucknow</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="">Author Name</label>
+                                <input type="text" name="author_name" class="form-control" placeholder="e.g. DigiCoders Team / John Doe" />
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="">Author Designation</label>
+                                <input type="text" name="author_designation" class="form-control" placeholder="e.g. Senior Tech Lead" />
+                            </div>
                         </div>
-                        -->
+
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="">Image Alt Text (SEO)</label>
+                                <input type="text" name="img_alt" class="form-control" placeholder="Descriptive image alt text" />
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="">Canonical URL</label>
+                                <input type="url" name="canonical_url" class="form-control" placeholder="https://example.com/canonical-url" />
+                            </div>
+                        </div>
 
                         <div class="form-group mb-3">
                             <label for="">Meta Description</label>

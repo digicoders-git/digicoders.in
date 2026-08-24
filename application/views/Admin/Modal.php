@@ -81,6 +81,20 @@ if (!empty($table)) {
 				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 				<input value="<?= $userdata->id ?>" type="hidden" name="id" class="form-control" required />
 
+				<div class="row">
+					<div class="col-md-6 form-group mb-3">
+						<label for="">Publish Status</label>
+						<select name="status" class="form-control fw-bold">
+							<option value="true" <?= (isset($userdata->status) && $userdata->status == 'true') ? 'selected' : '' ?> class="text-success">Published</option>
+							<option value="false" <?= (isset($userdata->status) && $userdata->status == 'false') ? 'selected' : '' ?> class="text-warning">Draft</option>
+						</select>
+					</div>
+					<div class="col-md-6 form-group mb-3">
+						<label for="">SEO Meta Title</label>
+						<input type="text" name="meta_title" class="form-control" value="<?= htmlspecialchars($userdata->meta_title ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="Custom Meta Title" />
+					</div>
+				</div>
+
 				<div class="form-group mb-3">
 					<label for="">Title</label>
 					<input type="text" name="title" id="edit_blog_title" class="form-control" value="<?= htmlspecialchars($userdata->title ?? '', ENT_QUOTES, 'UTF-8') ?>" required />
@@ -89,22 +103,29 @@ if (!empty($table)) {
 					<label for="">URL (Slug)</label>
 					<input type="text" name="url" id="edit_blog_url" class="form-control" value="<?= htmlspecialchars($userdata->url ?? '', ENT_QUOTES, 'UTF-8') ?>" required />
 				</div>
-				<!-- 
-				<div class="form-group mb-3">
-					<label for="">Select Location</label>
-					<select name="location" class="form-control">
-						<option value="">Select Location</option>
-						<option value="lucknow" <?= (isset($userdata->location) && $userdata->location == 'lucknow') ? 'selected' : '' ?>>Lucknow</option>
-						<option value="kanpur" <?= (isset($userdata->location) && $userdata->location == 'kanpur') ? 'selected' : '' ?>>Kanpur</option>
-						<option value="gorakhpur" <?= (isset($userdata->location) && $userdata->location == 'gorakhpur') ? 'selected' : '' ?>>Gorakhpur</option>
-						<option value="bestsummertraining" <?= (isset($userdata->location) && $userdata->location == 'bestsummertraining') ? 'selected' : '' ?>>Best Summer Training</option>
-						<option value="digitaldaur" <?= (isset($userdata->location) && $userdata->location == 'digitaldaur') ? 'selected' : '' ?>>Digital Daur</option>
-						<option value="digicoderstechnologies" <?= (isset($userdata->location) && $userdata->location == 'digicoderstechnologies') ? 'selected' : '' ?>>Digicoders Technologies</option>
-						<option value="digitalcoders" <?= (isset($userdata->location) && $userdata->location == 'digitalcoders') ? 'selected' : '' ?>>Digital Coders</option>
-						<option value="softwarecompanyinlucknow" <?= (isset($userdata->location) && $userdata->location == 'softwarecompanyinlucknow') ? 'selected' : '' ?>>Software Company In Lucknow</option>
-					</select>
+
+				<div class="row">
+					<div class="col-md-6 form-group mb-3">
+						<label for="">Author Name</label>
+						<input type="text" name="author_name" class="form-control" value="<?= htmlspecialchars($userdata->author_name ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="e.g. DigiCoders Team" />
+					</div>
+					<div class="col-md-6 form-group mb-3">
+						<label for="">Author Designation</label>
+						<input type="text" name="author_designation" class="form-control" value="<?= htmlspecialchars($userdata->author_designation ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="e.g. Tech Lead" />
+					</div>
 				</div>
-				-->
+
+				<div class="row">
+					<div class="col-md-6 form-group mb-3">
+						<label for="">Image Alt Text (SEO)</label>
+						<input type="text" name="img_alt" class="form-control" value="<?= htmlspecialchars($userdata->img_alt ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="Descriptive Alt Text" />
+					</div>
+					<div class="col-md-6 form-group mb-3">
+						<label for="">Canonical URL</label>
+						<input type="url" name="canonical_url" class="form-control" value="<?= htmlspecialchars($userdata->canonical_url ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="https://example.com/canonical-url" />
+					</div>
+				</div>
+
 				<div class="form-group mb-3">
 					<label for="">Meta Description</label>
 					<textarea name="meta_description" class="form-control" rows="3"><?= htmlspecialchars($blog_meta ?? '', ENT_QUOTES, 'UTF-8') ?></textarea>
@@ -241,6 +262,58 @@ if (!empty($table)) {
 
 			break;
 		// blog End Here 
+
+		// blog_views Start Here 
+		case "blog_views":
+			$viewers = isset($viewers) ? $viewers : array();
+			?>
+			<div class="card mb-3 border-0 shadow-none">
+				<div class="card-header bg-light d-flex align-items-center justify-content-between py-2 rounded-2">
+					<h6 class="mb-0 text-dark fw-bold text-truncate me-2" style="max-width: 70%;">
+						<i class="bi bi-journal-text me-1 text-primary"></i> 
+						<?= htmlspecialchars($userdata->title ?? 'Blog Views Details', ENT_QUOTES, 'UTF-8') ?>
+					</h6>
+					<span class="badge bg-primary px-3 py-2" style="font-size: 0.85rem;">
+						<i class="bi bi-eye-fill me-1"></i> Total Views: <?= count($viewers) ?>
+					</span>
+				</div>
+				<div class="card-body p-0 pt-3">
+					<div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+						<table class="table table-striped table-hover table-bordered align-middle mb-0" style="font-size: 0.9rem;">
+							<thead class="table-dark sticky-top">
+								<tr>
+									<th style="width: 60px;">#</th>
+									<th><i class="bi bi-pc-display me-1"></i> IP Address</th>
+									<th><i class="bi bi-clock-history me-1"></i> Viewed Date & Time</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php if (!empty($viewers)): ?>
+									<?php $v_sr = 1; foreach ($viewers as $vw): ?>
+										<tr>
+											<td><?= $v_sr++ ?></td>
+											<td><span class="badge bg-light text-dark border px-2 py-1 font-monospace"><i class="bi bi-hdd-network me-1 text-primary"></i><?= htmlspecialchars($vw->ip_address, ENT_QUOTES, 'UTF-8') ?></span></td>
+											<td><?= date('d M Y, h:i A', strtotime($vw->created_at)) ?></td>
+										</tr>
+									<?php endforeach; ?>
+								<?php else: ?>
+									<tr>
+										<td colspan="3" class="text-center py-4 text-muted">
+											<i class="bi bi-info-circle me-1"></i> No unique viewers recorded yet for this blog.
+										</td>
+									</tr>
+								<?php endif; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer px-0 pb-0 pt-3 border-top">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+			<?php
+			break;
+		// blog_views End Here 
 
 		case "jobs":
 			// var_dump($userdata);

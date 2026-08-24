@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <?php $has_custom_seo = true; ?>
     <title>Latest Tech Blogs & News - DigiCoders</title>
     <meta name="description" content="Explore insightful articles, web development trends, software tutorials, and tech news from DigiCoders Technologies.">
     <meta name="keywords" content="DigiCoders blog, software development blog, web development tutorials, tech news Lucknow">
@@ -188,7 +189,7 @@
                         $img_file = !empty($data->img) ? $data->img : $data->image;
                         $img_url = !empty($img_file) ? base_url('public/uploads/Blog/' . $img_file) : base_url('public/assets/images/blog-default.jpg');
                         $blog_slug = !empty($data->url) ? $data->url : $data->id;
-                        $detail_url = base_url('blog/' . $blog_slug);
+                        $detail_url = base_url('blogs/' . $blog_slug);
                         $excerpt = !empty($data->meta_description) ? $data->meta_description : strip_tags($data->content ?? $data->full_discription ?? '');
                     ?>
                         <div class="col-lg-4 col-md-6 mb-4">

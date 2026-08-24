@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['blog'] = 'home/Blogs';
 $route['blogs'] = 'home/Blogs';
 $route['blog/(:any)'] = 'home/BlogsDetails/$1';
+$route['blogs/(:any)'] = 'home/BlogsDetails/$1';
 $route['Home/BlogsDetails/(:any)'] = 'home/BlogsDetails/$1';
 $route['city/(:any)'] = 'Home/city_pages/$1';
 $route['services/(:any)'] = 'home/service/$1';

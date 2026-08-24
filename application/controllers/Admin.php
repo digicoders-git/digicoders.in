@@ -494,7 +494,13 @@ class Admin extends MY_Controller
 	//Manage Blog
 	public function ManageBlog()
 	{
-		$data['userdata'] = $this->db->order_by('id', 'desc')->get('blog')->result();
+		$blogs = $this->db->order_by('id', 'desc')->get('blog')->result();
+		if (!empty($blogs)) {
+			foreach ($blogs as &$b) {
+				$b->views = $this->db->where('blog_id', $b->id)->count_all_results('blog_views');
+			}
+		}
+		$data['userdata'] = $blogs;
 
 		$seg3 = $this->uri->segment(3);
 		if ($seg3 == 'Add') {
@@ -545,21 +551,28 @@ class Admin extends MY_Controller
 
 			$content_val = $this->input->post('content', FALSE) ?: $this->input->post('discription', FALSE);
 			$meta_desc_val = $this->input->post('meta_description', FALSE) ?: $this->input->post('short_discription', FALSE);
+			$status_val = $this->input->post('status') ? $this->input->post('status') : 'true';
+			$blog_date = ($status_val === 'true') ? ($this->input->post('date') ?: $this->data['date']) : ($this->input->post('date') ?: $this->data['date']);
 
 			$data_arr = array(
 				"title" => $this->input->post('title'),
 				"url" => $this->input->post('url'),
+				"meta_title" => $this->input->post('meta_title'),
 				"meta_description" => $meta_desc_val,
 				"short_discription" => $meta_desc_val,
 				"keywords" => $this->input->post('keywords'),
+				"author_name" => $this->input->post('author_name'),
+				"author_designation" => $this->input->post('author_designation'),
+				"img_alt" => $this->input->post('img_alt'),
+				"canonical_url" => $this->input->post('canonical_url'),
 				"location" => $this->input->post('location'),
 				"content" => $content_val,
 				"full_discription" => $content_val,
 				"img" => $filename,
 				"image" => $filename,
 				"faqs" => $faqs_json,
-				"Blog_date" => $this->input->post('date') ?: $this->data['date'],
-				"status" => 'true',
+				"Blog_date" => $blog_date,
+				"status" => $status_val,
 				"date" => $this->data['date'],
 				"time" => $this->data['time']
 			);
@@ -644,20 +657,36 @@ class Admin extends MY_Controller
 			$content_val = $this->input->post('content', FALSE) ?: $this->input->post('discription', FALSE) ?: $this->input->post('full_discription', FALSE);
 			$meta_desc_val = $this->input->post('meta_description', FALSE) ?: $this->input->post('short_discription', FALSE);
 
+			$status_val = $this->input->post('status') ? $this->input->post('status') : (isset($userdata->status) ? $userdata->status : 'true');
+			$blog_date = !empty($userdata->Blog_date) ? $userdata->Blog_date : $this->data['date'];
+			if ($status_val === 'true') {
+				if (isset($userdata->status) && $userdata->status === 'false') {
+					$blog_date = $this->data['date'];
+				}
+			}
+			if ($this->input->post('Blog_date')) {
+				$blog_date = $this->input->post('Blog_date');
+			}
+
 			$data_arr = array(
 				"title" => $this->input->post('title'),
 				"url" => $this->input->post('url'),
+				"meta_title" => $this->input->post('meta_title'),
 				"meta_description" => $meta_desc_val,
 				"short_discription" => $meta_desc_val,
 				"keywords" => $this->input->post('keywords'),
+				"author_name" => $this->input->post('author_name'),
+				"author_designation" => $this->input->post('author_designation'),
+				"img_alt" => $this->input->post('img_alt'),
+				"canonical_url" => $this->input->post('canonical_url'),
 				"location" => $this->input->post('location'),
 				"content" => $content_val,
 				"full_discription" => $content_val,
 				"img" => $filename,
 				"image" => $filename,
 				"faqs" => $faqs_json,
-				"Blog_date" => $this->input->post('Blog_date') ?: ($this->input->post('date') ?: $userdata->Blog_date),
-				"status" => 'true',
+				"Blog_date" => $blog_date,
+				"status" => $status_val,
 				"date" => $this->data['date'],
 				"time" => $this->data['time']
 			);
@@ -1788,7 +1817,12 @@ class Admin extends MY_Controller
 			return;
 		}
 
-		$userdata = $this->db->get_where($table, ['id' => $id])->row();
+		if ($table == 'blog_views') {
+			$userdata = $this->db->get_where('blog', ['id' => $id])->row();
+			$data['viewers'] = $this->db->order_by('created_at', 'DESC')->get_where('blog_views', ['blog_id' => $id])->result();
+		} else {
+			$userdata = $this->db->get_where($table, ['id' => $id])->row();
+		}
 
 		$cities = $this->db
 			->select('id, city_name')
@@ -1833,6 +1867,11 @@ class Admin extends MY_Controller
 			$data_arr = array(
 				"status" => $status,
 			);
+
+			if ($table_name === 'blog' && $status === 'true') {
+				$data_arr['Blog_date'] = $this->data['date'];
+				$data_arr['date'] = $this->data['date'];
+			}
 
 			$this->db->where('id', $id);
 			if ($this->db->update($table_name, $data_arr)) {

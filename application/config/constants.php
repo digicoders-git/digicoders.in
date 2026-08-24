@@ -87,3 +87,6 @@ defined('EXIT__AUTO_MAX') OR define('EXIT__AUTO_MAX', 125); // highest automatic
 /* reCAPTCHA Keys */
 defined('RECAPTCHA_SITE_KEY') OR define('RECAPTCHA_SITE_KEY', '6Lfk8dssAAAAAC0JvFcgivydtmrKqloH9H5xhkzN');
 defined('RECAPTCHA_SECRET_KEY') OR define('RECAPTCHA_SECRET_KEY', '6Lfk8dssAAAAAJtMtHQsPXH7sYxusv7J-Hle6bBX');
+
+/* Centralized Admin Notification / Form Submission Recipient Email */
+defined('ADMIN_NOTIFICATION_EMAIL') OR define('ADMIN_NOTIFICATION_EMAIL', 'saurabhkumarssp@gmail.com');

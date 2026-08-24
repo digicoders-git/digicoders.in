@@ -1672,7 +1672,7 @@
                     <h2 class="sec-main-h2 mb-0">Latest <span>Insights</span></h2>
                     <p class="sec-sub-p mb-0">Read our latest blogs & industry news</p>
                 </div>
-                <a href="<?= base_url('Home/Blogs') ?>" class="btn btn-outline-dark btn-sm text-nowrap"
+                <a href="<?= base_url('blogs') ?>" class="btn btn-outline-dark btn-sm text-nowrap"
                     style="font-weight: 700; border-radius: 8px; white-space: nowrap; flex-shrink: 0;">View All Blogs <i class="fas fa-arrow-right"></i></a>
             </div>
 

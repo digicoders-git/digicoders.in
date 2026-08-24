@@ -255,14 +255,14 @@
                             <span>Branches</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="<?= base_url() ?>Home/LucknowBranch"><span>Lucknow (Main Office)</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/LucknowBranch"><span>Lucknow (Head Office)</span></a></li>
                             <li><a href="<?= base_url() ?>Home/KanpurBranch"><span>Kanpur Office</span></a></li>
                             <li><a href="<?= base_url() ?>Home/GorakhpurBranch"><span>Gorakhpur Office</span></a></li>
                         </ul>
                     </li>
                     <li><a href="<?= base_url() ?>Home/Products"><span>Products</span></a></li>
                     <li><a href="<?= base_url() ?>Home/Packages"><span>Packages</span></a></li>
-                    <li><a href="<?= base_url() ?>Home/Blogs"><span>Blogs</span></a></li>
+                    <li><a href="<?= base_url('blogs') ?>"><span>Blogs</span></a></li>
                     <li><a href="<?= base_url() ?>Home/ContactUs"><span>Contact us</span></a></li>
                 </ul>
             </nav>

@@ -208,7 +208,7 @@
                         <li><a href="<?= base_url() ?>Home/ContactUs" class="hover-style-link">Contact Us</a></li>
                         <li><a href="<?= base_url() ?>Home/Packages" class="hover-style-link">Pricing &amp; Packages</a>
                         </li>
-                        <li><a href="<?= base_url() ?>Home/Blogs" class="hover-style-link">Blogs</a></li>
+                        <li><a href="<?= base_url('blogs') ?>" class="hover-style-link">Blogs</a></li>
                         <li><a href="<?= base_url() ?>Home/DigiCodersInNews" class="hover-style-link">DigiCoders In
                                 News</a></li>
                     </ul>
@@ -465,7 +465,7 @@
 
                     <li><a href="<?= base_url() ?>Home/Products"><span>Products</span></a></li>
                     <li><a href="<?= base_url() ?>Home/Packages"><span>Packages</span></a></li>
-                    <li><a href="<?= base_url() ?>Home/Blogs"><span>Blogs</span></a></li>
+                    <li><a href="<?= base_url('blogs') ?>"><span>Blogs</span></a></li>
                     <li><a href="<?= base_url() ?>Home/ContactUs"><span>Contact us</span></a></li>
                 </ul>
             </nav>

@@ -3291,7 +3291,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 text-md-right mt-3 mt-md-0">
-                    <a href="<?= base_url() ?>Home/Blogs" class="service-discover-link font-weight-bold">
+                    <a href="<?= base_url('blogs') ?>" class="service-discover-link font-weight-bold">
                         <span>View All Blogs</span> <i class="fa fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -3307,7 +3307,7 @@
                         $img_file = !empty($data->img) ? $data->img : $data->image;
                         $img_url = !empty($img_file) ? base_url('public/uploads/Blog/' . $img_file) : base_url('public/assets/images/blog-default.jpg');
                         $blog_slug = !empty($data->url) ? $data->url : $data->id;
-                        $detail_url = base_url('blog/' . $blog_slug);
+                        $detail_url = base_url('blogs/' . $blog_slug);
                         ?>
                         <div class="item py-2 h-100">
                             <div class="blog-card-item h-100">

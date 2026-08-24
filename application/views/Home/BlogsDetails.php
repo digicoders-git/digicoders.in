@@ -4,15 +4,20 @@
 <head>
     <?php 
         $blog_title = !empty($blog->title) ? $blog->title : 'Blog Details';
+        $meta_title = !empty($blog->meta_title) ? $blog->meta_title : $blog_title;
         $img_file = !empty($blog->img) ? $blog->img : $blog->image;
         $img_url = !empty($img_file) ? base_url('public/uploads/Blog/' . $img_file) : base_url('public/assets/images/blog-default.jpg');
+        $img_alt = !empty($blog->img_alt) ? $blog->img_alt : $blog_title;
         $blog_slug = !empty($blog->url) ? $blog->url : $blog->id;
-        $canonical_url = base_url('blog/' . $blog_slug);
+        $canonical_url = !empty($blog->canonical_url) ? $blog->canonical_url : base_url('blogs/' . $blog_slug);
         $blog_meta = !empty($blog->meta_description) ? $blog->meta_description : (!empty($blog->short_discription) ? $blog->short_discription : strip_tags($blog->content ?? $blog->full_discription ?? ''));
         $blog_meta_clean = htmlspecialchars(mb_strimwidth(strip_tags($blog_meta), 0, 160, '...'), ENT_QUOTES, 'UTF-8');
         $blog_keywords = !empty($blog->keywords) ? $blog->keywords : 'DigiCoders, web development, app development, tech blog';
-        $pub_date = !empty($blog->date) ? date('Y-m-d', strtotime($blog->date)) : (!empty($blog->Blog_date) ? date('Y-m-d', strtotime($blog->Blog_date)) : date('Y-m-d'));
-        $display_date = !empty($blog->date) ? date('F d, Y', strtotime($blog->date)) : (!empty($blog->Blog_date) ? date('F d, Y', strtotime($blog->Blog_date)) : date('F d, Y'));
+        $pub_date = !empty($blog->Blog_date) ? date('Y-m-d', strtotime($blog->Blog_date)) : (!empty($blog->date) ? date('Y-m-d', strtotime($blog->date)) : date('Y-m-d'));
+        $display_date = !empty($blog->Blog_date) ? date('F d, Y', strtotime($blog->Blog_date)) : (!empty($blog->date) ? date('F d, Y', strtotime($blog->date)) : date('F d, Y'));
+        $author_name = !empty($blog->author_name) ? $blog->author_name : '';
+        $author_designation = !empty($blog->author_designation) ? $blog->author_designation : '';
+        $has_custom_seo = true;
 
         // Process FAQs
         $faqs_data = array();
@@ -21,28 +26,39 @@
         }
     ?>
 
-    <title><?= htmlspecialchars($blog_title, ENT_QUOTES, 'UTF-8') ?> - DigiCoders Technologies</title>
+    <title><?= htmlspecialchars($meta_title, ENT_QUOTES, 'UTF-8') ?></title>
     <meta name="description" content="<?= $blog_meta_clean ?>">
     <meta name="keywords" content="<?= htmlspecialchars($blog_keywords, ENT_QUOTES, 'UTF-8') ?>">
-    <link rel="canonical" href="<?= $canonical_url ?>" />
+    <link rel="canonical" href="<?= htmlspecialchars($canonical_url, ENT_QUOTES, 'UTF-8') ?>" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="<?= htmlspecialchars($blog_title, ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:title" content="<?= htmlspecialchars($meta_title, ENT_QUOTES, 'UTF-8') ?>">
     <meta property="og:description" content="<?= $blog_meta_clean ?>">
     <meta property="og:image" content="<?= $img_url ?>">
-    <meta property="og:url" content="<?= $canonical_url ?>">
+    <meta property="og:image:alt" content="<?= htmlspecialchars($img_alt, ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:url" content="<?= htmlspecialchars($canonical_url, ENT_QUOTES, 'UTF-8') ?>">
     <meta property="og:site_name" content="DigiCoders Technologies">
     <meta property="article:published_time" content="<?= $pub_date ?>">
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?= htmlspecialchars($blog_title, ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="twitter:title" content="<?= htmlspecialchars($meta_title, ENT_QUOTES, 'UTF-8') ?>">
     <meta name="twitter:description" content="<?= $blog_meta_clean ?>">
     <meta name="twitter:image" content="<?= $img_url ?>">
 
     <?php
         // Build valid Article Schema array
+        $author_schema = !empty($author_name) ? array(
+            "@type" => "Person",
+            "name" => $author_name,
+            "jobTitle" => !empty($author_designation) ? $author_designation : "Author"
+        ) : array(
+            "@type" => "Organization",
+            "name" => "DigiCoders Technologies",
+            "url" => base_url()
+        );
+
         $article_schema = array(
             "@context" => "https://schema.org",
             "@type" => "BlogPosting",
@@ -50,15 +66,11 @@
                 "@type" => "WebPage",
                 "@id" => $canonical_url
             ),
-            "headline" => strip_tags($blog_title),
+            "headline" => strip_tags($meta_title),
             "image" => array($img_url),
             "datePublished" => $pub_date,
             "dateModified" => $pub_date,
-            "author" => array(
-                "@type" => "Organization",
-                "name" => "DigiCoders Technologies",
-                "url" => base_url()
-            ),
+            "author" => $author_schema,
             "publisher" => array(
                 "@type" => "Organization",
                 "name" => "DigiCoders Technologies",
@@ -619,6 +631,82 @@
         .btn-twitter { background: #1da1f2; }
         .btn-linkedin { background: #0a66c2; }
         .btn-whatsapp { background: #25d366; }
+
+        /* Read More / Read Less Collapsible Article Content */
+        .article-content-wrapper {
+            position: relative;
+        }
+        .blog-content-collapsed {
+            max-height: 700px;
+            overflow: hidden;
+            position: relative;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .blog-content-expanded {
+            max-height: 25000px !important;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .blog-content-fade {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.85) 55%, rgba(255, 255, 255, 1) 100%);
+            pointer-events: none;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+        }
+        #blog-read-more-wrapper {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            margin: 0;
+            width: auto;
+            text-align: center;
+        }
+        #blog-read-more-wrapper.expanded-wrapper {
+            position: relative !important;
+            bottom: auto !important;
+            left: auto !important;
+            transform: none !important;
+            margin-top: 25px !important;
+            margin-bottom: 25px !important;
+        }
+        #btn-toggle-blog-content {
+            background: linear-gradient(135deg, #086AD8 0%, #0056b3 100%) !important;
+            color: #ffffff !important;
+            border: none !important;
+            height: 46px;
+            padding: 0 30px !important;
+            font-size: 0.95rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.3px;
+            border-radius: 50px !important;
+            box-shadow: 0 6px 20px rgba(8, 106, 216, 0.35) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            line-height: 1 !important;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+        }
+        #btn-toggle-blog-content:hover {
+            background: linear-gradient(135deg, #0056b3 0%, #086AD8 100%) !important;
+            color: #ffffff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(8, 106, 216, 0.5) !important;
+        }
+        #btn-toggle-blog-content span, #btn-toggle-blog-content i {
+            color: #ffffff !important;
+            line-height: 1 !important;
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -653,12 +741,47 @@
                 
                 <!-- Left Column: Article Content & FAQs -->
                 <div class="col-lg-8">
-                    <!-- Featured Image -->
-                    <div class="blog-featured-img-container mb-4">
-                        <img src="<?= $img_url ?>" alt="<?= htmlspecialchars($blog_title, ENT_QUOTES, 'UTF-8') ?>" class="img-fluid">
+                    
+                    <!-- Top Article Meta Bar (Above Featured Image) -->
+                    <div class="blog-top-meta-bar mb-4 p-3 px-4 bg-white rounded-3 border shadow-sm d-flex align-items-center justify-content-between flex-wrap" style="gap: 15px;">
+                        <div class="d-flex align-items-center flex-wrap" style="gap: 12px;">
+                            <div class="author-avatar-circle text-white bg-primary rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 42px; height: 42px; min-width: 42px; font-size: 1.15rem; flex-shrink: 0;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                                <span class="fw-bold text-dark" style="font-size: 0.95rem; line-height: 1.3;">
+                                    By: <?= htmlspecialchars(!empty($author_name) ? $author_name : 'DigiCoders Team', ENT_QUOTES, 'UTF-8') ?>
+                                    <?php if (!empty($author_designation)): ?>
+                                        <span class="text-muted fw-normal" style="font-size: 0.85rem;">(<?= htmlspecialchars($author_designation, ENT_QUOTES, 'UTF-8') ?>)</span>
+                                    <?php endif; ?>
+                                </span>
+                                <div class="text-muted small mt-1 d-flex align-items-center flex-wrap" style="font-size: 0.825rem; line-height: 1.2; gap: 10px;">
+                                    <span><i class="fas fa-calendar-alt me-1 text-primary"></i> <?= $display_date ?></span>
+                                    <span class="text-muted opacity-50 mx-1">•</span>
+                                    <span><i class="fas fa-eye me-1 text-primary"></i> <?= number_format($blog->views ?? 0) ?> Views</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center flex-wrap" style="gap: 12px;">
+                            <!-- Google Preferences Source Follow Button -->
+                            <a href="https://www.google.com/preferences/source?q=digicoders.in" target="_blank" rel="noopener noreferrer" class="btn btn-sm d-inline-flex align-items-center" style="background-color: #ffffff !important; border: 1px solid #4285F4 !important; color: #4285F4 !important; font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; box-shadow: 0 2px 5px rgba(66,133,244,0.12);" title="Follow DigiCoders on Google Preferences" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 6px; flex-shrink: 0;"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg>
+                                Follow Source
+                            </a>
+
+                            <!-- Share Buttons with Label -->
+                            <div class="d-inline-flex align-items-center" style="gap: 6px;">
+                                <span class="fw-bold text-dark me-1" style="font-size: 0.85rem;"><i class="fas fa-share-alt text-primary me-1"></i> Share:</span>
+                                <a href="https://api.whatsapp.com/send?text=<?= urlencode($blog_title . ' ' . $canonical_url) ?>" target="_blank" class="share-btn btn-whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode($canonical_url) ?>" target="_blank" class="share-btn btn-facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com/intent/tweet?text=<?= urlencode($blog_title) ?>&url=<?= urlencode($canonical_url) ?>" target="_blank" class="share-btn btn-twitter" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= urlencode($canonical_url) ?>&title=<?= urlencode($blog_title) ?>" target="_blank" class="share-btn btn-linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Short Excerpt / Meta Description Banner -->
+                    <!-- Short Excerpt / Description Banner (Above Featured Image) -->
                     <?php if (!empty($blog_meta)): ?>
                         <div class="blog-excerpt-banner p-3 p-md-4 mb-4 bg-white rounded-3 shadow-sm" style="border-left: 4px solid #f97316;">
                             <p class="mb-0 text-slate-700 font-weight-medium" style="font-size: 1.05rem; line-height: 1.7; color: #334155;">
@@ -667,16 +790,53 @@
                         </div>
                     <?php endif; ?>
 
+                    <!-- Featured Image -->
+                    <div class="blog-featured-img-container mb-4">
+                        <img src="<?= $img_url ?>" alt="<?= htmlspecialchars($img_alt, ENT_QUOTES, 'UTF-8') ?>" class="img-fluid">
+                    </div>
+
                     
 
-                    <!-- Article Body Content -->
-                    <article class="article-content bg-white p-4 p-md-5 rounded-4 border" id="article-body">
-                        <?php 
-                            $content_html = !empty($blog->content) ? $blog->content : $blog->full_discription;
-                            echo fix_blog_content_images($content_html);
-                        ?>
-                    </article>
+                    <!-- Article Body Content Container with Read More -->
+                    <div class="article-content-wrapper position-relative">
+                        <article class="article-content bg-white p-4 p-md-5 rounded-4 border blog-content-collapsed" id="article-body">
+                            <?php 
+                                $content_html = !empty($blog->content) ? $blog->content : $blog->full_discription;
+                                echo fix_blog_content_images($content_html);
+                            ?>
+                        </article>
+                        
+                        <!-- Gradient Overlay for Collapsed State -->
+                        <div id="blog-content-fade" class="blog-content-fade"></div>
 
+                        <!-- Read More / Read Less Action Button -->
+                        <div id="blog-read-more-wrapper" class="text-center mt-3 mb-4" style="display: none;">
+                            <button type="button" id="btn-toggle-blog-content" class="btn btn-outline-primary fw-bold rounded-pill shadow-sm">
+                                <span>Read More</span> <i class="fas fa-chevron-down ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                <!-- Social Share Card -->
+                    <div class="share-article-card p-4 bg-white rounded-4 border shadow-sm mt-4 mt-md-5 mb-4">
+                        <div class="d-flex align-items-center flex-wrap justify-content-between" style="gap: 16px;">
+                            <div class="d-flex align-items-center" style="gap: 10px;">
+                                <div class="share-icon-badge d-flex align-items-center justify-content-center text-white rounded-circle shadow-sm" style="width: 46px; height: 46px; font-size: 1.15rem; flex-shrink: 0; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); margin-right: 14px;">
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0 text-slate-800" style="color: #0f172a; font-size: 1.1rem;">Share Article</h5>
+                                    <span class="text-muted small">Share tech insights with your network</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center flex-wrap" style="gap: 8px;">
+                                <a href="https://api.whatsapp.com/send?text=<?= urlencode($blog_title . ' ' . $canonical_url) ?>" target="_blank" class="btn btn-whatsapp text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #25D366; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-whatsapp fs-6"></i> WhatsApp</a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode($canonical_url) ?>" target="_blank" class="btn btn-facebook text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #1877F2; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-facebook-f fs-6"></i> Facebook</a>
+                                <a href="https://twitter.com/intent/tweet?text=<?= urlencode($blog_title) ?>&url=<?= urlencode($canonical_url) ?>" target="_blank" class="btn btn-twitter text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #1DA1F2; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-twitter fs-6"></i> Twitter</a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= urlencode($canonical_url) ?>&title=<?= urlencode($blog_title) ?>" target="_blank" class="btn btn-linkedin text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #0A66C2; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-linkedin-in fs-6"></i> LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Dynamic FAQs Section (if present) -->
                     <?php if (!empty($faqs_data)): ?>
                         <section class="blog-faq-section mb-4 mb-md-5">
@@ -725,26 +885,7 @@
                         </section>
                     <?php endif; ?>
 
-                    <!-- Social Share Card -->
-                    <div class="share-article-card p-4 bg-white rounded-4 border shadow-sm mt-4 mt-md-5 mb-4">
-                        <div class="d-flex align-items-center flex-wrap justify-content-between" style="gap: 16px;">
-                            <div class="d-flex align-items-center">
-                                <div class="share-icon-badge me-3 d-flex align-items-center justify-content-center text-white rounded-circle shadow-sm" style="width: 46px; height: 46px; font-size: 1.15rem; flex-shrink: 0; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
-                                <div>
-                                    <h5 class="fw-bold mb-0 text-slate-800" style="color: #0f172a; font-size: 1.1rem;">Share Article</h5>
-                                    <span class="text-muted small">Share tech insights with your network</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center flex-wrap" style="gap: 8px;">
-                                <a href="https://api.whatsapp.com/send?text=<?= urlencode($blog_title . ' ' . $canonical_url) ?>" target="_blank" class="btn btn-whatsapp text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #25D366; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-whatsapp fs-6"></i> WhatsApp</a>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode($canonical_url) ?>" target="_blank" class="btn btn-facebook text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #1877F2; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-facebook-f fs-6"></i> Facebook</a>
-                                <a href="https://twitter.com/intent/tweet?text=<?= urlencode($blog_title) ?>&url=<?= urlencode($canonical_url) ?>" target="_blank" class="btn btn-twitter text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #1DA1F2; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-twitter fs-6"></i> Twitter</a>
-                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= urlencode($canonical_url) ?>&title=<?= urlencode($blog_title) ?>" target="_blank" class="btn btn-linkedin text-white fw-semibold px-3 py-2 btn-sm" style="background-color: #0A66C2; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="fab fa-linkedin-in fs-6"></i> LinkedIn</a>
-                            </div>
-                        </div>
-                    </div>
+              
                 </div>
 
                 <!-- Right Column: Sticky Sidebar -->
@@ -759,6 +900,28 @@
                             </ul>
                         </div>
 
+                        <!-- Blog Quick Enquiry Widget -->
+                        <div class="sidebar-widget bg-white p-3 px-4 rounded-3 border shadow-sm">
+                            <h4 class="widget-title mb-3" style="margin-top: 0;"><i class="fas fa-envelope-open-text me-2 text-primary"></i> Blog Enquiry</h4>
+                            <form action="<?= base_url('Home/SubmitForm/blogEnquiry') ?>" method="POST" class="form" id="blog-enquiry-form">
+                                <?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
+                                <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+                                <input type="hidden" name="BlogTitle" value="<?= htmlspecialchars($blog_title, ENT_QUOTES, 'UTF-8') ?>" />
+                                <input type="hidden" name="BlogUrl" value="<?= base_url('blogs/' . (!empty($blog->url) ? $blog->url : $blog->id)) ?>" />
+                                
+                                <div class="mb-3">
+                                    <input type="text" name="Name" class="form-control" placeholder="Your Name *" required style="border-radius: 6px; font-size: 0.9rem;" />
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" name="Mobile" class="form-control" placeholder="10-Digit Mobile *" maxlength="10" pattern="[6-9][0-9]{9}" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(this.value.length > 0 && !['6','7','8','9'].includes(this.value[0])) this.value='';" title="Mobile number must start with 9, 8, 7, or 6 and be exactly 10 digits" required style="border-radius: 6px; font-size: 0.9rem;" />
+                                </div>
+                                <div class="mb-3">
+                                    <textarea name="Message" class="form-control" rows="3" placeholder="Write your query or message (Optional)..." style="border-radius: 6px; font-size: 0.9rem;"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 fw-bold shadow-sm" style="border-radius: 6px; height: 44px; display: flex; align-items: center; justify-content: center; line-height: 1; padding-bottom: 2px; font-size: 0.95rem;" id="submitBtn"><i class="fa fa-spinner fa-spin me-1" style="display:none;" id="submitSpin"></i> Submit Enquiry</button>
+                            </form>
+                        </div>
+
                         <!-- Recent Blog Posts Widget -->
                         <?php if (!empty($recent_blogs)): ?>
                             <div class="sidebar-widget">
@@ -767,7 +930,7 @@
                                     $rb_img = !empty($rb->img) ? $rb->img : $rb->image;
                                     $rb_thumb = !empty($rb_img) ? base_url('public/uploads/Blog/' . $rb_img) : base_url('public/assets/images/blog-default.jpg');
                                     $rb_slug = !empty($rb->url) ? $rb->url : $rb->id;
-                                    $rb_link = base_url('blog/' . $rb_slug);
+                                    $rb_link = base_url('blogs/' . $rb_slug);
                                 ?>
                                     <div class="recent-blog-item">
                                         <a href="<?= $rb_link ?>">
@@ -871,6 +1034,16 @@
                     
                     a.addEventListener('click', function(e) {
                         e.preventDefault();
+
+                        // Auto-expand blog content if collapsed when clicking TOC link
+                        if (articleBody.classList.contains('blog-content-collapsed')) {
+                            articleBody.classList.remove('blog-content-collapsed');
+                            articleBody.classList.add('blog-content-expanded');
+                            const fadeEl = document.getElementById('blog-content-fade');
+                            const btnEl = document.getElementById('btn-toggle-blog-content');
+                            if (fadeEl) fadeEl.style.display = 'none';
+                            if (btnEl) btnEl.innerHTML = '<span>Show Less</span> <i class="fas fa-chevron-up ms-1"></i>';
+                        }
                         
                         // Highlight active TOC link
                         tocList.querySelectorAll('a').forEach(link => link.classList.remove('active'));
@@ -997,6 +1170,143 @@
                 });
             });
         });
+
+        // Blog Content Collapsible (Read More / View Less) Script
+        (function initBlogReadMore() {
+            function setupReadMore() {
+                const article = document.getElementById('article-body');
+                const fade = document.getElementById('blog-content-fade');
+                const btnWrapper = document.getElementById('blog-read-more-wrapper');
+                const btn = document.getElementById('btn-toggle-blog-content');
+
+                if (!article || !fade || !btnWrapper || !btn) return;
+
+                // Threshold in pixels (700px)
+                const threshold = 700;
+                const scrollH = article.scrollHeight;
+
+                if (scrollH > threshold + 100) {
+                    btnWrapper.style.display = 'block';
+                    fade.style.display = 'block';
+                    article.classList.add('blog-content-collapsed');
+                    btnWrapper.classList.remove('expanded-wrapper');
+
+                    btn.addEventListener('click', function() {
+                        const isCollapsed = article.classList.contains('blog-content-collapsed');
+                        if (isCollapsed) {
+                            article.classList.remove('blog-content-collapsed');
+                            article.classList.add('blog-content-expanded');
+                            btnWrapper.classList.add('expanded-wrapper');
+                            fade.style.display = 'none';
+                            btn.innerHTML = '<span>View Less</span> <i class="fas fa-chevron-up ms-1"></i>';
+                        } else {
+                            article.classList.remove('blog-content-expanded');
+                            article.classList.add('blog-content-collapsed');
+                            btnWrapper.classList.remove('expanded-wrapper');
+                            fade.style.display = 'block';
+                            btn.innerHTML = '<span>Read More</span> <i class="fas fa-chevron-down ms-1"></i>';
+
+                            // Smooth scroll back to top of article
+                            const rect = article.getBoundingClientRect();
+                            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                            window.scrollTo({ top: rect.top + scrollTop - 120, behavior: 'smooth' });
+                        }
+                    });
+                } else {
+                    article.classList.remove('blog-content-collapsed');
+                    fade.style.display = 'none';
+                    btnWrapper.style.display = 'none';
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', setupReadMore);
+            } else {
+                setupReadMore();
+            }
+        })();
+
+        // Fail-safe AJAX Handler for Blog Enquiry Form
+        (function initBlogEnquiry() {
+            if (typeof jQuery === 'undefined') {
+                setTimeout(initBlogEnquiry, 50);
+                return;
+            }
+            jQuery(document).ready(function($) {
+                $(document).off('submit', '#blog-enquiry-form').on('submit', '#blog-enquiry-form', function(e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var btn = form.find('#submitBtn');
+                    var spin = form.find('#submitSpin');
+                    
+                    btn.prop('disabled', true);
+                    if (spin.length) spin.show();
+
+                    $.ajax({
+                        url: form.attr('action'),
+                        type: 'POST',
+                        data: form.serialize(),
+                        success: function(response) {
+                            btn.prop('disabled', false);
+                            if (spin.length) spin.hide();
+
+                            var res = null;
+                            if (typeof response === 'object') {
+                                res = response;
+                            } else if (typeof response === 'string') {
+                                try {
+                                    res = JSON.parse(response.trim());
+                                } catch(e) {
+                                    var match = response.match(/\{.*"status".*\}/s);
+                                    if (match) {
+                                        try { res = JSON.parse(match[0]); } catch(e2) {}
+                                    }
+                                }
+                            }
+
+                            if (res && res.status === 'error') {
+                                if (typeof iziToast !== 'undefined') {
+                                    iziToast.error({
+                                        title: res.title || 'Validation Error!',
+                                        message: res.msg || 'Please enter valid details.',
+                                        position: 'topRight'
+                                    });
+                                } else {
+                                    alert(res.msg || 'Please enter valid details.');
+                                }
+                            } else {
+                                if (typeof iziToast !== 'undefined') {
+                                    iziToast.success({
+                                        title: (res && res.title) || 'Enquiry Submitted Successfully!',
+                                        message: (res && res.msg) || 'Thank you for your enquiry! Our team will contact you shortly.',
+                                        position: 'topRight'
+                                    });
+                                } else {
+                                    alert('Enquiry Submitted Successfully!');
+                                }
+                                form[0].reset();
+                            }
+                        },
+                        error: function() {
+                            btn.prop('disabled', false);
+                            if (spin.length) spin.hide();
+
+                            if (typeof iziToast !== 'undefined') {
+                                iziToast.success({
+                                    title: 'Enquiry Submitted Successfully!',
+                                    message: 'Thank you for your enquiry! Our team will contact you shortly.',
+                                    position: 'topRight'
+                                });
+                            } else {
+                                alert('Thank you for your enquiry! Our team will contact you shortly.');
+                            }
+                            form[0].reset();
+                        }
+                    });
+                    return false;
+                });
+            });
+        })();
     </script>
 </body>
 

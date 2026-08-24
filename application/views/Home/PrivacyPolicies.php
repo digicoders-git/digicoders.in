@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php $has_custom_seo = true; ?>
     <title>Privacy Policy | Best IT Company in Lucknow - DigiCoders</title>
 	<meta name="description" content="Read the Privacy Policy of DigiCoders Technologies Pvt. Ltd. We are committed to protecting your privacy and ensuring a secure experience on our website.">
     <meta name="keywords" content="privacy policy, DigiCoders privacy, data protection, DigiCoders Technologies Pvt. Ltd.">

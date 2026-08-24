@@ -1,6 +1,29 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Get Centralized Admin Notification Email
+ * Resolves the email address to receive all lead notifications, registrations, and admin security OTPs.
+ */
+// if (!function_exists('get_admin_notification_email')) {
+//     function get_admin_notification_email()
+//     {
+//         if (defined('ADMIN_NOTIFICATION_EMAIL') && !empty(ADMIN_NOTIFICATION_EMAIL)) {
+//             return ADMIN_NOTIFICATION_EMAIL;
+//         }
+
+//         $CI =& get_instance();
+//         if (isset($CI->db)) {
+//             $admin = $CI->db->get('admin_login')->row();
+//             if (!empty($admin->email)) {
+//                 return $admin->email;
+//             }
+//         }
+
+//         return '';
+//     }
+// }
+
 if (!function_exists('send_form_email')) {
     /**
      * Send email for website form submissions (Career, Contact Us, Demo, Proposal, etc.)
@@ -19,9 +42,10 @@ if (!function_exists('send_form_email')) {
             $CI->email->initialize($config);
             $CI->email->set_newline("\r\n");
             $from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
-            $CI->email->from($from_email, 'digicoders.in Website');
-            $CI->email->to('digicoderstech@gmail.com');
-            // $CI->email->to('saurabhkumarssp@gmail.com');
+            $CI->email->from($from_email, 'digicoders.in Website');     
+            $to_email = "saurabhkumarssp@gmail.com";
+            // $to_email = "digicoderstech@gmail.com";
+            $CI->email->to($to_email);
             
             $applicant_name = !empty($data['name']) ? $data['name'] : (!empty($data['Name']) ? $data['Name'] : '');
             $apply_for = !empty($data['appaly_for']) ? $data['appaly_for'] : (!empty($data['apply_for']) ? $data['apply_for'] : '');
@@ -195,8 +219,9 @@ if (!function_exists('send_admin_login_otp_email')) {
             $CI->email->initialize($config);
             $from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
             $CI->email->from($from_email, 'digicoders.in Admin');
-            $CI->email->to('digicoderstech@gmail.com');
-            // $CI->email->to('saurabhkumarssp@gmail.com');
+            $to_email = "saurabhkumarssp@gmail.com";
+            // $to_email = "digicoderstech@gmail.com";
+            $CI->email->to($to_email);
 
             $CI->email->subject("[$otp] Admin Login OTP Verification Code | digicoders.in Admin Panel");
 

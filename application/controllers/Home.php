@@ -7,11 +7,7 @@ class Home extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-
-		// ✅ 1. Model load FIRST
 		$this->load->model('Service_model');
-
-		// ✅ 2. Data fetch
 		$states = $this->Service_model->getStates();
 
 		if (!empty($states)) {
@@ -77,10 +73,10 @@ class Home extends CI_Controller
 			return;
 		}
 
-		// Try fetching by url slug first, then fallback to id
-		$blog = $this->db->get_where('blog', array('url' => $slug_or_id))->row();
+		// Try fetching by url slug first, then fallback to id (published only)
+		$blog = $this->db->get_where('blog', array('url' => $slug_or_id, 'status' => 'true'))->row();
 		if (!$blog && is_numeric($slug_or_id)) {
-			$blog = $this->db->get_where('blog', array('id' => $slug_or_id))->row();
+			$blog = $this->db->get_where('blog', array('id' => $slug_or_id, 'status' => 'true'))->row();
 		}
 
 		if (!$blog) {
@@ -88,11 +84,26 @@ class Home extends CI_Controller
 			return;
 		}
 
+		// Track unique blog view by IP address
+		$user_ip = $this->input->ip_address() ?: (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1');
+		$check_view = $this->db->get_where('blog_views', array('blog_id' => $blog->id, 'ip_address' => $user_ip))->row();
+		if (!$check_view) {
+			$this->db->insert('blog_views', array(
+				'blog_id' => $blog->id,
+				'ip_address' => $user_ip,
+				'created_at' => date('Y-m-d H:i:s')
+			));
+		}
+
+		// Calculate total views ONLY from blog_views table directly
+		$blog->views = $this->db->where('blog_id', $blog->id)->count_all_results('blog_views');
+
 		$data['blog'] = $blog;
 
-		// Fetch recent blogs for sticky sidebar (excluding current)
+		// Fetch recent blogs for sticky sidebar (excluding current, published only)
 		$recent_blogs = $this->db
 			->where('id !=', $blog->id)
+			->where('status', 'true')
 			->order_by('id', 'DESC')
 			->limit(5)
 			->get('blog')
@@ -100,6 +111,7 @@ class Home extends CI_Controller
 
 		if (empty($recent_blogs)) {
 			$recent_blogs = $this->db
+				->where('status', 'true')
 				->order_by('id', 'DESC')
 				->limit(5)
 				->get('blog')
@@ -318,6 +330,45 @@ class Home extends CI_Controller
 
 			}
 
+			## Blog Enquiry Form Submit Action
+			if ($this->uri->segment(3) == 'blogEnquiry') {
+				$name = trim($this->input->post('Name') ?? '');
+				$mobile = trim($this->input->post('Mobile') ?? '');
+				$message = trim($this->input->post('Message') ?? '');
+				$blog_title_ref = trim($this->input->post('BlogTitle') ?? '') ?: 'Blog Post';
+				$blog_url_ref = trim($this->input->post('BlogUrl') ?? '') ?: '';
+
+				if (empty($name) || empty($mobile) || !preg_match('/^[6-9]\d{9}$/', $mobile)) {
+					$response = array("status" => "error", "msg" => "Please enter a valid Name and 10-digit Mobile Number starting with 9, 8, 7, or 6.", "title" => "Validation Error", "reload" => "false", "redirect" => "false");
+					$this->output->set_content_type('application/json')->set_output(json_encode($response));
+					return;
+				}
+
+				$user_msg = !empty($message) ? $message : 'No message provided.';
+				$full_message = "Blog Title: " . $blog_title_ref . ($blog_url_ref ? "\nBlog URL: " . $blog_url_ref : "") . "\nUser Message: " . $user_msg;
+
+				$data_arr = array(
+					"name" => $name,
+					"email" => "N/A",
+					"mobile" => $mobile,
+					"enquiry" => "Blog Enquiry: " . $blog_title_ref,
+					"message" => $full_message,
+					"type" => "Blog Enquiry",
+					"status" => 'true',
+					"date" => date('Y-m-d'),
+					"time" => date('h:i:s A')
+				);
+
+				if ($this->db->insert('contact', $data_arr)) {
+					@send_form_email('New Blog Enquiry - ' . $blog_title_ref, $data_arr);
+					$response = array("status" => "success", "msg" => "Thank you for your enquiry! Our team will contact you shortly.", "title" => "Enquiry Submitted Successfully!", "reload" => "false", "redirect" => "false");
+					$this->output->set_content_type('application/json')->set_output(json_encode($response));
+				} else {
+					$response = array("status" => "error", "msg" => "Something Went Wrong. Please try again.", "title" => "Error", "reload" => "false", "redirect" => "false");
+					$this->output->set_content_type('application/json')->set_output(json_encode($response));
+				}
+				return;
+			}
 
 		}
 	}
@@ -325,7 +376,13 @@ class Home extends CI_Controller
 	{
 		$data['clientdata'] = $this->db->order_by('id', 'desc')->limit(25)->get('client')->result();
 		$data['userdata'] = $this->db->where('status', 'true')->order_by('id', 'desc')->limit(12)->get('projects')->result();
-		$data['blogdata'] = $this->db->order_by('id', 'desc')->limit(2)->get('blog')->result();
+		$index_blogs = $this->db->where('status', 'true')->order_by('id', 'desc')->limit(2)->get('blog')->result();
+		if (!empty($index_blogs)) {
+			foreach ($index_blogs as &$b) {
+				$b->views = $this->db->where('blog_id', $b->id)->count_all_results('blog_views');
+			}
+		}
+		$data['blogdata'] = $index_blogs;
 		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('slider', array('status' => 'true'))->result();
 
 		$data['expertdata'] = $this->db->order_by('sequence', 'asc')->get_where('expert', ['status' => 'true'])->result();
@@ -579,8 +636,14 @@ class Home extends CI_Controller
 	}
 	public function Blogs()
 	{
-		// Fetching all blogs and ordering by ID descending
-		$data['blogdata'] = $this->db->order_by('id', 'desc')->get('blog')->result();
+		// Fetching all published blogs and ordering by ID descending
+		$blogs = $this->db->where('status', 'true')->order_by('id', 'desc')->get('blog')->result();
+		if (!empty($blogs)) {
+			foreach ($blogs as &$b) {
+				$b->views = $this->db->where('blog_id', $b->id)->count_all_results('blog_views');
+			}
+		}
+		$data['blogdata'] = $blogs;
 
 		// Loading the Blogs view with the fetched blog data
 		$this->load->view('Home/Blogs', $data);
