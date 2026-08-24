@@ -43,8 +43,8 @@ if (!function_exists('send_form_email')) {
             $CI->email->set_newline("\r\n");
             $from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
             $CI->email->from($from_email, 'digicoders.in Website');     
-            $to_email = "saurabhkumarssp@gmail.com";
-            // $to_email = "digicoderstech@gmail.com";
+            // $to_email = "saurabhkumarssp@gmail.com";
+            $to_email = "digicoderstech@gmail.com";
             $CI->email->to($to_email);
             
             $applicant_name = !empty($data['name']) ? $data['name'] : (!empty($data['Name']) ? $data['Name'] : '');
@@ -219,8 +219,8 @@ if (!function_exists('send_admin_login_otp_email')) {
             $CI->email->initialize($config);
             $from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
             $CI->email->from($from_email, 'digicoders.in Admin');
-            $to_email = "saurabhkumarssp@gmail.com";
-            // $to_email = "digicoderstech@gmail.com";
+            // $to_email = "saurabhkumarssp@gmail.com";
+            $to_email = "digicoderstech@gmail.com";
             $CI->email->to($to_email);
 
             $CI->email->subject("[$otp] Admin Login OTP Verification Code | digicoders.in Admin Panel");
