@@ -733,7 +733,7 @@
                             </div>
                             <span>340, S-Block, Near Annapoorna Hospital, Shehnai Chauraha,
                                 Yashoda
-                                Nagar, Kanpur, Uttar Pradesh - 208025</span>
+                                Nagar, Kanpur, Uttar Pradesh - 208011</span>
                         </li>
                         <li
                             style="display: flex; align-items: center; gap: 12px; font-size: 13.5px; color: #1e293b; font-weight: 600;">
@@ -1319,7 +1319,7 @@
                                     <p class="touch-label">Address</p>
                                     <p class="touch-val">340, S-Block, Near Annapoorna Hospital, Shehnai Chauraha,
                                         Yashoda
-                                        Nagar, Kanpur, Uttar Pradesh - 208025</p>
+                                        Nagar, Kanpur, Uttar Pradesh - 208011</p>
                                 </div>
                             </div>
 

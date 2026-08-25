@@ -129,8 +129,7 @@
                     <!-- Kanpur Office -->
                     <div class="dg-office-block">
                         <h3>KANPUR OFFICE</h3>
-                        <p>1st Floor, 128/3/98, Shivaji Park (Near Rahul Petrol Pump Indian Oil), Yashoda Nagar, Kanpur,
-                            Uttar Pradesh, 208011</p>
+                        <p>340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR, 208011</p>
                     </div>
 
                     <!-- Gorakhpur Office -->
