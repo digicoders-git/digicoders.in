@@ -59,5 +59,8 @@ $route['blogs/(:any)'] = 'home/BlogsDetails/$1';
 $route['Home/BlogsDetails/(:any)'] = 'home/BlogsDetails/$1';
 $route['city/(:any)'] = 'Home/city_pages/$1';
 $route['services/(:any)'] = 'home/service/$1';
+$route['api'] = 'api/index';
+$route['api/projects'] = 'api/projects';
+$route['api/projects/(:any)'] = 'api/projects/$1';
 $route['(:any)'] = 'home/servicepage/$1';
 
