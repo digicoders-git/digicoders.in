@@ -45,8 +45,6 @@
   defer></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"
   defer></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
-  defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"
   integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ=="
   crossorigin="anonymous" defer></script>
@@ -64,60 +62,57 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
-
-
-
-
 <script>
-(function (window) {
-  function initDigiLazyLoad() {
-    var lazyElements = Array.prototype.slice.call(document.querySelectorAll('img.lazy'));
-    if (!lazyElements.length) return;
+  (function (window) {
+    function initDigiLazyLoad() {
+      var lazyElements = Array.prototype.slice.call(document.querySelectorAll('img.lazy'));
+      if (!lazyElements.length) return;
 
-    function fetchAndSwap(el) {
-      var realSrc = el.getAttribute('data-src');
-      if (!realSrc || el.getAttribute('data-lazy-status') === 'loaded') return;
+      function fetchAndSwap(el) {
+        var realSrc = el.getAttribute('data-src');
+        if (!realSrc || el.getAttribute('data-lazy-status') === 'loaded') return;
 
-      var tempImg = new Image();
-      tempImg.onload = function () {
-        el.src = realSrc;
-        el.setAttribute('data-lazy-status', 'loaded');
-        el.classList.remove('lazy');
-      };
-      tempImg.onerror = function () {
-        // Keep placeholder loader image if real image fails to load
-        el.setAttribute('data-lazy-status', 'failed');
-      };
-      tempImg.src = realSrc;
-    }
+        var tempImg = new Image();
+        tempImg.onload = function () {
+          el.src = realSrc;
+          el.setAttribute('data-lazy-status', 'loaded');
+          el.classList.remove('lazy');
+        };
+        tempImg.onerror = function () {
+          // Keep placeholder loader image if real image fails to load
+          el.setAttribute('data-lazy-status', 'failed');
+        };
+        tempImg.src = realSrc;
+      }
 
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function (entries, obs) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting || entry.intersectionRatio > 0) {
-            fetchAndSwap(entry.target);
-            obs.unobserve(entry.target);
-          }
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              fetchAndSwap(entry.target);
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '300px 0px 300px 0px' });
+
+        lazyElements.forEach(function (el) {
+          observer.observe(el);
         });
-      }, { rootMargin: '300px 0px 300px 0px' });
-
-      lazyElements.forEach(function (el) {
-        observer.observe(el);
-      });
-    } else {
-      lazyElements.forEach(function (el) {
-        fetchAndSwap(el);
-      });
+      } else {
+        lazyElements.forEach(function (el) {
+          fetchAndSwap(el);
+        });
+      }
     }
-  }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initDigiLazyLoad);
-  } else {
-    initDigiLazyLoad();
-  }
-  window.addEventListener('load', initDigiLazyLoad);
-  window.addEventListener('scroll', initDigiLazyLoad);
-  window.addEventListener('resize', initDigiLazyLoad);
-})(this);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDigiLazyLoad);
+    } else {
+      initDigiLazyLoad();
+    }
+    window.addEventListener('load', initDigiLazyLoad);
+    window.addEventListener('scroll', initDigiLazyLoad);
+    window.addEventListener('resize', initDigiLazyLoad);
+  })
+(this);
 </script>

@@ -2,18 +2,18 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php if (empty($has_custom_seo) && empty($blog) && empty($page)): ?>
-<meta name="keywords"
-    content="Software Companies in Lucknow, Domain and Hosting Services Lucknow, Best ERP & CRM Development Company, ERP & CRM Development CompanyIT company in lucknow, Graphics Designing Services in Lucknow, Best Software Development Company in Lucknow, best it company in lucknow, software company in lucknow, crm software development company in lucknow, domain & hosting services, Digital Marketing Services, android app development company in Lucknow">
+    <meta name="keywords"
+        content="Software Companies in Lucknow, Domain and Hosting Services Lucknow, Best ERP & CRM Development Company, ERP & CRM Development CompanyIT company in lucknow, Graphics Designing Services in Lucknow, Best Software Development Company in Lucknow, best it company in lucknow, software company in lucknow, crm software development company in lucknow, domain & hosting services, Digital Marketing Services, android app development company in Lucknow">
 <?php endif; ?>
 <meta name="theme-color" content="#006cd8">
 <meta name="author" content="DigiCoders Technologies (P) Limited.">
 <meta name="MobileOptimized" content="320">
 <meta name="distribution" content="World Wide Web" />
 <?php if (empty($has_custom_seo) && empty($blog) && empty($page)): ?>
-<meta property="og:image" content="<?= base_url() ?>public/assets/images/favicon-icon.png" />
-<meta property="og:image:secure_url" content="<?= base_url() ?>public/assets/images/favicon-icon.png" />
-<meta property="og:url" content="https://digicoders.in/" />
-<meta property="og:title" content="DigiCoders Technologies (P) Limited." />
+    <meta property="og:image" content="<?= base_url() ?>public/assets/images/favicon-icon.png" />
+    <meta property="og:image:secure_url" content="<?= base_url() ?>public/assets/images/favicon-icon.png" />
+    <meta property="og:url" content="https://digicoders.in/" />
+    <meta property="og:title" content="DigiCoders Technologies (P) Limited." />
 <?php endif; ?>
 
 <meta name="google-site-verification" content="IadmBNu_fQoB-3YJhdwwmF05VbB16bvK86LLmL3_gGQ" />
@@ -28,15 +28,15 @@
 
 <link rel="preload" as="style" href="<?= base_url() ?>public/assets/css/vendor/vendor.min.css">
 <link rel="preload" as="style" href="<?= base_url() ?>public/assets/css/style.css">
-<link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&display=swap">
 
 <!-- Stylesheets-->
 <link rel="stylesheet" href="<?= base_url() ?>public/assets/css/vendor/vendor.min.css">
 <link rel="stylesheet" href="<?= base_url() ?>public/assets/css/plugins/plugins.min.css">
 <!-- Main Style CSS -->
 <link rel="stylesheet" href="<?= base_url() ?>public/assets/css/style.css">
-<link rel="stylesheet" href="<?= base_url() ?>public/assets/css/CustomStyle.css?v=<?= time() ?>" />
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" rel="stylesheet" />
+<link rel="stylesheet" href="<?= base_url() ?>public/assets/css/CustomStyle.css?v=1.0.1" />
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&display=swap" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
 <link href="<?= base_url('public/assets') ?>/Mycss/ExternalCss.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"

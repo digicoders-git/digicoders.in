@@ -1245,443 +1245,449 @@
             </div>
         </div>
     </section>
-        <!-- ==========================================
+    <!-- ==========================================
          OUR RECENT PROJECTS
     =========================================== -->
-        <!-- Swiper CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-        <style>
-            .sec-main-h2 {
-                font-size: 34px;
-                font-weight: 800;
-                color: #0f172a;
-                margin-bottom: 8px;
-            }
+    <style>
+        .sec-main-h2 {
+            font-size: 34px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
 
-            .sec-main-h2 span {
-                color: #046a38;
-            }
+        .sec-main-h2 span {
+            color: #046a38;
+        }
 
-            .sec-sub-p {
-                font-size: 14px;
-                color: #64748b;
-                margin: 0;
-            }
+        .sec-sub-p {
+            font-size: 14px;
+            color: #64748b;
+            margin: 0;
+        }
 
-            .project-swiper-container {
-                width: 100%;
-                position: relative;
-                overflow: hidden;
-                padding: 10px 0 20px 0 !important;
-            }
+        .project-swiper-container {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0 20px 0 !important;
+        }
 
-            .project-swiper-container .swiper-wrapper {
-                display: flex !important;
-                align-items: stretch;
-                transition-timing-function: linear !important;
-            }
+        .project-swiper-container .swiper-wrapper {
+            display: flex !important;
+            align-items: stretch;
+            transition-timing-function: linear !important;
+        }
 
-            .project-swiper-container .swiper-slide {
-                height: auto !important;
-                display: flex !important;
-                flex-direction: column;
-                flex-shrink: 0 !important;
-            }
+        .project-swiper-container .swiper-slide {
+            height: auto !important;
+            display: flex !important;
+            flex-direction: column;
+            flex-shrink: 0 !important;
+        }
 
-            .project-swiper-container .swiper-pagination {
-                display: none !important;
-            }
+        .project-swiper-container .swiper-pagination {
+            display: none !important;
+        }
 
-            /* EXPERT TEAM CARDS */
-            .expert-swiper-container {
-                width: 100%;
-                position: relative;
-                overflow: hidden;
-                padding: 10px 0 20px 0 !important;
-            }
+        /* EXPERT TEAM CARDS */
+        .expert-swiper-container {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0 20px 0 !important;
+        }
 
-            .expert-swiper-container .swiper-wrapper {
-                display: flex !important;
-                align-items: stretch;
-            }
+        .expert-swiper-container .swiper-wrapper {
+            display: flex !important;
+            align-items: stretch;
+        }
 
-            .expert-swiper-container .swiper-slide {
-                height: auto !important;
-                display: flex !important;
-                flex-direction: column;
-                flex-shrink: 0 !important;
-            }
+        .expert-swiper-container .swiper-slide {
+            height: auto !important;
+            display: flex !important;
+            flex-direction: column;
+            flex-shrink: 0 !important;
+        }
 
-            .team-card-box {
-                background: #ffffff;
-                border: 1px solid #e2e8f0;
-                border-radius: 6px;
-                padding: 20px 15px;
-                text-align: center;
-                transition: all 0.3s ease;
-            }
+        .team-card-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
 
-            .team-card-box:hover {
-                border-color: #046a38;
-                transform: translateY(-4px);
-                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-            }
+        .team-card-box:hover {
+            border-color: #046a38;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+        }
 
-            .team-avatar-wrap {
-                width: 105px;
-                height: 105px;
-                border-radius: 50%;
-                margin: 0 auto 14px auto;
-                overflow: hidden;
-                border: 3px solid #ecfdf5;
-                flex-shrink: 0;
-                box-shadow: 0 4px 12px rgba(4, 106, 56, 0.08);
-            }
+        .team-avatar-wrap {
+            width: 105px;
+            height: 105px;
+            border-radius: 50%;
+            margin: 0 auto 14px auto;
+            overflow: hidden;
+            border: 3px solid #ecfdf5;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(4, 106, 56, 0.08);
+        }
 
-            .team-avatar-wrap img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: top center;
-                transform: scale(1.15);
-                transition: transform 0.3s ease;
-            }
+        .team-avatar-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transform: scale(1.15);
+            transition: transform 0.3s ease;
+        }
 
-            .team-card-box:hover .team-avatar-wrap img {
-                transform: scale(1.25);
-            }
+        .team-card-box:hover .team-avatar-wrap img {
+            transform: scale(1.25);
+        }
 
-            .team-name {
-                font-size: 14.5px;
-                font-weight: 800;
-                color: #0f172a;
-                margin: 0 0 4px 0;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
+        .team-name {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
-            .team-role {
-                font-size: 11.5px;
-                color: #64748b;
-                margin-bottom: 14px;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
+        .team-role {
+            font-size: 11.5px;
+            color: #64748b;
+            margin-bottom: 14px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
-            .team-socials {
-                display: flex;
-                justify-content: center;
-                gap: 8px;
-            }
+        .team-socials {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
 
-            .team-socials a {
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                background: #f8fafc;
-                color: #64748b;
-                border: 1px solid #e2e8f0;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 12px;
-                text-decoration: none !important;
-                transition: all 0.2s ease;
-            }
+        .team-socials a {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #f8fafc;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            text-decoration: none !important;
+            transition: all 0.2s ease;
+        }
 
-            .team-socials a:hover {
-                background: #046a38;
-                color: #ffffff;
-                border-color: #046a38;
-            }
-        </style>
+        .team-socials a:hover {
+            background: #046a38;
+            color: #ffffff;
+            border-color: #046a38;
+        }
+    </style>
 
-        <section class="py-5" style="background: #fafafa;">
-            <div class="container py-3">
-                <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
-                    <div>
-                        <h2 class="sec-main-h2 mb-0">Our Recent <span>Projects</span></h2>
-                        <p class="sec-sub-p mb-0">Some of our awesome works</p>
-                    </div>
-                    <a href="<?= base_url('Home/OurProjects') ?>" class="btn btn-outline-dark btn-sm text-nowrap"
-                        style="font-weight: 700; border-radius: 8px; white-space: nowrap; flex-shrink: 0;">View All Projects <i
-                            class="fas fa-arrow-right"></i></a>
+    <section class="py-5" style="background: #fafafa;">
+        <div class="container py-3">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+                <div>
+                    <h2 class="sec-main-h2 mb-0">Our Recent <span>Projects</span></h2>
+                    <p class="sec-sub-p mb-0">Some of our awesome works</p>
                 </div>
-
-                <div class="swiper project-swiper-container">
-                    <div class="swiper-wrapper">
-                        <?php
-                        if (!empty($userdata)) {
-                            foreach ($userdata as $projects) {
-                                $is_link_active = (!isset($projects->link_status) || $projects->link_status == 'true' || $projects->link_status == '1');
-                                ?>
-                                <div class="swiper-slide">
-                                    <div class="project-card-item d-flex flex-column h-100 shadow-sm"
-                                        style="border-radius: 6px; background: #fff; border: 1px solid #e2e8f0; overflow: hidden; transition: all 0.3s ease; width: 100%;">
-                                        <div class="project-card-img-wrap"
-                                            style="height: 180px; position: relative; overflow: hidden; background: #f1f5f9;">
-                                            <img src="<?= base_url('public/uploads/projects/') . $projects->image ?>"
-                                                alt="<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>"
-                                                style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" />
-                                        </div>
-                                        <div class="project-card-body p-3 d-flex flex-column flex-grow-1">
-                                            <div class="d-flex align-items-center justify-content-between mb-2">
-                                                <span class="project-tag"
-                                                    style="font-size: 11px; font-weight: 700; background: #ecfdf5; color: #046a38; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;"><?= htmlspecialchars($projects->type) ?></span>
-                                                <small class="text-muted" style="font-size: 12px; font-weight: 500;">
-                                                    <?php
-                                                    $date = !empty($projects->add_date) ? strtotime($projects->add_date) : false;
-                                                    echo $date ? date('M Y', $date) : '';
-                                                    ?>
-                                                </small>
-                                            </div>
-                                            <h5 class="project-title fw-bold text-dark mb-3"
-                                                style="font-size: 15px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"
-                                                title="<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>">
-                                                <?= htmlspecialchars($projects->title) ?>
-                                            </h5>
-
-                                            <div class="mt-auto pt-2 d-flex align-items-center justify-content-between"
-                                                style="gap: 6px;">
-                                                <?php if ($is_link_active && !empty($projects->url)): ?>
-                                                    <a href="<?= $projects->url ?>" target="_blank"
-                                                        class="btn btn-sm flex-grow-1 d-inline-flex align-items-center justify-content-center"
-                                                        style="border-radius: 6px; font-size: 11.5px; font-weight: 600; background: #046a38; color: #fff; border: none; padding: 4px 8px; text-decoration: none; gap: 5px; height: 32px; box-shadow: 0 2px 6px rgba(4, 106, 56, 0.15); transition: all 0.2s ease;">
-                                                        <i class="fas fa-external-link-alt" style="font-size: 10px;"></i> Visit
-                                                    </a>
-                                                <?php endif; ?>
-                                                <button
-                                                    onclick="openProjectEnquiryModal('<?= $projects->id ?>', '<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>')"
-                                                    class="btn btn-sm flex-grow-1 d-inline-flex align-items-center justify-content-center"
-                                                    style="border-radius: 6px; font-size: 11.5px; font-weight: 600; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; border: none; padding: 4px 8px; gap: 5px; height: 32px; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2); transition: all 0.2s ease;">
-                                                    <i class="fas fa-paper-plane" style="font-size: 10px;"></i> Enquiry
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
+                <a href="<?= base_url('Home/OurProjects') ?>" class="btn btn-outline-dark btn-sm text-nowrap"
+                    style="font-weight: 700; border-radius: 8px; white-space: nowrap; flex-shrink: 0;">View All Projects
+                    <i class="fas fa-arrow-right"></i></a>
             </div>
-        </section>
 
-        <!-- Swiper JS -->
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script>
-            (function initProjectSwiper() {
-                function runSwiper() {
-                    if (typeof Swiper !== 'undefined') {
-                        document.querySelectorAll('.project-swiper-container').forEach(function (container) {
-                            if (container.swiper) {
-                                try { container.swiper.destroy(true, true); } catch (e) { }
-                            }
-                            new Swiper(container, {
-                                slidesPerView: 4,
-                                spaceBetween: 20,
-                                loop: true,
-                                speed: 4000,
-                                autoplay: {
-                                    delay: 0,
-                                    disableOnInteraction: false,
-                                    pauseOnMouseEnter: true
-                                },
-                                breakpoints: {
-                                    480: { slidesPerView: 1, spaceBetween: 15 },
-                                    768: { slidesPerView: 2, spaceBetween: 20 },
-                                    992: { slidesPerView: 3, spaceBetween: 20 },
-                                    1024: { slidesPerView: 4, spaceBetween: 20 },
-                                }
-                            });
-                        });
-                    } else {
-                        setTimeout(runSwiper, 100);
-                    }
-                }
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', runSwiper);
-                } else {
-                    runSwiper();
-                }
-                window.addEventListener('load', runSwiper);
-            })();
-        </script>
-
-        <!-- 4. OUR TEAM IN GORAKHPUR (SWIPER) -->
-        <section class="py-5" style="background: #ffffff;">
-            <div class="container py-3">
-                <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
-                    <div>
-                        <h2 class="gorakhpur-sec-heading mb-0" style="font-size: 28px !important; font-weight: 800 !important;">Our Team <span style="color: #046a38;">in Gorakhpur</span></h2>
-                        <p class="text-muted small mb-0" style="font-size: 13px;">Experienced. Creative. Passionate.</p>
-                    </div>
-                    <a href="<?= base_url('Home/OurExperts') ?>" class="btn btn-outline-dark btn-sm text-nowrap"
-                        style="font-weight: 700; border-radius: 8px; white-space: nowrap; flex-shrink: 0;">View All Experts <i
-                            class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="swiper expert-swiper-container">
-                    <div class="swiper-wrapper">
-                        <?php 
-                        $gorakhpur_team = [
-                            ['name' => 'Abhishek Singh', 'role' => 'Branch Head', 'image' => 'Abhishek-Singh-branch-head-digicoders-gorakhpur.jpeg'],
-                            ['name' => 'Muskan', 'role' => 'HR Executive', 'image' => 'Muskan-hr-executive-digicoders-gorakhpur.jpeg'],
-                            ['name' => 'Priyanshu Singh', 'role' => 'Full Stack Developer', 'image' => 'Priyanshu-Singh-full-stack-developer-digicoders-gorakhpur.jpeg'],
-                            ['name' => 'Sarvesh', 'role' => 'Full Stack Developer', 'image' => 'Sarvesh-full-stack-developer-digicoders-gorakhpur.jpeg'],
-                            ['name' => 'Zaid', 'role' => 'Android Developer', 'image' => 'Zaid-android-developer-digicoders-gorakhpur.jpeg']
-                        ];
-                        foreach ($gorakhpur_team as $member) { 
-                        ?>
+            <div class="swiper project-swiper-container">
+                <div class="swiper-wrapper">
+                    <?php
+                    if (!empty($userdata)) {
+                        foreach ($userdata as $projects) {
+                            $is_link_active = (!isset($projects->link_status) || $projects->link_status == 'true' || $projects->link_status == '1');
+                            ?>
                             <div class="swiper-slide">
-                                <div class="team-card-box d-flex flex-column h-100 w-100">
-                                    <div class="team-avatar-wrap">
-                                        <img src="<?= base_url('public/assets/images/team/gorakhpurteam/') . $member['image']; ?>" 
-                                             alt="<?= htmlspecialchars($member['name'], ENT_QUOTES) ?>" 
-                                             loading="lazy" />
+                                <div class="project-card-item d-flex flex-column h-100 shadow-sm"
+                                    style="border-radius: 6px; background: #fff; border: 1px solid #e2e8f0; overflow: hidden; transition: all 0.3s ease; width: 100%;">
+                                    <div class="project-card-img-wrap"
+                                        style="height: 180px; position: relative; overflow: hidden; background: #f1f5f9;">
+                                        <img src="<?= base_url('public/uploads/projects/') . $projects->image ?>"
+                                            alt="<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>"
+                                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" />
                                     </div>
-                                    <h5 class="team-name" title="<?= htmlspecialchars($member['name'], ENT_QUOTES) ?>"><?= htmlspecialchars($member['name']) ?></h5>
-                                    <p class="team-role"><?= htmlspecialchars($member['role']) ?></p>
-                                    <div class="team-socials mt-auto">
-                                        <a href="https://api.whatsapp.com/send?phone=91<?= $this->data['mobile_no'] ?? '9198483820' ?>&text=Hello%20<?= urlencode($member['name']) ?>" target="_blank" aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                        <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="https://www.instagram.com/digicoderstech" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                    <div class="project-card-body p-3 d-flex flex-column flex-grow-1">
+                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                            <span class="project-tag"
+                                                style="font-size: 11px; font-weight: 700; background: #ecfdf5; color: #046a38; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;"><?= htmlspecialchars($projects->type) ?></span>
+                                            <small class="text-muted" style="font-size: 12px; font-weight: 500;">
+                                                <?php
+                                                $date = !empty($projects->add_date) ? strtotime($projects->add_date) : false;
+                                                echo $date ? date('M Y', $date) : '';
+                                                ?>
+                                            </small>
+                                        </div>
+                                        <h5 class="project-title fw-bold text-dark mb-3"
+                                            style="font-size: 15px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"
+                                            title="<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>">
+                                            <?= htmlspecialchars($projects->title) ?>
+                                        </h5>
+
+                                        <div class="mt-auto pt-2 d-flex align-items-center justify-content-between"
+                                            style="gap: 6px;">
+                                            <?php if ($is_link_active && !empty($projects->url)): ?>
+                                                <a href="<?= $projects->url ?>" target="_blank"
+                                                    class="btn btn-sm flex-grow-1 d-inline-flex align-items-center justify-content-center"
+                                                    style="border-radius: 6px; font-size: 11.5px; font-weight: 600; background: #046a38; color: #fff; border: none; padding: 4px 8px; text-decoration: none; gap: 5px; height: 32px; box-shadow: 0 2px 6px rgba(4, 106, 56, 0.15); transition: all 0.2s ease;">
+                                                    <i class="fas fa-external-link-alt" style="font-size: 10px;"></i> Visit
+                                                </a>
+                                            <?php endif; ?>
+                                            <button
+                                                onclick="openProjectEnquiryModal('<?= $projects->id ?>', '<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>')"
+                                                class="btn btn-sm flex-grow-1 d-inline-flex align-items-center justify-content-center"
+                                                style="border-radius: 6px; font-size: 11.5px; font-weight: 600; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; border: none; padding: 4px 8px; gap: 5px; height: 32px; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2); transition: all 0.2s ease;">
+                                                <i class="fas fa-paper-plane" style="font-size: 10px;"></i> Enquiry
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <script>
-            (function initExpertSwiper() {
-                function runSwiper() {
-                    if (typeof Swiper !== 'undefined') {
-                        document.querySelectorAll('.expert-swiper-container').forEach(function (container) {
-                            if (container.swiper) {
-                                try { container.swiper.destroy(true, true); } catch (e) { }
-                            }
-                            new Swiper(container, {
-                                slidesPerView: 5,
-                                spaceBetween: 20,
-                                loop: true,
-                                autoplay: {
-                                    delay: 3000,
-                                    disableOnInteraction: false,
-                                    pauseOnMouseEnter: true
-                                },
-                                breakpoints: {
-                                    0: { slidesPerView: 1.5, spaceBetween: 12 },
-                                    480: { slidesPerView: 2, spaceBetween: 15 },
-                                    768: { slidesPerView: 3, spaceBetween: 18 },
-                                    992: { slidesPerView: 4, spaceBetween: 20 },
-                                    1200: { slidesPerView: 5, spaceBetween: 20 }
-                                }
-                            });
-                        });
-                    } else {
-                        setTimeout(runSwiper, 100);
+                            <?php
+                        }
                     }
-                }
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', runSwiper);
+                    ?>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        (function initProjectSwiper() {
+            function runSwiper() {
+                if (typeof Swiper !== 'undefined') {
+                    document.querySelectorAll('.project-swiper-container').forEach(function (container) {
+                        if (container.swiper) {
+                            try { container.swiper.destroy(true, true); } catch (e) { }
+                        }
+                        new Swiper(container, {
+                            slidesPerView: 4,
+                            spaceBetween: 20,
+                            loop: true,
+                            speed: 4000,
+                            autoplay: {
+                                delay: 0,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true
+                            },
+                            breakpoints: {
+                                480: { slidesPerView: 1, spaceBetween: 15 },
+                                768: { slidesPerView: 2, spaceBetween: 20 },
+                                992: { slidesPerView: 3, spaceBetween: 20 },
+                                1024: { slidesPerView: 4, spaceBetween: 20 },
+                            }
+                        });
+                    });
                 } else {
-                    runSwiper();
+                    setTimeout(runSwiper, 100);
                 }
-                window.addEventListener('load', runSwiper);
-            })();
-        </script>
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', runSwiper);
+            } else {
+                runSwiper();
+            }
+            window.addEventListener('load', runSwiper);
+        })();
+    </script>
 
-        <!-- 5. GET IN TOUCH - GORAKHPUR BRANCH -->
-        <section class="sec-padding" style="background: #ffffff;">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <h2 class="gorakhpur-sec-heading" style="font-size: 32px !important; font-weight: 800 !important;">
-                        Get In Touch – <span style="color: #046a38;">Gorakhpur Branch</span>
-                    </h2>
+    <!-- 4. OUR TEAM IN GORAKHPUR (SWIPER) -->
+    <section class="py-5" style="background: #ffffff;">
+        <div class="container py-3">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+                <div>
+                    <h2 class="gorakhpur-sec-heading mb-0"
+                        style="font-size: 28px !important; font-weight: 800 !important;">Our Team <span
+                            style="color: #046a38;">in Gorakhpur</span></h2>
+                    <p class="text-muted small mb-0" style="font-size: 13px;">Experienced. Creative. Passionate.</p>
                 </div>
+                <a href="<?= base_url('Home/OurExperts') ?>" class="btn btn-outline-dark btn-sm text-nowrap"
+                    style="font-weight: 700; border-radius: 8px; white-space: nowrap; flex-shrink: 0;">View All Experts
+                    <i class="fas fa-arrow-right"></i></a>
+            </div>
 
-                <div class="row g-4">
-                    <!-- Col 1: Contact Info (50% Width) -->
-                    <div class="col-lg-6 col-md-12 mb-4">
-                        <div class="touch-info-box">
-                            <div class="touch-info-item">
-                                <div class="touch-icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
-                                <div>
-                                    <p class="touch-label">Address</p>
-                                    <p class="touch-val">INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1,
-                                        SECTOR-7, GIDA, GORAKHPUR, UP, 273209</p>
+            <div class="swiper expert-swiper-container">
+                <div class="swiper-wrapper">
+                    <?php
+                    $gorakhpur_team = [
+                        ['name' => 'Abhishek Singh', 'role' => 'Branch Head', 'image' => 'Abhishek-Singh-branch-head-digicoders-gorakhpur.jpeg'],
+                        ['name' => 'Muskan', 'role' => 'HR Executive', 'image' => 'Muskan-hr-executive-digicoders-gorakhpur.jpeg'],
+                        ['name' => 'Priyanshu Singh', 'role' => 'Full Stack Developer', 'image' => 'Priyanshu-Singh-full-stack-developer-digicoders-gorakhpur.jpeg'],
+                        ['name' => 'Sarvesh', 'role' => 'Full Stack Developer', 'image' => 'Sarvesh-full-stack-developer-digicoders-gorakhpur.jpeg'],
+                        ['name' => 'Zaid', 'role' => 'Android Developer', 'image' => 'Zaid-android-developer-digicoders-gorakhpur.jpeg']
+                    ];
+                    foreach ($gorakhpur_team as $member) {
+                        ?>
+                        <div class="swiper-slide">
+                            <div class="team-card-box d-flex flex-column h-100 w-100">
+                                <div class="team-avatar-wrap">
+                                    <img src="<?= base_url('public/assets/images/team/gorakhpurteam/') . $member['image']; ?>"
+                                        alt="<?= htmlspecialchars($member['name'], ENT_QUOTES) ?>" loading="lazy" />
+                                </div>
+                                <h5 class="team-name" title="<?= htmlspecialchars($member['name'], ENT_QUOTES) ?>">
+                                    <?= htmlspecialchars($member['name']) ?></h5>
+                                <p class="team-role"><?= htmlspecialchars($member['role']) ?></p>
+                                <div class="team-socials mt-auto">
+                                    <a href="https://api.whatsapp.com/send?phone=91<?= $this->data['mobile_no'] ?? '9198483820' ?>&text=Hello%20<?= urlencode($member['name']) ?>"
+                                        target="_blank" aria-label="WhatsApp" title="WhatsApp"><i
+                                            class="fab fa-whatsapp"></i></a>
+                                    <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" aria-label="Facebook"
+                                        title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.instagram.com/digicoderstech" target="_blank"
+                                        aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                            <div class="touch-info-item">
-                                <div class="touch-icon-wrap"><i class="fas fa-phone-alt"></i></div>
-                                <div>
-                                    <p class="touch-label">Phone</p>
-                                    <p class="touch-val">+91 98010 17529
-                                </div>
+    <script>
+        (function initExpertSwiper() {
+            function runSwiper() {
+                if (typeof Swiper !== 'undefined') {
+                    document.querySelectorAll('.expert-swiper-container').forEach(function (container) {
+                        if (container.swiper) {
+                            try { container.swiper.destroy(true, true); } catch (e) { }
+                        }
+                        new Swiper(container, {
+                            slidesPerView: 5,
+                            spaceBetween: 20,
+                            loop: true,
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true
+                            },
+                            breakpoints: {
+                                0: { slidesPerView: 1.5, spaceBetween: 12 },
+                                480: { slidesPerView: 2, spaceBetween: 15 },
+                                768: { slidesPerView: 3, spaceBetween: 18 },
+                                992: { slidesPerView: 4, spaceBetween: 20 },
+                                1200: { slidesPerView: 5, spaceBetween: 20 }
+                            }
+                        });
+                    });
+                } else {
+                    setTimeout(runSwiper, 100);
+                }
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', runSwiper);
+            } else {
+                runSwiper();
+            }
+            window.addEventListener('load', runSwiper);
+        })();
+    </script>
+
+    <!-- 5. GET IN TOUCH - GORAKHPUR BRANCH -->
+    <section class="sec-padding" style="background: #ffffff;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="gorakhpur-sec-heading" style="font-size: 32px !important; font-weight: 800 !important;">
+                    Get In Touch – <span style="color: #046a38;">Gorakhpur Branch</span>
+                </h2>
+            </div>
+
+            <div class="row g-4">
+                <!-- Col 1: Contact Info (50% Width) -->
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <div class="touch-info-box">
+                        <div class="touch-info-item">
+                            <div class="touch-icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <p class="touch-label">Address</p>
+                                <p class="touch-val">INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1,
+                                    SECTOR-7, GIDA, GORAKHPUR, UP, 273209</p>
                             </div>
+                        </div>
 
-                            <div class="touch-info-item">
-                                <div class="touch-icon-wrap"><i class="fas fa-envelope"></i></div>
-                                <div>
-                                    <p class="touch-label">Email</p>
-                                    <p class="touch-val">digicoderstech@gmail.com</p>
-                                </div>
+                        <div class="touch-info-item">
+                            <div class="touch-icon-wrap"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <p class="touch-label">Phone</p>
+                                <p class="touch-val">+91 98010 17529
                             </div>
+                        </div>
 
-                            <div class="touch-info-item">
-                                <div class="touch-icon-wrap"><i class="fas fa-clock"></i></div>
-                                <div>
-                                    <p class="touch-label">Working Hours</p>
-                                    <p class="touch-val">Mon - Sat: 10:00 AM - 7:00 PM</p>
-                                </div>
+                        <div class="touch-info-item">
+                            <div class="touch-icon-wrap"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <p class="touch-label">Email</p>
+                                <p class="touch-val">digicoderstech@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="touch-info-item">
+                            <div class="touch-icon-wrap"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <p class="touch-label">Working Hours</p>
+                                <p class="touch-val">Mon - Sat: 10:00 AM - 7:00 PM</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Col 2: Map Card (50% Width) -->
-                    <div class="col-lg-6 col-md-12 mb-4">
-                        <div class="gorakhpur-map-card">
-                            <iframe class="gorakhpur-map-frame"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3386.8704010846063!2d83.2713807!3d26.7388471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399147e74ee92b4f%3A0x4fb76c52161857f!2sDigiCoders%20Technologies%20-%20Gorakhpur!5e1!3m2!1sen!2sin!4v1787641348663!5m2!1sen!2sin"
-                                allowfullscreen="" loading="lazy"></iframe>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- 6. CTA BANNER SECTION (Have a Project in Mind?) -->
-                <div class="cta-project-banner">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7 col-md-12 mb-4 mb-lg-0">
-                            <h2 class="cta-banner-title">Have a Project in Mind?</h2>
-                            <p class="cta-banner-sub">Let's discuss your idea and build something great together.</p>
-                            <a href="javascript:void(0);" onclick="openProjectEnquiryModal('', 'Free Consultation Request')"
-                                class="cta-consult-btn">
-                                Get Free Consultation <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <div class="col-lg-5 col-md-12 text-center text-lg-end">
-                            <img src="<?= base_url('public/assets/images/cta_project_illustration.png') ?>"
-                                alt="Project Discussion Illustration" class="cta-illustration-img" />
-                        </div>
+                <!-- Col 2: Map Card (50% Width) -->
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <div class="gorakhpur-map-card">
+                        <iframe class="gorakhpur-map-frame"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3386.8704010846063!2d83.2713807!3d26.7388471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399147e74ee92b4f%3A0x4fb76c52161857f!2sDigiCoders%20Technologies%20-%20Gorakhpur!5e1!3m2!1sen!2sin!4v1787641348663!5m2!1sen!2sin"
+                            allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <?php include('include/jslinks.php') ?>
-        <?php include('include/project_enquiry_modal.php') ?>
-        <?php include('include/footer.php') ?>
+            <!-- 6. CTA BANNER SECTION (Have a Project in Mind?) -->
+            <div class="cta-project-banner">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-md-12 mb-4 mb-lg-0">
+                        <h2 class="cta-banner-title">Have a Project in Mind?</h2>
+                        <p class="cta-banner-sub">Let's discuss your idea and build something great together.</p>
+                        <a href="javascript:void(0);" onclick="openProjectEnquiryModal('', 'Free Consultation Request')"
+                            class="cta-consult-btn">
+                            Get Free Consultation <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-5 col-md-12 text-center text-lg-end">
+                        <img src="<?= base_url('public/assets/images/cta_project_illustration.png') ?>"
+                            alt="Project Discussion Illustration" class="cta-illustration-img" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php include('include/jslinks.php') ?>
+    <?php include('include/project_enquiry_modal.php') ?>
+    <?php include('include/footer.php') ?>
 
 </body>
 

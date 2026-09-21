@@ -430,10 +430,10 @@ class Home extends CI_Controller
 		$data = array(
 			'software_id' => $software_id,
 			'software_name' => $software_name,
-			'name' => trim((string)$this->input->post('name')),
-			'mobile' => trim((string)$this->input->post('mobile')),
-			'email' => trim((string)$this->input->post('email')),
-			'message' => trim((string)$this->input->post('message')),
+			'name' => trim((string) $this->input->post('name')),
+			'mobile' => trim((string) $this->input->post('mobile')),
+			'email' => trim((string) $this->input->post('email')),
+			'message' => trim((string) $this->input->post('message')),
 			'created_at' => date('Y-m-d H:i:s')
 		);
 
@@ -749,13 +749,15 @@ class Home extends CI_Controller
 	public function servicepage($slug = null)
 	{
 		if (empty($slug)) {
-			show_404();
+			$this->page_not_found();
+			return;
 		}
 
 		$page = $this->Service_model->get_page_by_slug($slug);
 
 		if (empty($page)) {
-			show_404();
+			$this->page_not_found();
+			return;
 		}
 
 		// 🔥 MAIN FIX (IMPORTANT)
@@ -902,5 +904,13 @@ class Home extends CI_Controller
 			exit;
 		}
 	}
+
+	public function page_not_found()
+	{
+		$this->output->set_status_header('404');
+		$this->load->view('Home/NotFound');
+	}
+	
 }
+
 

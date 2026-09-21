@@ -15,16 +15,22 @@
     <div class="hiring-ticker-container">
         <span class="hiring-ticker-text">
             <?php if ($hiring_status == 'open'): ?>
-                <i class="fas fa-briefcase hiring-icon" style="color: #00ff88;"></i> 
-                <strong class="hiring-title" style="color: #00ff88;">We Are Hiring!</strong> Join our innovative team! Check available job positions on our Career Page: 
-                <a href="<?= base_url('Home/career') ?>" class="hiring-linkedin-btn" style="background: #ffffff !important; color: #01964A !important; font-weight: 800 !important;">
-                    <i class="fas fa-user-plus"></i> View Openings <i class="fas fa-arrow-right" style="font-size: 11px;"></i>
+                <i class="fas fa-briefcase hiring-icon" style="color: #00ff88;"></i>
+                <strong class="hiring-title" style="color: #00ff88;">We Are Hiring!</strong> Join our innovative team! Check
+                available job positions on our Career Page:
+                <a href="<?= base_url('Home/career') ?>" class="hiring-linkedin-btn"
+                    style="background: #ffffff !important; color: #01964A !important; font-weight: 800 !important;">
+                    <i class="fas fa-user-plus"></i> View Openings <i class="fas fa-arrow-right"
+                        style="font-size: 11px;"></i>
                 </a>
             <?php else: ?>
-                <i class="fas fa-bullhorn hiring-icon"></i> 
-                <strong class="hiring-title">Currently we are not hiring!</strong> For future job updates & opportunities, follow us on our LinkedIn page: 
-                <a href="https://www.linkedin.com/company/digicoders/" target="_blank" rel="noopener noreferrer" class="hiring-linkedin-btn">
-                    <i class="fab fa-linkedin"></i> Follow on LinkedIn <i class="fas fa-arrow-right" style="font-size: 11px;"></i>
+                <i class="fas fa-bullhorn hiring-icon"></i>
+                <strong class="hiring-title">Currently we are not hiring!</strong> For future job updates & opportunities,
+                follow us on our LinkedIn page:
+                <a href="https://www.linkedin.com/company/digicoders/" target="_blank" rel="noopener noreferrer"
+                    class="hiring-linkedin-btn">
+                    <i class="fab fa-linkedin"></i> Follow on LinkedIn <i class="fas fa-arrow-right"
+                        style="font-size: 11px;"></i>
                 </a>
             <?php endif; ?>
         </span>
@@ -38,7 +44,8 @@
         <div class="topbar-left-item">
             <i class="fas fa-graduation-cap text-primary"></i>
             <span class="d-none d-xl-inline" style="font-size: 12.5px;">Our Official Training Site | </span>
-            <a href="https://thedigicoders.com/" target="_blank" class="topbar-training-btn" style="color: #086AD8 !important; font-size: 12.5px; font-weight: 800; text-decoration: none !important; display: inline-flex; align-items: center; gap: 4px;">
+            <a href="https://thedigicoders.com/" target="_blank" class="topbar-training-btn"
+                style="color: #086AD8 !important; font-size: 12.5px; font-weight: 800; text-decoration: none !important; display: inline-flex; align-items: center; gap: 4px;">
                 Visit Now <i class="fas fa-arrow-right" style="font-size: 10px;"></i>
             </a>
         </div>
@@ -141,16 +148,20 @@
 
         <!-- Right Group: Social Media Circles -->
         <div class="topbar-social-group">
-            <a href="https://www.whatsapp.com/channel/0029VaDTIxW5EjxzOyubYT3l" target="_blank" class="social-circle wa" title="WhatsApp Channel">
+            <a href="https://www.whatsapp.com/channel/0029VaDTIxW5EjxzOyubYT3l" target="_blank" class="social-circle wa"
+                title="WhatsApp Channel">
                 <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" class="social-circle fb" title="Facebook">
+            <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" class="social-circle fb"
+                title="Facebook">
                 <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="https://www.instagram.com/digicoderstech" target="_blank" class="social-circle insta" title="Instagram">
+            <a href="https://www.instagram.com/digicoderstech" target="_blank" class="social-circle insta"
+                title="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.linkedin.com/company/digicoders/" target="_blank" class="social-circle in" title="LinkedIn">
+            <a href="https://www.linkedin.com/company/digicoders/" target="_blank" class="social-circle in"
+                title="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
             </a>
             <a href="https://www.youtube.com/@digicoders" target="_blank" class="social-circle yt" title="YouTube">
@@ -168,7 +179,8 @@
             <div class="modern-logo-wrap">
                 <a href="<?= base_url() ?>">
                     <img src="<?= base_url('public/assets/images/DigiCoders Technologies Logo.jpg') ?>"
-                        class="img-fluid header-logo-img" title="Digicoders Technologies" alt="Digicoders Technologies" />
+                        class="img-fluid header-logo-img" title="Digicoders Technologies"
+                        alt="Digicoders Technologies" />
                 </a>
             </div>
 
@@ -189,11 +201,16 @@
                             <li class="has-children">
                                 <a href="<?= base_url() ?>Home/AboutDigiCoders"><span>About Us</span></a>
                                 <ul class="submenu">
-                                    <li><a href="<?= base_url() ?>Home/AboutDigiCoders"><span>About DigiCoders</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutTheDigiCoders"><span>About The DigiCoders</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutDigiCodersTechnologies"><span>About DigiCoders Technologies</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutCodersAdda"><span>About CodersAdda</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutDigitalCoders"><span>About DigitalCoders</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutDigiCoders"><span>About
+                                                DigiCoders</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutTheDigiCoders"><span>About The
+                                                DigiCoders</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutDigiCodersTechnologies"><span>About
+                                                DigiCoders Technologies</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutCodersAdda"><span>About
+                                                CodersAdda</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutDigitalCoders"><span>About
+                                                DigitalCoders</span></a></li>
                                 </ul>
                             </li>
                             <li><a href="<?= base_url() ?>Home/Leadership"><span>Leadership</span></a></li>
@@ -212,30 +229,49 @@
                         </a>
                         <ul class="submenu">
                             <li><a href="<?= base_url() ?>Home/ITServices"><span>All Services</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/SoftwareDevelopment"><span>Software Development</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/SoftwareDevelopment"><span>Software
+                                        Development</span></a></li>
                             <li class="has-children">
                                 <a href="<?= base_url() ?>Home/Our_Products"><span>Our Products</span></a>
                                 <ul class="submenu">
-                                    <li><a href="<?= base_url() ?>Home/School_management_system_in_digicoder_in_lucknow"><span>School Management Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/HRMS_in_digicoder_in_lucknow"><span>HRMS Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/CRM_in_digicoder_in_lucknow"><span>CRM Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/ERP_in_digicoder_in_lucknow"><span>ERP Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/lead_management_digicoder_in_lucknow"><span>Lead Management Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/fee_management_digicoder_in_lucknow"><span>Fee Management Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/Food_delivery_App_in_digicoder_in_lucknow"><span>Food Delivery Apps</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/Taxi_booking_app_in_digicoder_in_lucknow"><span>Taxi - Cab Booking App</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/Grocery_delivery_app_in_digicoder_in_lucknow"><span>Grocery Delivery App</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/Ecommerce_website_in_digicoder_in_lucknow"><span>Ecommerce Website</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/Online_courses_app_in_digicoder_in_lucknow"><span>Online Courses & Tests App</span></a></li>
+                                    <li><a
+                                            href="<?= base_url() ?>Home/School_management_system_in_digicoder_in_lucknow"><span>School
+                                                Management Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/HRMS_in_digicoder_in_lucknow"><span>HRMS
+                                                Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/CRM_in_digicoder_in_lucknow"><span>CRM
+                                                Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/ERP_in_digicoder_in_lucknow"><span>ERP
+                                                Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/lead_management_digicoder_in_lucknow"><span>Lead
+                                                Management Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/fee_management_digicoder_in_lucknow"><span>Fee
+                                                Management Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/Food_delivery_App_in_digicoder_in_lucknow"><span>Food
+                                                Delivery Apps</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/Taxi_booking_app_in_digicoder_in_lucknow"><span>Taxi
+                                                - Cab Booking App</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/Grocery_delivery_app_in_digicoder_in_lucknow"><span>Grocery
+                                                Delivery App</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/Ecommerce_website_in_digicoder_in_lucknow"><span>Ecommerce
+                                                Website</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/Online_courses_app_in_digicoder_in_lucknow"><span>Online
+                                                Courses & Tests App</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="<?= base_url() ?>Home/WebsiteDevelopment"><span>Website Development</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/MobileApplicationDevelopment"><span>Mobile App Development</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/WebsiteDevelopment"><span>Website Development</span></a>
+                            </li>
+                            <li><a href="<?= base_url() ?>Home/MobileApplicationDevelopment"><span>Mobile App
+                                        Development</span></a></li>
                             <li><a href="<?= base_url() ?>Home/DigitalMarketing"><span>Digital Marketing</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/GraphicsDesigning"><span>Graphics Designing</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/DomainAndHosting"><span>Domain &amp; Hosting</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/ERPandCRMDevelopment"><span>ERP &amp; CRM Development</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/MaintenanceServices"><span>Maintenance Services</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/GraphicsDesigning"><span>Graphics Designing</span></a>
+                            </li>
+                            <li><a href="<?= base_url() ?>Home/DomainAndHosting"><span>Domain &amp; Hosting</span></a>
+                            </li>
+                            <li><a href="<?= base_url() ?>Home/ERPandCRMDevelopment"><span>ERP &amp; CRM
+                                        Development</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/MaintenanceServices"><span>Maintenance
+                                        Services</span></a></li>
                             <li><a href="<?= base_url() ?>Home/ITServices"><span>Other IT Services</span></a></li>
                         </ul>
                     </li>
@@ -255,7 +291,8 @@
                             <span>Branches</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="<?= base_url() ?>Home/LucknowBranch"><span>Lucknow (Head Office)</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/LucknowBranch"><span>Lucknow (Head Office)</span></a>
+                            </li>
                             <li><a href="<?= base_url() ?>Home/KanpurBranch"><span>Kanpur Office</span></a></li>
                             <li><a href="<?= base_url() ?>Home/GorakhpurBranch"><span>Gorakhpur Office</span></a></li>
                         </ul>
@@ -276,7 +313,8 @@
                 </button>
 
                 <!-- Mobile Menu Trigger Icon -->
-                <div class="mobile-menu-trigger-btn d-block d-lg-none" id="mobile-menu-trigger" title="Toggle Navigation">
+                <div class="mobile-menu-trigger-btn d-block d-lg-none" id="mobile-menu-trigger"
+                    title="Toggle Navigation">
                     <i class="fas fa-bars"></i>
                 </div>
             </div>

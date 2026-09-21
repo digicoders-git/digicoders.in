@@ -2,18 +2,18 @@
 <html lang="en">
 
 <head>
-    <title>Home | Best IT Company in Lucknow - DigiCoders</title>
+    <title>Best IT Company in Lucknow | Web & Mobile App Development - DigiCoders Technologies</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="description"
-        content="Our services include mobile app and website development, website design, internet marketing, and more. Call us at 9198483820 for all your website needs!">
+        content="DigiCoders Technologies is the best IT company in Lucknow providing software development, mobile app development, website design, ERP & digital marketing services. Call +91 9198483820.">
 
     <?php include('include/headerlinks.php') ?>
 
     <?php if (!empty($sliderdata)): ?>
-        <link rel="preload" as="image" href="<?= base_url('public') ?>/uploads/sliders/<?= $sliderdata[0]->image ?>"
-            fetchpriority="high">
+            <link rel="preload" as="image" href="<?= base_url('public') ?>/uploads/sliders/<?= $sliderdata[0]->image ?>"
+                fetchpriority="high">
     <?php endif; ?>
 
     <link rel="stylesheet"
@@ -45,7 +45,7 @@
             }
 
             #banner_slider .item img {
-                height: 400px;
+                height: auto;
             }
         }
 
@@ -2038,6 +2038,44 @@
                 padding: 14px 16px;
             }
         }
+
+        .visually-hidden {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+
+        @media (min-width: 768px) {
+            .top-banner-carousel {
+                min-height: 400px;
+            }
+        }
+        @media (max-width: 767px) {
+            .top-banner-carousel,
+            .top-banner-carousel .item,
+            #top_banner_slider,
+            #banner_slider {
+                min-height: 0 !important;
+                height: auto !important;
+                background-color: transparent !important;
+            }
+            .top-banner-carousel .item img,
+            #top_banner_slider .item img,
+            #banner_slider .item img {
+                height: auto !important;
+                max-height: none !important;
+            }
+            .top-slider-section {
+                padding-bottom: 0 !important;
+                margin-bottom: 0 !important;
+            }
+        }
     </style>
 
 </head>
@@ -2045,6 +2083,10 @@
 <body>
 
     <?php include('include/header.php') ?>
+    
+    <!-- Main SEO H1 Tag -->
+    <h1 class="visually-hidden">Best IT & Software Development Company in Lucknow - DigiCoders Technologies</h1>
+
     <!--============ Top Slider Start ============-->
     <div class="top-slider-section">
         <div class="container-fluid px-0">
@@ -2052,16 +2094,16 @@
                 <?php
                 $first = true;
                 foreach ($sliderdata as $slider) {
+                    $img_alt = !empty($slider->title) ? htmlspecialchars($slider->title, ENT_QUOTES) : 'Best IT Company in Lucknow - DigiCoders Technologies';
                     ?>
-                    <div class="item">
-                        <img src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
-                            alt="<?= $slider->title ?>" <?php if ($first): ?> fetchpriority="high" loading="eager" <?php else: ?> loading="lazy" <?php endif; ?>>
-                    </div>
-                    <?php
-                    $first = false;
+                        <div class="item">
+                            <img src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
+                                alt="<?= $img_alt ?>" title="<?= $img_alt ?>" <?php if ($first): ?> fetchpriority="high" loading="eager" <?php else: ?> loading="lazy" <?php endif; ?>>
+                        </div>
+                        <?php
+                        $first = false;
                 }
                 ?>
-
             </div>
         </div>
     </div>
@@ -2080,18 +2122,18 @@
                         ?>
 
 
-                        <?php if (!empty($clientdata)): ?>
-                            <?php foreach ($clientdata as $c): ?>
-                                <?php if (!empty($c->image)): ?>
-                                    <div class="client-logo-item"
-                                        title="<?= !empty($c->title) ? htmlspecialchars($c->title) : 'Client' ?>">
-                                        <img src="<?= base_url('public/uploads/client/' . $c->image) ?>"
-                                            alt="<?= !empty($c->title) ? htmlspecialchars($c->title) : 'Client Logo' ?>" loading="lazy">
-                                    </div>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                        <?php
+                            <?php if (!empty($clientdata)): ?>
+                                    <?php foreach ($clientdata as $c): ?>
+                                            <?php if (!empty($c->image)): ?>
+                                                    <div class="client-logo-item"
+                                                        title="<?= !empty($c->title) ? htmlspecialchars($c->title) : 'Client' ?>">
+                                                        <img src="<?= base_url('public/uploads/client/' . $c->image) ?>"
+                                                            alt="<?= !empty($c->title) ? htmlspecialchars($c->title) : 'Client Logo' ?>" loading="lazy">
+                                                    </div>
+                                            <?php endif; ?>
+                                    <?php endforeach; ?>
+                            <?php endif; ?>
+                            <?php
                     };
 
                     // Render set 1 & set 2 for seamless infinite marquee loop
@@ -2193,264 +2235,264 @@
     <!--===========  Achievement Showcase Banner End =============-->
     <!--===========  Software Products Section Start =============-->
     <?php if (!empty($softwares)): ?>
-        <div class="recent-projects-wrapper" id="software-products">
-            <div class="container">
-                <!-- Section Header -->
-                <div class="recent-projects-header mb-4 text-center">
-                    <h2 class="recent-projects-heading mb-1">
-                        Our <span class="text-primary-blue">Software Solutions</span>
-                    </h2>
-                    <p class="recent-projects-subheading mb-0">Transform your business with powerful software
-                        solutions developed by DigiCoders.</p>
-                </div>
+            <div class="recent-projects-wrapper" id="software-products">
+                <div class="container">
+                    <!-- Section Header -->
+                    <div class="recent-projects-header mb-4 text-center">
+                        <h2 class="recent-projects-heading mb-1">
+                            Our <span class="text-primary-blue">Software Solutions</span>
+                        </h2>
+                        <p class="recent-projects-subheading mb-0">Transform your business with powerful software
+                            solutions developed by DigiCoders.</p>
+                    </div>
 
-                <!-- Software Grid Cards -->
-                <div class="row">
-                    <?php foreach ($softwares as $sw): ?>
-                        <div class="col-12 col-md-6 col-lg-4 mb-4">
-                            <div class="project-card h-100">
-                                <?php
-                                $add_imgs = [];
-                                if (!empty($sw->additional_images)) {
-                                    $add_imgs = json_decode($sw->additional_images, true);
-                                }
-                                if (empty($add_imgs) && !empty($sw->image)) {
-                                    $add_imgs[] = $sw->image; // Fallback
-                                }
-                                $main_display_img = !empty($add_imgs) ? $add_imgs[0] : 'placeholder.jpg';
-                                ?>
+                    <!-- Software Grid Cards -->
+                    <div class="row">
+                        <?php foreach ($softwares as $sw): ?>
+                                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="project-card h-100">
+                                        <?php
+                                        $add_imgs = [];
+                                        if (!empty($sw->additional_images)) {
+                                            $add_imgs = json_decode($sw->additional_images, true);
+                                        }
+                                        if (empty($add_imgs) && !empty($sw->image)) {
+                                            $add_imgs[] = $sw->image; // Fallback
+                                        }
+                                        $main_display_img = !empty($add_imgs) ? $add_imgs[0] : 'placeholder.jpg';
+                                        ?>
 
-                                <div class="project-image">
-                                    <img id="main-img-<?= $sw->id ?>"
-                                        src="<?= base_url('public/uploads/software/' . $main_display_img) ?>"
-                                        alt="<?= htmlspecialchars($sw->title) ?>" loading="lazy">
-                                </div>
-
-                                <div class="project-content">
-                                    <div class="project-title-wrap mb-2 text-center">
-                                        <h5 class="project-title text-center" title="<?= htmlspecialchars($sw->title) ?>">
-                                            <?= htmlspecialchars($sw->title) ?>
-                                        </h5>
-                                    </div>
-
-                                    <div class="d-flex align-items-center justify-content-between mt-3 pt-2"
-                                        style="border-top: 1px solid #f1f5f9; gap: 8px;">
-                                        <!-- Type Badge on Left -->
-                                        <div class="project-badges-wrap">
-                                            <span class="project-type-badge">Software</span>
+                                        <div class="project-image">
+                                            <img id="main-img-<?= $sw->id ?>"
+                                                src="<?= base_url('public/uploads/software/' . $main_display_img) ?>"
+                                                alt="<?= htmlspecialchars($sw->title) ?>" loading="lazy">
                                         </div>
 
-                                        <!-- Action Buttons (Book Demo + View Details Arrow) on Right -->
-                                        <div class="project-actions-wrap d-flex align-items-center">
-                                            <?php if (!empty($sw->book_demo_link)): ?>
-                                                <a href="<?= $sw->book_demo_link ?>" target="_blank"
-                                                    class="btn-project-inquiry">
-                                                    Buy Now
-                                                </a>
-                                            <?php else: ?>
-                                                <button type="button" class="btn-project-inquiry"
-                                                    onclick="openBookDemoModal('<?= $sw->id ?>', '<?= htmlspecialchars($sw->title, ENT_QUOTES) ?>')"
-                                                    title="Book a Free Demo">
-                                                    Book Demo
-                                                </button>
-                                            <?php endif; ?>
-
-                                            <a href="<?= base_url('Home/softwareDetails/' . $sw->slug) ?>"
-                                                class="btn-project-visit-arrow ml-2" title="View Details">
-                                                <i class="fa fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-                <style>
-                    .custom-scrollbar::-webkit-scrollbar {
-                        width: 4px;
-                    }
-
-                    .custom-scrollbar::-webkit-scrollbar-track {
-                        background: #f1f1f1;
-                        border-radius: 4px;
-                    }
-
-                    .custom-scrollbar::-webkit-scrollbar-thumb {
-                        background: #c1c1c1;
-                        border-radius: 4px;
-                    }
-
-                    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                        background: #a8a8a8;
-                    }
-                </style>
-                <!-- Global Book Demo Modal -->
-                <div class="modal fade" id="bookDemoModal" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 99999 !important;">
-                    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px; margin: 1.75rem auto;">
-                        <div class="modal-content"
-                            style="border-radius:6px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden; position: relative;">
-                            <div class="modal-header d-block text-center"
-                                style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:25px 20px 20px; border:none; position: relative; border-radius: 6px 6px 0 0;">
-                                <button type="button" class="close text-white" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"
-                                    style="position:absolute; top:15px; right:15px; background: rgba(255, 255, 255, 0.25); color: #ffffff; border: none; border-radius: 50%; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; cursor: pointer; z-index: 20; outline: none; padding: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.15); opacity: 1;"
-                                    onmouseover="this.style.background='rgba(255,255,255,0.45)'"
-                                    onmouseout="this.style.background='rgba(255,255,255,0.25)'">
-                                    <span aria-hidden="true" style="margin-top: -2px;">&times;</span>
-                                </button>
-                                <div class="w-100 text-center">
-                                    <div
-                                        style="width:54px; height:54px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin: 0 auto 10px auto;">
-                                        <i class="fa fa-calendar-check text-white" style="font-size:22px;"></i>
-                                    </div>
-                                    <h4 class="modal-title text-white"
-                                        style="font-weight:700; font-size:20px; margin-bottom:4px; line-height:1.2;">Book a Free Demo</h4>
-                                    <p class="text-white mb-0" style="opacity: 0.95; font-size: 13.5px; font-weight:500;">Experience our software in action!</p>
-                                </div>
-                            </div>
-                            <div class="modal-body" style="padding: 25px 22px; background: #f8f9fa;">
-                                <div id="bookDemoAlert" class="mb-3 text-center"
-                                    style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;">
-                                </div>
-                                <form id="bookDemoForm">
-                                    <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>"
-                                        value="<?= $this->security->get_csrf_hash() ?>">
-                                    <input type="hidden" name="software_name" id="book_software_name">
-
-                                    <div class="form-group mb-3">
-                                        <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
-                                            <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
-                                                <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-laptop-code"></i></span>
+                                        <div class="project-content">
+                                            <div class="project-title-wrap mb-2 text-center">
+                                                <h5 class="project-title text-center" title="<?= htmlspecialchars($sw->title) ?>">
+                                                    <?= htmlspecialchars($sw->title) ?>
+                                                </h5>
                                             </div>
-                                            <select name="software_id" id="book_software_id" class="form-control" required
-                                                style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; color: #444; padding-left: 10px;">
-                                                <option value="">Select Software</option>
-                                                <?php foreach ($softwares as $sw): ?>
-                                                    <option value="<?= $sw->id ?>"><?= $sw->title ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group mb-3">
-                                        <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
-                                            <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
-                                                <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-user"></i></span>
+                                            <div class="d-flex align-items-center justify-content-between mt-3 pt-2"
+                                                style="border-top: 1px solid #f1f5f9; gap: 8px;">
+                                                <!-- Type Badge on Left -->
+                                                <div class="project-badges-wrap">
+                                                    <span class="project-type-badge">Software</span>
+                                                </div>
+
+                                                <!-- Action Buttons (Book Demo + View Details Arrow) on Right -->
+                                                <div class="project-actions-wrap d-flex align-items-center">
+                                                    <?php if (!empty($sw->book_demo_link)): ?>
+                                                            <a href="<?= $sw->book_demo_link ?>" target="_blank"
+                                                                class="btn-project-inquiry">
+                                                                Buy Now
+                                                            </a>
+                                                    <?php else: ?>
+                                                            <button type="button" class="btn-project-inquiry"
+                                                                onclick="openBookDemoModal('<?= $sw->id ?>', '<?= htmlspecialchars($sw->title, ENT_QUOTES) ?>')"
+                                                                title="Book a Free Demo">
+                                                                Book Demo
+                                                            </button>
+                                                    <?php endif; ?>
+
+                                                    <a href="<?= base_url('Home/softwareDetails/' . $sw->slug) ?>"
+                                                        class="btn-project-visit-arrow ml-2" title="View Details">
+                                                        <i class="fa fa-arrow-right"></i>
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <input type="text" name="name" class="form-control" required
-                                                placeholder="Your Full Name"
-                                                style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; padding-left: 10px;">
                                         </div>
                                     </div>
+                                </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <style>
+                        .custom-scrollbar::-webkit-scrollbar {
+                            width: 4px;
+                        }
 
-                                    <div class="form-group mb-3">
-                                        <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
-                                            <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
-                                                <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-phone-alt"></i></span>
+                        .custom-scrollbar::-webkit-scrollbar-track {
+                            background: #f1f1f1;
+                            border-radius: 4px;
+                        }
+
+                        .custom-scrollbar::-webkit-scrollbar-thumb {
+                            background: #c1c1c1;
+                            border-radius: 4px;
+                        }
+
+                        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                            background: #a8a8a8;
+                        }
+                    </style>
+                    <!-- Global Book Demo Modal -->
+                    <div class="modal fade" id="bookDemoModal" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 99999 !important;">
+                        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 420px; margin: 1.75rem auto;">
+                            <div class="modal-content"
+                                style="border-radius:6px; border:none; box-shadow:0 20px 50px rgba(0,0,0,0.15); overflow: hidden; position: relative;">
+                                <div class="modal-header d-block text-center"
+                                    style="background: linear-gradient(135deg, #086AD8, #00C6FF); padding:25px 20px 20px; border:none; position: relative; border-radius: 6px 6px 0 0;">
+                                    <button type="button" class="close text-white" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"
+                                        style="position:absolute; top:15px; right:15px; background: rgba(255, 255, 255, 0.25); color: #ffffff; border: none; border-radius: 50%; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; cursor: pointer; z-index: 20; outline: none; padding: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.15); opacity: 1;"
+                                        onmouseover="this.style.background='rgba(255,255,255,0.45)'"
+                                        onmouseout="this.style.background='rgba(255,255,255,0.25)'">
+                                        <span aria-hidden="true" style="margin-top: -2px;">&times;</span>
+                                    </button>
+                                    <div class="w-100 text-center">
+                                        <div
+                                            style="width:54px; height:54px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin: 0 auto 10px auto;">
+                                            <i class="fa fa-calendar-check text-white" style="font-size:22px;"></i>
+                                        </div>
+                                        <h4 class="modal-title text-white"
+                                            style="font-weight:700; font-size:20px; margin-bottom:4px; line-height:1.2;">Book a Free Demo</h4>
+                                        <p class="text-white mb-0" style="opacity: 0.95; font-size: 13.5px; font-weight:500;">Experience our software in action!</p>
+                                    </div>
+                                </div>
+                                <div class="modal-body" style="padding: 25px 22px; background: #f8f9fa;">
+                                    <div id="bookDemoAlert" class="mb-3 text-center"
+                                        style="font-weight:600; font-size:14px; display:none; padding:10px; border-radius:8px;">
+                                    </div>
+                                    <form id="bookDemoForm">
+                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>"
+                                            value="<?= $this->security->get_csrf_hash() ?>">
+                                        <input type="hidden" name="software_name" id="book_software_name">
+
+                                        <div class="form-group mb-3">
+                                            <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
+                                                <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
+                                                    <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-laptop-code"></i></span>
+                                                </div>
+                                                <select name="software_id" id="book_software_id" class="form-control" required
+                                                    style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; color: #444; padding-left: 10px;">
+                                                    <option value="">Select Software</option>
+                                                    <?php foreach ($softwares as $sw): ?>
+                                                            <option value="<?= $sw->id ?>"><?= $sw->title ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
-                                            <input type="text" name="mobile" class="form-control" required
-                                                placeholder="Mobile Number" maxlength="10" minlength="10"
-                                                style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; padding-left: 10px;">
                                         </div>
-                                    </div>
 
-                                    <div class="form-group mb-3">
-                                        <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
-                                            <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
-                                                <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-envelope"></i></span>
+                                        <div class="form-group mb-3">
+                                            <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
+                                                <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
+                                                    <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-user"></i></span>
+                                                </div>
+                                                <input type="text" name="name" class="form-control" required
+                                                    placeholder="Your Full Name"
+                                                    style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; padding-left: 10px;">
                                             </div>
-                                            <input type="email" name="email" class="form-control"
-                                                placeholder="Email Address (Optional)"
-                                                style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; padding-left: 10px;">
                                         </div>
-                                    </div>
 
-                                    <div class="form-group mb-4">
-                                        <textarea name="message" class="form-control" rows="2"
-                                            placeholder="Any specific requirements?"
-                                            style="border: 1px solid #cbd5e1; border-radius:10px; padding:12px 14px; background:#fff; box-shadow:none; resize:none; font-size:14px; color:#333;"></textarea>
-                                    </div>
+                                        <div class="form-group mb-3">
+                                            <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
+                                                <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
+                                                    <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-phone-alt"></i></span>
+                                                </div>
+                                                <input type="text" name="mobile" class="form-control" required
+                                                    placeholder="Mobile Number" maxlength="10" minlength="10"
+                                                    style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; padding-left: 10px;">
+                                            </div>
+                                        </div>
 
-                                    <div class="text-center">
-                                        <button type="submit" class="btn text-white" id="btnBookDemo"
-                                            style="background: linear-gradient(135deg, #086AD8, #00C6FF); height: 48px; padding: 0 35px; border-radius: 6px; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; border: none; box-shadow: 0 8px 18px rgba(8,106,216,0.3); transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; min-width: 220px;">
-                                            <span class="spinner-border spinner-border-sm d-none" id="bookDemoSpinner"
-                                                role="status" aria-hidden="true" style="margin-right:8px;"></span>
-                                            Confirm Booking
-                                        </button>
-                                    </div>
-                                </form>
+                                        <div class="form-group mb-3">
+                                            <div class="input-group" style="border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden; background: #fff;">
+                                                <div class="input-group-prepend" style="display: flex; align-items: center; background: #fff; padding-left: 14px;">
+                                                    <span style="color: #086AD8; font-size: 14px;"><i class="fa fa-envelope"></i></span>
+                                                </div>
+                                                <input type="email" name="email" class="form-control"
+                                                    placeholder="Email Address (Optional)"
+                                                    style="border: none; height: 46px; background: transparent; box-shadow: none; font-size: 14px; padding-left: 10px;">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mb-4">
+                                            <textarea name="message" class="form-control" rows="2"
+                                                placeholder="Any specific requirements?"
+                                                style="border: 1px solid #cbd5e1; border-radius:10px; padding:12px 14px; background:#fff; box-shadow:none; resize:none; font-size:14px; color:#333;"></textarea>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn text-white" id="btnBookDemo"
+                                                style="background: linear-gradient(135deg, #086AD8, #00C6FF); height: 48px; padding: 0 35px; border-radius: 6px; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; border: none; box-shadow: 0 8px 18px rgba(8,106,216,0.3); transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; min-width: 220px;">
+                                                <span class="spinner-border spinner-border-sm d-none" id="bookDemoSpinner"
+                                                    role="status" aria-hidden="true" style="margin-right:8px;"></span>
+                                                Confirm Booking
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <script>
-                    function openBookDemoModal(softwareId, softwareName) {
-                        $('#book_software_id').val(softwareId);
-                        $('#book_software_name').val(softwareName);
-                        $('#bookDemoModal').modal('show');
-                    }
+                    <script>
+                        function openBookDemoModal(softwareId, softwareName) {
+                            $('#book_software_id').val(softwareId);
+                            $('#book_software_name').val(softwareName);
+                            $('#bookDemoModal').modal('show');
+                        }
 
-                    // Update hidden software name on change
-                    document.getElementById('book_software_id').addEventListener('change', function () {
-                        var name = this.options[this.selectedIndex].text;
-                        document.getElementById('book_software_name').value = name;
-                    });
+                        // Update hidden software name on change
+                        document.getElementById('book_software_id').addEventListener('change', function () {
+                            var name = this.options[this.selectedIndex].text;
+                            document.getElementById('book_software_name').value = name;
+                        });
 
-                    // Handle form submission with Vanilla JS
-                    document.getElementById('bookDemoForm').addEventListener('submit', function (e) {
-                        e.preventDefault();
+                        // Handle form submission with Vanilla JS
+                        document.getElementById('bookDemoForm').addEventListener('submit', function (e) {
+                            e.preventDefault();
 
-                        var form = this;
-                        var btn = document.getElementById('btnBookDemo');
-                        var spinner = document.getElementById('bookDemoSpinner');
-                        var alertBox = document.getElementById('bookDemoAlert');
+                            var form = this;
+                            var btn = document.getElementById('btnBookDemo');
+                            var spinner = document.getElementById('bookDemoSpinner');
+                            var alertBox = document.getElementById('bookDemoAlert');
 
-                        btn.disabled = true;
-                        spinner.classList.remove('d-none');
-                        alertBox.style.display = 'none';
-                        alertBox.className = 'mt-3 text-center';
-                        var formData = new FormData(form);
-                        fetch("<?= base_url('Home/submitDemoRequest') ?>", {
-                            method: "POST",
-                            body: formData,
-                            headers: {
-                                "X-Requested-With": "XMLHttpRequest"
-                            }
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                btn.disabled = false;
-                                spinner.classList.add('d-none');
-
-                                if (data.status === 'success') {
-                                    alertBox.classList.add('text-success');
-                                    alertBox.textContent = data.message;
-                                    alertBox.style.display = 'block';
-                                    form.reset();
-
-                                    setTimeout(function () {
-                                        $('#bookDemoModal').modal('hide');
-                                        alertBox.style.display = 'none';
-                                    }, 3000);
-                                } else {
-                                    alertBox.classList.add('text-danger');
-                                    alertBox.textContent = data.message;
-                                    alertBox.style.display = 'block';
+                            btn.disabled = true;
+                            spinner.classList.remove('d-none');
+                            alertBox.style.display = 'none';
+                            alertBox.className = 'mt-3 text-center';
+                            var formData = new FormData(form);
+                            fetch("<?= base_url('Home/submitDemoRequest') ?>", {
+                                method: "POST",
+                                body: formData,
+                                headers: {
+                                    "X-Requested-With": "XMLHttpRequest"
                                 }
                             })
-                            .catch(error => {
-                                btn.disabled = false;
-                                spinner.classList.add('d-none');
-                                alertBox.classList.add('text-danger');
-                                alertBox.textContent = "Something went wrong. Please try again.";
-                                alertBox.style.display = 'block';
-                            });
-                    });
-                </script>
+                                .then(response => response.json())
+                                .then(data => {
+                                    btn.disabled = false;
+                                    spinner.classList.add('d-none');
+
+                                    if (data.status === 'success') {
+                                        alertBox.classList.add('text-success');
+                                        alertBox.textContent = data.message;
+                                        alertBox.style.display = 'block';
+                                        form.reset();
+
+                                        setTimeout(function () {
+                                            $('#bookDemoModal').modal('hide');
+                                            alertBox.style.display = 'none';
+                                        }, 3000);
+                                    } else {
+                                        alertBox.classList.add('text-danger');
+                                        alertBox.textContent = data.message;
+                                        alertBox.style.display = 'block';
+                                    }
+                                })
+                                .catch(error => {
+                                    btn.disabled = false;
+                                    spinner.classList.add('d-none');
+                                    alertBox.classList.add('text-danger');
+                                    alertBox.textContent = "Something went wrong. Please try again.";
+                                    alertBox.style.display = 'block';
+                                });
+                        });
+                    </script>
+                </div>
             </div>
-        </div>
     <?php endif; ?>
     <!--===========  Software Products Section End =============-->
 
@@ -2517,44 +2559,44 @@
             <div class="owl-carousel expert-team-carousel owl-theme" id="expert_team">
                 <?php if (!empty($expertdata)):
                     foreach ($expertdata as $expert): ?>
-                        <div class="item p-1" style="width: 100%; min-width: 0; box-sizing: border-box;">
-                            <div
-                                style="background: #ffffff; border-radius: 6px; border: 1px solid #e2e8f0; padding: 14px 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: all 0.3s ease; height: 100%; width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; box-sizing: border-box;">
-                                <div class="expert-img-box">
-                                    <img src="<?= base_url('public/uploads/expert/' . $expert->image) ?>"
-                                        alt="<?= htmlspecialchars($expert->name, ENT_QUOTES) ?>"
-                                        style="width: 100%; height: 100%; object-fit: cover; object-position: top center;"
-                                        loading="lazy">
+                                <div class="item p-1" style="width: 100%; min-width: 0; box-sizing: border-box;">
+                                    <div
+                                        style="background: #ffffff; border-radius: 6px; border: 1px solid #e2e8f0; padding: 14px 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: all 0.3s ease; height: 100%; width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; box-sizing: border-box;">
+                                        <div class="expert-img-box">
+                                            <img src="<?= base_url('public/uploads/expert/' . $expert->image) ?>"
+                                                alt="<?= htmlspecialchars($expert->name, ENT_QUOTES) ?>"
+                                                style="width: 100%; height: 100%; object-fit: cover; object-position: top center;"
+                                                loading="lazy">
+                                        </div>
+                                        <h6 style="font-weight: 800; font-size: 15px; color: #086AD8; margin-bottom: 3px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; min-width: 0; box-sizing: border-box;"
+                                            title="<?= htmlspecialchars($expert->name, ENT_QUOTES) ?>">
+                                            <?= htmlspecialchars($expert->name) ?>
+                                        </h6>
+                                        <div style="font-size: 12px; color: #64748b; margin-bottom: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; min-width: 0; box-sizing: border-box;"
+                                            title="<?= htmlspecialchars($expert->role, ENT_QUOTES) ?>">
+                                            <?= htmlspecialchars($expert->role) ?>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-center"
+                                            style="gap: 6px; margin-top: auto; width: 100%;">
+                                            <a href="https://api.whatsapp.com/send?phone=91<?= $this->data['mobile_no'] ?? '9198483820' ?>&text=Hello%20<?= urlencode($expert->name) ?>" target="_blank" rel="noopener"
+                                                title="WhatsApp" aria-label="WhatsApp"
+                                                style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
+                                                    class="fab fa-whatsapp"></i></a>
+                                            <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" rel="noopener"
+                                                title="Facebook" aria-label="Facebook"
+                                                style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
+                                                    class="fab fa-facebook-f"></i></a>
+                                            <a href="https://www.instagram.com/digicoderstech" target="_blank" rel="noopener"
+                                                title="Instagram" aria-label="Instagram"
+                                                style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
+                                                    class="fab fa-instagram"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h6 style="font-weight: 800; font-size: 15px; color: #086AD8; margin-bottom: 3px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; min-width: 0; box-sizing: border-box;"
-                                    title="<?= htmlspecialchars($expert->name, ENT_QUOTES) ?>">
-                                    <?= htmlspecialchars($expert->name) ?>
-                                </h6>
-                                <div style="font-size: 12px; color: #64748b; margin-bottom: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; min-width: 0; box-sizing: border-box;"
-                                    title="<?= htmlspecialchars($expert->role, ENT_QUOTES) ?>">
-                                    <?= htmlspecialchars($expert->role) ?>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-center"
-                                    style="gap: 6px; margin-top: auto; width: 100%;">
-                                    <a href="https://api.whatsapp.com/send?phone=91<?= $this->data['mobile_no'] ?? '9198483820' ?>&text=Hello%20<?= urlencode($expert->name) ?>" target="_blank" rel="noopener"
-                                        title="WhatsApp" aria-label="WhatsApp"
-                                        style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
-                                            class="fab fa-whatsapp"></i></a>
-                                    <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" rel="noopener"
-                                        title="Facebook" aria-label="Facebook"
-                                        style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a href="https://www.instagram.com/digicoderstech" target="_blank" rel="noopener"
-                                        title="Instagram" aria-label="Instagram"
-                                        style="width: 30px; height: 30px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none;"><i
-                                            class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
+                        <?php endforeach; else: ?>
+                        <div class="item">
+                            <p class="text-center text-muted">No experts found.</p>
                         </div>
-                    <?php endforeach; else: ?>
-                    <div class="item">
-                        <p class="text-center text-muted">No experts found.</p>
-                    </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -2581,59 +2623,59 @@
 
             <!-- Project Cards Carousel -->
             <div class="owl-carousel recent-project-carousel" id="recent_project">
-                <?php 
+                <?php
                 $recent_projects_12 = !empty($userdata) ? array_slice($userdata, 0, 12) : [];
                 foreach ($recent_projects_12 as $projects) {
                     $is_link_active = (!isset($projects->link_status) || $projects->link_status == 'true' || $projects->link_status == '1');
                     ?>
-                    <div class="item py-2">
-                        <div class="project-card">
-                            <div class="project-image">
-                                <img src="<?= base_url('public/uploads/projects/') . $projects->image ?>"
-                                    alt="<?= htmlspecialchars($projects->title) ?>" loading="lazy">
-                            </div>
-
-                            <div class="project-content">
-                                <div class="project-title-wrap mb-2">
-                                    <h5 class="project-title" title="<?= htmlspecialchars($projects->title) ?>">
-                                        <?= htmlspecialchars($projects->title) ?>
-                                    </h5>
+                        <div class="item py-2">
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="<?= base_url('public/uploads/projects/') . $projects->image ?>"
+                                        alt="<?= htmlspecialchars($projects->title) ?>" loading="lazy">
                                 </div>
 
-                                <div class="d-flex align-items-center justify-content-between mt-3 pt-2"
-                                    style="border-top: 1px solid #f1f5f9; gap: 8px;">
-                                    <!-- Type Badges on Left -->
-                                    <div class="project-badges-wrap">
-                                        <?php
-                                        $raw_type = !empty($projects->type) ? $projects->type : 'Website';
-                                        $badges = array_map('trim', explode(',', $raw_type));
-                                        foreach ($badges as $badge_text):
-                                            if (empty($badge_text))
-                                                continue;
-                                            ?>
-                                            <span class="project-type-badge"><?= htmlspecialchars($badge_text) ?></span>
-                                        <?php endforeach; ?>
+                                <div class="project-content">
+                                    <div class="project-title-wrap mb-2">
+                                        <h5 class="project-title" title="<?= htmlspecialchars($projects->title) ?>">
+                                            <?= htmlspecialchars($projects->title) ?>
+                                        </h5>
                                     </div>
 
-                                    <!-- Action Buttons (Inquiry + Visit Arrow) on Right -->
-                                    <div class="project-actions-wrap d-flex align-items-center">
-                                        <button type="button" class="btn-project-inquiry"
-                                            onclick="openProjectEnquiryModal('<?= $projects->id ?>', '<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>')"
-                                            title="Enquire About This Project">
-                                            Enquiry
-                                        </button>
+                                    <div class="d-flex align-items-center justify-content-between mt-3 pt-2"
+                                        style="border-top: 1px solid #f1f5f9; gap: 8px;">
+                                        <!-- Type Badges on Left -->
+                                        <div class="project-badges-wrap">
+                                            <?php
+                                            $raw_type = !empty($projects->type) ? $projects->type : 'Website';
+                                            $badges = array_map('trim', explode(',', $raw_type));
+                                            foreach ($badges as $badge_text):
+                                                if (empty($badge_text))
+                                                    continue;
+                                                ?>
+                                                    <span class="project-type-badge"><?= htmlspecialchars($badge_text) ?></span>
+                                            <?php endforeach; ?>
+                                        </div>
 
-                                        <?php if ($is_link_active && !empty($projects->url)): ?>
-                                            <a href="<?= $projects->url ?>" target="_blank" class="btn-project-visit-arrow ml-2"
-                                                title="Visit Live Site">
-                                                <i class="fa fa-arrow-right"></i>
-                                            </a>
-                                        <?php endif; ?>
+                                        <!-- Action Buttons (Inquiry + Visit Arrow) on Right -->
+                                        <div class="project-actions-wrap d-flex align-items-center">
+                                            <button type="button" class="btn-project-inquiry"
+                                                onclick="openProjectEnquiryModal('<?= $projects->id ?>', '<?= htmlspecialchars($projects->title, ENT_QUOTES) ?>')"
+                                                title="Enquire About This Project">
+                                                Enquiry
+                                            </button>
+
+                                            <?php if ($is_link_active && !empty($projects->url)): ?>
+                                                    <a href="<?= $projects->url ?>" target="_blank" class="btn-project-visit-arrow ml-2"
+                                                        title="Visit Live Site">
+                                                        <i class="fa fa-arrow-right"></i>
+                                                    </a>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 <?php } ?>
             </div>
 
@@ -3309,34 +3351,34 @@
                         $blog_slug = !empty($data->url) ? $data->url : $data->id;
                         $detail_url = base_url('blogs/' . $blog_slug);
                         ?>
-                        <div class="item py-2 h-100">
-                            <div class="blog-card-item h-100">
-                                <div class="blog-card-thumb">
-                                    <a href="<?= $detail_url ?>">
-                                        <img src="<?= $img_url ?>"
-                                            alt="<?= htmlspecialchars($data->title ?? 'DigiCoders Blog', ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
-                                    </a>
-                                    <span class="blog-cat-badge"><?= $category; ?></span>
-                                </div>
-                                <div class="blog-card-content">
-                                    <div class="blog-card-meta mb-2">
-                                        <i class="far fa-calendar-alt mr-1"></i> <?= !empty($data->date) ? date('M d, Y', strtotime($data->date)) : date('M d, Y') ?>
+                                <div class="item py-2 h-100">
+                                    <div class="blog-card-item h-100">
+                                        <div class="blog-card-thumb">
+                                            <a href="<?= $detail_url ?>">
+                                                <img src="<?= $img_url ?>"
+                                                    alt="<?= htmlspecialchars($data->title ?? 'DigiCoders Blog', ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
+                                            </a>
+                                            <span class="blog-cat-badge"><?= $category; ?></span>
+                                        </div>
+                                        <div class="blog-card-content">
+                                            <div class="blog-card-meta mb-2">
+                                                <i class="far fa-calendar-alt mr-1"></i> <?= !empty($data->date) ? date('M d, Y', strtotime($data->date)) : date('M d, Y') ?>
+                                            </div>
+                                            <h5 class="blog-card-title mb-2">
+                                                <a href="<?= $detail_url ?>"><?= htmlspecialchars($data->title ?? '', ENT_QUOTES, 'UTF-8'); ?></a>
+                                            </h5>
+                                            <p class="blog-card-text mb-3">
+                                                <?= htmlspecialchars(mb_strimwidth(strip_tags($data->content ?? $data->full_discription ?? ''), 0, 120, '...'), ENT_QUOTES, 'UTF-8'); ?>
+                                            </p>
+                                            <div class="blog-card-footer">
+                                                <a href="<?= $detail_url ?>" class="service-discover-link font-weight-bold">
+                                                    <span>Read More</span> <i class="fa fa-arrow-right ml-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <h5 class="blog-card-title mb-2">
-                                        <a href="<?= $detail_url ?>"><?= htmlspecialchars($data->title ?? '', ENT_QUOTES, 'UTF-8'); ?></a>
-                                    </h5>
-                                    <p class="blog-card-text mb-3">
-                                        <?= htmlspecialchars(mb_strimwidth(strip_tags($data->content ?? $data->full_discription ?? ''), 0, 120, '...'), ENT_QUOTES, 'UTF-8'); ?>
-                                    </p>
-                                    <div class="blog-card-footer">
-                                        <a href="<?= $detail_url ?>" class="service-discover-link font-weight-bold">
-                                            <span>Read More</span> <i class="fa fa-arrow-right ml-1"></i>
-                                        </a>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <?php
+                                <?php
                     }
                 }
                 ?>

@@ -178,7 +178,8 @@
                                 Hosting</a></li>
                         <li><a class="hover-style-link" href="<?= base_url() ?>Home/PrivacyPolicies">Privacy Policy</a>
                         </li>
-                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/ShippingPolicy">Shipping &amp; Delivery Policy</a></li>
+                        <li><a class="hover-style-link" href="<?= base_url() ?>Home/ShippingPolicy">Shipping &amp;
+                                Delivery Policy</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-widget mb-30">
@@ -193,7 +194,8 @@
                         </li>
                         <li><a href="<?= base_url() ?>Home/TermsAndConditions" class="hover-style-link">Terms &amp;
                                 Condition</a></li>
-                        <li><a href="<?= base_url() ?>Home/RefundAndCancellation" class="hover-style-link">Refund &amp; Cancellation</a></li>
+                        <li><a href="<?= base_url() ?>Home/RefundAndCancellation" class="hover-style-link">Refund &amp;
+                                Cancellation</a></li>
                         <li><a href="<?= base_url() ?>Home/ReturnPolicy" class="hover-style-link">Return Policy</a></li>
                     </ul>
                 </div>
@@ -293,8 +295,8 @@
                     <ul
                         class="list ht-social-networks solid-rounded-icon footer-icon justify-content-center justify-content-md-end">
                         <li class="item">
-                            <a href="https://www.whatsapp.com/channel/0029VaDTIxW5EjxzOyubYT3l"
-                                target="_blank" aria-label="WhatsApp Channel" title="WhatsApp Channel"
+                            <a href="https://www.whatsapp.com/channel/0029VaDTIxW5EjxzOyubYT3l" target="_blank"
+                                aria-label="WhatsApp Channel" title="WhatsApp Channel"
                                 class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-whatsapp link-icon"></i>
                             </a>
@@ -325,7 +327,8 @@
                         </li>
                         <li class="item">
                             <a href="https://www.youtube.com/@digicoders" target="_blank" rel="noopener"
-                                aria-label="YouTube" title="YouTube" class="social-link hint--bounce hint--top hint--primary">
+                                aria-label="YouTube" title="YouTube"
+                                class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-youtube link-icon"></i>
                             </a>
                         </li>
@@ -392,16 +395,22 @@
                         <a href="<?= base_url() ?>"><span>Home</span></a>
                     </li>
                     <li class="has-children">
-                        <a href="<?= base_url() ?>Home/AboutDigiCoders" aria-label="dropdown"><span>About Company</span></a>
+                        <a href="<?= base_url() ?>Home/AboutDigiCoders" aria-label="dropdown"><span>About
+                                Company</span></a>
                         <ul class="sub-menu">
                             <li class="has-children">
                                 <a href="<?= base_url() ?>Home/AboutDigiCoders"><span>About Us</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?= base_url() ?>Home/AboutDigiCoders"><span>About DigiCoders</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutTheDigiCoders"><span>About The DigiCoders</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutDigiCodersTechnologies"><span>About DigiCoders Technologies</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutCodersAdda"><span>About CodersAdda</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/AboutDigitalCoders"><span>About DigitalCoders</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutDigiCoders"><span>About
+                                                DigiCoders</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutTheDigiCoders"><span>About The
+                                                DigiCoders</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutDigiCodersTechnologies"><span>About
+                                                DigiCoders Technologies</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutCodersAdda"><span>About
+                                                CodersAdda</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/AboutDigitalCoders"><span>About
+                                                DigitalCoders</span></a></li>
                                 </ul>
                             </li>
                             <li><a href="<?= base_url() ?>Home/Leadership"><span>Leadership</span></a></li>
@@ -417,30 +426,49 @@
                         <a href="<?= base_url() ?>Home/ITServices" aria-label="dropdown"><span>Our Services</span></a>
                         <ul class="sub-menu">
                             <li><a href="<?= base_url() ?>Home/ITServices"><span>All Services</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/SoftwareDevelopment"><span>Software Development</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/SoftwareDevelopment"><span>Software
+                                        Development</span></a></li>
                             <li class="has-children">
                                 <a href="<?= base_url() ?>Home/Our_Products"><span>Our Products</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?= base_url() ?>Home/School_management_system_in_digicoder_in_lucknow"><span>School Management Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/HRMS_in_digicoder_in_lucknow"><span>HRMS Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/CRM_in_digicoder_in_lucknow"><span>CRM Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/ERP_in_digicoder_in_lucknow"><span>ERP Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/lead_management_digicoder_in_lucknow"><span>Lead Management Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/fee_management_digicoder_in_lucknow"><span>Fee Management Software</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/Food_delivery_App_in_digicoder_in_lucknow"><span>Food Delivery Apps</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/Taxi_booking_app_in_digicoder_in_lucknow"><span>Taxi - Cab Booking App</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/Grocery_delivery_app_in_digicoder_in_lucknow"><span>Grocery Delivery App</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/Ecommerce_website_in_digicoder_in_lucknow"><span>Ecommerce Website</span></a></li>
-                                    <li><a href="<?= base_url() ?>Home/Online_courses_app_in_digicoder_in_lucknow"><span>Online Courses & Tests App</span></a></li>
+                                    <li><a
+                                            href="<?= base_url() ?>Home/School_management_system_in_digicoder_in_lucknow"><span>School
+                                                Management Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/HRMS_in_digicoder_in_lucknow"><span>HRMS
+                                                Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/CRM_in_digicoder_in_lucknow"><span>CRM
+                                                Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/ERP_in_digicoder_in_lucknow"><span>ERP
+                                                Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/lead_management_digicoder_in_lucknow"><span>Lead
+                                                Management Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/fee_management_digicoder_in_lucknow"><span>Fee
+                                                Management Software</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/Food_delivery_App_in_digicoder_in_lucknow"><span>Food
+                                                Delivery Apps</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/Taxi_booking_app_in_digicoder_in_lucknow"><span>Taxi
+                                                - Cab Booking App</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/Grocery_delivery_app_in_digicoder_in_lucknow"><span>Grocery
+                                                Delivery App</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/Ecommerce_website_in_digicoder_in_lucknow"><span>Ecommerce
+                                                Website</span></a></li>
+                                    <li><a href="<?= base_url() ?>Home/Online_courses_app_in_digicoder_in_lucknow"><span>Online
+                                                Courses & Tests App</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="<?= base_url() ?>Home/WebsiteDevelopment"><span>Website Development</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/MobileApplicationDevelopment"><span>Mobile App Development</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/WebsiteDevelopment"><span>Website Development</span></a>
+                            </li>
+                            <li><a href="<?= base_url() ?>Home/MobileApplicationDevelopment"><span>Mobile App
+                                        Development</span></a></li>
                             <li><a href="<?= base_url() ?>Home/DigitalMarketing"><span>Digital Marketing</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/GraphicsDesigning"><span>Graphics Designing</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/DomainAndHosting"><span>Domain &amp; Hosting</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/ERPandCRMDevelopment"><span>ERP &amp; CRM Development</span></a></li>
-                            <li><a href="<?= base_url() ?>Home/MaintenanceServices"><span>Maintenance Services</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/GraphicsDesigning"><span>Graphics Designing</span></a>
+                            </li>
+                            <li><a href="<?= base_url() ?>Home/DomainAndHosting"><span>Domain &amp; Hosting</span></a>
+                            </li>
+                            <li><a href="<?= base_url() ?>Home/ERPandCRMDevelopment"><span>ERP &amp; CRM
+                                        Development</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/MaintenanceServices"><span>Maintenance
+                                        Services</span></a></li>
                             <li><a href="<?= base_url() ?>Home/ITServices"><span>Other IT Services</span></a></li>
                         </ul>
                     </li>
@@ -456,7 +484,8 @@
                     <li class="has-children">
                         <a href="<?= base_url() ?>Home/LucknowBranch" aria-label="dropdown"><span>Branches</span></a>
                         <ul class="sub-menu">
-                            <li><a href="<?= base_url() ?>Home/LucknowBranch"><span>Lucknow (Main Office)</span></a></li>
+                            <li><a href="<?= base_url() ?>Home/LucknowBranch"><span>Lucknow (Main Office)</span></a>
+                            </li>
                             <li><a href="<?= base_url() ?>Home/KanpurBranch"><span>Kanpur Office</span></a></li>
                             <li><a href="<?= base_url() ?>Home/GorakhpurBranch"><span>Gorakhpur Office</span></a></li>
                         </ul>
