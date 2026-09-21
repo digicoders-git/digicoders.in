@@ -17,10 +17,32 @@
 <?php endif; ?>
 
 <meta name="google-site-verification" content="IadmBNu_fQoB-3YJhdwwmF05VbB16bvK86LLmL3_gGQ" />
+<link rel="canonical" href="<?= current_url() ?>">
+
 <!-- Favicon -->
 <link rel="icon" href="<?= base_url() ?>public/assets/images/favicon-icon.png">
 <link rel="apple-touch-icon image_src" href="<?= base_url() ?>public/assets/images/favicon-icon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>public/assets/images/favicon-icon.png">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "DigiCoders Technologies (P) Limited",
+  "image": "<?= base_url('public/assets/images/favicon-icon.png') ?>",
+  "@id": "https://digicoders.in/#organization",
+  "url": "https://digicoders.in/",
+  "telephone": "+919198483820",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lucknow",
+    "addressRegion": "Uttar Pradesh",
+    "addressCountry": "IN"
+  }
+}
+</script>
 <!-- Preconnect and Preload -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -185,7 +185,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-widget mb-30">
                     <h6 class="footer-widget__title mb-20">Quick Links</h6>
                     <ul class="footer-widget__list">
-                        <li><a href="https://rzp.io/l/pa3Rlt0qI" target="_blank" class="hover-style-link">Pay Online</a>
+                        <li><a href="https://rzp.io/l/pa3Rlt0qI" target="_blank" rel="noopener noreferrer" class="hover-style-link">Pay Online</a>
                         </li>
                         <li><a href="<?= base_url() ?>Home/OurProjects" class="hover-style-link">Our Projects</a></li>
                         <li><a href="<?= base_url() ?>Home/OurGallery" class="hover-style-link">Photo Gallery</a></li>
@@ -295,38 +295,38 @@
                     <ul
                         class="list ht-social-networks solid-rounded-icon footer-icon justify-content-center justify-content-md-end">
                         <li class="item">
-                            <a href="https://www.whatsapp.com/channel/0029VaDTIxW5EjxzOyubYT3l" target="_blank"
+                            <a href="https://www.whatsapp.com/channel/0029VaDTIxW5EjxzOyubYT3l" target="_blank" rel="noopener noreferrer"
                                 aria-label="WhatsApp Channel" title="WhatsApp Channel"
                                 class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-whatsapp link-icon"></i>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="https://twitter.com/DigiCodersTech/" target="_blank" rel="noopener"
+                            <a href="https://twitter.com/DigiCodersTech/" target="_blank" rel="noopener noreferrer"
                                 aria-label="Twitter" class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fa-brands fa-x-twitter link-icon"></i>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" rel="noopener"
+                            <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" rel="noopener noreferrer"
                                 aria-label="Facebook" class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-facebook-f link-icon"></i>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="https://www.instagram.com/digicoderstech" target="_blank" rel="noopener"
+                            <a href="https://www.instagram.com/digicoderstech" target="_blank" rel="noopener noreferrer"
                                 aria-label="Instagram" class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-instagram link-icon"></i>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="https://www.linkedin.com/company/digicoders/" target="_blank" rel="noopener"
+                            <a href="https://www.linkedin.com/company/digicoders/" target="_blank" rel="noopener noreferrer"
                                 aria-label="Linkedin" class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-linkedin link-icon"></i>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="https://www.youtube.com/@digicoders" target="_blank" rel="noopener"
+                            <a href="https://www.youtube.com/@digicoders" target="_blank" rel="noopener noreferrer"
                                 aria-label="YouTube" title="YouTube"
                                 class="social-link hint--bounce hint--top hint--primary">
                                 <i class="fab fa-youtube link-icon"></i>
@@ -685,7 +685,7 @@
 <!--float button-->
 
 <div id="feedback2">
-    <a href="https://www.thedigicoders.com/Home/Registration" target="_blank" aria-label="left-align"><span
+    <a href="https://www.thedigicoders.com/Home/Registration" target="_blank" rel="noopener noreferrer" aria-label="left-align"><span
             class="pt-3">Register For Training</span></a>
 </div>
 
