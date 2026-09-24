@@ -237,6 +237,78 @@
                         </div></a>
                     </div>
                 </div>
+
+                <div class="col">
+                    <div class="card radius-10 border-0 border-start border-danger border-3">
+                        <a href="<?= base_url('Admin/servicepage') ?>">  
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="">
+                                        <p class="mb-1">Manage Service Page</p>
+                                        <h4 class="mb-0 text-danger"><?= number_format($seo_pages); ?></h4>
+                                    </div>
+                                    <div class="ms-auto widget-icon bg-danger text-white">
+                                        <i class="bi bi-newspaper"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card radius-10 border-0 border-start border-purple border-3">
+                        <a href="<?= base_url('Admin/ManageSlider') ?>">  
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="">
+                                        <p class="mb-1">Manage Sliders</p>
+                                        <h4 class="mb-0 text-purple"><?= $sliders; ?></h4>
+                                    </div>
+                                    <div class="ms-auto widget-icon bg-purple text-white">
+                                        <i class="bi bi-images"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card radius-10 border-0 border-start border-info border-3">
+                        <a href="<?= base_url('Admin/ManageProjectEnquiries') ?>">  
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="">
+                                        <p class="mb-1">Project Enquiries</p>
+                                        <h4 class="mb-0 text-info"><?= $project_enquiries; ?></h4>
+                                    </div>
+                                    <div class="ms-auto widget-icon bg-info text-white">
+                                        <i class="bi bi-patch-question-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card radius-10 border-0 border-start border-primary border-3">
+                        <a href="<?= base_url('AdminSoftware/index') ?>">  
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="">
+                                        <p class="mb-1">Software Products</p>
+                                        <h4 class="mb-0 text-primary"><?= $softwares; ?></h4>
+                                    </div>
+                                    <div class="ms-auto widget-icon bg-primary text-white">
+                                        <i class="bi bi-laptop"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
               
             </div>
             <!--end row-->

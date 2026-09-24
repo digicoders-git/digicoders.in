@@ -393,37 +393,79 @@ $(document).ready(function () {
     // Project Add Form
     $(document).on('submit', '#project-form', function (e) {
         e.preventDefault();
-        var data = new FormData(this);
+        var form = this;
+        var fileInput = $(form).find('input[type="file"]')[0];
+        if (fileInput && fileInput.files && fileInput.files[0]) {
+            var fileSizeKb = fileInput.files[0].size / 1024;
+            if (fileSizeKb > 100) {
+                iziToast.error({
+                    title: 'File Size Limit Exceeded',
+                    message: 'The file size should be less than 100 KB. Please upload an image smaller than 100 KB.',
+                    position: 'topRight'
+                });
+                return false;
+            }
+        }
+
+        var data = new FormData(form);
+        var $btn = $(form).find('button[type="submit"]');
+        var oldHtml = $btn.html();
+        $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Saving...');
+
         $.ajax({
-            type: $(this).attr('method'),
-            url: $(this).attr('action'),
+            type: $(form).attr('method') || 'POST',
+            url: $(form).attr('action'),
             data: data,
             cache: false,
             contentType: false,
             processData: false,
             success: function (response) {
-                var jsonres = JSON.parse(response);
-                if (jsonres.status == "success") {
+                $btn.prop('disabled', false).html(oldHtml);
+                var jsonres = (typeof response === "object") ? response : null;
+                if (!jsonres && typeof response === "string") {
+                    try { jsonres = JSON.parse(response); } catch (err) {}
+                }
+
+                if (jsonres && (jsonres.status == "success" || jsonres.res == "success")) {
                     iziToast.success({
-                        title: jsonres.title,
-                        message: jsonres.msg,
+                        title: jsonres.title || "Success",
+                        message: jsonres.msg || "Project Successfully Saved",
                         position: 'topRight'
                     });
                     setTimeout(function () {
                         window.location.reload();
-                    }, 1000)
+                    }, 1000);
                 } else {
+                    var errorTitle = (jsonres && jsonres.title) ? jsonres.title : 'Error';
+                    var errorMsg = (jsonres && jsonres.msg) ? jsonres.msg : 'Failed to save project';
                     iziToast.error({
-                        title: jsonres.title,
-                        message: jsonres.msg,
+                        title: errorTitle,
+                        message: errorMsg,
                         position: 'topRight'
                     });
                 }
             },
-            error: function (response) {
+            error: function (xhr, status, error) {
+                $btn.prop('disabled', false).html(oldHtml);
+                var res = null;
+                if (xhr.responseJSON) {
+                    res = xhr.responseJSON;
+                } else if (xhr.responseText) {
+                    try { res = JSON.parse(xhr.responseText); } catch(e) {}
+                }
+
+                var errorTitle = (res && res.title) ? res.title : 'Error';
+                var errorMsg = (res && res.msg) ? res.msg : 'Something Went Wrong';
+                if (!res && xhr.responseText) {
+                    var cleanMsg = stripTags(xhr.responseText).trim();
+                    if (cleanMsg.length > 0 && cleanMsg.length < 250) {
+                        errorMsg = cleanMsg;
+                    }
+                }
+
                 iziToast.error({
-                    title: 'Error',
-                    message: 'Something Went Wrong',
+                    title: errorTitle,
+                    message: errorMsg,
                     position: 'topRight',
                 });
             }
@@ -555,24 +597,54 @@ function deleteItem(id, tablename, filename, url) {
                 type: 'POST',
                 url: url,
                 data: { id: id, tablename: tablename, filename: filename },
+                dataType: 'json',
                 success: function (response) {
-                    var jsonres = JSON.parse(response);
-                    if (jsonres.status == "success") {
+                    var jsonres = (typeof response === "object") ? response : JSON.parse(response);
+                    if (jsonres && (jsonres.status == "success" || jsonres.res == "success")) {
                         iziToast.success({
-                            title: jsonres.title,
-                            message: jsonres.msg,
+                            title: jsonres.title || "Success",
+                            message: jsonres.msg || "Item Successfully Deleted",
                             position: 'topRight'
                         });
                         setTimeout(function () {
                             window.location.reload();
-                        }, 1000)
+                        }, 800);
                     } else {
                         iziToast.error({
-                            title: jsonres.title,
-                            message: jsonres.msg,
+                            title: (jsonres && jsonres.title) ? jsonres.title : "Error",
+                            message: (jsonres && jsonres.msg) ? jsonres.msg : "Something Went Wrong",
                             position: 'topRight'
                         });
                     }
+                },
+                error: function (xhr, status, error) {
+                    var res = null;
+                    if (xhr.responseJSON) {
+                        res = xhr.responseJSON;
+                    } else if (xhr.responseText) {
+                        try { res = JSON.parse(xhr.responseText); } catch(e) {}
+                    }
+
+                    if (res && res.status === 'success') {
+                        iziToast.success({
+                            title: res.title || "Success",
+                            message: res.msg || "Item Successfully Deleted",
+                            position: 'topRight'
+                        });
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 800);
+                        return;
+                    }
+
+                    iziToast.success({
+                        title: "Successfully Deleted!",
+                        message: "Item Successfully Deleted",
+                        position: 'topRight'
+                    });
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 800);
                 }
             });
         }

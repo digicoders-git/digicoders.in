@@ -712,7 +712,7 @@
 
                     <div
                         style="font-size: 15px; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 6px;">
-                        <span style="color: #ea580c; font-weight: 800;">Digi{Coders}</span>
+                        <span style="font-weight: 800;"><span style="color: #0f172a;">Digi</span><span style="color: #ea580c;">{</span><span style="color: #046a38;">Coders</span><span style="color: #ea580c;">}</span></span>
                         <span style="color: #046a38; font-weight: 700;">Technologies Pvt. Ltd.</span>
                     </div>
 

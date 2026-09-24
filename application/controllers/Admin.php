@@ -265,6 +265,9 @@ class Admin extends MY_Controller
 		$data['gallery'] = $this->db->get('gallery')->num_rows();
 		$data['news'] = $this->db->get('news')->num_rows();
 		$data['products'] = $this->db->get('productcost')->num_rows();
+		$data['seo_pages'] = $this->db->table_exists('seo_pages') ? $this->db->get('seo_pages')->num_rows() : 0;
+		$data['project_enquiries'] = $this->db->table_exists('project_enquiries') ? $this->db->get('project_enquiries')->num_rows() : 0;
+		$data['softwares'] = $this->db->table_exists('softwares') ? $this->db->get('softwares')->num_rows() : 0;
 		$this->load->view('Admin/Dashboard', $data);
 	}
 
@@ -367,34 +370,58 @@ class Admin extends MY_Controller
 
 		if ($this->uri->segment(3)) {
 			if ($this->uri->segment(3) == 'Add') {
-				$this->form_validation->set_rules('type', 'Type', 'required');
-				$this->form_validation->set_rules('project_name', 'Title', 'required|is_unique[projects.title]');
-				$this->form_validation->set_rules('date', 'Date', 'required');
-				// $this->form_validation->set_rules('link', 'Link', 'required');
+				$this->form_validation->set_rules('type', 'Project Type', 'required', array(
+					'required' => 'Please select a Project Type.'
+				));
+				$this->form_validation->set_rules('project_name', 'Project Title', 'required|is_unique[projects.title]', array(
+					'required' => 'Project Title is required.',
+					'is_unique' => 'This Project Title already exists. Please choose a different title.'
+				));
+				$this->form_validation->set_rules('date', 'Date', 'required', array(
+					'required' => 'Please select a Date.'
+				));
 				if (empty($_FILES['image']['name'])) {
-					$this->form_validation->set_rules('image', 'Image', 'required');
+					$this->form_validation->set_rules('image', 'Image', 'required', array(
+						'required' => 'Project Image is required.'
+					));
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					$val_error = strip_tags(validation_errors());
+					echo json_encode(array("status" => "error", "msg" => !empty($val_error) ? trim($val_error) : "Please fill all required fields correctly.", "title" => "Validation Error", "reload" => "false", "redirect" => 'false'));
+					exit;
 				} else {
 
 					$upload_status = 'true';
+					$upload_error = '';
+					
+					// Check file size limit (100 KB)
+					if (!empty($_FILES['image']['tmp_name'])) {
+						$file_size_kb = $_FILES['image']['size'] / 1024;
+						if ($file_size_kb > 100) {
+							echo json_encode(array("status" => "error", "msg" => "The file size should be less than 100 KB. Please upload an image smaller than 100 KB.", "title" => "File Size Limit Exceeded", "reload" => "false", "redirect" => 'false'));
+							exit;
+						}
+					}
+
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 					$slug = url_title($this->input->post('title') ?: ($this->input->post('name') ?: ($this->input->post('project_name') ?: 'upload')), '-', TRUE);
 					$filename = $slug . "-" . time() . "." . $ext;
 
 					$config['upload_path'] = './public/uploads/projects/';
 					$config['allowed_types'] = 'gif|jpg|png|jpeg|webp|pdf';
-
-
 					$config['max_size'] = 100; // In KB
-					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
-					$this->load->library('upload', $config);
+					$this->load->library('upload');
+					$this->upload->initialize($config, TRUE);
 
 					if (!$this->upload->do_upload('image')) {
 						$upload_status = "false";
-						$upload_error = strip_tags($this->upload->display_errors());
+						$raw_err = strip_tags($this->upload->display_errors());
+						if (stripos($raw_err, 'permitted size') !== false || stripos($raw_err, 'larger than') !== false) {
+							$upload_error = "The file size should be less than 100 KB. Please upload an image smaller than 100 KB.";
+						} else {
+							$upload_error = !empty($raw_err) ? $raw_err : "Image upload failed.";
+						}
 					}
 
 					$data_arr = array(
@@ -412,47 +439,59 @@ class Admin extends MY_Controller
 					if ($upload_status != 'false') {
 						if ($this->db->insert('projects', $data_arr)) {
 							echo json_encode(array("status" => "success", "msg" => "Project Successfully Added", "title" => "Successfully Added!", "reload" => "true", "redirect" => 'false'));
-							// echo "success";
+							exit;
 						} else {
-							echo json_encode(array("status" => "error", "msg" => isset($upload_error) ? $upload_error : "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
-							// echo "failed";
+							$db_err = $this->db->error();
+							$err_msg = !empty($db_err['message']) ? $db_err['message'] : "Database Error while adding project";
+							echo json_encode(array("status" => "error", "msg" => $err_msg, "title" => "Database Error", "reload" => "false", "redirect" => 'false'));
+							exit;
 						}
 					} else {
-						echo json_encode(array("status" => "error", "msg" => isset($upload_error) ? $upload_error : "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
-						// echo "upload status false";
+						echo json_encode(array("status" => "error", "msg" => !empty($upload_error) ? $upload_error : "The file size should be less than 100 KB. Please upload an image smaller than 100 KB.", "title" => "Image Upload Failed", "reload" => "false", "redirect" => 'false'));
+						exit;
 					}
 				}
 
 			}
 			if ($this->uri->segment(3) == 'Update') {
-				// echo "ok";die();
-
 				$userdata = $this->db->get_where('projects', array('id' => $this->input->post('id')))->row();
-				$old_img = $userdata->image;
+				$old_img = isset($userdata->image) ? $userdata->image : '';
 				$upload_status = 'true';
+				$upload_error = '';
 				$filename = $old_img;
+
 				if (!empty($_FILES['image']['name'])) {
+					if (!empty($_FILES['image']['tmp_name'])) {
+						$file_size_kb = $_FILES['image']['size'] / 1024;
+						if ($file_size_kb > 100) {
+							echo json_encode(array("status" => "error", "msg" => "The file size should be less than 100 KB. Please upload an image smaller than 100 KB.", "title" => "File Size Limit Exceeded", "reload" => "false", "redirect" => 'false'));
+							exit;
+						}
+					}
+
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 					$slug = url_title($this->input->post('title') ?: ($this->input->post('name') ?: ($this->input->post('project_name') ?: 'upload')), '-', TRUE);
 					$filename = $slug . "-" . time() . "." . $ext;
 
 					$config['upload_path'] = './public/uploads/projects/';
 					$config['allowed_types'] = 'gif|jpg|png|jpeg|webp|pdf';
-
-
 					$config['max_size'] = 100; // In KB
-					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
-					$this->load->library('upload', $config);
+					$this->load->library('upload');
+					$this->upload->initialize($config, TRUE);
 
 					if (!$this->upload->do_upload('image')) {
 						$upload_status = "false";
-						$upload_error = strip_tags($this->upload->display_errors());
+						$raw_err = strip_tags($this->upload->display_errors());
+						if (stripos($raw_err, 'permitted size') !== false || stripos($raw_err, 'larger than') !== false) {
+							$upload_error = "The file size should be less than 100 KB. Please upload an image smaller than 100 KB.";
+						} else {
+							$upload_error = !empty($raw_err) ? $raw_err : "Image upload failed.";
+						}
 					} else {
 						$upload_status = 'true';
 					}
 				}
-
 
 				$data_arr = array(
 					"type" => $this->input->post('type'),
@@ -467,20 +506,27 @@ class Admin extends MY_Controller
 				);
 
 				if ($upload_status == 'true') {
-					$table_name = "projects";
 					$unlink_filename = $old_img;
 					$unlink_folder = "projects";
 
-					if ($this->db->where('id', $userdata->id)->update('projects', $data_arr)) {
-						if ($filename != $old_img) {
-							unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+					if ($this->db->where('id', $this->input->post('id'))->update('projects', $data_arr)) {
+						if (!empty($filename) && $filename != $old_img && !empty($old_img)) {
+							$old_path = './public/uploads/' . $unlink_folder . '/' . $unlink_filename;
+							if (file_exists($old_path)) {
+								@unlink($old_path);
+							}
 						}
 						echo json_encode(array("status" => "success", "msg" => "Project Successfully Updated", "title" => "Successfully Updated!", "reload" => "true", "redirect" => 'false'));
+						exit;
 					} else {
-						echo json_encode(array("status" => "error", "msg" => isset($upload_error) ? $upload_error : "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+						$db_err = $this->db->error();
+						$err_msg = !empty($db_err['message']) ? $db_err['message'] : "Database Error while updating project";
+						echo json_encode(array("status" => "error", "msg" => $err_msg, "title" => "Database Error", "reload" => "false", "redirect" => 'false'));
+						exit;
 					}
 				} else {
-					echo json_encode(array("status" => "error", "msg" => "Image Upload Failed", "title" => "Upload Error!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => !empty($upload_error) ? $upload_error : "The file size should be less than 100 KB. Please upload an image smaller than 100 KB.", "title" => "Image Upload Failed", "reload" => "false", "redirect" => 'false'));
+					exit;
 				}
 			}
 		} else {
@@ -497,7 +543,9 @@ class Admin extends MY_Controller
 		$blogs = $this->db->order_by('id', 'desc')->get('blog')->result();
 		if (!empty($blogs)) {
 			foreach ($blogs as &$b) {
-				$b->views = $this->db->where('blog_id', $b->id)->count_all_results('blog_views');
+				$vCount = $this->db->where('blog_id', $b->id)->count_all_results('blog_views');
+				$b->views = $vCount;
+				$b->views_count = $vCount;
 			}
 		}
 		$data['userdata'] = $blogs;
@@ -2093,5 +2141,17 @@ class Admin extends MY_Controller
 		} else {
 			$this->load->view('Admin/expert_banners', $data);
 		}
+	}
+
+	public function getBlogViewsDetails()
+	{
+		$blog_id = $this->input->post('blog_id');
+		if (empty($blog_id)) {
+			echo json_encode(array('status' => 'error', 'msg' => 'Invalid Blog ID'));
+			return;
+		}
+
+		$views = $this->db->order_by('id', 'desc')->get_where('blog_views', array('blog_id' => $blog_id))->result();
+		echo json_encode(array('status' => 'success', 'views' => $views));
 	}
 }

@@ -37,11 +37,15 @@
   <link href="<?= base_url()?>public/app-assets/css/header-colors.css" rel="stylesheet" />
   <link href="<?= base_url()?>public/app-assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-   <!-- CKEditor CDN -->
-   <!-- <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script> -->
+  <!-- CKEditor CDN -->
+  <script src="https://cdn.ckeditor.com/4.25.1-lts/standard/ckeditor.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/styles/metro/notify-metro.css" />
+
   <style>
     .parsley-required
     {
@@ -52,21 +56,31 @@
       font-size: 26px!important;
       color: #CCC;
     }
-    /* Fix Summernote Toolbar & Fullscreen inside Bootstrap Modal */
-    .note-editor .note-toolbar {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-        z-index: 5 !important;
-        background: #f8f9fa !important;
+    /* Summernote Fullscreen mode fix inside Bootstrap Modal */
+    body.note-fullscreen-body .modal,
+    body.note-fullscreen-body .modal-dialog,
+    body.note-fullscreen-body .modal-content {
+        transform: none !important;
+        filter: none !important;
+        perspective: none !important;
     }
+
     .note-editor.note-frame.fullscreen {
+        z-index: 99999 !important;
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         width: 100vw !important;
         height: 100vh !important;
-        z-index: 1060 !important;
-        background-color: #fff !important;
+        background: #fff !important;
+    }
+
+    /* Tags Input Chips Styling */
+    .remove-tag-btn {
+        transition: all 0.2s ease;
+    }
+    .remove-tag-btn:hover {
+        background-color: #dc3545 !important;
+        color: #fff !important;
     }
   </style>
