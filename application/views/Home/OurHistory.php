@@ -70,7 +70,7 @@
                                                     </div>
                                                     <div class="photo">
 
-                                                        <img data-src="<?= base_url('public') ?>/assets/images/other/team-2025.JPG"
+                                                        <img data-src="<?= base_url('public') ?>/assets/images/other/team-2025.jpg"
                                                             src="<?= base_url('public') ?>/assets/images/loader2.jpg"
                                                             alt="digicoders-history" class="lazy img-fluid">
                                                     </div>
