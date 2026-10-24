@@ -172,7 +172,7 @@
             "<?= $csrf['name']; ?>": $('#csrf_token').val()
           },
           dataType: "json",
-          timeout: 15000,
+          timeout: 40000,
           success: function(res) {
             btn.prop('disabled', false).html(oldHtml);
             if (res.status == 'success') {
@@ -288,7 +288,7 @@
             "<?= $csrf['name']; ?>": $('#csrf_token').val()
           },
           dataType: "json",
-          timeout: 15000,
+          timeout: 40000,
           success: function(res) {
             if (res.status == 'success') {
               iziToast.success({

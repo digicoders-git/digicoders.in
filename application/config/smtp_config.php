@@ -15,6 +15,7 @@ $config['smtp_noreply'] = array(
 	// 'smtp_pass' => 'lfkbaadjwvkvfmtx',
 	'smtp_crypto' => 'ssl',
 	// 'smtp_crypto' => 'tls',
+	'smtp_timeout' => 10,
 	'mailtype' => 'html',
 	'charset' => 'utf-8',
 	'newline' => "\r\n",

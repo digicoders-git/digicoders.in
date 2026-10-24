@@ -123,9 +123,12 @@ class LoginDetails
 
 	function get_username()
 	{
-		$uname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-		return $uname;
+		if (isset($_SERVER['REMOTE_USER']) && !empty($_SERVER['REMOTE_USER'])) {
+			return $_SERVER['REMOTE_USER'];
+		}
+		return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'Admin User';
 	}
+
 
 }
 ?>
