@@ -42,11 +42,11 @@ if (!function_exists('send_form_email')) {
             $CI->email->initialize($config);
             $CI->email->set_newline("\r\n");
             $from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
-            $CI->email->from($from_email, 'digicoders.in Website');     
+            $CI->email->from($from_email, 'digicoders.in Website');
             // $to_email = "saurabhkumarssp@gmail.com";
             $to_email = "digicoderstech@gmail.com";
             $CI->email->to($to_email);
-            
+
             $applicant_name = !empty($data['name']) ? $data['name'] : (!empty($data['Name']) ? $data['Name'] : '');
             $apply_for = !empty($data['appaly_for']) ? $data['appaly_for'] : (!empty($data['apply_for']) ? $data['apply_for'] : '');
 
@@ -143,7 +143,7 @@ if (!function_exists('send_form_email')) {
                     $label = "Requested Date";
                 }
 
-                $raw_val = ($value !== null && $value !== '') ? (string)$value : 'N/A';
+                $raw_val = ($value !== null && $value !== '') ? (string) $value : 'N/A';
                 if ($key == 'resume') {
                     $display_value = "<a href='" . base_url('public/uploads/career/' . $raw_val) . "' target='_blank' class='btn-resume' style='display: inline-block; background: #006DAB; color: #ffffff; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 13px; box-shadow: 0 3px 10px rgba(0,109,171,0.2); word-break: break-all;'>📄 View / Download Resume PDF (" . htmlspecialchars($raw_val) . ")</a>";
                 } else {
@@ -211,7 +211,7 @@ if (!function_exists('send_admin_login_otp_email')) {
     function send_admin_login_otp_email($email, $otp, $logindetails_data, $latitude = 'N/A', $longitude = 'N/A', $address = '')
     {
         try {
-            
+
             $CI = &get_instance();
             $CI->load->library('email');
             $CI->config->load('smtp_config');
@@ -219,13 +219,14 @@ if (!function_exists('send_admin_login_otp_email')) {
             $CI->email->initialize($config);
             $from_email = !empty($config['smtp_user']) ? $config['smtp_user'] : 'noreply@digicoders.in';
             $CI->email->from($from_email, 'digicoders.in Admin');
-            $to_email = !empty($email) ? $email : "digicoderstech@gmail.com";
+            // $to_email = "saurabhkumarssp@gmail.com";
+            $to_email = "digicoderstech@gmail.com";
             $CI->email->to($to_email);
 
             $CI->email->subject("[$otp] Admin Login OTP Verification Code | digicoders.in Admin Panel");
 
-            $maps_url = (!empty($latitude) && !empty($longitude) && $latitude !== 'N/A' && $longitude !== 'N/A') 
-                ? "https://www.google.com/maps?q=" . urlencode($latitude . ',' . $longitude) 
+            $maps_url = (!empty($latitude) && !empty($longitude) && $latitude !== 'N/A' && $longitude !== 'N/A')
+                ? "https://www.google.com/maps?q=" . urlencode($latitude . ',' . $longitude)
                 : "#";
 
             $ip_addr = !empty($logindetails_data['IP']) ? $logindetails_data['IP'] : 'N/A';
@@ -347,7 +348,8 @@ if (!function_exists('get_hiring_status')) {
     /**
      * Get hiring status ('open' or 'closed') from database
      */
-    function get_hiring_status() {
+    function get_hiring_status()
+    {
         $CI = &get_instance();
         $query = $CI->db->get_where('site_settings', array('setting_key' => 'hiring_status'));
         if ($query->num_rows() > 0) {
@@ -361,7 +363,8 @@ if (!function_exists('set_hiring_status')) {
     /**
      * Set hiring status ('open' or 'closed') in database
      */
-    function set_hiring_status($status) {
+    function set_hiring_status($status)
+    {
         $CI = &get_instance();
         $status = ($status === 'open') ? 'open' : 'closed';
         $CI->db->where('setting_key', 'hiring_status');
@@ -376,12 +379,14 @@ if (!function_exists('fix_blog_content_images')) {
     /**
      * Normalize blog content image URLs so they render properly in editor and blog details page
      */
-    function fix_blog_content_images($html) {
-        if (empty($html)) return '';
+    function fix_blog_content_images($html)
+    {
+        if (empty($html))
+            return '';
 
         $base_url = base_url();
 
-        return preg_replace_callback('/src=["\']([^"\']+)["\']/i', function($matches) use ($base_url) {
+        return preg_replace_callback('/src=["\']([^"\']+)["\']/i', function ($matches) use ($base_url) {
             $src = trim($matches[1]);
 
             // If base64 data URI, leave as is
