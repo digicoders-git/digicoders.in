@@ -179,7 +179,7 @@
           "<?= $this->security->get_csrf_token_name(); ?>": "<?= $this->security->get_csrf_hash(); ?>"
         },
         dataType: "json",
-        timeout: 15000,
+        timeout: 40000,
         success: function(res) {
           if(res.status == 'success') {
             iziToast.success({title: 'Success', message: res.msg, position: 'topRight'});

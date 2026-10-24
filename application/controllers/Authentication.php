@@ -148,7 +148,7 @@ class Authentication extends CI_Controller
 
 	public function VerifyPassword()
 	{
-		if ($this->input->is_ajax_request()) {
+		if ($this->input->is_ajax_request() || $this->input->post('password')) {
 			$raw_password = trim($this->input->post('password'));
 			$hashed_password = md5($raw_password);
 			$email = $this->session->userdata('AdminEmail');
@@ -178,6 +178,9 @@ class Authentication extends CI_Controller
 				$this->db->where('id', $admin->id)->update('admin_login', $data_arr);
 
 				$this->session->set_userdata("Password_Verified", TRUE);
+				if (session_status() === PHP_SESSION_ACTIVE) {
+					session_write_close();
+				}
 
 				$this->output
 					->set_content_type('application/json')
@@ -187,6 +190,10 @@ class Authentication extends CI_Controller
 					->set_content_type('application/json')
 					->set_output(json_encode(array("status" => "error", "msg" => "Incorrect Password. Please enter your correct account password.")));
 			}
+		} else {
+			$this->output
+				->set_content_type('application/json')
+				->set_output(json_encode(array("status" => "error", "msg" => "Invalid Request.")));
 		}
 	}
 
