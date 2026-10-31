@@ -4,17 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $config['smtp_noreply'] = array(
 	'protocol' => 'smtp',
 	'smtp_host' => 'mail.digicoders.in',
-	// 'smtp_host' => 'smtp.gmail.com',
 	'smtp_port' => 465,
-	// 'smtp_port' => 587,
-	// 'smtp_user' => 'noreply@digicoders.in',
-	// 'smtp_user' => 'saurabhkumarssp@gmail.com',
-	 'smtp_user' => 'mail@digicoders.in',
-	// 'smtp_pass' => 'VU1*M3W5WGggqakt',
-	'smtp_pass' => 'yLH[Vl8R(IrKdE(1',
-	// 'smtp_pass' => 'lfkbaadjwvkvfmtx',
+	'smtp_user' => 'mail@thedigicoders.com',
+	'smtp_pass' => 'p@vAri%qUT8JA7dm',
 	'smtp_crypto' => 'ssl',
-	// 'smtp_crypto' => 'tls',
 	'smtp_timeout' => 10,
 	'mailtype' => 'html',
 	'charset' => 'utf-8',
@@ -22,3 +15,19 @@ $config['smtp_noreply'] = array(
 	'crlf' => "\r\n",
 	'wordwrap' => TRUE
 );
+
+
+// $config = array(
+// 	'protocol'     => 'smtp',
+// 	'smtp_host'    => 'smtp.gmail.com',
+// 	'smtp_port'    => 465,
+// 	'smtp_user'    => 'devdigicoders@gmail.com',
+// 	'smtp_pass'    => 'iiiolwdzarguhsui',
+// 	'smtp_crypto'  => 'ssl',
+// 	'smtp_timeout' => 30,
+// 	'mailtype'     => 'html',
+// 	'charset'      => 'utf-8',
+// 	'newline'      => "\r\n",
+// 	'crlf'         => "\r\n",
+// 	'wordwrap'     => TRUE
+// );
